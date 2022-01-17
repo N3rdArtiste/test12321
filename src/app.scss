@@ -38,8 +38,7 @@ body::before {
 
 #svelte {
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    display: grid;
 }
 
 h1,

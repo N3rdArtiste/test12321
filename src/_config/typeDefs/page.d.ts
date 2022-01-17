@@ -19,6 +19,11 @@ declare interface PageParams {
     orderBy: QueryOrderBy[]
 }
 
+declare interface PageContent {
+    title: string
+    body: string
+}
+
 declare type PageToQueryParams = Merge<
     Omit<PageParams, 'page'>,
     {

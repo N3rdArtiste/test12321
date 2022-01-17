@@ -19,8 +19,8 @@
             <li class:active={$page.url.pathname === '/about'}>
                 <a sveltekit:prefetch href="/about">About</a>
             </li>
-            <li class:active={$page.url.pathname === '/todos'}>
-                <a sveltekit:prefetch href="/todos">Todos</a>
+            <li class:active={$page.url.pathname === '/team'}>
+                <a sveltekit:prefetch href="/team">Team</a>
             </li>
         </ul>
         <svg viewBox="0 0 2 3" aria-hidden="true">
@@ -33,9 +33,10 @@
     </div>
 </header>
 
-<style>
+<style lang="scss">
     header {
-        display: flex;
+        display: grid;
+        grid-auto-flow: column;
         justify-content: space-between;
     }
 
@@ -45,7 +46,7 @@
     }
 
     .corner a {
-        display: flex;
+        display: grid;
         align-items: center;
         justify-content: center;
         width: 100%;
@@ -59,7 +60,8 @@
     }
 
     nav {
-        display: flex;
+        display: grid;
+        grid-auto-flow: column;
         justify-content: center;
         --background: rgba(255, 255, 255, 0.7);
     }
@@ -79,7 +81,8 @@
         padding: 0;
         margin: 0;
         height: 3em;
-        display: flex;
+        display: grid;
+        grid-auto-flow: column;
         justify-content: center;
         align-items: center;
         list-style: none;
@@ -105,7 +108,7 @@
     }
 
     nav a {
-        display: flex;
+        display: grid;
         height: 100%;
         align-items: center;
         padding: 0 1em;

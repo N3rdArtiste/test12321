@@ -21,6 +21,10 @@ const config = {
         target: '#svelte',
 
         vite: {
+            optimizeDeps: {
+                exclude: ['@urql/svelte'],
+            },
+
             resolve: {
                 alias: {
                     base: path.resolve('./src'),
