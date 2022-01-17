@@ -1,11 +1,11 @@
 /* SystemJS module definition */
-declare var module: NodeModule
+declare let module: NodeModule
 interface NodeModule {
     id: string
 }
 
 /* Declare global window */
-declare var window: Window
+declare let window: Window
 interface Window {
     env: any
 }
