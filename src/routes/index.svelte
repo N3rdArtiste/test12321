@@ -3,24 +3,12 @@
 </script>
 
 <script lang="ts">
-    import { operationStore, query } from '@urql/svelte'
+    import { api } from 'services/api'
+    import { people } from 'stores/people'
 
-    const content = operationStore(`
-        query {
-            welcome {
-                title
-                blurb
-            }
-            what_we_do {
-                title
-                body
-                category
-                sort
-            }
-        }`)
+    api(people)
 
-    query(content)
-
+    import Query from 'base/components/query.svelte'
     import Counter from 'base/components/counter.svelte'
 </script>
 
@@ -29,27 +17,18 @@
 </svelte:head>
 
 <section>
-    {#if $content.fetching}
-        <p>Loading...</p>
-    {:else if $content.error}
-        <p>Oh no... {$content.error.message}</p>
-    {:else}
-        <h1>{$content.data.welcome.title}</h1>
-
-        <h2>{$content.data.welcome.blurb}</h2>
-
+    <Query content={$people}>
         <ul>
-            {#each $content.data.what_we_do as item (item.sort)}
+            {#each $people.data.allPeople.people as item}
                 <li>
-                    <h4>{item.category}</h4>
-                    <h3>{item.title}</h3>
-                    <p>{item.body}</p>
+                    <h4>{item.name}</h4>
+                    <p>{item.homeworld?.name}</p>
+                    <p>{item.species?.name}</p>
+                    <p>{item.gender}</p>
                 </li>
-            {:else}
-                <!-- Coming soon... -->
             {/each}
         </ul>
-    {/if}
+    </Query>
 
     <Counter />
 </section>
@@ -57,10 +36,9 @@
 <style lang="scss">
     section {
         display: grid;
-        justify-items: center;
-        align-items: center;
 
-        max-width: calc(100vw - 4rem);
-        margin: 0 auto;
+        width: 100%;
+        max-width: calc(100vw - 3rem);
+        margin: 3rem auto;
     }
 </style>

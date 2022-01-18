@@ -3,6 +3,7 @@
 
     initClient({
         url: import.meta.env.VITE_GRAPHQL_URL as string,
+        // fetchOptions: () => ({ headers: { credentials: 'omit' } }),
     })
 
     import '../app.scss'
