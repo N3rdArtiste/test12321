@@ -1,0 +1,36 @@
+<script lang="ts">
+    import { api } from 'services/api'
+    import { starships } from 'stores/starships'
+
+    import Query from 'base/components/query.svelte'
+
+    api(starships)
+</script>
+
+<svelte:head>
+    <title>starships</title>
+</svelte:head>
+
+<section class="starships">
+    <Query content={$starships}>
+        <ul>
+            {#each $starships.data.allStarships.starships as item (item.id)}
+                <!-- <li style="background-image: url({`sw/starships/${Math.floor(Math.random() * (21 - 2 + 1)) + 2}-full.jpg`});"> -->
+                <li>
+                    <img src={`sw/starships/${Math.floor(Math.random() * (21 - 2 + 1)) + 2}-full.jpg`} />
+                    <h4>{item.name}</h4>
+                    <h3>{item.diameter}</h3>
+                    <p>{item.population}</p>
+                    <p>{item.gravity}</p>
+                    <!-- <img src={`sw/starships/${item.id}-full.jpg`} /> -->
+                </li>
+            {/each}
+        </ul>
+    </Query>
+</section>
+
+<style lang="scss">
+    section {
+        display: grid;
+    }
+</style>

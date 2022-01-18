@@ -38,5 +38,8 @@
             transform: translate(-1px, -1px);
             transition: filter 0.2s, transform 0.2s;
         }
+        :global(ul li > img) {
+            width: 100%;
+        }
     }
 </style>

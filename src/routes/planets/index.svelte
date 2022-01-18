@@ -1,7 +1,4 @@
 <script lang="ts">
-    import { scale } from 'svelte/transition'
-    import { flip } from 'svelte/animate'
-
     import { api } from 'services/api'
     import { planets } from 'stores/planets'
 
@@ -18,11 +15,14 @@
     <Query content={$planets}>
         <ul>
             {#each $planets.data.allPlanets.planets as item (item.id)}
-                <li transition:scale|local={{ start: 0.7 }} animate:flip={{ duration: 200 }}>
+                <!-- <li style="background-image: url({`sw/planets/${Math.floor(Math.random() * (21 - 2 + 1)) + 2}-full.jpg`});"> -->
+                <li>
+                    <img src={`sw/planets/${Math.floor(Math.random() * (21 - 2 + 1)) + 2}-full.jpg`} />
                     <h4>{item.name}</h4>
                     <h3>{item.diameter}</h3>
                     <p>{item.population}</p>
                     <p>{item.gravity}</p>
+                    <!-- <img src={`sw/planets/${item.id}-full.jpg`} /> -->
                 </li>
             {/each}
         </ul>
