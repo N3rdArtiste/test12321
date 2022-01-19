@@ -34,6 +34,7 @@ const config = {
                     types: path.resolve('./src/_config/typeDefs'),
                     components: path.resolve('./src/components'),
                     helpers: path.resolve('./src/helpers'),
+                    generated: path.resolve('./src/generated'),
                     modules: path.resolve('./src/modules'),
                     services: path.resolve('./src/services'),
                     stores: path.resolve('./src/stores'),

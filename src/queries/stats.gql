@@ -1,0 +1,20 @@
+query StatsQuery {
+    allFilms {
+        totalCount
+    }
+    allPeople {
+        totalCount
+    }
+    allPlanets {
+        totalCount
+    }
+    allSpecies {
+        totalCount
+    }
+    allStarships {
+        totalCount
+    }
+    allVehicles {
+        totalCount
+    }
+}

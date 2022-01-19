@@ -1,0 +1,8 @@
+query AllSpeciesQuery {
+    allSpecies {
+        species {
+            name
+            id
+        }
+    }
+}

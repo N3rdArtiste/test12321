@@ -1,0 +1,8 @@
+query AllVehiclesQuery {
+    allVehicles {
+        vehicles {
+            name
+            id
+        }
+    }
+}

@@ -1,0 +1,8 @@
+query AllStarshipsQuery {
+    allStarships {
+        starships {
+            name
+            id
+        }
+    }
+}
