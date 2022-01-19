@@ -5,6 +5,7 @@
 <script lang="ts">
     import { api } from 'services/api'
     import { stats } from 'stores/stats'
+    import { contentTypes } from 'constants/content-types'
 
     api(stats)
 
@@ -19,12 +20,9 @@
 <section>
     <Query content={$stats}>
         <h1>We have a graphql api with:</h1>
-        <a href="/films">{$stats.data.allFilms.totalCount} Films</a>
-        <a href="/people">{$stats.data.allPeople.totalCount} People</a>
-        <a href="/planets">{$stats.data.allPlanets.totalCount} Planets</a>
-        <a href="/species">{$stats.data.allSpecies.totalCount} Species</a>
-        <a href="/starships">{$stats.data.allStarships.totalCount} Starships</a>
-        <a href="/vehicles">{$stats.data.allVehicles.totalCount} Vehicles</a>
+        {#each contentTypes as type}
+            <a href={`/${type.toLowerCase()}`}>{$stats.data[`all${type}`].totalCount} {type}</a>
+        {/each}
     </Query>
 
     <Counter />

@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { contentTypes } from 'constants/content-types'
     import { page } from '$app/stores'
     import logo from 'components/assets/svelte-logo.svg'
 </script>
@@ -17,12 +18,11 @@
         <ul>
             <li class:active={$page.url.pathname === '/'}><a sveltekit:prefetch href="/">Home</a></li>
 
-            <li class:active={$page.url.pathname === '/people'}>
-                <a sveltekit:prefetch href="/people">People</a>
-            </li>
-            <li class:active={$page.url.pathname === '/planets'}>
-                <a sveltekit:prefetch href="/planets">Planets</a>
-            </li>
+            {#each contentTypes as item}
+                <li class:active={$page.url.pathname === `/${item.toLowerCase()}`}>
+                    <a sveltekit:prefetch href={`/${item.toLowerCase()}`}>{item}</a>
+                </li>
+            {/each}
 
             <li class:active={$page.url.pathname === '/about'}>
                 <a sveltekit:prefetch href="/about">About</a>

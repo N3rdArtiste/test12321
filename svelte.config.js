@@ -29,6 +29,7 @@ const config = {
                 alias: {
                     base: path.resolve('./src'),
                     _config: path.resolve('./src/_config'),
+                    constants: path.resolve('./src/_config/constants'),
                     enums: path.resolve('./src/_config/enumerations'),
                     types: path.resolve('./src/_config/typeDefs'),
                     components: path.resolve('./src/components'),
