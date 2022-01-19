@@ -27,7 +27,6 @@ const config = {
 
             resolve: {
                 alias: {
-                    base: path.resolve('./src'),
                     _config: path.resolve('./src/_config'),
                     constants: path.resolve('./src/_config/constants'),
                     enums: path.resolve('./src/_config/enumerations'),
@@ -36,6 +35,7 @@ const config = {
                     helpers: path.resolve('./src/helpers'),
                     generated: path.resolve('./src/generated'),
                     modules: path.resolve('./src/modules'),
+                    schemas: path.resolve('./src/schemas'),
                     services: path.resolve('./src/services'),
                     stores: path.resolve('./src/stores'),
                     utilities: path.resolve('./src/utilities'),

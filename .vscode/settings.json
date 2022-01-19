@@ -46,6 +46,7 @@
         "docs": true,
         "e2e": true,
         ".svelte-kit": true,
+        "**/*-generated.d.ts-e": true,
         "**/.eslintrc.cjs": true
     },
     "search.exclude": {

@@ -1,13 +1,10 @@
 <script lang="ts">
-    import { initClient } from '@urql/svelte'
-
-    initClient({
-        url: import.meta.env.VITE_GRAPHQL_URL as string,
-        // fetchOptions: () => ({ headers: { credentials: 'omit' } }),
-    })
-
     import '../app.scss'
+    import { setupClient } from 'services/api'
+
     import MainNav from 'components/layout/main-nav.svelte'
+
+    setupClient()
 </script>
 
 <MainNav />

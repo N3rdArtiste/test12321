@@ -9,8 +9,8 @@
 
     api(stats)
 
-    import Query from 'base/components/query.svelte'
-    import Counter from 'base/components/counter.svelte'
+    import Query from 'components/query.svelte'
+    import Counter from 'components/counter.svelte'
 </script>
 
 <svelte:head>

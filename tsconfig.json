@@ -24,7 +24,6 @@
         "allowJs": true,
         "checkJs": true,
         "paths": {
-            "base/*": ["src/*"],
             "_config/*": ["src/_config/*"],
             "constants/*": ["src/_config/constants/*"],
             "enums/*": ["src/_config/enumerations/*"],
@@ -33,6 +32,7 @@
             "helpers/*": ["src/helpers/*"],
             "generated/*": ["src/generated/*"],
             "modules/*": ["src/modules/*"],
+            "schemas/*": ["src/schemas/*"],
             "services/*": ["src/services/*"],
             "stores/*": ["src/stores/*"],
             "utilities/*": ["src/utilities/*"]
