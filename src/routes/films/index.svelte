@@ -36,6 +36,7 @@
 </script>
 
 <script lang="ts">
+    import { minMaxRange } from 'helpers/integers'
     import { films } from 'stores/films'
 
     export let allFilms: Film[]
@@ -51,7 +52,7 @@
     <ul>
         {#each $films as item (item.id)}
             <li>
-                <img src={`sw/films/${Math.floor(Math.random() * (7 - 2 + 1)) + 2}-full.jpg`} alt="" />
+                <img src={`sw/films/${minMaxRange(2, 7)}-full.jpg`} alt="" />
                 <h4>{item.title}</h4>
             </li>
         {/each}
