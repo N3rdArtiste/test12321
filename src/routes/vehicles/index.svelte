@@ -17,7 +17,7 @@
             {#each $vehicles.data.allVehicles.vehicles as item (item.id)}
                 <!-- <li style="background-image: url({`sw/vehicles/${Math.floor(Math.random() * (21 - 2 + 1)) + 2}-full.jpg`});"> -->
                 <li>
-                    <img src={`sw/vehicles/${Math.floor(Math.random() * (21 - 2 + 1)) + 2}-full.jpg`} />
+                    <img src={`sw/vehicles/${Math.floor(Math.random() * (42 - 4 + 1)) + 4}-full.jpg`} />
                     <h4>{item.name}</h4>
                     <h3>{item.diameter}</h3>
                     <p>{item.population}</p>

@@ -17,7 +17,7 @@
             {#each $films.data.allFilms.films as item (item.id)}
                 <!-- <li style="background-image: url({`sw/films/${Math.floor(Math.random() * (21 - 2 + 1)) + 2}-full.jpg`});"> -->
                 <li>
-                    <img src={`sw/films/${Math.floor(Math.random() * (21 - 2 + 1)) + 2}-full.jpg`} />
+                    <img src={`sw/films/${Math.floor(Math.random() * (7 - 2 + 1)) + 2}-full.jpg`} />
                     <h4>{item.title}</h4>
 
                     <!-- <img src={`sw/films/${item.id}-full.jpg`} /> -->

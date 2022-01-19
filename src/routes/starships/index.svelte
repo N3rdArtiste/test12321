@@ -17,7 +17,7 @@
             {#each $starships.data.allStarships.starships as item (item.id)}
                 <!-- <li style="background-image: url({`sw/starships/${Math.floor(Math.random() * (21 - 2 + 1)) + 2}-full.jpg`});"> -->
                 <li>
-                    <img src={`sw/starships/${Math.floor(Math.random() * (21 - 2 + 1)) + 2}-full.jpg`} />
+                    <img src={`sw/starships/${Math.floor(Math.random() * (48 - 5 + 1)) + 5}-full.jpg`} />
                     <h4>{item.name}</h4>
                     <h3>{item.diameter}</h3>
                     <p>{item.population}</p>
