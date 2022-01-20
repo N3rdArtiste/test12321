@@ -11,7 +11,6 @@
 
     import Query from 'components/query.svelte'
     import Counter from 'components/counter.svelte'
-    import type { StatsQuery } from '_config/typeDefs/graphql-generated'
 
     const statsDataRestructurer = (data: StatsQuery) => {
         const arr = []
