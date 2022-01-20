@@ -10,6 +10,6 @@ export function setupClient() {
     })
 }
 
-export function api(queryString: OperationStore) {
-    query(queryString)
+export const api = <T>(queryString: OperationStore<T>) => {
+    query<T>(queryString)
 }

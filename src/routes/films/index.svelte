@@ -1,6 +1,7 @@
 <script context="module" lang="ts">
-    import { graphqlUrl } from 'constants/graphql'
+    import { browser } from '$app/env'
 
+    import { graphqlUrl } from 'constants/graphql'
     // @ts-ignore
     export async function load({ fetch }) {
         const res = await fetch(graphqlUrl, {
@@ -39,8 +40,7 @@
     import { minMaxRange } from 'helpers/integers'
     import { films } from 'stores/films'
 
-    export let allFilms: Film[]
-
+    export let allFilms: any
     $films = allFilms
 </script>
 

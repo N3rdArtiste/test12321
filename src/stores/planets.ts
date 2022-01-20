@@ -1,16 +1,5 @@
 import { operationStore } from '@urql/svelte'
-import type { OperationStore } from '@urql/svelte'
+import { AllPlanetsDocument } from '_config/graphql-tags/graphql-tags-generated'
+import type { AllPlanetsQueryStore } from '_config/typeDefs/graphql-generated'
 
-// interface OperationStore extends Readable<OperationStore>
-export const planets: OperationStore<any, object, any> = operationStore(`
-    query {
-        allPlanets{
-            planets{
-                name
-                diameter
-                population
-                gravity
-                id
-            }
-        }
-    }`)
+export const planets: AllPlanetsQueryStore = operationStore(AllPlanetsDocument)

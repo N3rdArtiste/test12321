@@ -1,13 +1,5 @@
 import { operationStore } from '@urql/svelte'
-import type { OperationStore } from '@urql/svelte'
+import { AllVehiclesDocument } from '_config/graphql-tags/graphql-tags-generated'
+import type { AllVehiclesQueryStore } from '_config/typeDefs/graphql-generated'
 
-// interface OperationStore extends Readable<OperationStore>
-export const vehicles: OperationStore<any, object, any> = operationStore(`
-    query {
-        allVehicles{
-            vehicles{
-                name
-                id
-            }
-        }
-    }`)
+export const vehicles: AllVehiclesQueryStore = operationStore(AllVehiclesDocument)

@@ -1,3 +1,4 @@
+import type { OperationStore } from '@urql/svelte';
 type Maybe<T> = T | null;
 type InputMaybe<T> = Maybe<T>;
 type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -1299,3 +1300,46 @@ type VehiclesEdge = {
   /** The item at the end of the edge */
   node?: Maybe<Vehicle>;
 };
+
+type AllFilmsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type AllFilmsQuery = { __typename?: 'Root', allFilms?: { __typename?: 'FilmsConnection', films?: Array<{ __typename?: 'Film', title?: string | null | undefined, id: string } | null | undefined> | null | undefined } | null | undefined };
+
+type AllPeopleQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type AllPeopleQuery = { __typename?: 'Root', allPeople?: { __typename?: 'PeopleConnection', people?: Array<{ __typename?: 'Person', name?: string | null | undefined, gender?: string | null | undefined, id: string, homeworld?: { __typename?: 'Planet', name?: string | null | undefined } | null | undefined, species?: { __typename?: 'Species', name?: string | null | undefined } | null | undefined } | null | undefined> | null | undefined } | null | undefined };
+
+type AllPlanetsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type AllPlanetsQuery = { __typename?: 'Root', allPlanets?: { __typename?: 'PlanetsConnection', planets?: Array<{ __typename?: 'Planet', name?: string | null | undefined, diameter?: number | null | undefined, population?: number | null | undefined, gravity?: string | null | undefined, id: string } | null | undefined> | null | undefined } | null | undefined };
+
+type AllSpeciesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type AllSpeciesQuery = { __typename?: 'Root', allSpecies?: { __typename?: 'SpeciesConnection', species?: Array<{ __typename?: 'Species', name?: string | null | undefined, id: string } | null | undefined> | null | undefined } | null | undefined };
+
+type AllStarshipsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type AllStarshipsQuery = { __typename?: 'Root', allStarships?: { __typename?: 'StarshipsConnection', starships?: Array<{ __typename?: 'Starship', name?: string | null | undefined, id: string } | null | undefined> | null | undefined } | null | undefined };
+
+type StatsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type StatsQuery = { __typename?: 'Root', allFilms?: { __typename?: 'FilmsConnection', totalCount?: number | null | undefined } | null | undefined, allPeople?: { __typename?: 'PeopleConnection', totalCount?: number | null | undefined } | null | undefined, allPlanets?: { __typename?: 'PlanetsConnection', totalCount?: number | null | undefined } | null | undefined, allSpecies?: { __typename?: 'SpeciesConnection', totalCount?: number | null | undefined } | null | undefined, allStarships?: { __typename?: 'StarshipsConnection', totalCount?: number | null | undefined } | null | undefined, allVehicles?: { __typename?: 'VehiclesConnection', totalCount?: number | null | undefined } | null | undefined };
+
+type AllVehiclesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type AllVehiclesQuery = { __typename?: 'Root', allVehicles?: { __typename?: 'VehiclesConnection', vehicles?: Array<{ __typename?: 'Vehicle', id: string, name?: string | null | undefined, model?: string | null | undefined } | null | undefined> | null | undefined } | null | undefined };
+
+type AllFilmsQueryStore = OperationStore<AllFilmsQuery, AllFilmsQueryVariables>;
+type AllPeopleQueryStore = OperationStore<AllPeopleQuery, AllPeopleQueryVariables>;
+type AllPlanetsQueryStore = OperationStore<AllPlanetsQuery, AllPlanetsQueryVariables>;
+type AllSpeciesQueryStore = OperationStore<AllSpeciesQuery, AllSpeciesQueryVariables>;
+type AllStarshipsQueryStore = OperationStore<AllStarshipsQuery, AllStarshipsQueryVariables>;
+type StatsQueryStore = OperationStore<StatsQuery, StatsQueryVariables>;
+type AllVehiclesQueryStore = OperationStore<AllVehiclesQuery, AllVehiclesQueryVariables>;

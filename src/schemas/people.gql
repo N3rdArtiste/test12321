@@ -1,4 +1,4 @@
-query AllPeopleQuery {
+query AllPeople {
     allPeople {
         people {
             name

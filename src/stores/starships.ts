@@ -1,13 +1,5 @@
 import { operationStore } from '@urql/svelte'
-import type { OperationStore } from '@urql/svelte'
+import { AllStarshipsDocument } from '_config/graphql-tags/graphql-tags-generated'
+import type { AllStarshipsQueryStore } from '_config/typeDefs/graphql-generated'
 
-// interface OperationStore extends Readable<OperationStore>
-export const starships: OperationStore<any, object, any> = operationStore(`
-    query {
-        allStarships{
-            starships{
-                name
-                id
-            }
-        }
-    }`)
+export const starships: AllStarshipsQueryStore = operationStore(AllStarshipsDocument)

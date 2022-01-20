@@ -1,4 +1,4 @@
-query AllSpeciesQuery {
+query AllSpecies {
     allSpecies {
         species {
             name

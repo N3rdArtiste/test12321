@@ -1,4 +1,4 @@
-query StatsQuery {
+query Stats {
     allFilms {
         totalCount
     }

@@ -12,16 +12,13 @@
 </svelte:head>
 
 <section class="starships">
-    <Query content={$starships}>
+    <Query content={$starships} let:data>
         <ul>
-            {#each $starships.data.allStarships.starships as item (item.id)}
+            {#each data.allStarships?.starships ?? [] as item (item?.id)}
                 <!-- <li style="background-image: url({`sw/starships/${Math.floor(Math.random() * (21 - 2 + 1)) + 2}-full.jpg`});"> -->
                 <li>
                     <img src={`sw/starships/${Math.floor(Math.random() * (48 - 5 + 1)) + 5}-full.jpg`} alt="" />
                     <h4>{item.name}</h4>
-                    <h3>{item.diameter}</h3>
-                    <p>{item.population}</p>
-                    <p>{item.gravity}</p>
                     <!-- <img src={`sw/starships/${item.id}-full.jpg`} alt="" /> -->
                 </li>
             {/each}

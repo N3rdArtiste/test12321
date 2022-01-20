@@ -11,6 +11,15 @@
 
     import Query from 'components/query.svelte'
     import Counter from 'components/counter.svelte'
+    import type { StatsQuery } from '_config/typeDefs/graphql-generated'
+
+    const statsDataRestructurer = (data: StatsQuery) => {
+        const arr = []
+        for (const [key, value] of Object.entries(data)) {
+            if (value !== 'Root') arr.push({ key, value: value?.totalCount })
+        }
+        return arr
+    }
 </script>
 
 <svelte:head>
@@ -18,10 +27,13 @@
 </svelte:head>
 
 <section>
-    <Query content={$stats}>
+    <Query content={$stats} let:data>
         <h1>We have a graphql api with:</h1>
-        {#each contentTypes as type}
-            <a href={`/${type.toLowerCase()}`}>{$stats.data[`all${type}`].totalCount} {type}</a>
+        {#each statsDataRestructurer(data) as stat}
+            <a href={`/${stat.key.replace('all', '').toLowerCase()}`}>
+                {stat.key}
+                {stat.value}
+            </a>
         {/each}
     </Query>
 

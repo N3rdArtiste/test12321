@@ -1,4 +1,4 @@
-query AllPlanetsQuery {
+query AllPlanets {
     allPlanets {
         planets {
             name
