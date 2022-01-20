@@ -1,8 +1,10 @@
 query AllVehiclesQuery {
     allVehicles {
         vehicles {
-            name
             id
+            name
+            model
+            model
         }
     }
 }

@@ -12,9 +12,9 @@
 </svelte:head>
 
 <section class="planets">
-    <Query content={$planets}>
+    <Query content={$planets} let:data>
         <ul>
-            {#each $planets.data.allPlanets.planets as item (item.id)}
+            {#each data.allPlanets?.planets ?? [] as item (item?.id)}
                 <!-- <li style="background-image: url({`sw/planets/${Math.floor(Math.random() * (21 - 2 + 1)) + 2}-full.jpg`});"> -->
                 <li>
                     <img src={`sw/planets/${Math.floor(Math.random() * (21 - 2 + 1)) + 2}-full.jpg`} alt="" />

@@ -1,7 +1,13 @@
 <script lang="ts">
     import type { OperationStore } from '@urql/svelte'
 
-    export let content: OperationStore<any, object, any>
+    type T = $$Generic
+    export let content: OperationStore<T>
+    interface $$Slots {
+        default: {
+            data: T
+        }
+    }
 </script>
 
 <section>
@@ -9,9 +15,8 @@
         <p>Loading...</p>
     {:else if $content.error}
         <p>Oh no... {$content.error.message}</p>
-    {:else}
-        <!-- {JSON.stringify($content)} -->
-        <slot />
+    {:else if $content.data}
+        <slot data={$content.data} />
     {/if}
 </section>
 

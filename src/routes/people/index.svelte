@@ -12,17 +12,14 @@
 </svelte:head>
 
 <section class="people">
-    <Query content={$people}>
+    <Query content={$people} let:data>
         <ul>
-            {#each $people.data.allPeople.people as item (item.id)}
-                <!-- <li style="background-image: url({`sw/people/${Math.floor(Math.random() * (21 - 2 + 1)) + 2}-full.jpg`});"> -->
+            {#each data.allPeople?.people ?? [] as item (item?.id)}
+                <li style="background-image: url({`sw/people/${Math.floor(Math.random() * (21 - 2 + 1)) + 2}-full.jpg`});" />
                 <li>
                     <img src={`sw/people/${Math.floor(Math.random() * (88 - 1 + 1)) + 1}-full.jpg`} alt="" />
                     <h4>{item.name}</h4>
-                    <h3>{item.diameter}</h3>
-                    <p>{item.population}</p>
-                    <p>{item.gravity}</p>
-                    <!-- <img src={`sw/people/${item.id}-full.jpg`} alt="" /> -->
+                    <img src={`sw/people/${item.id}-full.jpg`} alt="" />
                 </li>
             {/each}
         </ul>

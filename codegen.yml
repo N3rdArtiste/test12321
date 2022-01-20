@@ -2,6 +2,9 @@ overwrite: true
 schema: "https://swapi-graphql.netlify.app/.netlify/functions/index"
 documents: "src/schemas/*.gql"
 generates:
-  src/_config/typeDefs/graphql-generated.d.ts:
+  src/_config/typeDefs/graphql-generated.ts:
     plugins:
       - "typescript"
+      - "typescript-operations"
+      - "typescript-urql"
+      - "urql-svelte-operations-store"
