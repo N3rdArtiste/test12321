@@ -1,4 +1,4 @@
-import type { OperationStore } from '@urql/svelte';
+
 type Maybe<T> = T | null;
 type InputMaybe<T> = Maybe<T>;
 type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -1336,10 +1336,10 @@ type AllVehiclesQueryVariables = Exact<{ [key: string]: never; }>;
 
 type AllVehiclesQuery = { __typename?: 'Root', allVehicles?: { __typename?: 'VehiclesConnection', vehicles?: Array<{ __typename?: 'Vehicle', id: string, name?: string | null | undefined, model?: string | null | undefined } | null | undefined> | null | undefined } | null | undefined };
 
-type AllFilmsQueryStore = OperationStore<AllFilmsQuery, AllFilmsQueryVariables>;
-type AllPeopleQueryStore = OperationStore<AllPeopleQuery, AllPeopleQueryVariables>;
-type AllPlanetsQueryStore = OperationStore<AllPlanetsQuery, AllPlanetsQueryVariables>;
-type AllSpeciesQueryStore = OperationStore<AllSpeciesQuery, AllSpeciesQueryVariables>;
-type AllStarshipsQueryStore = OperationStore<AllStarshipsQuery, AllStarshipsQueryVariables>;
-type StatsQueryStore = OperationStore<StatsQuery, StatsQueryVariables>;
-type AllVehiclesQueryStore = OperationStore<AllVehiclesQuery, AllVehiclesQueryVariables>;
+type AllFilmsQueryStore = import("@urql/svelte").OperationStore<AllFilmsQuery, AllFilmsQueryVariables>;
+type AllPeopleQueryStore = import("@urql/svelte").OperationStore<AllPeopleQuery, AllPeopleQueryVariables>;
+type AllPlanetsQueryStore = import("@urql/svelte").OperationStore<AllPlanetsQuery, AllPlanetsQueryVariables>;
+type AllSpeciesQueryStore = import("@urql/svelte").OperationStore<AllSpeciesQuery, AllSpeciesQueryVariables>;
+type AllStarshipsQueryStore = import("@urql/svelte").OperationStore<AllStarshipsQuery, AllStarshipsQueryVariables>;
+type StatsQueryStore = import("@urql/svelte").OperationStore<StatsQuery, StatsQueryVariables>;
+type AllVehiclesQueryStore = import("@urql/svelte").OperationStore<AllVehiclesQuery, AllVehiclesQueryVariables>;
