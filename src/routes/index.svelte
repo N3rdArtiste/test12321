@@ -11,9 +11,9 @@
 
     import Query from 'components/query.svelte'
     import Counter from 'components/counter.svelte'
-    import type { StatsQueryQuery } from '_config/typeDefs/graphql-generated'
+    import type { StatsQuery } from '_config/typeDefs/graphql-generated'
 
-    const statsDataRestructurer = (data: StatsQueryQuery) => {
+    const statsDataRestructurer = (data: StatsQuery) => {
         const arr = []
         for (const [key, value] of Object.entries(data)) {
             if (value !== 'Root') arr.push({ key, value: value?.totalCount })

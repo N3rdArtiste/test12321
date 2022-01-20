@@ -1,4 +1,4 @@
-query AllFilmsQuery {
+query AllFilms {
     allFilms {
         films {
             title

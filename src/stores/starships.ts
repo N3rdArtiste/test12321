@@ -1,5 +1,5 @@
 import { operationStore } from '@urql/svelte'
-import type { AllStarshipsQueryQueryStore } from '_config/typeDefs/graphql-generated'
-import { AllStarshipsQueryDocument } from '_config/typeDefs/graphql-generated'
+import { AllStarshipsDocument } from '_config/graphql-tags/graphql-tags-generated'
+import type { AllStarshipsQueryStore } from '_config/typeDefs/graphql-generated'
 
-export const starships: AllStarshipsQueryQueryStore = operationStore(AllStarshipsQueryDocument)
+export const starships: AllStarshipsQueryStore = operationStore(AllStarshipsDocument)

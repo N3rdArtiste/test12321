@@ -1,7 +1,14 @@
 <script context="module" lang="ts">
+    import { browser } from '$app/env'
+
     import { graphqlUrl } from 'constants/graphql'
     // @ts-ignore
     export async function load({ fetch }) {
+        if (browser) {
+            return {
+                props: { allFilms: 'false' },
+            }
+        }
         const res = await fetch(graphqlUrl, {
             method: 'POST',
             headers: {
@@ -38,8 +45,7 @@
     import { minMaxRange } from 'helpers/integers'
     import { films } from 'stores/films'
 
-    // export let allFilms: Film[]
-    export let allFilms
+    export let allFilms: any
     $films = allFilms
 </script>
 

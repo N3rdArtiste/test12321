@@ -1,5 +1,5 @@
 import { operationStore } from '@urql/svelte'
-import { AllPeopleQueryDocument } from '_config/typeDefs/graphql-generated'
-import type { AllPeopleQueryQueryStore } from '_config/typeDefs/graphql-generated'
+import { AllPeopleDocument } from '_config/graphql-tags/graphql-tags-generated'
+import type { AllPeopleQueryStore } from '_config/typeDefs/graphql-generated'
 
-export const people: AllPeopleQueryQueryStore = operationStore(AllPeopleQueryDocument)
+export const people: AllPeopleQueryStore = operationStore(AllPeopleDocument)

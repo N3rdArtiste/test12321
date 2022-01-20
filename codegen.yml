@@ -1,10 +1,15 @@
 overwrite: true
 schema: "https://swapi-graphql.netlify.app/.netlify/functions/index"
 documents: "src/schemas/*.gql"
+config:
+   withHooks: false
+   useTypeImports: true
 generates:
-  src/_config/typeDefs/graphql-generated.ts:
+  src/_config/typeDefs/graphql-generated.d.ts:
     plugins:
       - "typescript"
       - "typescript-operations"
-      - "typescript-urql"
       - "urql-svelte-operations-store"
+  src/_config/graphql-tags/graphql-tags-generated.ts:
+    plugins:
+      - "typescript-urql"

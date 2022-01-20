@@ -3,7 +3,6 @@
     import { vehicles } from 'stores/vehicles'
 
     import Query from 'components/query.svelte'
-    import { query } from '@urql/svelte'
 
     api(vehicles)
 </script>

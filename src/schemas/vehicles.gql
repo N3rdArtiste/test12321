@@ -1,4 +1,4 @@
-query AllVehiclesQuery {
+query AllVehicles {
     allVehicles {
         vehicles {
             id

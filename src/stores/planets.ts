@@ -1,6 +1,5 @@
 import { operationStore } from '@urql/svelte'
-import type { AllPlanetsQueryQueryStore } from '_config/typeDefs/graphql-generated'
+import { AllPlanetsDocument } from '_config/graphql-tags/graphql-tags-generated'
+import type { AllPlanetsQueryStore } from '_config/typeDefs/graphql-generated'
 
-import { AllPlanetsQueryDocument } from '_config/typeDefs/graphql-generated'
-
-export const planets: AllPlanetsQueryQueryStore = operationStore(AllPlanetsQueryDocument)
+export const planets: AllPlanetsQueryStore = operationStore(AllPlanetsDocument)

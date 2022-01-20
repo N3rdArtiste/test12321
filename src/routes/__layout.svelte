@@ -4,9 +4,14 @@
 
     import MainNav from 'components/layout/main-nav.svelte'
 
+    import { navigating } from '$app/stores'
+    $: console.log($navigating)
     setupClient()
 </script>
 
 <MainNav />
-
-<slot />
+{#if !$navigating}
+    <slot />
+{:else}
+    <h2>LOADING!!</h2>
+{/if}
