@@ -1,11 +1,8 @@
 <script lang="ts">
     import '../app.scss'
     import { setupClient } from 'services/api'
-
     import MainNav from 'components/layout/main-nav.svelte'
-
     import { navigating } from '$app/stores'
-    $: console.log($navigating)
     setupClient()
 </script>
 

@@ -4,11 +4,6 @@
     import { graphqlUrl } from 'constants/graphql'
     // @ts-ignore
     export async function load({ fetch }) {
-        if (browser) {
-            return {
-                props: { allFilms: 'false' },
-            }
-        }
         const res = await fetch(graphqlUrl, {
             method: 'POST',
             headers: {
