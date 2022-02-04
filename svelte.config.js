@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-auto'
+import adapter from '@sveltejs/adapter-static'
 import preprocess from 'svelte-preprocess'
 import path from 'path'
 
@@ -15,7 +15,7 @@ const config = {
     ],
 
     kit: {
-        adapter: adapter(),
+        adapter: adapter({ fallback: '200.html' }),
 
         // hydrate the <div id="svelte"> element in src/app.html
         target: '#svelte',
