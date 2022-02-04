@@ -44,13 +44,9 @@
         "@graphql-codegen/typescript-urql": "^3.4.2",
         "@graphql-codegen/urql-introspection": "^2.1.1",
         "@graphql-codegen/urql-svelte-operations-store": "^1.1.9",
-<<<<<<< Updated upstream
         "@lukeed/uuid": "^2.0.0",
-        "@sveltejs/adapter-static": "^1.0.0-next.0",
         "@types/cookie": "^0.4.1",
-        "cookie": "^0.4.2"
-=======
+        "cookie": "^0.4.2",
         "@sveltejs/adapter-static": "^1.0.0-next.26"
->>>>>>> Stashed changes
     }
 }
