@@ -11,1335 +11,2522 @@ type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
+  /** ISO8601 Date values */
+  Date: any;
+  /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
+  JSON: any;
 };
 
-/** A single film. */
-type Film = Node & {
-  __typename?: 'Film';
-  characterConnection?: Maybe<FilmCharactersConnection>;
-  /** The ISO 8601 date format of the time that this resource was created. */
-  created?: Maybe<Scalars['String']>;
-  /** The name of the director of this film. */
-  director?: Maybe<Scalars['String']>;
-  /** The ISO 8601 date format of the time that this resource was edited. */
-  edited?: Maybe<Scalars['String']>;
-  /** The episode number of this film. */
-  episodeID?: Maybe<Scalars['Int']>;
-  /** The ID of an object */
-  id: Scalars['ID'];
-  /** The opening paragraphs at the beginning of this film. */
-  openingCrawl?: Maybe<Scalars['String']>;
-  planetConnection?: Maybe<FilmPlanetsConnection>;
-  /** The name(s) of the producer(s) of this film. */
-  producers?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The ISO 8601 date format of film release at original creator country. */
-  releaseDate?: Maybe<Scalars['String']>;
-  speciesConnection?: Maybe<FilmSpeciesConnection>;
-  starshipConnection?: Maybe<FilmStarshipsConnection>;
-  /** The title of this film. */
-  title?: Maybe<Scalars['String']>;
-  vehicleConnection?: Maybe<FilmVehiclesConnection>;
+type Query = {
+  __typename?: 'Query';
+  about_page?: Maybe<About_Page>;
+  about_page_files?: Maybe<Array<Maybe<About_Page_Files>>>;
+  about_page_files_aggregated?: Maybe<Array<Maybe<About_Page_Files_Aggregated>>>;
+  about_page_files_by_id?: Maybe<About_Page_Files>;
+  about_page_judges?: Maybe<Array<Maybe<About_Page_Judges>>>;
+  about_page_judges_aggregated?: Maybe<Array<Maybe<About_Page_Judges_Aggregated>>>;
+  about_page_judges_by_id?: Maybe<About_Page_Judges>;
+  about_page_question_text_area?: Maybe<Array<Maybe<About_Page_Question_Text_Area>>>;
+  about_page_question_text_area_aggregated?: Maybe<Array<Maybe<About_Page_Question_Text_Area_Aggregated>>>;
+  about_page_question_text_area_by_id?: Maybe<About_Page_Question_Text_Area>;
+  about_page_question_titles?: Maybe<Array<Maybe<About_Page_Question_Titles>>>;
+  about_page_question_titles_aggregated?: Maybe<Array<Maybe<About_Page_Question_Titles_Aggregated>>>;
+  about_page_question_titles_by_id?: Maybe<About_Page_Question_Titles>;
+  brands?: Maybe<Array<Maybe<Brands>>>;
+  brands_aggregated?: Maybe<Array<Maybe<Brands_Aggregated>>>;
+  brands_by_id?: Maybe<Brands>;
+  enter_page?: Maybe<Enter_Page>;
+  enter_page_key_dates?: Maybe<Array<Maybe<Enter_Page_Key_Dates>>>;
+  enter_page_key_dates_aggregated?: Maybe<Array<Maybe<Enter_Page_Key_Dates_Aggregated>>>;
+  enter_page_key_dates_by_id?: Maybe<Enter_Page_Key_Dates>;
+  enter_page_question_text_area?: Maybe<Array<Maybe<Enter_Page_Question_Text_Area>>>;
+  enter_page_question_text_area_aggregated?: Maybe<Array<Maybe<Enter_Page_Question_Text_Area_Aggregated>>>;
+  enter_page_question_text_area_by_id?: Maybe<Enter_Page_Question_Text_Area>;
+  enter_page_question_titles?: Maybe<Array<Maybe<Enter_Page_Question_Titles>>>;
+  enter_page_question_titles_aggregated?: Maybe<Array<Maybe<Enter_Page_Question_Titles_Aggregated>>>;
+  enter_page_question_titles_by_id?: Maybe<Enter_Page_Question_Titles>;
+  footer?: Maybe<Footer>;
+  header?: Maybe<Header>;
+  home_page?: Maybe<Home_Page>;
+  home_page_inspiration_articles?: Maybe<Array<Maybe<Home_Page_Inspiration_Articles>>>;
+  home_page_inspiration_articles_aggregated?: Maybe<Array<Maybe<Home_Page_Inspiration_Articles_Aggregated>>>;
+  home_page_inspiration_articles_by_id?: Maybe<Home_Page_Inspiration_Articles>;
+  inspiration_articles?: Maybe<Array<Maybe<Inspiration_Articles>>>;
+  inspiration_articles_aggregated?: Maybe<Array<Maybe<Inspiration_Articles_Aggregated>>>;
+  inspiration_articles_by_id?: Maybe<Inspiration_Articles>;
+  inspiration_page?: Maybe<Inspiration_Page>;
+  judges?: Maybe<Array<Maybe<Judges>>>;
+  judges_aggregated?: Maybe<Array<Maybe<Judges_Aggregated>>>;
+  judges_by_id?: Maybe<Judges>;
+  judges_judges_years_filter?: Maybe<Array<Maybe<Judges_Judges_Years_Filter>>>;
+  judges_judges_years_filter_aggregated?: Maybe<Array<Maybe<Judges_Judges_Years_Filter_Aggregated>>>;
+  judges_judges_years_filter_by_id?: Maybe<Judges_Judges_Years_Filter>;
+  judges_page?: Maybe<Judges_Page>;
+  judges_years_filter?: Maybe<Array<Maybe<Judges_Years_Filter>>>;
+  judges_years_filter_aggregated?: Maybe<Array<Maybe<Judges_Years_Filter_Aggregated>>>;
+  judges_years_filter_by_id?: Maybe<Judges_Years_Filter>;
+  key_dates?: Maybe<Array<Maybe<Key_Dates>>>;
+  key_dates_aggregated?: Maybe<Array<Maybe<Key_Dates_Aggregated>>>;
+  key_dates_by_id?: Maybe<Key_Dates>;
+  multi_level_question_item_links?: Maybe<Array<Maybe<Multi_Level_Question_Item_Links>>>;
+  multi_level_question_item_links_aggregated?: Maybe<Array<Maybe<Multi_Level_Question_Item_Links_Aggregated>>>;
+  multi_level_question_item_links_by_id?: Maybe<Multi_Level_Question_Item_Links>;
+  multi_level_question_items?: Maybe<Array<Maybe<Multi_Level_Question_Items>>>;
+  multi_level_question_items_aggregated?: Maybe<Array<Maybe<Multi_Level_Question_Items_Aggregated>>>;
+  multi_level_question_items_by_id?: Maybe<Multi_Level_Question_Items>;
+  multi_level_question_items_multi_level_question_item_links?: Maybe<Array<Maybe<Multi_Level_Question_Items_Multi_Level_Question_Item_Links>>>;
+  multi_level_question_items_multi_level_question_item_links_aggregated?: Maybe<Array<Maybe<Multi_Level_Question_Items_Multi_Level_Question_Item_Links_Aggregated>>>;
+  multi_level_question_items_multi_level_question_item_links_by_id?: Maybe<Multi_Level_Question_Items_Multi_Level_Question_Item_Links>;
+  our_sponsors?: Maybe<Array<Maybe<Our_Sponsors>>>;
+  our_sponsors_aggregated?: Maybe<Array<Maybe<Our_Sponsors_Aggregated>>>;
+  our_sponsors_by_id?: Maybe<Our_Sponsors>;
+  partners?: Maybe<Array<Maybe<Partners>>>;
+  partners_aggregated?: Maybe<Array<Maybe<Partners_Aggregated>>>;
+  partners_by_id?: Maybe<Partners>;
+  past_winners?: Maybe<Array<Maybe<Past_Winners>>>;
+  past_winners_aggregated?: Maybe<Array<Maybe<Past_Winners_Aggregated>>>;
+  past_winners_by_id?: Maybe<Past_Winners>;
+  past_winners_categories?: Maybe<Array<Maybe<Past_Winners_Categories>>>;
+  past_winners_categories_aggregated?: Maybe<Array<Maybe<Past_Winners_Categories_Aggregated>>>;
+  past_winners_categories_by_id?: Maybe<Past_Winners_Categories>;
+  past_winners_files?: Maybe<Array<Maybe<Past_Winners_Files>>>;
+  past_winners_files_aggregated?: Maybe<Array<Maybe<Past_Winners_Files_Aggregated>>>;
+  past_winners_files_by_id?: Maybe<Past_Winners_Files>;
+  past_winners_page?: Maybe<Past_Winners_Page>;
+  past_winners_past_winners_categories?: Maybe<Array<Maybe<Past_Winners_Past_Winners_Categories>>>;
+  past_winners_past_winners_categories_aggregated?: Maybe<Array<Maybe<Past_Winners_Past_Winners_Categories_Aggregated>>>;
+  past_winners_past_winners_categories_by_id?: Maybe<Past_Winners_Past_Winners_Categories>;
+  question_text_area?: Maybe<Array<Maybe<Question_Text_Area>>>;
+  question_text_area_aggregated?: Maybe<Array<Maybe<Question_Text_Area_Aggregated>>>;
+  question_text_area_by_id?: Maybe<Question_Text_Area>;
+  question_titles?: Maybe<Array<Maybe<Question_Titles>>>;
+  question_titles_aggregated?: Maybe<Array<Maybe<Question_Titles_Aggregated>>>;
+  question_titles_by_id?: Maybe<Question_Titles>;
+  question_titles_multi_level_question_items?: Maybe<Array<Maybe<Question_Titles_Multi_Level_Question_Items>>>;
+  question_titles_multi_level_question_items_aggregated?: Maybe<Array<Maybe<Question_Titles_Multi_Level_Question_Items_Aggregated>>>;
+  question_titles_multi_level_question_items_by_id?: Maybe<Question_Titles_Multi_Level_Question_Items>;
+  social_media_links?: Maybe<Array<Maybe<Social_Media_Links>>>;
+  social_media_links_aggregated?: Maybe<Array<Maybe<Social_Media_Links_Aggregated>>>;
+  social_media_links_by_id?: Maybe<Social_Media_Links>;
 };
 
 
-/** A single film. */
-type FilmCharacterConnectionArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
+type QueryAbout_Page_FilesArgs = {
+  filter?: InputMaybe<About_Page_Files_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
-/** A single film. */
-type FilmPlanetConnectionArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
+type QueryAbout_Page_Files_AggregatedArgs = {
+  filter?: InputMaybe<About_Page_Files_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
-/** A single film. */
-type FilmSpeciesConnectionArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-};
-
-
-/** A single film. */
-type FilmStarshipConnectionArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-};
-
-
-/** A single film. */
-type FilmVehicleConnectionArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-};
-
-/** A connection to a list of items. */
-type FilmCharactersConnection = {
-  __typename?: 'FilmCharactersConnection';
-  /**
-   * A list of all of the objects returned in the connection. This is a convenience
-   * field provided for quickly exploring the API; rather than querying for
-   * "{ edges { node } }" when no edge data is needed, this field can be be used
-   * instead. Note that when clients like Relay need to fetch the "cursor" field on
-   * the edge to enable efficient pagination, this shortcut cannot be used, and the
-   * full "{ edges { node } }" version should be used instead.
-   */
-  characters?: Maybe<Array<Maybe<Person>>>;
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<FilmCharactersEdge>>>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /**
-   * A count of the total number of objects in this connection, ignoring pagination.
-   * This allows a client to fetch the first five objects by passing "5" as the
-   * argument to "first", then fetch the total count so it could display "5 of 83",
-   * for example.
-   */
-  totalCount?: Maybe<Scalars['Int']>;
-};
-
-/** An edge in a connection. */
-type FilmCharactersEdge = {
-  __typename?: 'FilmCharactersEdge';
-  /** A cursor for use in pagination */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge */
-  node?: Maybe<Person>;
-};
-
-/** A connection to a list of items. */
-type FilmPlanetsConnection = {
-  __typename?: 'FilmPlanetsConnection';
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<FilmPlanetsEdge>>>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /**
-   * A list of all of the objects returned in the connection. This is a convenience
-   * field provided for quickly exploring the API; rather than querying for
-   * "{ edges { node } }" when no edge data is needed, this field can be be used
-   * instead. Note that when clients like Relay need to fetch the "cursor" field on
-   * the edge to enable efficient pagination, this shortcut cannot be used, and the
-   * full "{ edges { node } }" version should be used instead.
-   */
-  planets?: Maybe<Array<Maybe<Planet>>>;
-  /**
-   * A count of the total number of objects in this connection, ignoring pagination.
-   * This allows a client to fetch the first five objects by passing "5" as the
-   * argument to "first", then fetch the total count so it could display "5 of 83",
-   * for example.
-   */
-  totalCount?: Maybe<Scalars['Int']>;
-};
-
-/** An edge in a connection. */
-type FilmPlanetsEdge = {
-  __typename?: 'FilmPlanetsEdge';
-  /** A cursor for use in pagination */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge */
-  node?: Maybe<Planet>;
-};
-
-/** A connection to a list of items. */
-type FilmSpeciesConnection = {
-  __typename?: 'FilmSpeciesConnection';
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<FilmSpeciesEdge>>>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /**
-   * A list of all of the objects returned in the connection. This is a convenience
-   * field provided for quickly exploring the API; rather than querying for
-   * "{ edges { node } }" when no edge data is needed, this field can be be used
-   * instead. Note that when clients like Relay need to fetch the "cursor" field on
-   * the edge to enable efficient pagination, this shortcut cannot be used, and the
-   * full "{ edges { node } }" version should be used instead.
-   */
-  species?: Maybe<Array<Maybe<Species>>>;
-  /**
-   * A count of the total number of objects in this connection, ignoring pagination.
-   * This allows a client to fetch the first five objects by passing "5" as the
-   * argument to "first", then fetch the total count so it could display "5 of 83",
-   * for example.
-   */
-  totalCount?: Maybe<Scalars['Int']>;
-};
-
-/** An edge in a connection. */
-type FilmSpeciesEdge = {
-  __typename?: 'FilmSpeciesEdge';
-  /** A cursor for use in pagination */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge */
-  node?: Maybe<Species>;
-};
-
-/** A connection to a list of items. */
-type FilmStarshipsConnection = {
-  __typename?: 'FilmStarshipsConnection';
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<FilmStarshipsEdge>>>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /**
-   * A list of all of the objects returned in the connection. This is a convenience
-   * field provided for quickly exploring the API; rather than querying for
-   * "{ edges { node } }" when no edge data is needed, this field can be be used
-   * instead. Note that when clients like Relay need to fetch the "cursor" field on
-   * the edge to enable efficient pagination, this shortcut cannot be used, and the
-   * full "{ edges { node } }" version should be used instead.
-   */
-  starships?: Maybe<Array<Maybe<Starship>>>;
-  /**
-   * A count of the total number of objects in this connection, ignoring pagination.
-   * This allows a client to fetch the first five objects by passing "5" as the
-   * argument to "first", then fetch the total count so it could display "5 of 83",
-   * for example.
-   */
-  totalCount?: Maybe<Scalars['Int']>;
-};
-
-/** An edge in a connection. */
-type FilmStarshipsEdge = {
-  __typename?: 'FilmStarshipsEdge';
-  /** A cursor for use in pagination */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge */
-  node?: Maybe<Starship>;
-};
-
-/** A connection to a list of items. */
-type FilmVehiclesConnection = {
-  __typename?: 'FilmVehiclesConnection';
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<FilmVehiclesEdge>>>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /**
-   * A count of the total number of objects in this connection, ignoring pagination.
-   * This allows a client to fetch the first five objects by passing "5" as the
-   * argument to "first", then fetch the total count so it could display "5 of 83",
-   * for example.
-   */
-  totalCount?: Maybe<Scalars['Int']>;
-  /**
-   * A list of all of the objects returned in the connection. This is a convenience
-   * field provided for quickly exploring the API; rather than querying for
-   * "{ edges { node } }" when no edge data is needed, this field can be be used
-   * instead. Note that when clients like Relay need to fetch the "cursor" field on
-   * the edge to enable efficient pagination, this shortcut cannot be used, and the
-   * full "{ edges { node } }" version should be used instead.
-   */
-  vehicles?: Maybe<Array<Maybe<Vehicle>>>;
-};
-
-/** An edge in a connection. */
-type FilmVehiclesEdge = {
-  __typename?: 'FilmVehiclesEdge';
-  /** A cursor for use in pagination */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge */
-  node?: Maybe<Vehicle>;
-};
-
-/** A connection to a list of items. */
-type FilmsConnection = {
-  __typename?: 'FilmsConnection';
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<FilmsEdge>>>;
-  /**
-   * A list of all of the objects returned in the connection. This is a convenience
-   * field provided for quickly exploring the API; rather than querying for
-   * "{ edges { node } }" when no edge data is needed, this field can be be used
-   * instead. Note that when clients like Relay need to fetch the "cursor" field on
-   * the edge to enable efficient pagination, this shortcut cannot be used, and the
-   * full "{ edges { node } }" version should be used instead.
-   */
-  films?: Maybe<Array<Maybe<Film>>>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /**
-   * A count of the total number of objects in this connection, ignoring pagination.
-   * This allows a client to fetch the first five objects by passing "5" as the
-   * argument to "first", then fetch the total count so it could display "5 of 83",
-   * for example.
-   */
-  totalCount?: Maybe<Scalars['Int']>;
-};
-
-/** An edge in a connection. */
-type FilmsEdge = {
-  __typename?: 'FilmsEdge';
-  /** A cursor for use in pagination */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge */
-  node?: Maybe<Film>;
-};
-
-/** An object with an ID */
-type Node = {
-  /** The id of the object. */
+type QueryAbout_Page_Files_By_IdArgs = {
   id: Scalars['ID'];
 };
 
-/** Information about pagination in a connection. */
-type PageInfo = {
-  __typename?: 'PageInfo';
-  /** When paginating forwards, the cursor to continue. */
-  endCursor?: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  hasPreviousPage: Scalars['Boolean'];
-  /** When paginating backwards, the cursor to continue. */
-  startCursor?: Maybe<Scalars['String']>;
+
+type QueryAbout_Page_JudgesArgs = {
+  filter?: InputMaybe<About_Page_Judges_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
-/** A connection to a list of items. */
-type PeopleConnection = {
-  __typename?: 'PeopleConnection';
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<PeopleEdge>>>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /**
-   * A list of all of the objects returned in the connection. This is a convenience
-   * field provided for quickly exploring the API; rather than querying for
-   * "{ edges { node } }" when no edge data is needed, this field can be be used
-   * instead. Note that when clients like Relay need to fetch the "cursor" field on
-   * the edge to enable efficient pagination, this shortcut cannot be used, and the
-   * full "{ edges { node } }" version should be used instead.
-   */
-  people?: Maybe<Array<Maybe<Person>>>;
-  /**
-   * A count of the total number of objects in this connection, ignoring pagination.
-   * This allows a client to fetch the first five objects by passing "5" as the
-   * argument to "first", then fetch the total count so it could display "5 of 83",
-   * for example.
-   */
-  totalCount?: Maybe<Scalars['Int']>;
+
+type QueryAbout_Page_Judges_AggregatedArgs = {
+  filter?: InputMaybe<About_Page_Judges_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
-/** An edge in a connection. */
-type PeopleEdge = {
-  __typename?: 'PeopleEdge';
-  /** A cursor for use in pagination */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge */
-  node?: Maybe<Person>;
+
+type QueryAbout_Page_Judges_By_IdArgs = {
+  id: Scalars['ID'];
 };
 
-/** An individual person or character within the Star Wars universe. */
-type Person = Node & {
-  __typename?: 'Person';
-  /**
-   * The birth year of the person, using the in-universe standard of BBY or ABY -
-   * Before the Battle of Yavin or After the Battle of Yavin. The Battle of Yavin is
-   * a battle that occurs at the end of Star Wars episode IV: A New Hope.
-   */
-  birthYear?: Maybe<Scalars['String']>;
-  /** The ISO 8601 date format of the time that this resource was created. */
-  created?: Maybe<Scalars['String']>;
-  /** The ISO 8601 date format of the time that this resource was edited. */
-  edited?: Maybe<Scalars['String']>;
-  /**
-   * The eye color of this person. Will be "unknown" if not known or "n/a" if the
-   * person does not have an eye.
-   */
-  eyeColor?: Maybe<Scalars['String']>;
-  filmConnection?: Maybe<PersonFilmsConnection>;
-  /**
-   * The gender of this person. Either "Male", "Female" or "unknown",
-   * "n/a" if the person does not have a gender.
-   */
-  gender?: Maybe<Scalars['String']>;
-  /**
-   * The hair color of this person. Will be "unknown" if not known or "n/a" if the
-   * person does not have hair.
-   */
-  hairColor?: Maybe<Scalars['String']>;
-  /** The height of the person in centimeters. */
+
+type QueryAbout_Page_Question_Text_AreaArgs = {
+  filter?: InputMaybe<About_Page_Question_Text_Area_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryAbout_Page_Question_Text_Area_AggregatedArgs = {
+  filter?: InputMaybe<About_Page_Question_Text_Area_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryAbout_Page_Question_Text_Area_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+type QueryAbout_Page_Question_TitlesArgs = {
+  filter?: InputMaybe<About_Page_Question_Titles_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryAbout_Page_Question_Titles_AggregatedArgs = {
+  filter?: InputMaybe<About_Page_Question_Titles_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryAbout_Page_Question_Titles_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+type QueryBrandsArgs = {
+  filter?: InputMaybe<Brands_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryBrands_AggregatedArgs = {
+  filter?: InputMaybe<Brands_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryBrands_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+type QueryEnter_Page_Key_DatesArgs = {
+  filter?: InputMaybe<Enter_Page_Key_Dates_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryEnter_Page_Key_Dates_AggregatedArgs = {
+  filter?: InputMaybe<Enter_Page_Key_Dates_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryEnter_Page_Key_Dates_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+type QueryEnter_Page_Question_Text_AreaArgs = {
+  filter?: InputMaybe<Enter_Page_Question_Text_Area_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryEnter_Page_Question_Text_Area_AggregatedArgs = {
+  filter?: InputMaybe<Enter_Page_Question_Text_Area_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryEnter_Page_Question_Text_Area_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+type QueryEnter_Page_Question_TitlesArgs = {
+  filter?: InputMaybe<Enter_Page_Question_Titles_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryEnter_Page_Question_Titles_AggregatedArgs = {
+  filter?: InputMaybe<Enter_Page_Question_Titles_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryEnter_Page_Question_Titles_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+type QueryHome_Page_Inspiration_ArticlesArgs = {
+  filter?: InputMaybe<Home_Page_Inspiration_Articles_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryHome_Page_Inspiration_Articles_AggregatedArgs = {
+  filter?: InputMaybe<Home_Page_Inspiration_Articles_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryHome_Page_Inspiration_Articles_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+type QueryInspiration_ArticlesArgs = {
+  filter?: InputMaybe<Inspiration_Articles_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryInspiration_Articles_AggregatedArgs = {
+  filter?: InputMaybe<Inspiration_Articles_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryInspiration_Articles_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+type QueryJudgesArgs = {
+  filter?: InputMaybe<Judges_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryJudges_AggregatedArgs = {
+  filter?: InputMaybe<Judges_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryJudges_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+type QueryJudges_Judges_Years_FilterArgs = {
+  filter?: InputMaybe<Judges_Judges_Years_Filter_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryJudges_Judges_Years_Filter_AggregatedArgs = {
+  filter?: InputMaybe<Judges_Judges_Years_Filter_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryJudges_Judges_Years_Filter_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+type QueryJudges_Years_FilterArgs = {
+  filter?: InputMaybe<Judges_Years_Filter_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryJudges_Years_Filter_AggregatedArgs = {
+  filter?: InputMaybe<Judges_Years_Filter_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryJudges_Years_Filter_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+type QueryKey_DatesArgs = {
+  filter?: InputMaybe<Key_Dates_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryKey_Dates_AggregatedArgs = {
+  filter?: InputMaybe<Key_Dates_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryKey_Dates_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+type QueryMulti_Level_Question_Item_LinksArgs = {
+  filter?: InputMaybe<Multi_Level_Question_Item_Links_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryMulti_Level_Question_Item_Links_AggregatedArgs = {
+  filter?: InputMaybe<Multi_Level_Question_Item_Links_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryMulti_Level_Question_Item_Links_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+type QueryMulti_Level_Question_ItemsArgs = {
+  filter?: InputMaybe<Multi_Level_Question_Items_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryMulti_Level_Question_Items_AggregatedArgs = {
+  filter?: InputMaybe<Multi_Level_Question_Items_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryMulti_Level_Question_Items_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+type QueryMulti_Level_Question_Items_Multi_Level_Question_Item_LinksArgs = {
+  filter?: InputMaybe<Multi_Level_Question_Items_Multi_Level_Question_Item_Links_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryMulti_Level_Question_Items_Multi_Level_Question_Item_Links_AggregatedArgs = {
+  filter?: InputMaybe<Multi_Level_Question_Items_Multi_Level_Question_Item_Links_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryMulti_Level_Question_Items_Multi_Level_Question_Item_Links_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+type QueryOur_SponsorsArgs = {
+  filter?: InputMaybe<Our_Sponsors_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryOur_Sponsors_AggregatedArgs = {
+  filter?: InputMaybe<Our_Sponsors_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryOur_Sponsors_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+type QueryPartnersArgs = {
+  filter?: InputMaybe<Partners_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryPartners_AggregatedArgs = {
+  filter?: InputMaybe<Partners_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryPartners_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+type QueryPast_WinnersArgs = {
+  filter?: InputMaybe<Past_Winners_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryPast_Winners_AggregatedArgs = {
+  filter?: InputMaybe<Past_Winners_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryPast_Winners_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+type QueryPast_Winners_CategoriesArgs = {
+  filter?: InputMaybe<Past_Winners_Categories_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryPast_Winners_Categories_AggregatedArgs = {
+  filter?: InputMaybe<Past_Winners_Categories_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryPast_Winners_Categories_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+type QueryPast_Winners_FilesArgs = {
+  filter?: InputMaybe<Past_Winners_Files_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryPast_Winners_Files_AggregatedArgs = {
+  filter?: InputMaybe<Past_Winners_Files_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryPast_Winners_Files_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+type QueryPast_Winners_Past_Winners_CategoriesArgs = {
+  filter?: InputMaybe<Past_Winners_Past_Winners_Categories_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryPast_Winners_Past_Winners_Categories_AggregatedArgs = {
+  filter?: InputMaybe<Past_Winners_Past_Winners_Categories_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryPast_Winners_Past_Winners_Categories_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+type QueryQuestion_Text_AreaArgs = {
+  filter?: InputMaybe<Question_Text_Area_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryQuestion_Text_Area_AggregatedArgs = {
+  filter?: InputMaybe<Question_Text_Area_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryQuestion_Text_Area_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+type QueryQuestion_TitlesArgs = {
+  filter?: InputMaybe<Question_Titles_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryQuestion_Titles_AggregatedArgs = {
+  filter?: InputMaybe<Question_Titles_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryQuestion_Titles_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+type QueryQuestion_Titles_Multi_Level_Question_ItemsArgs = {
+  filter?: InputMaybe<Question_Titles_Multi_Level_Question_Items_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryQuestion_Titles_Multi_Level_Question_Items_AggregatedArgs = {
+  filter?: InputMaybe<Question_Titles_Multi_Level_Question_Items_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryQuestion_Titles_Multi_Level_Question_Items_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+type QuerySocial_Media_LinksArgs = {
+  filter?: InputMaybe<Social_Media_Links_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QuerySocial_Media_Links_AggregatedArgs = {
+  filter?: InputMaybe<Social_Media_Links_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QuerySocial_Media_Links_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+type About_Page = {
+  __typename?: 'about_page';
+  brands_section_text?: Maybe<Scalars['String']>;
+  challenge_section_body?: Maybe<Scalars['String']>;
+  challenge_section_heading?: Maybe<Scalars['String']>;
+  challenge_section_video?: Maybe<Directus_Files>;
+  enter_now_section_CTA_label?: Maybe<Scalars['String']>;
+  enter_now_section_image?: Maybe<Directus_Files>;
+  heading?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['ID']>;
+  judges_section_CTA_label?: Maybe<Scalars['String']>;
+  judges_section_body?: Maybe<Scalars['String']>;
+  judges_section_heading?: Maybe<Scalars['String']>;
+  judges_section_hero_judge?: Maybe<Array<Maybe<About_Page_Judges>>>;
+  multi_level_questions?: Maybe<Array<Maybe<About_Page_Question_Titles>>>;
+  textarea_questions?: Maybe<Array<Maybe<About_Page_Question_Text_Area>>>;
+};
+
+
+type About_PageChallenge_Section_VideoArgs = {
+  filter?: InputMaybe<Directus_Files_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type About_PageEnter_Now_Section_ImageArgs = {
+  filter?: InputMaybe<Directus_Files_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type About_PageJudges_Section_Hero_JudgeArgs = {
+  filter?: InputMaybe<About_Page_Judges_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type About_PageMulti_Level_QuestionsArgs = {
+  filter?: InputMaybe<About_Page_Question_Titles_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type About_PageTextarea_QuestionsArgs = {
+  filter?: InputMaybe<About_Page_Question_Text_Area_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+type About_Page_Files = {
+  __typename?: 'about_page_files';
+  about_page_id?: Maybe<About_Page>;
+  directus_files_id?: Maybe<Directus_Files>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+
+type About_Page_FilesAbout_Page_IdArgs = {
+  filter?: InputMaybe<About_Page_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type About_Page_FilesDirectus_Files_IdArgs = {
+  filter?: InputMaybe<Directus_Files_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+type About_Page_Files_Aggregated = {
+  __typename?: 'about_page_files_aggregated';
+  avg?: Maybe<About_Page_Files_Aggregated_Fields>;
+  avgDistinct?: Maybe<About_Page_Files_Aggregated_Fields>;
+  count?: Maybe<About_Page_Files_Aggregated_Fields>;
+  countDistinct?: Maybe<About_Page_Files_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<About_Page_Files_Aggregated_Fields>;
+  min?: Maybe<About_Page_Files_Aggregated_Fields>;
+  sum?: Maybe<About_Page_Files_Aggregated_Fields>;
+  sumDistinct?: Maybe<About_Page_Files_Aggregated_Fields>;
+};
+
+type About_Page_Files_Aggregated_Fields = {
+  __typename?: 'about_page_files_aggregated_fields';
+  about_page_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+type About_Page_Files_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<About_Page_Files_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<About_Page_Files_Filter>>>;
+  about_page_id?: InputMaybe<About_Page_Filter>;
+  directus_files_id?: InputMaybe<Directus_Files_Filter>;
+  id?: InputMaybe<Number_Filter_Operators>;
+};
+
+type About_Page_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<About_Page_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<About_Page_Filter>>>;
+  brands_section_text?: InputMaybe<String_Filter_Operators>;
+  challenge_section_body?: InputMaybe<String_Filter_Operators>;
+  challenge_section_heading?: InputMaybe<String_Filter_Operators>;
+  challenge_section_video?: InputMaybe<Directus_Files_Filter>;
+  enter_now_section_CTA_label?: InputMaybe<String_Filter_Operators>;
+  enter_now_section_image?: InputMaybe<Directus_Files_Filter>;
+  heading?: InputMaybe<String_Filter_Operators>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  judges_section_CTA_label?: InputMaybe<String_Filter_Operators>;
+  judges_section_body?: InputMaybe<String_Filter_Operators>;
+  judges_section_heading?: InputMaybe<String_Filter_Operators>;
+  judges_section_hero_judge?: InputMaybe<About_Page_Judges_Filter>;
+  multi_level_questions?: InputMaybe<About_Page_Question_Titles_Filter>;
+  textarea_questions?: InputMaybe<About_Page_Question_Text_Area_Filter>;
+};
+
+type About_Page_Judges = {
+  __typename?: 'about_page_judges';
+  about_page?: Maybe<About_Page>;
+  id?: Maybe<Scalars['ID']>;
+  judge?: Maybe<Judges>;
+};
+
+
+type About_Page_JudgesAbout_PageArgs = {
+  filter?: InputMaybe<About_Page_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type About_Page_JudgesJudgeArgs = {
+  filter?: InputMaybe<Judges_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+type About_Page_Judges_Aggregated = {
+  __typename?: 'about_page_judges_aggregated';
+  avg?: Maybe<About_Page_Judges_Aggregated_Fields>;
+  avgDistinct?: Maybe<About_Page_Judges_Aggregated_Fields>;
+  count?: Maybe<About_Page_Judges_Aggregated_Fields>;
+  countDistinct?: Maybe<About_Page_Judges_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<About_Page_Judges_Aggregated_Fields>;
+  min?: Maybe<About_Page_Judges_Aggregated_Fields>;
+  sum?: Maybe<About_Page_Judges_Aggregated_Fields>;
+  sumDistinct?: Maybe<About_Page_Judges_Aggregated_Fields>;
+};
+
+type About_Page_Judges_Aggregated_Fields = {
+  __typename?: 'about_page_judges_aggregated_fields';
+  about_page?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  judge?: Maybe<Scalars['Float']>;
+};
+
+type About_Page_Judges_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<About_Page_Judges_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<About_Page_Judges_Filter>>>;
+  about_page?: InputMaybe<About_Page_Filter>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  judge?: InputMaybe<Judges_Filter>;
+};
+
+type About_Page_Question_Text_Area = {
+  __typename?: 'about_page_question_text_area';
+  about_page?: Maybe<About_Page>;
+  id?: Maybe<Scalars['ID']>;
+  question?: Maybe<Question_Text_Area>;
+};
+
+
+type About_Page_Question_Text_AreaAbout_PageArgs = {
+  filter?: InputMaybe<About_Page_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type About_Page_Question_Text_AreaQuestionArgs = {
+  filter?: InputMaybe<Question_Text_Area_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+type About_Page_Question_Text_Area_Aggregated = {
+  __typename?: 'about_page_question_text_area_aggregated';
+  avg?: Maybe<About_Page_Question_Text_Area_Aggregated_Fields>;
+  avgDistinct?: Maybe<About_Page_Question_Text_Area_Aggregated_Fields>;
+  count?: Maybe<About_Page_Question_Text_Area_Aggregated_Fields>;
+  countDistinct?: Maybe<About_Page_Question_Text_Area_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<About_Page_Question_Text_Area_Aggregated_Fields>;
+  min?: Maybe<About_Page_Question_Text_Area_Aggregated_Fields>;
+  sum?: Maybe<About_Page_Question_Text_Area_Aggregated_Fields>;
+  sumDistinct?: Maybe<About_Page_Question_Text_Area_Aggregated_Fields>;
+};
+
+type About_Page_Question_Text_Area_Aggregated_Fields = {
+  __typename?: 'about_page_question_text_area_aggregated_fields';
+  about_page?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  question?: Maybe<Scalars['Float']>;
+};
+
+type About_Page_Question_Text_Area_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<About_Page_Question_Text_Area_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<About_Page_Question_Text_Area_Filter>>>;
+  about_page?: InputMaybe<About_Page_Filter>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  question?: InputMaybe<Question_Text_Area_Filter>;
+};
+
+type About_Page_Question_Titles = {
+  __typename?: 'about_page_question_titles';
+  about_page?: Maybe<About_Page>;
+  id?: Maybe<Scalars['ID']>;
+  question?: Maybe<Question_Titles>;
+};
+
+
+type About_Page_Question_TitlesAbout_PageArgs = {
+  filter?: InputMaybe<About_Page_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type About_Page_Question_TitlesQuestionArgs = {
+  filter?: InputMaybe<Question_Titles_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+type About_Page_Question_Titles_Aggregated = {
+  __typename?: 'about_page_question_titles_aggregated';
+  avg?: Maybe<About_Page_Question_Titles_Aggregated_Fields>;
+  avgDistinct?: Maybe<About_Page_Question_Titles_Aggregated_Fields>;
+  count?: Maybe<About_Page_Question_Titles_Aggregated_Fields>;
+  countDistinct?: Maybe<About_Page_Question_Titles_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<About_Page_Question_Titles_Aggregated_Fields>;
+  min?: Maybe<About_Page_Question_Titles_Aggregated_Fields>;
+  sum?: Maybe<About_Page_Question_Titles_Aggregated_Fields>;
+  sumDistinct?: Maybe<About_Page_Question_Titles_Aggregated_Fields>;
+};
+
+type About_Page_Question_Titles_Aggregated_Fields = {
+  __typename?: 'about_page_question_titles_aggregated_fields';
+  about_page?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  question?: Maybe<Scalars['Float']>;
+};
+
+type About_Page_Question_Titles_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<About_Page_Question_Titles_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<About_Page_Question_Titles_Filter>>>;
+  about_page?: InputMaybe<About_Page_Filter>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  question?: InputMaybe<Question_Titles_Filter>;
+};
+
+type Brands = {
+  __typename?: 'brands';
+  id?: Maybe<Scalars['ID']>;
+  image?: Maybe<Directus_Files>;
+};
+
+
+type BrandsImageArgs = {
+  filter?: InputMaybe<Directus_Files_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+type Brands_Aggregated = {
+  __typename?: 'brands_aggregated';
+  avg?: Maybe<Brands_Aggregated_Fields>;
+  avgDistinct?: Maybe<Brands_Aggregated_Fields>;
+  count?: Maybe<Brands_Aggregated_Fields>;
+  countDistinct?: Maybe<Brands_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<Brands_Aggregated_Fields>;
+  min?: Maybe<Brands_Aggregated_Fields>;
+  sum?: Maybe<Brands_Aggregated_Fields>;
+  sumDistinct?: Maybe<Brands_Aggregated_Fields>;
+};
+
+type Brands_Aggregated_Fields = {
+  __typename?: 'brands_aggregated_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+type Brands_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Brands_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Brands_Filter>>>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  image?: InputMaybe<Directus_Files_Filter>;
+};
+
+type Date_Filter_Operators = {
+  _eq?: InputMaybe<Scalars['String']>;
+  _gt?: InputMaybe<Scalars['String']>;
+  _gte?: InputMaybe<Scalars['String']>;
+  _lt?: InputMaybe<Scalars['String']>;
+  _lte?: InputMaybe<Scalars['String']>;
+  _neq?: InputMaybe<Scalars['String']>;
+  _nnull?: InputMaybe<Scalars['Boolean']>;
+  _null?: InputMaybe<Scalars['Boolean']>;
+};
+
+type Datetime_Function_Filter_Operators = {
+  day?: InputMaybe<Number_Filter_Operators>;
+  hour?: InputMaybe<Number_Filter_Operators>;
+  minute?: InputMaybe<Number_Filter_Operators>;
+  month?: InputMaybe<Number_Filter_Operators>;
+  second?: InputMaybe<Number_Filter_Operators>;
+  week?: InputMaybe<Number_Filter_Operators>;
+  weekday?: InputMaybe<Number_Filter_Operators>;
+  year?: InputMaybe<Number_Filter_Operators>;
+};
+
+type Datetime_Functions = {
+  __typename?: 'datetime_functions';
+  day?: Maybe<Scalars['Int']>;
+  hour?: Maybe<Scalars['Int']>;
+  minute?: Maybe<Scalars['Int']>;
+  month?: Maybe<Scalars['Int']>;
+  second?: Maybe<Scalars['Int']>;
+  week?: Maybe<Scalars['Int']>;
+  weekday?: Maybe<Scalars['Int']>;
+  year?: Maybe<Scalars['Int']>;
+};
+
+type Directus_Files = {
+  __typename?: 'directus_files';
+  charset?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  duration?: Maybe<Scalars['Int']>;
+  embed?: Maybe<Scalars['String']>;
+  filename_disk?: Maybe<Scalars['String']>;
+  filename_download: Scalars['String'];
+  filesize?: Maybe<Scalars['Int']>;
+  folder?: Maybe<Scalars['String']>;
   height?: Maybe<Scalars['Int']>;
-  /** A planet that this person was born on or inhabits. */
-  homeworld?: Maybe<Planet>;
-  /** The ID of an object */
-  id: Scalars['ID'];
-  /** The mass of the person in kilograms. */
-  mass?: Maybe<Scalars['Float']>;
-  /** The name of this person. */
+  id?: Maybe<Scalars['ID']>;
+  location?: Maybe<Scalars['String']>;
+  metadata?: Maybe<Scalars['JSON']>;
+  modified_by?: Maybe<Scalars['String']>;
+  modified_on: Scalars['Date'];
+  modified_on_func?: Maybe<Datetime_Functions>;
+  storage: Scalars['String'];
+  tags?: Maybe<Scalars['JSON']>;
+  title?: Maybe<Scalars['String']>;
+  type?: Maybe<Scalars['String']>;
+  uploaded_by?: Maybe<Scalars['String']>;
+  uploaded_on: Scalars['Date'];
+  uploaded_on_func?: Maybe<Datetime_Functions>;
+  width?: Maybe<Scalars['Int']>;
+};
+
+type Directus_Files_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Directus_Files_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Directus_Files_Filter>>>;
+  charset?: InputMaybe<String_Filter_Operators>;
+  description?: InputMaybe<String_Filter_Operators>;
+  duration?: InputMaybe<Number_Filter_Operators>;
+  embed?: InputMaybe<String_Filter_Operators>;
+  filename_disk?: InputMaybe<String_Filter_Operators>;
+  filename_download?: InputMaybe<String_Filter_Operators>;
+  filesize?: InputMaybe<Number_Filter_Operators>;
+  folder?: InputMaybe<String_Filter_Operators>;
+  height?: InputMaybe<Number_Filter_Operators>;
+  id?: InputMaybe<String_Filter_Operators>;
+  location?: InputMaybe<String_Filter_Operators>;
+  metadata?: InputMaybe<String_Filter_Operators>;
+  modified_by?: InputMaybe<String_Filter_Operators>;
+  modified_on?: InputMaybe<Date_Filter_Operators>;
+  modified_on_func?: InputMaybe<Datetime_Function_Filter_Operators>;
+  storage?: InputMaybe<String_Filter_Operators>;
+  tags?: InputMaybe<String_Filter_Operators>;
+  title?: InputMaybe<String_Filter_Operators>;
+  type?: InputMaybe<String_Filter_Operators>;
+  uploaded_by?: InputMaybe<String_Filter_Operators>;
+  uploaded_on?: InputMaybe<Date_Filter_Operators>;
+  uploaded_on_func?: InputMaybe<Datetime_Function_Filter_Operators>;
+  width?: InputMaybe<Number_Filter_Operators>;
+};
+
+type Enter_Page = {
+  __typename?: 'enter_page';
+  heading?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['ID']>;
+  key_dates?: Maybe<Array<Maybe<Enter_Page_Key_Dates>>>;
+  key_dates_subtitles?: Maybe<Scalars['String']>;
+  key_dates_title?: Maybe<Scalars['String']>;
+  key_dates_video?: Maybe<Directus_Files>;
+  multi_level_questions?: Maybe<Array<Maybe<Enter_Page_Question_Titles>>>;
+  text_area_questions?: Maybe<Array<Maybe<Enter_Page_Question_Text_Area>>>;
+  timeline_section_heading?: Maybe<Scalars['String']>;
+  timeline_section_image?: Maybe<Directus_Files>;
+};
+
+
+type Enter_PageKey_DatesArgs = {
+  filter?: InputMaybe<Enter_Page_Key_Dates_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type Enter_PageKey_Dates_VideoArgs = {
+  filter?: InputMaybe<Directus_Files_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type Enter_PageMulti_Level_QuestionsArgs = {
+  filter?: InputMaybe<Enter_Page_Question_Titles_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type Enter_PageText_Area_QuestionsArgs = {
+  filter?: InputMaybe<Enter_Page_Question_Text_Area_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type Enter_PageTimeline_Section_ImageArgs = {
+  filter?: InputMaybe<Directus_Files_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+type Enter_Page_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Enter_Page_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Enter_Page_Filter>>>;
+  heading?: InputMaybe<String_Filter_Operators>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  key_dates?: InputMaybe<Enter_Page_Key_Dates_Filter>;
+  key_dates_subtitles?: InputMaybe<String_Filter_Operators>;
+  key_dates_title?: InputMaybe<String_Filter_Operators>;
+  key_dates_video?: InputMaybe<Directus_Files_Filter>;
+  multi_level_questions?: InputMaybe<Enter_Page_Question_Titles_Filter>;
+  text_area_questions?: InputMaybe<Enter_Page_Question_Text_Area_Filter>;
+  timeline_section_heading?: InputMaybe<String_Filter_Operators>;
+  timeline_section_image?: InputMaybe<Directus_Files_Filter>;
+};
+
+type Enter_Page_Key_Dates = {
+  __typename?: 'enter_page_key_dates';
+  dates?: Maybe<Key_Dates>;
+  enter_page?: Maybe<Enter_Page>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+
+type Enter_Page_Key_DatesDatesArgs = {
+  filter?: InputMaybe<Key_Dates_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type Enter_Page_Key_DatesEnter_PageArgs = {
+  filter?: InputMaybe<Enter_Page_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+type Enter_Page_Key_Dates_Aggregated = {
+  __typename?: 'enter_page_key_dates_aggregated';
+  avg?: Maybe<Enter_Page_Key_Dates_Aggregated_Fields>;
+  avgDistinct?: Maybe<Enter_Page_Key_Dates_Aggregated_Fields>;
+  count?: Maybe<Enter_Page_Key_Dates_Aggregated_Fields>;
+  countDistinct?: Maybe<Enter_Page_Key_Dates_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<Enter_Page_Key_Dates_Aggregated_Fields>;
+  min?: Maybe<Enter_Page_Key_Dates_Aggregated_Fields>;
+  sum?: Maybe<Enter_Page_Key_Dates_Aggregated_Fields>;
+  sumDistinct?: Maybe<Enter_Page_Key_Dates_Aggregated_Fields>;
+};
+
+type Enter_Page_Key_Dates_Aggregated_Fields = {
+  __typename?: 'enter_page_key_dates_aggregated_fields';
+  dates?: Maybe<Scalars['Float']>;
+  enter_page?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+type Enter_Page_Key_Dates_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Enter_Page_Key_Dates_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Enter_Page_Key_Dates_Filter>>>;
+  dates?: InputMaybe<Key_Dates_Filter>;
+  enter_page?: InputMaybe<Enter_Page_Filter>;
+  id?: InputMaybe<Number_Filter_Operators>;
+};
+
+type Enter_Page_Question_Text_Area = {
+  __typename?: 'enter_page_question_text_area';
+  enter_page?: Maybe<Enter_Page>;
+  id?: Maybe<Scalars['ID']>;
+  question?: Maybe<Question_Text_Area>;
+};
+
+
+type Enter_Page_Question_Text_AreaEnter_PageArgs = {
+  filter?: InputMaybe<Enter_Page_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type Enter_Page_Question_Text_AreaQuestionArgs = {
+  filter?: InputMaybe<Question_Text_Area_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+type Enter_Page_Question_Text_Area_Aggregated = {
+  __typename?: 'enter_page_question_text_area_aggregated';
+  avg?: Maybe<Enter_Page_Question_Text_Area_Aggregated_Fields>;
+  avgDistinct?: Maybe<Enter_Page_Question_Text_Area_Aggregated_Fields>;
+  count?: Maybe<Enter_Page_Question_Text_Area_Aggregated_Fields>;
+  countDistinct?: Maybe<Enter_Page_Question_Text_Area_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<Enter_Page_Question_Text_Area_Aggregated_Fields>;
+  min?: Maybe<Enter_Page_Question_Text_Area_Aggregated_Fields>;
+  sum?: Maybe<Enter_Page_Question_Text_Area_Aggregated_Fields>;
+  sumDistinct?: Maybe<Enter_Page_Question_Text_Area_Aggregated_Fields>;
+};
+
+type Enter_Page_Question_Text_Area_Aggregated_Fields = {
+  __typename?: 'enter_page_question_text_area_aggregated_fields';
+  enter_page?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  question?: Maybe<Scalars['Float']>;
+};
+
+type Enter_Page_Question_Text_Area_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Enter_Page_Question_Text_Area_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Enter_Page_Question_Text_Area_Filter>>>;
+  enter_page?: InputMaybe<Enter_Page_Filter>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  question?: InputMaybe<Question_Text_Area_Filter>;
+};
+
+type Enter_Page_Question_Titles = {
+  __typename?: 'enter_page_question_titles';
+  enter_page?: Maybe<Enter_Page>;
+  id?: Maybe<Scalars['ID']>;
+  question?: Maybe<Question_Titles>;
+};
+
+
+type Enter_Page_Question_TitlesEnter_PageArgs = {
+  filter?: InputMaybe<Enter_Page_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type Enter_Page_Question_TitlesQuestionArgs = {
+  filter?: InputMaybe<Question_Titles_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+type Enter_Page_Question_Titles_Aggregated = {
+  __typename?: 'enter_page_question_titles_aggregated';
+  avg?: Maybe<Enter_Page_Question_Titles_Aggregated_Fields>;
+  avgDistinct?: Maybe<Enter_Page_Question_Titles_Aggregated_Fields>;
+  count?: Maybe<Enter_Page_Question_Titles_Aggregated_Fields>;
+  countDistinct?: Maybe<Enter_Page_Question_Titles_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<Enter_Page_Question_Titles_Aggregated_Fields>;
+  min?: Maybe<Enter_Page_Question_Titles_Aggregated_Fields>;
+  sum?: Maybe<Enter_Page_Question_Titles_Aggregated_Fields>;
+  sumDistinct?: Maybe<Enter_Page_Question_Titles_Aggregated_Fields>;
+};
+
+type Enter_Page_Question_Titles_Aggregated_Fields = {
+  __typename?: 'enter_page_question_titles_aggregated_fields';
+  enter_page?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  question?: Maybe<Scalars['Float']>;
+};
+
+type Enter_Page_Question_Titles_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Enter_Page_Question_Titles_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Enter_Page_Question_Titles_Filter>>>;
+  enter_page?: InputMaybe<Enter_Page_Filter>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  question?: InputMaybe<Question_Titles_Filter>;
+};
+
+type Footer = {
+  __typename?: 'footer';
+  copyright_text?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['ID']>;
+  logo?: Maybe<Directus_Files>;
+  text?: Maybe<Scalars['String']>;
+};
+
+
+type FooterLogoArgs = {
+  filter?: InputMaybe<Directus_Files_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+type Header = {
+  __typename?: 'header';
+  id?: Maybe<Scalars['ID']>;
+  logo?: Maybe<Directus_Files>;
+};
+
+
+type HeaderLogoArgs = {
+  filter?: InputMaybe<Directus_Files_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+type Home_Page = {
+  __typename?: 'home_page';
+  brands_section_CTA_label?: Maybe<Scalars['String']>;
+  brands_section_description?: Maybe<Scalars['String']>;
+  brands_section_heading?: Maybe<Scalars['String']>;
+  enter_now_section_CTA_label?: Maybe<Scalars['String']>;
+  enter_now_section_body?: Maybe<Scalars['String']>;
+  enter_now_section_heading?: Maybe<Scalars['String']>;
+  enter_now_section_sub_heading?: Maybe<Scalars['String']>;
+  hero_section_right_side_svg?: Maybe<Directus_Files>;
+  hero_section_video?: Maybe<Directus_Files>;
+  id?: Maybe<Scalars['ID']>;
+  innovator_section_CTA_label?: Maybe<Scalars['String']>;
+  innovator_section_body?: Maybe<Scalars['String']>;
+  innovator_section_heading?: Maybe<Scalars['String']>;
+  innovator_section_image?: Maybe<Directus_Files>;
+  innovators_section_heading?: Maybe<Scalars['String']>;
+  inspired_section_articles?: Maybe<Array<Maybe<Home_Page_Inspiration_Articles>>>;
+};
+
+
+type Home_PageHero_Section_Right_Side_SvgArgs = {
+  filter?: InputMaybe<Directus_Files_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type Home_PageHero_Section_VideoArgs = {
+  filter?: InputMaybe<Directus_Files_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type Home_PageInnovator_Section_ImageArgs = {
+  filter?: InputMaybe<Directus_Files_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type Home_PageInspired_Section_ArticlesArgs = {
+  filter?: InputMaybe<Home_Page_Inspiration_Articles_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+type Home_Page_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Home_Page_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Home_Page_Filter>>>;
+  brands_section_CTA_label?: InputMaybe<String_Filter_Operators>;
+  brands_section_description?: InputMaybe<String_Filter_Operators>;
+  brands_section_heading?: InputMaybe<String_Filter_Operators>;
+  enter_now_section_CTA_label?: InputMaybe<String_Filter_Operators>;
+  enter_now_section_body?: InputMaybe<String_Filter_Operators>;
+  enter_now_section_heading?: InputMaybe<String_Filter_Operators>;
+  enter_now_section_sub_heading?: InputMaybe<String_Filter_Operators>;
+  hero_section_right_side_svg?: InputMaybe<Directus_Files_Filter>;
+  hero_section_video?: InputMaybe<Directus_Files_Filter>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  innovator_section_CTA_label?: InputMaybe<String_Filter_Operators>;
+  innovator_section_body?: InputMaybe<String_Filter_Operators>;
+  innovator_section_heading?: InputMaybe<String_Filter_Operators>;
+  innovator_section_image?: InputMaybe<Directus_Files_Filter>;
+  innovators_section_heading?: InputMaybe<String_Filter_Operators>;
+  inspired_section_articles?: InputMaybe<Home_Page_Inspiration_Articles_Filter>;
+};
+
+type Home_Page_Inspiration_Articles = {
+  __typename?: 'home_page_inspiration_articles';
+  home_page?: Maybe<Home_Page>;
+  id?: Maybe<Scalars['ID']>;
+  inspiration_article?: Maybe<Inspiration_Articles>;
+};
+
+
+type Home_Page_Inspiration_ArticlesHome_PageArgs = {
+  filter?: InputMaybe<Home_Page_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type Home_Page_Inspiration_ArticlesInspiration_ArticleArgs = {
+  filter?: InputMaybe<Inspiration_Articles_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+type Home_Page_Inspiration_Articles_Aggregated = {
+  __typename?: 'home_page_inspiration_articles_aggregated';
+  avg?: Maybe<Home_Page_Inspiration_Articles_Aggregated_Fields>;
+  avgDistinct?: Maybe<Home_Page_Inspiration_Articles_Aggregated_Fields>;
+  count?: Maybe<Home_Page_Inspiration_Articles_Aggregated_Fields>;
+  countDistinct?: Maybe<Home_Page_Inspiration_Articles_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<Home_Page_Inspiration_Articles_Aggregated_Fields>;
+  min?: Maybe<Home_Page_Inspiration_Articles_Aggregated_Fields>;
+  sum?: Maybe<Home_Page_Inspiration_Articles_Aggregated_Fields>;
+  sumDistinct?: Maybe<Home_Page_Inspiration_Articles_Aggregated_Fields>;
+};
+
+type Home_Page_Inspiration_Articles_Aggregated_Fields = {
+  __typename?: 'home_page_inspiration_articles_aggregated_fields';
+  home_page?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  inspiration_article?: Maybe<Scalars['Float']>;
+};
+
+type Home_Page_Inspiration_Articles_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Home_Page_Inspiration_Articles_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Home_Page_Inspiration_Articles_Filter>>>;
+  home_page?: InputMaybe<Home_Page_Filter>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  inspiration_article?: InputMaybe<Inspiration_Articles_Filter>;
+};
+
+type Inspiration_Articles = {
+  __typename?: 'inspiration_articles';
+  body?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['ID']>;
+  image?: Maybe<Directus_Files>;
+  read_more_label?: Maybe<Scalars['String']>;
+  read_more_link?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+
+type Inspiration_ArticlesImageArgs = {
+  filter?: InputMaybe<Directus_Files_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+type Inspiration_Articles_Aggregated = {
+  __typename?: 'inspiration_articles_aggregated';
+  avg?: Maybe<Inspiration_Articles_Aggregated_Fields>;
+  avgDistinct?: Maybe<Inspiration_Articles_Aggregated_Fields>;
+  count?: Maybe<Inspiration_Articles_Aggregated_Fields>;
+  countDistinct?: Maybe<Inspiration_Articles_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<Inspiration_Articles_Aggregated_Fields>;
+  min?: Maybe<Inspiration_Articles_Aggregated_Fields>;
+  sum?: Maybe<Inspiration_Articles_Aggregated_Fields>;
+  sumDistinct?: Maybe<Inspiration_Articles_Aggregated_Fields>;
+};
+
+type Inspiration_Articles_Aggregated_Fields = {
+  __typename?: 'inspiration_articles_aggregated_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+type Inspiration_Articles_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Inspiration_Articles_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Inspiration_Articles_Filter>>>;
+  body?: InputMaybe<String_Filter_Operators>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  image?: InputMaybe<Directus_Files_Filter>;
+  read_more_label?: InputMaybe<String_Filter_Operators>;
+  read_more_link?: InputMaybe<String_Filter_Operators>;
+  title?: InputMaybe<String_Filter_Operators>;
+};
+
+type Inspiration_Page = {
+  __typename?: 'inspiration_page';
+  description?: Maybe<Scalars['String']>;
+  heading?: Maybe<Scalars['String']>;
+  hero_image?: Maybe<Directus_Files>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+
+type Inspiration_PageHero_ImageArgs = {
+  filter?: InputMaybe<Directus_Files_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+type Judges = {
+  __typename?: 'judges';
+  about_text?: Maybe<Scalars['String']>;
+  company?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['ID']>;
+  image?: Maybe<Directus_Files>;
   name?: Maybe<Scalars['String']>;
-  /** The skin color of this person. */
-  skinColor?: Maybe<Scalars['String']>;
-  /** The species that this person belongs to, or null if unknown. */
-  species?: Maybe<Species>;
-  starshipConnection?: Maybe<PersonStarshipsConnection>;
-  vehicleConnection?: Maybe<PersonVehiclesConnection>;
+  years?: Maybe<Array<Maybe<Judges_Judges_Years_Filter>>>;
 };
 
 
-/** An individual person or character within the Star Wars universe. */
-type PersonFilmConnectionArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
+type JudgesImageArgs = {
+  filter?: InputMaybe<Directus_Files_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
-/** An individual person or character within the Star Wars universe. */
-type PersonStarshipConnectionArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
+type JudgesYearsArgs = {
+  filter?: InputMaybe<Judges_Judges_Years_Filter_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+type Judges_Aggregated = {
+  __typename?: 'judges_aggregated';
+  avg?: Maybe<Judges_Aggregated_Fields>;
+  avgDistinct?: Maybe<Judges_Aggregated_Fields>;
+  count?: Maybe<Judges_Aggregated_Fields>;
+  countDistinct?: Maybe<Judges_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<Judges_Aggregated_Fields>;
+  min?: Maybe<Judges_Aggregated_Fields>;
+  sum?: Maybe<Judges_Aggregated_Fields>;
+  sumDistinct?: Maybe<Judges_Aggregated_Fields>;
+};
+
+type Judges_Aggregated_Fields = {
+  __typename?: 'judges_aggregated_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+type Judges_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Judges_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Judges_Filter>>>;
+  about_text?: InputMaybe<String_Filter_Operators>;
+  company?: InputMaybe<String_Filter_Operators>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  image?: InputMaybe<Directus_Files_Filter>;
+  name?: InputMaybe<String_Filter_Operators>;
+  years?: InputMaybe<Judges_Judges_Years_Filter_Filter>;
+};
+
+type Judges_Judges_Years_Filter = {
+  __typename?: 'judges_judges_years_filter';
+  id?: Maybe<Scalars['ID']>;
+  judges_id?: Maybe<Judges>;
+  judges_years_filter_id?: Maybe<Judges_Years_Filter>;
 };
 
 
-/** An individual person or character within the Star Wars universe. */
-type PersonVehicleConnectionArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
+type Judges_Judges_Years_FilterJudges_IdArgs = {
+  filter?: InputMaybe<Judges_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
-/** A connection to a list of items. */
-type PersonFilmsConnection = {
-  __typename?: 'PersonFilmsConnection';
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<PersonFilmsEdge>>>;
-  /**
-   * A list of all of the objects returned in the connection. This is a convenience
-   * field provided for quickly exploring the API; rather than querying for
-   * "{ edges { node } }" when no edge data is needed, this field can be be used
-   * instead. Note that when clients like Relay need to fetch the "cursor" field on
-   * the edge to enable efficient pagination, this shortcut cannot be used, and the
-   * full "{ edges { node } }" version should be used instead.
-   */
-  films?: Maybe<Array<Maybe<Film>>>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /**
-   * A count of the total number of objects in this connection, ignoring pagination.
-   * This allows a client to fetch the first five objects by passing "5" as the
-   * argument to "first", then fetch the total count so it could display "5 of 83",
-   * for example.
-   */
-  totalCount?: Maybe<Scalars['Int']>;
+
+type Judges_Judges_Years_FilterJudges_Years_Filter_IdArgs = {
+  filter?: InputMaybe<Judges_Years_Filter_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
-/** An edge in a connection. */
-type PersonFilmsEdge = {
-  __typename?: 'PersonFilmsEdge';
-  /** A cursor for use in pagination */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge */
-  node?: Maybe<Film>;
+type Judges_Judges_Years_Filter_Aggregated = {
+  __typename?: 'judges_judges_years_filter_aggregated';
+  avg?: Maybe<Judges_Judges_Years_Filter_Aggregated_Fields>;
+  avgDistinct?: Maybe<Judges_Judges_Years_Filter_Aggregated_Fields>;
+  count?: Maybe<Judges_Judges_Years_Filter_Aggregated_Fields>;
+  countDistinct?: Maybe<Judges_Judges_Years_Filter_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<Judges_Judges_Years_Filter_Aggregated_Fields>;
+  min?: Maybe<Judges_Judges_Years_Filter_Aggregated_Fields>;
+  sum?: Maybe<Judges_Judges_Years_Filter_Aggregated_Fields>;
+  sumDistinct?: Maybe<Judges_Judges_Years_Filter_Aggregated_Fields>;
 };
 
-/** A connection to a list of items. */
-type PersonStarshipsConnection = {
-  __typename?: 'PersonStarshipsConnection';
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<PersonStarshipsEdge>>>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /**
-   * A list of all of the objects returned in the connection. This is a convenience
-   * field provided for quickly exploring the API; rather than querying for
-   * "{ edges { node } }" when no edge data is needed, this field can be be used
-   * instead. Note that when clients like Relay need to fetch the "cursor" field on
-   * the edge to enable efficient pagination, this shortcut cannot be used, and the
-   * full "{ edges { node } }" version should be used instead.
-   */
-  starships?: Maybe<Array<Maybe<Starship>>>;
-  /**
-   * A count of the total number of objects in this connection, ignoring pagination.
-   * This allows a client to fetch the first five objects by passing "5" as the
-   * argument to "first", then fetch the total count so it could display "5 of 83",
-   * for example.
-   */
-  totalCount?: Maybe<Scalars['Int']>;
+type Judges_Judges_Years_Filter_Aggregated_Fields = {
+  __typename?: 'judges_judges_years_filter_aggregated_fields';
+  id?: Maybe<Scalars['Float']>;
+  judges_id?: Maybe<Scalars['Float']>;
+  judges_years_filter_id?: Maybe<Scalars['Float']>;
 };
 
-/** An edge in a connection. */
-type PersonStarshipsEdge = {
-  __typename?: 'PersonStarshipsEdge';
-  /** A cursor for use in pagination */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge */
-  node?: Maybe<Starship>;
+type Judges_Judges_Years_Filter_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Judges_Judges_Years_Filter_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Judges_Judges_Years_Filter_Filter>>>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  judges_id?: InputMaybe<Judges_Filter>;
+  judges_years_filter_id?: InputMaybe<Judges_Years_Filter_Filter>;
 };
 
-/** A connection to a list of items. */
-type PersonVehiclesConnection = {
-  __typename?: 'PersonVehiclesConnection';
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<PersonVehiclesEdge>>>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /**
-   * A count of the total number of objects in this connection, ignoring pagination.
-   * This allows a client to fetch the first five objects by passing "5" as the
-   * argument to "first", then fetch the total count so it could display "5 of 83",
-   * for example.
-   */
-  totalCount?: Maybe<Scalars['Int']>;
-  /**
-   * A list of all of the objects returned in the connection. This is a convenience
-   * field provided for quickly exploring the API; rather than querying for
-   * "{ edges { node } }" when no edge data is needed, this field can be be used
-   * instead. Note that when clients like Relay need to fetch the "cursor" field on
-   * the edge to enable efficient pagination, this shortcut cannot be used, and the
-   * full "{ edges { node } }" version should be used instead.
-   */
-  vehicles?: Maybe<Array<Maybe<Vehicle>>>;
+type Judges_Page = {
+  __typename?: 'judges_page';
+  heading?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['ID']>;
 };
 
-/** An edge in a connection. */
-type PersonVehiclesEdge = {
-  __typename?: 'PersonVehiclesEdge';
-  /** A cursor for use in pagination */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge */
-  node?: Maybe<Vehicle>;
+type Judges_Years_Filter = {
+  __typename?: 'judges_years_filter';
+  id?: Maybe<Scalars['ID']>;
+  year?: Maybe<Scalars['Int']>;
 };
 
-/**
- * A large mass, planet or planetoid in the Star Wars Universe, at the time of
- * 0 ABY.
- */
-type Planet = Node & {
-  __typename?: 'Planet';
-  /** The climates of this planet. */
-  climates?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The ISO 8601 date format of the time that this resource was created. */
-  created?: Maybe<Scalars['String']>;
-  /** The diameter of this planet in kilometers. */
-  diameter?: Maybe<Scalars['Int']>;
-  /** The ISO 8601 date format of the time that this resource was edited. */
-  edited?: Maybe<Scalars['String']>;
-  filmConnection?: Maybe<PlanetFilmsConnection>;
-  /**
-   * A number denoting the gravity of this planet, where "1" is normal or 1 standard
-   * G. "2" is twice or 2 standard Gs. "0.5" is half or 0.5 standard Gs.
-   */
-  gravity?: Maybe<Scalars['String']>;
-  /** The ID of an object */
-  id: Scalars['ID'];
-  /** The name of this planet. */
+type Judges_Years_Filter_Aggregated = {
+  __typename?: 'judges_years_filter_aggregated';
+  avg?: Maybe<Judges_Years_Filter_Aggregated_Fields>;
+  avgDistinct?: Maybe<Judges_Years_Filter_Aggregated_Fields>;
+  count?: Maybe<Judges_Years_Filter_Aggregated_Fields>;
+  countDistinct?: Maybe<Judges_Years_Filter_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<Judges_Years_Filter_Aggregated_Fields>;
+  min?: Maybe<Judges_Years_Filter_Aggregated_Fields>;
+  sum?: Maybe<Judges_Years_Filter_Aggregated_Fields>;
+  sumDistinct?: Maybe<Judges_Years_Filter_Aggregated_Fields>;
+};
+
+type Judges_Years_Filter_Aggregated_Fields = {
+  __typename?: 'judges_years_filter_aggregated_fields';
+  id?: Maybe<Scalars['Float']>;
+  year?: Maybe<Scalars['Float']>;
+};
+
+type Judges_Years_Filter_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Judges_Years_Filter_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Judges_Years_Filter_Filter>>>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  year?: InputMaybe<Number_Filter_Operators>;
+};
+
+type Key_Dates = {
+  __typename?: 'key_dates';
+  date?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['ID']>;
+  subtext?: Maybe<Scalars['String']>;
+};
+
+type Key_Dates_Aggregated = {
+  __typename?: 'key_dates_aggregated';
+  avg?: Maybe<Key_Dates_Aggregated_Fields>;
+  avgDistinct?: Maybe<Key_Dates_Aggregated_Fields>;
+  count?: Maybe<Key_Dates_Aggregated_Fields>;
+  countDistinct?: Maybe<Key_Dates_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<Key_Dates_Aggregated_Fields>;
+  min?: Maybe<Key_Dates_Aggregated_Fields>;
+  sum?: Maybe<Key_Dates_Aggregated_Fields>;
+  sumDistinct?: Maybe<Key_Dates_Aggregated_Fields>;
+};
+
+type Key_Dates_Aggregated_Fields = {
+  __typename?: 'key_dates_aggregated_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+type Key_Dates_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Key_Dates_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Key_Dates_Filter>>>;
+  date?: InputMaybe<String_Filter_Operators>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  subtext?: InputMaybe<String_Filter_Operators>;
+};
+
+type Multi_Level_Question_Item_Links = {
+  __typename?: 'multi_level_question_item_links';
+  id?: Maybe<Scalars['ID']>;
+  label?: Maybe<Scalars['String']>;
+  slug?: Maybe<Scalars['String']>;
+};
+
+type Multi_Level_Question_Item_Links_Aggregated = {
+  __typename?: 'multi_level_question_item_links_aggregated';
+  avg?: Maybe<Multi_Level_Question_Item_Links_Aggregated_Fields>;
+  avgDistinct?: Maybe<Multi_Level_Question_Item_Links_Aggregated_Fields>;
+  count?: Maybe<Multi_Level_Question_Item_Links_Aggregated_Fields>;
+  countDistinct?: Maybe<Multi_Level_Question_Item_Links_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<Multi_Level_Question_Item_Links_Aggregated_Fields>;
+  min?: Maybe<Multi_Level_Question_Item_Links_Aggregated_Fields>;
+  sum?: Maybe<Multi_Level_Question_Item_Links_Aggregated_Fields>;
+  sumDistinct?: Maybe<Multi_Level_Question_Item_Links_Aggregated_Fields>;
+};
+
+type Multi_Level_Question_Item_Links_Aggregated_Fields = {
+  __typename?: 'multi_level_question_item_links_aggregated_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+type Multi_Level_Question_Item_Links_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Multi_Level_Question_Item_Links_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Multi_Level_Question_Item_Links_Filter>>>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  label?: InputMaybe<String_Filter_Operators>;
+  slug?: InputMaybe<String_Filter_Operators>;
+};
+
+type Multi_Level_Question_Items = {
+  __typename?: 'multi_level_question_items';
+  id?: Maybe<Scalars['ID']>;
+  level_1_title?: Maybe<Scalars['String']>;
+  level_2_subtext?: Maybe<Scalars['String']>;
+  level_2_title?: Maybe<Scalars['String']>;
+  level_3_links?: Maybe<Array<Maybe<Multi_Level_Question_Items_Multi_Level_Question_Item_Links>>>;
+  level_3_text?: Maybe<Scalars['String']>;
+};
+
+
+type Multi_Level_Question_ItemsLevel_3_LinksArgs = {
+  filter?: InputMaybe<Multi_Level_Question_Items_Multi_Level_Question_Item_Links_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+type Multi_Level_Question_Items_Aggregated = {
+  __typename?: 'multi_level_question_items_aggregated';
+  avg?: Maybe<Multi_Level_Question_Items_Aggregated_Fields>;
+  avgDistinct?: Maybe<Multi_Level_Question_Items_Aggregated_Fields>;
+  count?: Maybe<Multi_Level_Question_Items_Aggregated_Fields>;
+  countDistinct?: Maybe<Multi_Level_Question_Items_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<Multi_Level_Question_Items_Aggregated_Fields>;
+  min?: Maybe<Multi_Level_Question_Items_Aggregated_Fields>;
+  sum?: Maybe<Multi_Level_Question_Items_Aggregated_Fields>;
+  sumDistinct?: Maybe<Multi_Level_Question_Items_Aggregated_Fields>;
+};
+
+type Multi_Level_Question_Items_Aggregated_Fields = {
+  __typename?: 'multi_level_question_items_aggregated_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+type Multi_Level_Question_Items_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Multi_Level_Question_Items_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Multi_Level_Question_Items_Filter>>>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  level_1_title?: InputMaybe<String_Filter_Operators>;
+  level_2_subtext?: InputMaybe<String_Filter_Operators>;
+  level_2_title?: InputMaybe<String_Filter_Operators>;
+  level_3_links?: InputMaybe<Multi_Level_Question_Items_Multi_Level_Question_Item_Links_Filter>;
+  level_3_text?: InputMaybe<String_Filter_Operators>;
+};
+
+type Multi_Level_Question_Items_Multi_Level_Question_Item_Links = {
+  __typename?: 'multi_level_question_items_multi_level_question_item_links';
+  id?: Maybe<Scalars['ID']>;
+  multi_level_question_item_links?: Maybe<Multi_Level_Question_Item_Links>;
+  multi_level_question_items?: Maybe<Multi_Level_Question_Items>;
+};
+
+
+type Multi_Level_Question_Items_Multi_Level_Question_Item_LinksMulti_Level_Question_Item_LinksArgs = {
+  filter?: InputMaybe<Multi_Level_Question_Item_Links_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type Multi_Level_Question_Items_Multi_Level_Question_Item_LinksMulti_Level_Question_ItemsArgs = {
+  filter?: InputMaybe<Multi_Level_Question_Items_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+type Multi_Level_Question_Items_Multi_Level_Question_Item_Links_Aggregated = {
+  __typename?: 'multi_level_question_items_multi_level_question_item_links_aggregated';
+  avg?: Maybe<Multi_Level_Question_Items_Multi_Level_Question_Item_Links_Aggregated_Fields>;
+  avgDistinct?: Maybe<Multi_Level_Question_Items_Multi_Level_Question_Item_Links_Aggregated_Fields>;
+  count?: Maybe<Multi_Level_Question_Items_Multi_Level_Question_Item_Links_Aggregated_Fields>;
+  countDistinct?: Maybe<Multi_Level_Question_Items_Multi_Level_Question_Item_Links_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<Multi_Level_Question_Items_Multi_Level_Question_Item_Links_Aggregated_Fields>;
+  min?: Maybe<Multi_Level_Question_Items_Multi_Level_Question_Item_Links_Aggregated_Fields>;
+  sum?: Maybe<Multi_Level_Question_Items_Multi_Level_Question_Item_Links_Aggregated_Fields>;
+  sumDistinct?: Maybe<Multi_Level_Question_Items_Multi_Level_Question_Item_Links_Aggregated_Fields>;
+};
+
+type Multi_Level_Question_Items_Multi_Level_Question_Item_Links_Aggregated_Fields = {
+  __typename?: 'multi_level_question_items_multi_level_question_item_links_aggregated_fields';
+  id?: Maybe<Scalars['Float']>;
+  multi_level_question_item_links?: Maybe<Scalars['Float']>;
+  multi_level_question_items?: Maybe<Scalars['Float']>;
+};
+
+type Multi_Level_Question_Items_Multi_Level_Question_Item_Links_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Multi_Level_Question_Items_Multi_Level_Question_Item_Links_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Multi_Level_Question_Items_Multi_Level_Question_Item_Links_Filter>>>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  multi_level_question_item_links?: InputMaybe<Multi_Level_Question_Item_Links_Filter>;
+  multi_level_question_items?: InputMaybe<Multi_Level_Question_Items_Filter>;
+};
+
+type Number_Filter_Operators = {
+  _eq?: InputMaybe<Scalars['Float']>;
+  _gt?: InputMaybe<Scalars['Float']>;
+  _gte?: InputMaybe<Scalars['Float']>;
+  _in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
+  _lt?: InputMaybe<Scalars['Float']>;
+  _lte?: InputMaybe<Scalars['Float']>;
+  _neq?: InputMaybe<Scalars['Float']>;
+  _nin?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
+  _nnull?: InputMaybe<Scalars['Boolean']>;
+  _null?: InputMaybe<Scalars['Boolean']>;
+};
+
+type Our_Sponsors = {
+  __typename?: 'our_sponsors';
+  id?: Maybe<Scalars['ID']>;
+  image?: Maybe<Directus_Files>;
+  link?: Maybe<Scalars['String']>;
+};
+
+
+type Our_SponsorsImageArgs = {
+  filter?: InputMaybe<Directus_Files_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+type Our_Sponsors_Aggregated = {
+  __typename?: 'our_sponsors_aggregated';
+  avg?: Maybe<Our_Sponsors_Aggregated_Fields>;
+  avgDistinct?: Maybe<Our_Sponsors_Aggregated_Fields>;
+  count?: Maybe<Our_Sponsors_Aggregated_Fields>;
+  countDistinct?: Maybe<Our_Sponsors_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<Our_Sponsors_Aggregated_Fields>;
+  min?: Maybe<Our_Sponsors_Aggregated_Fields>;
+  sum?: Maybe<Our_Sponsors_Aggregated_Fields>;
+  sumDistinct?: Maybe<Our_Sponsors_Aggregated_Fields>;
+};
+
+type Our_Sponsors_Aggregated_Fields = {
+  __typename?: 'our_sponsors_aggregated_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+type Our_Sponsors_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Our_Sponsors_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Our_Sponsors_Filter>>>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  image?: InputMaybe<Directus_Files_Filter>;
+  link?: InputMaybe<String_Filter_Operators>;
+};
+
+type Partners = {
+  __typename?: 'partners';
+  id?: Maybe<Scalars['ID']>;
+  link?: Maybe<Scalars['String']>;
+  partners?: Maybe<Directus_Files>;
+};
+
+
+type PartnersPartnersArgs = {
+  filter?: InputMaybe<Directus_Files_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+type Partners_Aggregated = {
+  __typename?: 'partners_aggregated';
+  avg?: Maybe<Partners_Aggregated_Fields>;
+  avgDistinct?: Maybe<Partners_Aggregated_Fields>;
+  count?: Maybe<Partners_Aggregated_Fields>;
+  countDistinct?: Maybe<Partners_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<Partners_Aggregated_Fields>;
+  min?: Maybe<Partners_Aggregated_Fields>;
+  sum?: Maybe<Partners_Aggregated_Fields>;
+  sumDistinct?: Maybe<Partners_Aggregated_Fields>;
+};
+
+type Partners_Aggregated_Fields = {
+  __typename?: 'partners_aggregated_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+type Partners_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Partners_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Partners_Filter>>>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  link?: InputMaybe<String_Filter_Operators>;
+  partners?: InputMaybe<Directus_Files_Filter>;
+};
+
+type Past_Winners = {
+  __typename?: 'past_winners';
+  categories?: Maybe<Array<Maybe<Past_Winners_Past_Winners_Categories>>>;
+  id?: Maybe<Scalars['ID']>;
+  image?: Maybe<Directus_Files>;
   name?: Maybe<Scalars['String']>;
-  /**
-   * The number of standard days it takes for this planet to complete a single orbit
-   * of its local star.
-   */
-  orbitalPeriod?: Maybe<Scalars['Int']>;
-  /** The average population of sentient beings inhabiting this planet. */
-  population?: Maybe<Scalars['Float']>;
-  residentConnection?: Maybe<PlanetResidentsConnection>;
-  /**
-   * The number of standard hours it takes for this planet to complete a single
-   * rotation on its axis.
-   */
-  rotationPeriod?: Maybe<Scalars['Int']>;
-  /**
-   * The percentage of the planet surface that is naturally occurring water or bodies
-   * of water.
-   */
-  surfaceWater?: Maybe<Scalars['Float']>;
-  /** The terrains of this planet. */
-  terrains?: Maybe<Array<Maybe<Scalars['String']>>>;
+  project_information?: Maybe<Scalars['String']>;
+  school_name?: Maybe<Scalars['String']>;
+  short_description?: Maybe<Scalars['String']>;
+  students_name?: Maybe<Scalars['String']>;
+  worksheets?: Maybe<Array<Maybe<Past_Winners_Files>>>;
+  year?: Maybe<Scalars['Int']>;
+  youtube_video_link?: Maybe<Scalars['String']>;
 };
 
 
-/**
- * A large mass, planet or planetoid in the Star Wars Universe, at the time of
- * 0 ABY.
- */
-type PlanetFilmConnectionArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
+type Past_WinnersCategoriesArgs = {
+  filter?: InputMaybe<Past_Winners_Past_Winners_Categories_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
-/**
- * A large mass, planet or planetoid in the Star Wars Universe, at the time of
- * 0 ABY.
- */
-type PlanetResidentConnectionArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-};
-
-/** A connection to a list of items. */
-type PlanetFilmsConnection = {
-  __typename?: 'PlanetFilmsConnection';
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<PlanetFilmsEdge>>>;
-  /**
-   * A list of all of the objects returned in the connection. This is a convenience
-   * field provided for quickly exploring the API; rather than querying for
-   * "{ edges { node } }" when no edge data is needed, this field can be be used
-   * instead. Note that when clients like Relay need to fetch the "cursor" field on
-   * the edge to enable efficient pagination, this shortcut cannot be used, and the
-   * full "{ edges { node } }" version should be used instead.
-   */
-  films?: Maybe<Array<Maybe<Film>>>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /**
-   * A count of the total number of objects in this connection, ignoring pagination.
-   * This allows a client to fetch the first five objects by passing "5" as the
-   * argument to "first", then fetch the total count so it could display "5 of 83",
-   * for example.
-   */
-  totalCount?: Maybe<Scalars['Int']>;
-};
-
-/** An edge in a connection. */
-type PlanetFilmsEdge = {
-  __typename?: 'PlanetFilmsEdge';
-  /** A cursor for use in pagination */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge */
-  node?: Maybe<Film>;
-};
-
-/** A connection to a list of items. */
-type PlanetResidentsConnection = {
-  __typename?: 'PlanetResidentsConnection';
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<PlanetResidentsEdge>>>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /**
-   * A list of all of the objects returned in the connection. This is a convenience
-   * field provided for quickly exploring the API; rather than querying for
-   * "{ edges { node } }" when no edge data is needed, this field can be be used
-   * instead. Note that when clients like Relay need to fetch the "cursor" field on
-   * the edge to enable efficient pagination, this shortcut cannot be used, and the
-   * full "{ edges { node } }" version should be used instead.
-   */
-  residents?: Maybe<Array<Maybe<Person>>>;
-  /**
-   * A count of the total number of objects in this connection, ignoring pagination.
-   * This allows a client to fetch the first five objects by passing "5" as the
-   * argument to "first", then fetch the total count so it could display "5 of 83",
-   * for example.
-   */
-  totalCount?: Maybe<Scalars['Int']>;
-};
-
-/** An edge in a connection. */
-type PlanetResidentsEdge = {
-  __typename?: 'PlanetResidentsEdge';
-  /** A cursor for use in pagination */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge */
-  node?: Maybe<Person>;
-};
-
-/** A connection to a list of items. */
-type PlanetsConnection = {
-  __typename?: 'PlanetsConnection';
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<PlanetsEdge>>>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /**
-   * A list of all of the objects returned in the connection. This is a convenience
-   * field provided for quickly exploring the API; rather than querying for
-   * "{ edges { node } }" when no edge data is needed, this field can be be used
-   * instead. Note that when clients like Relay need to fetch the "cursor" field on
-   * the edge to enable efficient pagination, this shortcut cannot be used, and the
-   * full "{ edges { node } }" version should be used instead.
-   */
-  planets?: Maybe<Array<Maybe<Planet>>>;
-  /**
-   * A count of the total number of objects in this connection, ignoring pagination.
-   * This allows a client to fetch the first five objects by passing "5" as the
-   * argument to "first", then fetch the total count so it could display "5 of 83",
-   * for example.
-   */
-  totalCount?: Maybe<Scalars['Int']>;
-};
-
-/** An edge in a connection. */
-type PlanetsEdge = {
-  __typename?: 'PlanetsEdge';
-  /** A cursor for use in pagination */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge */
-  node?: Maybe<Planet>;
-};
-
-type Root = {
-  __typename?: 'Root';
-  allFilms?: Maybe<FilmsConnection>;
-  allPeople?: Maybe<PeopleConnection>;
-  allPlanets?: Maybe<PlanetsConnection>;
-  allSpecies?: Maybe<SpeciesConnection>;
-  allStarships?: Maybe<StarshipsConnection>;
-  allVehicles?: Maybe<VehiclesConnection>;
-  film?: Maybe<Film>;
-  /** Fetches an object given its ID */
-  node?: Maybe<Node>;
-  person?: Maybe<Person>;
-  planet?: Maybe<Planet>;
-  species?: Maybe<Species>;
-  starship?: Maybe<Starship>;
-  vehicle?: Maybe<Vehicle>;
+type Past_WinnersImageArgs = {
+  filter?: InputMaybe<Directus_Files_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
-type RootAllFilmsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
+type Past_WinnersWorksheetsArgs = {
+  filter?: InputMaybe<Past_Winners_Files_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+type Past_Winners_Aggregated = {
+  __typename?: 'past_winners_aggregated';
+  avg?: Maybe<Past_Winners_Aggregated_Fields>;
+  avgDistinct?: Maybe<Past_Winners_Aggregated_Fields>;
+  count?: Maybe<Past_Winners_Aggregated_Fields>;
+  countDistinct?: Maybe<Past_Winners_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<Past_Winners_Aggregated_Fields>;
+  min?: Maybe<Past_Winners_Aggregated_Fields>;
+  sum?: Maybe<Past_Winners_Aggregated_Fields>;
+  sumDistinct?: Maybe<Past_Winners_Aggregated_Fields>;
+};
+
+type Past_Winners_Aggregated_Fields = {
+  __typename?: 'past_winners_aggregated_fields';
+  id?: Maybe<Scalars['Float']>;
+  year?: Maybe<Scalars['Float']>;
+};
+
+type Past_Winners_Categories = {
+  __typename?: 'past_winners_categories';
+  id?: Maybe<Scalars['ID']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+type Past_Winners_Categories_Aggregated = {
+  __typename?: 'past_winners_categories_aggregated';
+  avg?: Maybe<Past_Winners_Categories_Aggregated_Fields>;
+  avgDistinct?: Maybe<Past_Winners_Categories_Aggregated_Fields>;
+  count?: Maybe<Past_Winners_Categories_Aggregated_Fields>;
+  countDistinct?: Maybe<Past_Winners_Categories_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<Past_Winners_Categories_Aggregated_Fields>;
+  min?: Maybe<Past_Winners_Categories_Aggregated_Fields>;
+  sum?: Maybe<Past_Winners_Categories_Aggregated_Fields>;
+  sumDistinct?: Maybe<Past_Winners_Categories_Aggregated_Fields>;
+};
+
+type Past_Winners_Categories_Aggregated_Fields = {
+  __typename?: 'past_winners_categories_aggregated_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+type Past_Winners_Categories_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Past_Winners_Categories_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Past_Winners_Categories_Filter>>>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  title?: InputMaybe<String_Filter_Operators>;
+};
+
+type Past_Winners_Files = {
+  __typename?: 'past_winners_files';
+  directus_files_id?: Maybe<Directus_Files>;
+  id?: Maybe<Scalars['ID']>;
+  past_winners_id?: Maybe<Past_Winners>;
 };
 
 
-type RootAllPeopleArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
+type Past_Winners_FilesDirectus_Files_IdArgs = {
+  filter?: InputMaybe<Directus_Files_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
-type RootAllPlanetsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
+type Past_Winners_FilesPast_Winners_IdArgs = {
+  filter?: InputMaybe<Past_Winners_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+type Past_Winners_Files_Aggregated = {
+  __typename?: 'past_winners_files_aggregated';
+  avg?: Maybe<Past_Winners_Files_Aggregated_Fields>;
+  avgDistinct?: Maybe<Past_Winners_Files_Aggregated_Fields>;
+  count?: Maybe<Past_Winners_Files_Aggregated_Fields>;
+  countDistinct?: Maybe<Past_Winners_Files_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<Past_Winners_Files_Aggregated_Fields>;
+  min?: Maybe<Past_Winners_Files_Aggregated_Fields>;
+  sum?: Maybe<Past_Winners_Files_Aggregated_Fields>;
+  sumDistinct?: Maybe<Past_Winners_Files_Aggregated_Fields>;
+};
+
+type Past_Winners_Files_Aggregated_Fields = {
+  __typename?: 'past_winners_files_aggregated_fields';
+  id?: Maybe<Scalars['Float']>;
+  past_winners_id?: Maybe<Scalars['Float']>;
+};
+
+type Past_Winners_Files_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Past_Winners_Files_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Past_Winners_Files_Filter>>>;
+  directus_files_id?: InputMaybe<Directus_Files_Filter>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  past_winners_id?: InputMaybe<Past_Winners_Filter>;
+};
+
+type Past_Winners_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Past_Winners_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Past_Winners_Filter>>>;
+  categories?: InputMaybe<Past_Winners_Past_Winners_Categories_Filter>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  image?: InputMaybe<Directus_Files_Filter>;
+  name?: InputMaybe<String_Filter_Operators>;
+  project_information?: InputMaybe<String_Filter_Operators>;
+  school_name?: InputMaybe<String_Filter_Operators>;
+  short_description?: InputMaybe<String_Filter_Operators>;
+  students_name?: InputMaybe<String_Filter_Operators>;
+  worksheets?: InputMaybe<Past_Winners_Files_Filter>;
+  year?: InputMaybe<Number_Filter_Operators>;
+  youtube_video_link?: InputMaybe<String_Filter_Operators>;
+};
+
+type Past_Winners_Page = {
+  __typename?: 'past_winners_page';
+  heading?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+type Past_Winners_Past_Winners_Categories = {
+  __typename?: 'past_winners_past_winners_categories';
+  id?: Maybe<Scalars['ID']>;
+  past_winners?: Maybe<Past_Winners>;
+  past_winners_category?: Maybe<Past_Winners_Categories>;
 };
 
 
-type RootAllSpeciesArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
+type Past_Winners_Past_Winners_CategoriesPast_WinnersArgs = {
+  filter?: InputMaybe<Past_Winners_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
-type RootAllStarshipsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
+type Past_Winners_Past_Winners_CategoriesPast_Winners_CategoryArgs = {
+  filter?: InputMaybe<Past_Winners_Categories_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+type Past_Winners_Past_Winners_Categories_Aggregated = {
+  __typename?: 'past_winners_past_winners_categories_aggregated';
+  avg?: Maybe<Past_Winners_Past_Winners_Categories_Aggregated_Fields>;
+  avgDistinct?: Maybe<Past_Winners_Past_Winners_Categories_Aggregated_Fields>;
+  count?: Maybe<Past_Winners_Past_Winners_Categories_Aggregated_Fields>;
+  countDistinct?: Maybe<Past_Winners_Past_Winners_Categories_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<Past_Winners_Past_Winners_Categories_Aggregated_Fields>;
+  min?: Maybe<Past_Winners_Past_Winners_Categories_Aggregated_Fields>;
+  sum?: Maybe<Past_Winners_Past_Winners_Categories_Aggregated_Fields>;
+  sumDistinct?: Maybe<Past_Winners_Past_Winners_Categories_Aggregated_Fields>;
+};
+
+type Past_Winners_Past_Winners_Categories_Aggregated_Fields = {
+  __typename?: 'past_winners_past_winners_categories_aggregated_fields';
+  id?: Maybe<Scalars['Float']>;
+  past_winners?: Maybe<Scalars['Float']>;
+  past_winners_category?: Maybe<Scalars['Float']>;
+};
+
+type Past_Winners_Past_Winners_Categories_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Past_Winners_Past_Winners_Categories_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Past_Winners_Past_Winners_Categories_Filter>>>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  past_winners?: InputMaybe<Past_Winners_Filter>;
+  past_winners_category?: InputMaybe<Past_Winners_Categories_Filter>;
+};
+
+type Question_Text_Area = {
+  __typename?: 'question_text_area';
+  body?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['ID']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+type Question_Text_Area_Aggregated = {
+  __typename?: 'question_text_area_aggregated';
+  avg?: Maybe<Question_Text_Area_Aggregated_Fields>;
+  avgDistinct?: Maybe<Question_Text_Area_Aggregated_Fields>;
+  count?: Maybe<Question_Text_Area_Aggregated_Fields>;
+  countDistinct?: Maybe<Question_Text_Area_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<Question_Text_Area_Aggregated_Fields>;
+  min?: Maybe<Question_Text_Area_Aggregated_Fields>;
+  sum?: Maybe<Question_Text_Area_Aggregated_Fields>;
+  sumDistinct?: Maybe<Question_Text_Area_Aggregated_Fields>;
+};
+
+type Question_Text_Area_Aggregated_Fields = {
+  __typename?: 'question_text_area_aggregated_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+type Question_Text_Area_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Question_Text_Area_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Question_Text_Area_Filter>>>;
+  body?: InputMaybe<String_Filter_Operators>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  title?: InputMaybe<String_Filter_Operators>;
+};
+
+type Question_Titles = {
+  __typename?: 'question_titles';
+  body?: Maybe<Array<Maybe<Question_Titles_Multi_Level_Question_Items>>>;
+  id?: Maybe<Scalars['ID']>;
+  title?: Maybe<Scalars['String']>;
 };
 
 
-type RootAllVehiclesArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
+type Question_TitlesBodyArgs = {
+  filter?: InputMaybe<Question_Titles_Multi_Level_Question_Items_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+type Question_Titles_Aggregated = {
+  __typename?: 'question_titles_aggregated';
+  avg?: Maybe<Question_Titles_Aggregated_Fields>;
+  avgDistinct?: Maybe<Question_Titles_Aggregated_Fields>;
+  count?: Maybe<Question_Titles_Aggregated_Fields>;
+  countDistinct?: Maybe<Question_Titles_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<Question_Titles_Aggregated_Fields>;
+  min?: Maybe<Question_Titles_Aggregated_Fields>;
+  sum?: Maybe<Question_Titles_Aggregated_Fields>;
+  sumDistinct?: Maybe<Question_Titles_Aggregated_Fields>;
+};
+
+type Question_Titles_Aggregated_Fields = {
+  __typename?: 'question_titles_aggregated_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+type Question_Titles_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Question_Titles_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Question_Titles_Filter>>>;
+  body?: InputMaybe<Question_Titles_Multi_Level_Question_Items_Filter>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  title?: InputMaybe<String_Filter_Operators>;
+};
+
+type Question_Titles_Multi_Level_Question_Items = {
+  __typename?: 'question_titles_multi_level_question_items';
+  id?: Maybe<Scalars['ID']>;
+  multi_level_question_items?: Maybe<Multi_Level_Question_Items>;
+  question?: Maybe<Question_Titles>;
 };
 
 
-type RootFilmArgs = {
-  filmID?: InputMaybe<Scalars['ID']>;
-  id?: InputMaybe<Scalars['ID']>;
+type Question_Titles_Multi_Level_Question_ItemsMulti_Level_Question_ItemsArgs = {
+  filter?: InputMaybe<Multi_Level_Question_Items_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
-type RootNodeArgs = {
+type Question_Titles_Multi_Level_Question_ItemsQuestionArgs = {
+  filter?: InputMaybe<Question_Titles_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+type Question_Titles_Multi_Level_Question_Items_Aggregated = {
+  __typename?: 'question_titles_multi_level_question_items_aggregated';
+  avg?: Maybe<Question_Titles_Multi_Level_Question_Items_Aggregated_Fields>;
+  avgDistinct?: Maybe<Question_Titles_Multi_Level_Question_Items_Aggregated_Fields>;
+  count?: Maybe<Question_Titles_Multi_Level_Question_Items_Aggregated_Fields>;
+  countDistinct?: Maybe<Question_Titles_Multi_Level_Question_Items_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<Question_Titles_Multi_Level_Question_Items_Aggregated_Fields>;
+  min?: Maybe<Question_Titles_Multi_Level_Question_Items_Aggregated_Fields>;
+  sum?: Maybe<Question_Titles_Multi_Level_Question_Items_Aggregated_Fields>;
+  sumDistinct?: Maybe<Question_Titles_Multi_Level_Question_Items_Aggregated_Fields>;
+};
+
+type Question_Titles_Multi_Level_Question_Items_Aggregated_Fields = {
+  __typename?: 'question_titles_multi_level_question_items_aggregated_fields';
+  id?: Maybe<Scalars['Float']>;
+  multi_level_question_items?: Maybe<Scalars['Float']>;
+  question?: Maybe<Scalars['Float']>;
+};
+
+type Question_Titles_Multi_Level_Question_Items_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Question_Titles_Multi_Level_Question_Items_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Question_Titles_Multi_Level_Question_Items_Filter>>>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  multi_level_question_items?: InputMaybe<Multi_Level_Question_Items_Filter>;
+  question?: InputMaybe<Question_Titles_Filter>;
+};
+
+type Social_Media_Links = {
+  __typename?: 'social_media_links';
+  id?: Maybe<Scalars['ID']>;
+  image?: Maybe<Directus_Files>;
+  link?: Maybe<Scalars['String']>;
+};
+
+
+type Social_Media_LinksImageArgs = {
+  filter?: InputMaybe<Directus_Files_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+type Social_Media_Links_Aggregated = {
+  __typename?: 'social_media_links_aggregated';
+  avg?: Maybe<Social_Media_Links_Aggregated_Fields>;
+  avgDistinct?: Maybe<Social_Media_Links_Aggregated_Fields>;
+  count?: Maybe<Social_Media_Links_Aggregated_Fields>;
+  countDistinct?: Maybe<Social_Media_Links_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<Social_Media_Links_Aggregated_Fields>;
+  min?: Maybe<Social_Media_Links_Aggregated_Fields>;
+  sum?: Maybe<Social_Media_Links_Aggregated_Fields>;
+  sumDistinct?: Maybe<Social_Media_Links_Aggregated_Fields>;
+};
+
+type Social_Media_Links_Aggregated_Fields = {
+  __typename?: 'social_media_links_aggregated_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+type Social_Media_Links_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Social_Media_Links_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Social_Media_Links_Filter>>>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  image?: InputMaybe<Directus_Files_Filter>;
+  link?: InputMaybe<String_Filter_Operators>;
+};
+
+type String_Filter_Operators = {
+  _contains?: InputMaybe<Scalars['String']>;
+  _empty?: InputMaybe<Scalars['Boolean']>;
+  _ends_with?: InputMaybe<Scalars['String']>;
+  _eq?: InputMaybe<Scalars['String']>;
+  _in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  _ncontains?: InputMaybe<Scalars['String']>;
+  _nempty?: InputMaybe<Scalars['Boolean']>;
+  _nends_with?: InputMaybe<Scalars['String']>;
+  _neq?: InputMaybe<Scalars['String']>;
+  _nin?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  _nnull?: InputMaybe<Scalars['Boolean']>;
+  _nstarts_with?: InputMaybe<Scalars['String']>;
+  _null?: InputMaybe<Scalars['Boolean']>;
+  _starts_with?: InputMaybe<Scalars['String']>;
+};
+
+type AllJudgesQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+}>;
+
+
+type AllJudgesQuery = { __typename?: 'Query', judges?: Array<{ __typename: 'judges', id?: string | null, name?: string | null } | null> | null };
+
+type JudgeQueryVariables = Exact<{
   id: Scalars['ID'];
-};
+}>;
 
 
-type RootPersonArgs = {
-  id?: InputMaybe<Scalars['ID']>;
-  personID?: InputMaybe<Scalars['ID']>;
-};
+type JudgeQuery = { __typename?: 'Query', judges_by_id?: { __typename: 'judges', name?: string | null, id?: string | null } | null };
 
-
-type RootPlanetArgs = {
-  id?: InputMaybe<Scalars['ID']>;
-  planetID?: InputMaybe<Scalars['ID']>;
-};
-
-
-type RootSpeciesArgs = {
-  id?: InputMaybe<Scalars['ID']>;
-  speciesID?: InputMaybe<Scalars['ID']>;
-};
-
-
-type RootStarshipArgs = {
-  id?: InputMaybe<Scalars['ID']>;
-  starshipID?: InputMaybe<Scalars['ID']>;
-};
-
-
-type RootVehicleArgs = {
-  id?: InputMaybe<Scalars['ID']>;
-  vehicleID?: InputMaybe<Scalars['ID']>;
-};
-
-/** A type of person or character within the Star Wars Universe. */
-type Species = Node & {
-  __typename?: 'Species';
-  /** The average height of this species in centimeters. */
-  averageHeight?: Maybe<Scalars['Float']>;
-  /** The average lifespan of this species in years, null if unknown. */
-  averageLifespan?: Maybe<Scalars['Int']>;
-  /** The classification of this species, such as "mammal" or "reptile". */
-  classification?: Maybe<Scalars['String']>;
-  /** The ISO 8601 date format of the time that this resource was created. */
-  created?: Maybe<Scalars['String']>;
-  /** The designation of this species, such as "sentient". */
-  designation?: Maybe<Scalars['String']>;
-  /** The ISO 8601 date format of the time that this resource was edited. */
-  edited?: Maybe<Scalars['String']>;
-  /**
-   * Common eye colors for this species, null if this species does not typically
-   * have eyes.
-   */
-  eyeColors?: Maybe<Array<Maybe<Scalars['String']>>>;
-  filmConnection?: Maybe<SpeciesFilmsConnection>;
-  /**
-   * Common hair colors for this species, null if this species does not typically
-   * have hair.
-   */
-  hairColors?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** A planet that this species originates from. */
-  homeworld?: Maybe<Planet>;
-  /** The ID of an object */
-  id: Scalars['ID'];
-  /** The language commonly spoken by this species. */
-  language?: Maybe<Scalars['String']>;
-  /** The name of this species. */
-  name?: Maybe<Scalars['String']>;
-  personConnection?: Maybe<SpeciesPeopleConnection>;
-  /**
-   * Common skin colors for this species, null if this species does not typically
-   * have skin.
-   */
-  skinColors?: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-
-/** A type of person or character within the Star Wars Universe. */
-type SpeciesFilmConnectionArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-};
-
-
-/** A type of person or character within the Star Wars Universe. */
-type SpeciesPersonConnectionArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-};
-
-/** A connection to a list of items. */
-type SpeciesConnection = {
-  __typename?: 'SpeciesConnection';
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<SpeciesEdge>>>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /**
-   * A list of all of the objects returned in the connection. This is a convenience
-   * field provided for quickly exploring the API; rather than querying for
-   * "{ edges { node } }" when no edge data is needed, this field can be be used
-   * instead. Note that when clients like Relay need to fetch the "cursor" field on
-   * the edge to enable efficient pagination, this shortcut cannot be used, and the
-   * full "{ edges { node } }" version should be used instead.
-   */
-  species?: Maybe<Array<Maybe<Species>>>;
-  /**
-   * A count of the total number of objects in this connection, ignoring pagination.
-   * This allows a client to fetch the first five objects by passing "5" as the
-   * argument to "first", then fetch the total count so it could display "5 of 83",
-   * for example.
-   */
-  totalCount?: Maybe<Scalars['Int']>;
-};
-
-/** An edge in a connection. */
-type SpeciesEdge = {
-  __typename?: 'SpeciesEdge';
-  /** A cursor for use in pagination */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge */
-  node?: Maybe<Species>;
-};
-
-/** A connection to a list of items. */
-type SpeciesFilmsConnection = {
-  __typename?: 'SpeciesFilmsConnection';
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<SpeciesFilmsEdge>>>;
-  /**
-   * A list of all of the objects returned in the connection. This is a convenience
-   * field provided for quickly exploring the API; rather than querying for
-   * "{ edges { node } }" when no edge data is needed, this field can be be used
-   * instead. Note that when clients like Relay need to fetch the "cursor" field on
-   * the edge to enable efficient pagination, this shortcut cannot be used, and the
-   * full "{ edges { node } }" version should be used instead.
-   */
-  films?: Maybe<Array<Maybe<Film>>>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /**
-   * A count of the total number of objects in this connection, ignoring pagination.
-   * This allows a client to fetch the first five objects by passing "5" as the
-   * argument to "first", then fetch the total count so it could display "5 of 83",
-   * for example.
-   */
-  totalCount?: Maybe<Scalars['Int']>;
-};
-
-/** An edge in a connection. */
-type SpeciesFilmsEdge = {
-  __typename?: 'SpeciesFilmsEdge';
-  /** A cursor for use in pagination */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge */
-  node?: Maybe<Film>;
-};
-
-/** A connection to a list of items. */
-type SpeciesPeopleConnection = {
-  __typename?: 'SpeciesPeopleConnection';
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<SpeciesPeopleEdge>>>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /**
-   * A list of all of the objects returned in the connection. This is a convenience
-   * field provided for quickly exploring the API; rather than querying for
-   * "{ edges { node } }" when no edge data is needed, this field can be be used
-   * instead. Note that when clients like Relay need to fetch the "cursor" field on
-   * the edge to enable efficient pagination, this shortcut cannot be used, and the
-   * full "{ edges { node } }" version should be used instead.
-   */
-  people?: Maybe<Array<Maybe<Person>>>;
-  /**
-   * A count of the total number of objects in this connection, ignoring pagination.
-   * This allows a client to fetch the first five objects by passing "5" as the
-   * argument to "first", then fetch the total count so it could display "5 of 83",
-   * for example.
-   */
-  totalCount?: Maybe<Scalars['Int']>;
-};
-
-/** An edge in a connection. */
-type SpeciesPeopleEdge = {
-  __typename?: 'SpeciesPeopleEdge';
-  /** A cursor for use in pagination */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge */
-  node?: Maybe<Person>;
-};
-
-/** A single transport craft that has hyperdrive capability. */
-type Starship = Node & {
-  __typename?: 'Starship';
-  /**
-   * The Maximum number of Megalights this starship can travel in a standard hour.
-   * A "Megalight" is a standard unit of distance and has never been defined before
-   * within the Star Wars universe. This figure is only really useful for measuring
-   * the difference in speed of starships. We can assume it is similar to AU, the
-   * distance between our Sun (Sol) and Earth.
-   */
-  MGLT?: Maybe<Scalars['Int']>;
-  /** The maximum number of kilograms that this starship can transport. */
-  cargoCapacity?: Maybe<Scalars['Float']>;
-  /**
-   * The maximum length of time that this starship can provide consumables for its
-   * entire crew without having to resupply.
-   */
-  consumables?: Maybe<Scalars['String']>;
-  /** The cost of this starship new, in galactic credits. */
-  costInCredits?: Maybe<Scalars['Float']>;
-  /** The ISO 8601 date format of the time that this resource was created. */
-  created?: Maybe<Scalars['String']>;
-  /** The number of personnel needed to run or pilot this starship. */
-  crew?: Maybe<Scalars['String']>;
-  /** The ISO 8601 date format of the time that this resource was edited. */
-  edited?: Maybe<Scalars['String']>;
-  filmConnection?: Maybe<StarshipFilmsConnection>;
-  /** The class of this starships hyperdrive. */
-  hyperdriveRating?: Maybe<Scalars['Float']>;
-  /** The ID of an object */
-  id: Scalars['ID'];
-  /** The length of this starship in meters. */
-  length?: Maybe<Scalars['Float']>;
-  /** The manufacturers of this starship. */
-  manufacturers?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /**
-   * The maximum speed of this starship in atmosphere. null if this starship is
-   * incapable of atmosphering flight.
-   */
-  maxAtmospheringSpeed?: Maybe<Scalars['Int']>;
-  /**
-   * The model or official name of this starship. Such as "T-65 X-wing" or "DS-1
-   * Orbital Battle Station".
-   */
-  model?: Maybe<Scalars['String']>;
-  /** The name of this starship. The common name, such as "Death Star". */
-  name?: Maybe<Scalars['String']>;
-  /** The number of non-essential people this starship can transport. */
-  passengers?: Maybe<Scalars['String']>;
-  pilotConnection?: Maybe<StarshipPilotsConnection>;
-  /**
-   * The class of this starship, such as "Starfighter" or "Deep Space Mobile
-   * Battlestation"
-   */
-  starshipClass?: Maybe<Scalars['String']>;
-};
-
-
-/** A single transport craft that has hyperdrive capability. */
-type StarshipFilmConnectionArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-};
-
-
-/** A single transport craft that has hyperdrive capability. */
-type StarshipPilotConnectionArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-};
-
-/** A connection to a list of items. */
-type StarshipFilmsConnection = {
-  __typename?: 'StarshipFilmsConnection';
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<StarshipFilmsEdge>>>;
-  /**
-   * A list of all of the objects returned in the connection. This is a convenience
-   * field provided for quickly exploring the API; rather than querying for
-   * "{ edges { node } }" when no edge data is needed, this field can be be used
-   * instead. Note that when clients like Relay need to fetch the "cursor" field on
-   * the edge to enable efficient pagination, this shortcut cannot be used, and the
-   * full "{ edges { node } }" version should be used instead.
-   */
-  films?: Maybe<Array<Maybe<Film>>>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /**
-   * A count of the total number of objects in this connection, ignoring pagination.
-   * This allows a client to fetch the first five objects by passing "5" as the
-   * argument to "first", then fetch the total count so it could display "5 of 83",
-   * for example.
-   */
-  totalCount?: Maybe<Scalars['Int']>;
-};
-
-/** An edge in a connection. */
-type StarshipFilmsEdge = {
-  __typename?: 'StarshipFilmsEdge';
-  /** A cursor for use in pagination */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge */
-  node?: Maybe<Film>;
-};
-
-/** A connection to a list of items. */
-type StarshipPilotsConnection = {
-  __typename?: 'StarshipPilotsConnection';
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<StarshipPilotsEdge>>>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /**
-   * A list of all of the objects returned in the connection. This is a convenience
-   * field provided for quickly exploring the API; rather than querying for
-   * "{ edges { node } }" when no edge data is needed, this field can be be used
-   * instead. Note that when clients like Relay need to fetch the "cursor" field on
-   * the edge to enable efficient pagination, this shortcut cannot be used, and the
-   * full "{ edges { node } }" version should be used instead.
-   */
-  pilots?: Maybe<Array<Maybe<Person>>>;
-  /**
-   * A count of the total number of objects in this connection, ignoring pagination.
-   * This allows a client to fetch the first five objects by passing "5" as the
-   * argument to "first", then fetch the total count so it could display "5 of 83",
-   * for example.
-   */
-  totalCount?: Maybe<Scalars['Int']>;
-};
-
-/** An edge in a connection. */
-type StarshipPilotsEdge = {
-  __typename?: 'StarshipPilotsEdge';
-  /** A cursor for use in pagination */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge */
-  node?: Maybe<Person>;
-};
-
-/** A connection to a list of items. */
-type StarshipsConnection = {
-  __typename?: 'StarshipsConnection';
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<StarshipsEdge>>>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /**
-   * A list of all of the objects returned in the connection. This is a convenience
-   * field provided for quickly exploring the API; rather than querying for
-   * "{ edges { node } }" when no edge data is needed, this field can be be used
-   * instead. Note that when clients like Relay need to fetch the "cursor" field on
-   * the edge to enable efficient pagination, this shortcut cannot be used, and the
-   * full "{ edges { node } }" version should be used instead.
-   */
-  starships?: Maybe<Array<Maybe<Starship>>>;
-  /**
-   * A count of the total number of objects in this connection, ignoring pagination.
-   * This allows a client to fetch the first five objects by passing "5" as the
-   * argument to "first", then fetch the total count so it could display "5 of 83",
-   * for example.
-   */
-  totalCount?: Maybe<Scalars['Int']>;
-};
-
-/** An edge in a connection. */
-type StarshipsEdge = {
-  __typename?: 'StarshipsEdge';
-  /** A cursor for use in pagination */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge */
-  node?: Maybe<Starship>;
-};
-
-/** A single transport craft that does not have hyperdrive capability */
-type Vehicle = Node & {
-  __typename?: 'Vehicle';
-  /** The maximum number of kilograms that this vehicle can transport. */
-  cargoCapacity?: Maybe<Scalars['Float']>;
-  /**
-   * The maximum length of time that this vehicle can provide consumables for its
-   * entire crew without having to resupply.
-   */
-  consumables?: Maybe<Scalars['String']>;
-  /** The cost of this vehicle new, in Galactic Credits. */
-  costInCredits?: Maybe<Scalars['Float']>;
-  /** The ISO 8601 date format of the time that this resource was created. */
-  created?: Maybe<Scalars['String']>;
-  /** The number of personnel needed to run or pilot this vehicle. */
-  crew?: Maybe<Scalars['String']>;
-  /** The ISO 8601 date format of the time that this resource was edited. */
-  edited?: Maybe<Scalars['String']>;
-  filmConnection?: Maybe<VehicleFilmsConnection>;
-  /** The ID of an object */
-  id: Scalars['ID'];
-  /** The length of this vehicle in meters. */
-  length?: Maybe<Scalars['Float']>;
-  /** The manufacturers of this vehicle. */
-  manufacturers?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The maximum speed of this vehicle in atmosphere. */
-  maxAtmospheringSpeed?: Maybe<Scalars['Int']>;
-  /**
-   * The model or official name of this vehicle. Such as "All-Terrain Attack
-   * Transport".
-   */
-  model?: Maybe<Scalars['String']>;
-  /**
-   * The name of this vehicle. The common name, such as "Sand Crawler" or "Speeder
-   * bike".
-   */
-  name?: Maybe<Scalars['String']>;
-  /** The number of non-essential people this vehicle can transport. */
-  passengers?: Maybe<Scalars['String']>;
-  pilotConnection?: Maybe<VehiclePilotsConnection>;
-  /** The class of this vehicle, such as "Wheeled" or "Repulsorcraft". */
-  vehicleClass?: Maybe<Scalars['String']>;
-};
-
-
-/** A single transport craft that does not have hyperdrive capability */
-type VehicleFilmConnectionArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-};
-
-
-/** A single transport craft that does not have hyperdrive capability */
-type VehiclePilotConnectionArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-};
-
-/** A connection to a list of items. */
-type VehicleFilmsConnection = {
-  __typename?: 'VehicleFilmsConnection';
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<VehicleFilmsEdge>>>;
-  /**
-   * A list of all of the objects returned in the connection. This is a convenience
-   * field provided for quickly exploring the API; rather than querying for
-   * "{ edges { node } }" when no edge data is needed, this field can be be used
-   * instead. Note that when clients like Relay need to fetch the "cursor" field on
-   * the edge to enable efficient pagination, this shortcut cannot be used, and the
-   * full "{ edges { node } }" version should be used instead.
-   */
-  films?: Maybe<Array<Maybe<Film>>>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /**
-   * A count of the total number of objects in this connection, ignoring pagination.
-   * This allows a client to fetch the first five objects by passing "5" as the
-   * argument to "first", then fetch the total count so it could display "5 of 83",
-   * for example.
-   */
-  totalCount?: Maybe<Scalars['Int']>;
-};
-
-/** An edge in a connection. */
-type VehicleFilmsEdge = {
-  __typename?: 'VehicleFilmsEdge';
-  /** A cursor for use in pagination */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge */
-  node?: Maybe<Film>;
-};
-
-/** A connection to a list of items. */
-type VehiclePilotsConnection = {
-  __typename?: 'VehiclePilotsConnection';
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<VehiclePilotsEdge>>>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /**
-   * A list of all of the objects returned in the connection. This is a convenience
-   * field provided for quickly exploring the API; rather than querying for
-   * "{ edges { node } }" when no edge data is needed, this field can be be used
-   * instead. Note that when clients like Relay need to fetch the "cursor" field on
-   * the edge to enable efficient pagination, this shortcut cannot be used, and the
-   * full "{ edges { node } }" version should be used instead.
-   */
-  pilots?: Maybe<Array<Maybe<Person>>>;
-  /**
-   * A count of the total number of objects in this connection, ignoring pagination.
-   * This allows a client to fetch the first five objects by passing "5" as the
-   * argument to "first", then fetch the total count so it could display "5 of 83",
-   * for example.
-   */
-  totalCount?: Maybe<Scalars['Int']>;
-};
-
-/** An edge in a connection. */
-type VehiclePilotsEdge = {
-  __typename?: 'VehiclePilotsEdge';
-  /** A cursor for use in pagination */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge */
-  node?: Maybe<Person>;
-};
-
-/** A connection to a list of items. */
-type VehiclesConnection = {
-  __typename?: 'VehiclesConnection';
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<VehiclesEdge>>>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /**
-   * A count of the total number of objects in this connection, ignoring pagination.
-   * This allows a client to fetch the first five objects by passing "5" as the
-   * argument to "first", then fetch the total count so it could display "5 of 83",
-   * for example.
-   */
-  totalCount?: Maybe<Scalars['Int']>;
-  /**
-   * A list of all of the objects returned in the connection. This is a convenience
-   * field provided for quickly exploring the API; rather than querying for
-   * "{ edges { node } }" when no edge data is needed, this field can be be used
-   * instead. Note that when clients like Relay need to fetch the "cursor" field on
-   * the edge to enable efficient pagination, this shortcut cannot be used, and the
-   * full "{ edges { node } }" version should be used instead.
-   */
-  vehicles?: Maybe<Array<Maybe<Vehicle>>>;
-};
-
-/** An edge in a connection. */
-type VehiclesEdge = {
-  __typename?: 'VehiclesEdge';
-  /** A cursor for use in pagination */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge */
-  node?: Maybe<Vehicle>;
-};
-
-type AllFilmsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type AllFilmsQuery = { __typename?: 'Root', allFilms?: { __typename?: 'FilmsConnection', films?: Array<{ __typename?: 'Film', title?: string | null | undefined, id: string } | null | undefined> | null | undefined } | null | undefined };
-
-type AllPeopleQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type AllPeopleQuery = { __typename?: 'Root', allPeople?: { __typename?: 'PeopleConnection', people?: Array<{ __typename?: 'Person', name?: string | null | undefined, gender?: string | null | undefined, id: string, homeworld?: { __typename?: 'Planet', name?: string | null | undefined } | null | undefined, species?: { __typename?: 'Species', name?: string | null | undefined } | null | undefined } | null | undefined> | null | undefined } | null | undefined };
-
-type AllPlanetsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type AllPlanetsQuery = { __typename?: 'Root', allPlanets?: { __typename?: 'PlanetsConnection', planets?: Array<{ __typename?: 'Planet', name?: string | null | undefined, diameter?: number | null | undefined, population?: number | null | undefined, gravity?: string | null | undefined, id: string } | null | undefined> | null | undefined } | null | undefined };
-
-type AllSpeciesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type AllSpeciesQuery = { __typename?: 'Root', allSpecies?: { __typename?: 'SpeciesConnection', species?: Array<{ __typename?: 'Species', name?: string | null | undefined, id: string } | null | undefined> | null | undefined } | null | undefined };
-
-type AllStarshipsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type AllStarshipsQuery = { __typename?: 'Root', allStarships?: { __typename?: 'StarshipsConnection', starships?: Array<{ __typename?: 'Starship', name?: string | null | undefined, id: string } | null | undefined> | null | undefined } | null | undefined };
-
-type StatsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type StatsQuery = { __typename?: 'Root', allFilms?: { __typename?: 'FilmsConnection', totalCount?: number | null | undefined } | null | undefined, allPeople?: { __typename?: 'PeopleConnection', totalCount?: number | null | undefined } | null | undefined, allPlanets?: { __typename?: 'PlanetsConnection', totalCount?: number | null | undefined } | null | undefined, allSpecies?: { __typename?: 'SpeciesConnection', totalCount?: number | null | undefined } | null | undefined, allStarships?: { __typename?: 'StarshipsConnection', totalCount?: number | null | undefined } | null | undefined, allVehicles?: { __typename?: 'VehiclesConnection', totalCount?: number | null | undefined } | null | undefined };
-
-type AllVehiclesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type AllVehiclesQuery = { __typename?: 'Root', allVehicles?: { __typename?: 'VehiclesConnection', vehicles?: Array<{ __typename?: 'Vehicle', id: string, name?: string | null | undefined, model?: string | null | undefined } | null | undefined> | null | undefined } | null | undefined };
-
-type AllFilmsQueryStore = import("@urql/svelte").OperationStore<AllFilmsQuery, AllFilmsQueryVariables>;
-type AllPeopleQueryStore = import("@urql/svelte").OperationStore<AllPeopleQuery, AllPeopleQueryVariables>;
-type AllPlanetsQueryStore = import("@urql/svelte").OperationStore<AllPlanetsQuery, AllPlanetsQueryVariables>;
-type AllSpeciesQueryStore = import("@urql/svelte").OperationStore<AllSpeciesQuery, AllSpeciesQueryVariables>;
-type AllStarshipsQueryStore = import("@urql/svelte").OperationStore<AllStarshipsQuery, AllStarshipsQueryVariables>;
-type StatsQueryStore = import("@urql/svelte").OperationStore<StatsQuery, StatsQueryVariables>;
-type AllVehiclesQueryStore = import("@urql/svelte").OperationStore<AllVehiclesQuery, AllVehiclesQueryVariables>;
+type AllJudgesQueryStore = import("@urql/svelte").OperationStore<AllJudgesQuery, AllJudgesQueryVariables>;
+type JudgeQueryStore = import("@urql/svelte").OperationStore<JudgeQuery, JudgeQueryVariables>;

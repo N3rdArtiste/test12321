@@ -1,0 +1,7 @@
+query AllJudges($limit: Int, $page: Int){
+    judges(limit:$limit, page:$page) {
+        __typename
+        id
+        name
+    }
+}

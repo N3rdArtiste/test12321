@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-static'
+import adapter from '@sveltejs/adapter-auto'
 import preprocess from 'svelte-preprocess'
 import path from 'path'
 
@@ -15,16 +15,14 @@ const config = {
     ],
 
     kit: {
-        adapter: adapter({ fallback: '200.html' }),
-
-        // hydrate the <div id="svelte"> element in src/app.html
-        target: '#svelte',
-
+        adapter: adapter(),
         vite: {
             optimizeDeps: {
                 exclude: ['@urql/svelte'],
             },
-
+            // files: {
+            //     serviceWorker: 'src/service-worker',
+            // },
             resolve: {
                 alias: {
                     _config: path.resolve('./src/_config'),

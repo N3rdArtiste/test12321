@@ -1,8 +1,0 @@
-query AllSpecies {
-    allSpecies {
-        species {
-            name
-            id
-        }
-    }
-}

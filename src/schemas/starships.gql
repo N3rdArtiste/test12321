@@ -1,8 +1,0 @@
-query AllStarships {
-    allStarships {
-        starships {
-            name
-            id
-        }
-    }
-}

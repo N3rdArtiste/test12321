@@ -1,54 +1,45 @@
-<script context="module" lang="ts">
-    export const prerender = true
-</script>
+<script context="module" type="ts">
+    import { AllJudgesDocument } from '_config/graphql-tags/graphql-tags-generated'
 
-<script lang="ts">
-    import { api } from 'services/api'
-    import { stats } from 'stores/stats'
-    import { contentTypes } from 'constants/content-types'
-
-    api(stats)
-
-    import Query from 'components/query.svelte'
-    import Counter from 'components/counter.svelte'
-
-    const statsDataRestructurer = (data: StatsQuery) => {
-        const arr = []
-        for (const [key, value] of Object.entries(data)) {
-            if (value !== 'Root') arr.push({ key, value: value?.totalCount })
+    export const load: Load = async ({ stuff }) => {
+        return {
+            props: {
+                allJudges: stuff.getOperationStore ? await stuff.getOperationStore(AllJudgesDocument, { limit: 2, page: 1 }) : null,
+            },
         }
-        return arr
     }
 </script>
 
-<svelte:head>
-    <title>Home</title>
-</svelte:head>
+<script type="ts">
+    import { query } from '@urql/svelte'
+    import uniqBy from 'lodash/uniqBy.js'
+    export let allJudges: AllJudgesQueryStore
+    const loadMore = () => {
+        $allJudges.variables = { ...$allJudges.variables, page: ($allJudges.variables?.page ?? 0) + 1 }
+    }
+    let judgesArr: AllJudgesQuery['judges']
+    $: judgesArr = [...(judgesArr ?? []), ...($allJudges.data?.judges ?? [])]
+    query(allJudges)
+</script>
 
 <section>
-    <Query content={$stats} let:data>
-        <h1>We have a graphql api with:</h1>
-        {#each statsDataRestructurer(data) as stat}
-            <a href={`/${stat.key.replace('all', '').toLowerCase()}`}>
-                {stat.key}
-                {stat.value}
-            </a>
-        {/each}
-    </Query>
-
-    <Counter />
+    {#each uniqBy(judgesArr, 'id') as judge}
+        <a href={`/judge/${judge?.id}`}>
+            <div class="card">
+                <p>{judge?.name}</p>
+            </div>
+        </a>
+    {/each}
 </section>
+<button on:click={loadMore}>Load more</button>
 
-<style lang="scss">
+<style>
+    .card {
+        height: 100px;
+        width: 100px;
+        background-color: pink;
+    }
     section {
-        display: grid;
-
-        width: 100%;
-        max-width: calc(100vw - 3rem);
-        margin: 3rem auto;
-
-        a {
-            justify-self: center;
-        }
+        margin-bottom: 10px;
     }
 </style>
