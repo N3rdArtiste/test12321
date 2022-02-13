@@ -1,0 +1,9 @@
+button {
+    display: grid;
+    grid-auto-flow: column;
+}
+
+line {
+    transform: translate(-1rem, 1.07rem);
+    width: 100px;
+}

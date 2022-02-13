@@ -108,6 +108,7 @@ type Query = {
   social_media_links?: Maybe<Array<Maybe<Social_Media_Links>>>;
   social_media_links_aggregated?: Maybe<Array<Maybe<Social_Media_Links_Aggregated>>>;
   social_media_links_by_id?: Maybe<Social_Media_Links>;
+  test?: Maybe<Test>;
 };
 
 
@@ -1441,13 +1442,13 @@ type Enter_Page_Question_Titles_Filter = {
 type Footer = {
   __typename?: 'footer';
   copyright_text?: Maybe<Scalars['String']>;
+  footer_logo?: Maybe<Directus_Files>;
   id?: Maybe<Scalars['ID']>;
-  logo?: Maybe<Directus_Files>;
   text?: Maybe<Scalars['String']>;
 };
 
 
-type FooterLogoArgs = {
+type FooterFooter_LogoArgs = {
   filter?: InputMaybe<Directus_Files_Filter>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -2513,6 +2514,12 @@ type String_Filter_Operators = {
   _starts_with?: InputMaybe<Scalars['String']>;
 };
 
+type Test = {
+  __typename?: 'test';
+  id?: Maybe<Scalars['ID']>;
+  mark?: Maybe<Scalars['String']>;
+};
+
 type AllJudgesQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>;
   page?: InputMaybe<Scalars['Int']>;
@@ -2520,6 +2527,16 @@ type AllJudgesQueryVariables = Exact<{
 
 
 type AllJudgesQuery = { __typename?: 'Query', judges?: Array<{ __typename: 'judges', id?: string | null, name?: string | null } | null> | null };
+
+type HeaderAndFooterQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type HeaderAndFooterQuery = { __typename?: 'Query', header?: { __typename?: 'header', id?: string | null, logo?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null, footer?: { __typename?: 'footer', id?: string | null, text?: string | null, copyright_text?: string | null, footer_logo?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null, partners?: Array<{ __typename?: 'partners', id?: string | null, link?: string | null, partners?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null> | null, our_sponsors?: Array<{ __typename?: 'our_sponsors', id?: string | null, link?: string | null, image?: { __typename?: 'directus_files', filename_disk?: string | null, id?: string | null, description?: string | null } | null } | null> | null, social_media_links?: Array<{ __typename?: 'social_media_links', id?: string | null, link?: string | null, image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null> | null };
+
+type HomePageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type HomePageQuery = { __typename?: 'Query', home_page?: { __typename?: 'home_page', id?: string | null, enter_now_section_heading?: string | null, enter_now_section_sub_heading?: string | null, enter_now_section_body?: string | null, enter_now_section_CTA_label?: string | null } | null };
 
 type JudgeQueryVariables = Exact<{
   id: Scalars['ID'];
@@ -2529,4 +2546,6 @@ type JudgeQueryVariables = Exact<{
 type JudgeQuery = { __typename?: 'Query', judges_by_id?: { __typename: 'judges', name?: string | null, id?: string | null } | null };
 
 type AllJudgesQueryStore = import("@urql/svelte").OperationStore<AllJudgesQuery, AllJudgesQueryVariables>;
+type HeaderAndFooterQueryStore = import("@urql/svelte").OperationStore<HeaderAndFooterQuery, HeaderAndFooterQueryVariables>;
+type HomePageQueryStore = import("@urql/svelte").OperationStore<HomePageQuery, HomePageQueryVariables>;
 type JudgeQueryStore = import("@urql/svelte").OperationStore<JudgeQuery, JudgeQueryVariables>;

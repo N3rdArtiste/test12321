@@ -1,0 +1,9 @@
+query HomePage{
+    home_page {
+        id
+        enter_now_section_heading
+        enter_now_section_sub_heading
+        enter_now_section_body
+        enter_now_section_CTA_label
+    }
+} 

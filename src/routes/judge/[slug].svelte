@@ -34,7 +34,7 @@
     .card {
         height: 100px;
         width: 100px;
-        background-color: pink;
+        background-color: var(--color-brand);
     }
     section {
         margin-bottom: 10px;

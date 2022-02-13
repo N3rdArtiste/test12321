@@ -1,0 +1,47 @@
+query HeaderAndFooter {
+    header {
+        id
+        logo {
+            id
+            filename_disk
+            description
+        }
+    }
+    footer {
+        id
+        text
+        copyright_text
+        footer_logo {
+            id
+            filename_disk
+            description
+        }
+    }
+    partners {
+        id
+        link
+        partners {
+            id
+            filename_disk
+            description
+        }
+    }
+    our_sponsors {
+        id
+        image {
+            filename_disk
+            id
+            description
+        }
+        link
+    }
+    social_media_links {
+        id
+        link
+        image {
+            id
+            filename_disk
+            description
+        }
+    }
+}
