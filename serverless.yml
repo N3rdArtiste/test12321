@@ -1,0 +1,21 @@
+component: website                                  # (required) name of the component. In that case, it's website.
+name: yia                                           # (required) name of your website component instance.
+stage: qa                                           # (optional) serverless dashboard stage. default is dev.
+
+inputs:
+  src:
+    src: ./src
+    hook: npm run build
+    dist: ./build
+  domain: serverless.com                            # (optional) domain name. this could also be a subdomain.
+  region: ap-southeast-2                            # (optional) aws region to deploy to. default is us-east-1.
+  bucketName: yia-qa-bucket                         # (optional) aws bucket name. default is an auto generated name.
+  indexDocument: index.html                         # (optional) index document for your website. default is index.html.
+  errorDocument: index.html                         # (optional) error document for your website. default is index.html.
+
+
+# run the following two steps
+# npm run build
+# serverless deploy
+# Reference: https://github.com/serverless-components/website
+
