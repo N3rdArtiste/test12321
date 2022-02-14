@@ -1,0 +1,56 @@
+# Default BitBucket Pipeline for Innovation Labs projects
+# REMEMBER to set the ECR_IMAGE_NAME as a repository variable in BitBucket
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: atlassian/default-image:2
+
+pipelines:
+  branches:
+    '{master,dev,hotfix/**}':
+      - step:
+          name: Docker Versioned Build
+          services:
+            - docker
+          caches:
+            - docker
+          script:
+            - apt-get update && apt-get install -y awscli
+
+            # Get the build number from BitBucket
+            - echo $BITBUCKET_BUILD_NUMBER
+
+            - export VERSION_TAG=${BITBUCKET_BUILD_NUMBER:-$BITBUCKET_TAG}
+            - if [ $BITBUCKET_BRANCH == 'dev' ]; then export VERSION_TAG='dev'; fi
+            - if [[ $BITBUCKET_BRANCH =~ ^hotfix/.*$ ]]; then export VERSION_TAG=hotfix-$BITBUCKET_BUILD_NUMBER; fi
+
+            # Stop the build if the image name variable is not set
+            - if [ -z "$ECR_IMAGE_NAME" ]; then echo "Bitbucket Repository Variable 'ECR_IMAGE_NAME' is not set."; exit 1;  fi
+
+            # Stop the build if the npm token variable is not set
+            - if [ -z "$MYGET_AUTH_TOKEN" ]; then echo "Bitbucket Repository Variable 'MYGET_AUTH_TOKEN' is not set."; exit 1;  fi
+
+            # Tag the repo with the build number
+            - if [ $BITBUCKET_BRANCH != 'dev' ]; then git tag $VERSION_TAG; git push origin --tags; fi
+
+            # Determine the tagged image name.
+            # This is the image name from the repo env variables, and the bitbucket build number
+            - export FULL_IMAGE_NAME=$ECR_REPO_URL/$ECR_IMAGE_NAME
+            - export TAGGED_IMAGE_NAME=$FULL_IMAGE_NAME:$VERSION_TAG
+
+            - echo $TAGGED_IMAGE_NAME
+
+            # Create .npmrc with cucumber npm token
+            - echo "@cucumber:registry=https://www.myget.org/F/cucumber/npm/" >> .npmrc
+            - echo "//www.myget.org/F/cucumber/npm/:_authToken=${MYGET_AUTH_TOKEN}" >> .npmrc
+
+            # Build the image.
+            - docker build -t $TAGGED_IMAGE_NAME .
+
+            # authenticate with the ECR
+            - aws configure set aws_access_key_id "${ECR_AWS_KEY}"
+            - aws configure set aws_secret_access_key "${ECR_AWS_SECRET}"
+            - eval $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION | sed 's;https://;;g')
+            - docker push $TAGGED_IMAGE_NAME
+definitions:
+  services:
+    docker:
+      memory: 2048 # increase memory for docker-in-docker from 1GB to 2GB

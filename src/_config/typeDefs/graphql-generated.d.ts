@@ -1481,7 +1481,6 @@ type Home_Page = {
   enter_now_section_CTA_label?: Maybe<Scalars['String']>;
   enter_now_section_body?: Maybe<Scalars['String']>;
   enter_now_section_heading?: Maybe<Scalars['String']>;
-  enter_now_section_sub_heading?: Maybe<Scalars['String']>;
   hero_section_right_side_svg?: Maybe<Directus_Files>;
   hero_section_video?: Maybe<Directus_Files>;
   id?: Maybe<Scalars['ID']>;
@@ -1542,7 +1541,6 @@ type Home_Page_Filter = {
   enter_now_section_CTA_label?: InputMaybe<String_Filter_Operators>;
   enter_now_section_body?: InputMaybe<String_Filter_Operators>;
   enter_now_section_heading?: InputMaybe<String_Filter_Operators>;
-  enter_now_section_sub_heading?: InputMaybe<String_Filter_Operators>;
   hero_section_right_side_svg?: InputMaybe<Directus_Files_Filter>;
   hero_section_video?: InputMaybe<Directus_Files_Filter>;
   id?: InputMaybe<Number_Filter_Operators>;
@@ -2533,10 +2531,10 @@ type HeaderAndFooterQueryVariables = Exact<{ [key: string]: never; }>;
 
 type HeaderAndFooterQuery = { __typename?: 'Query', header?: { __typename?: 'header', id?: string | null, logo?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null, footer?: { __typename?: 'footer', id?: string | null, text?: string | null, copyright_text?: string | null, footer_logo?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null, partners?: Array<{ __typename?: 'partners', id?: string | null, link?: string | null, partners?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null> | null, our_sponsors?: Array<{ __typename?: 'our_sponsors', id?: string | null, link?: string | null, image?: { __typename?: 'directus_files', filename_disk?: string | null, id?: string | null, description?: string | null } | null } | null> | null, social_media_links?: Array<{ __typename?: 'social_media_links', id?: string | null, link?: string | null, image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null> | null };
 
-type HomePageQueryVariables = Exact<{ [key: string]: never; }>;
+type HomepageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type HomePageQuery = { __typename?: 'Query', home_page?: { __typename?: 'home_page', id?: string | null, enter_now_section_heading?: string | null, enter_now_section_sub_heading?: string | null, enter_now_section_body?: string | null, enter_now_section_CTA_label?: string | null } | null };
+type HomepageQuery = { __typename?: 'Query', home_page?: { __typename?: 'home_page', id?: string | null, enter_now_section_heading?: string | null, enter_now_section_body?: string | null, enter_now_section_CTA_label?: string | null, innovator_section_heading?: string | null, innovator_section_body?: string | null, innovator_section_CTA_label?: string | null, brands_section_heading?: string | null, brands_section_description?: string | null, brands_section_CTA_label?: string | null, hero_section_right_side_svg?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null, innovator_section_image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null };
 
 type JudgeQueryVariables = Exact<{
   id: Scalars['ID'];
@@ -2547,5 +2545,5 @@ type JudgeQuery = { __typename?: 'Query', judges_by_id?: { __typename: 'judges',
 
 type AllJudgesQueryStore = import("@urql/svelte").OperationStore<AllJudgesQuery, AllJudgesQueryVariables>;
 type HeaderAndFooterQueryStore = import("@urql/svelte").OperationStore<HeaderAndFooterQuery, HeaderAndFooterQueryVariables>;
-type HomePageQueryStore = import("@urql/svelte").OperationStore<HomePageQuery, HomePageQueryVariables>;
+type HomepageQueryStore = import("@urql/svelte").OperationStore<HomepageQuery, HomepageQueryVariables>;
 type JudgeQueryStore = import("@urql/svelte").OperationStore<JudgeQuery, JudgeQueryVariables>;

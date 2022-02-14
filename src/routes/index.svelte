@@ -1,9 +1,9 @@
 <script context="module" type="ts">
-    import { AllJudgesDocument } from '_config/graphql-tags/graphql-tags-generated'
+    import { HomepageDocument } from '_config/graphql-tags/graphql-tags-generated'
     export const load: Load = async ({ stuff }) => {
         return {
             props: {
-                allJudges: stuff.getOperationStore ? await stuff.getOperationStore(AllJudgesDocument, { limit: 2, page: 1 }) : null,
+                homepage: stuff.getOperationStore ? await stuff.getOperationStore(HomepageDocument) : null,
             },
         }
     }
@@ -11,19 +11,18 @@
 
 <script type="ts">
     import { query } from '@urql/svelte'
-    import uniqBy from 'lodash/uniqBy.js'
     import Homepage from 'modules/homepage/homepage.svelte'
-    export let allJudges: AllJudgesQueryStore
-    const loadMore = () => {
-        $allJudges.variables = { ...$allJudges.variables, page: ($allJudges.variables?.page ?? 0) + 1 }
-    }
-    let judgesArr: AllJudgesQuery['judges']
-    $: judgesArr = [...(judgesArr ?? []), ...($allJudges.data?.judges ?? [])]
-    query(allJudges)
+    import type { HomepageQueryStore } from '_config/typeDefs/graphql-generated'
+
+    export let homepage: HomepageQueryStore
+    query(homepage)
+    $: console.log($homepage)
 </script>
 
 <section>
-    <Homepage />
+    {#if $homepage.data}
+        <Homepage data={$homepage.data.home_page} />
+    {/if}
     <!-- {#each uniqBy(judgesArr, 'id') as judge}
         <a href={`/judge/${judge?.id}`}>
             <div class="card">

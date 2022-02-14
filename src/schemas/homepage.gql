@@ -1,9 +1,24 @@
-query HomePage{
+query Homepage {
     home_page {
         id
         enter_now_section_heading
-        enter_now_section_sub_heading
         enter_now_section_body
         enter_now_section_CTA_label
+        hero_section_right_side_svg {
+            id
+            filename_disk
+            description
+        }
+        innovator_section_heading
+        innovator_section_body
+        innovator_section_CTA_label
+        innovator_section_image {
+            id
+            filename_disk
+            description
+        }
+        brands_section_heading
+        brands_section_description
+        brands_section_CTA_label
     }
-} 
+}

@@ -10,7 +10,7 @@ declare namespace App {
     interface Session {}
 
     interface Stuff {
-        getOperationStore: (queryDocument: DocumentNode, variables: Object | undefined) => Promise<OperationStore>
+        getOperationStore: (queryDocument: DocumentNode, variables?: Object) => Promise<OperationStore>
     }
 }
 
