@@ -19,5 +19,5 @@ RUN npm run build
 
 WORKDIR /usr/src/app/build
 
-EXPOSE 3000
+EXPOSE 3131
 CMD ["npx", "serve"]

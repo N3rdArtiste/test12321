@@ -1,5 +1,8 @@
 <script context="module" type="ts">
+    export const prerender = true
+
     import { HomepageDocument } from '_config/graphql-tags/graphql-tags-generated'
+
     export const load: Load = async ({ stuff }) => {
         return {
             props: {
@@ -12,7 +15,6 @@
 <script type="ts">
     import { query } from '@urql/svelte'
     import Homepage from 'modules/homepage/homepage.svelte'
-    import type { HomepageQueryStore } from '_config/typeDefs/graphql-generated'
 
     export let homepage: HomepageQueryStore
     query(homepage)

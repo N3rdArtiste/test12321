@@ -61,10 +61,10 @@
         }
     })
     let navItems = [
-        { label: 'Enter', slug: '/enter' },
-        { label: 'About', slug: '/enter' },
-        { label: 'Inspiration', slug: '/enter' },
-        { label: 'Past Winners', slug: '/enter' },
+        { label: 'Enter', slug: 'enter' },
+        { label: 'About', slug: '/' },
+        { label: 'Inspiration', slug: '/' },
+        { label: 'Past Winners', slug: '/' },
     ]
 </script>
 

@@ -1,8 +1,8 @@
 <script lang="ts">
+    export let data: HomepageQuery['home_page']
+
     import ArrowButton from 'components/arrow-button/arrowButton.svelte'
     import { getDirectusAssetLink } from 'helpers/directus.helpers'
-    import type { HomepageQuery } from '_config/typeDefs/graphql-generated'
-    export let data: HomepageQuery['home_page']
 </script>
 
 <section>
