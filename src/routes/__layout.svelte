@@ -28,7 +28,7 @@
     import { getDirectusAssetLink } from 'helpers/directus.helpers'
     import Header from 'components/header/header.svelte'
     import Footer from 'components/footer/footer.svelte'
-    import type { HeaderAndFooterQueryStore } from '_config/typeDefs/graphql-generated'
+
     export let _client: Client
     setClient(_client)
     export let headerAndFooterContent: HeaderAndFooterQueryStore
@@ -62,9 +62,9 @@
     })
     let navItems = [
         { label: 'Enter', slug: '/enter' },
-        { label: 'About', slug: 'asd' },
-        { label: 'Inspiration', slug: 'asd' },
-        { label: 'Past Winners', slug: 'asd' },
+        { label: 'About', slug: '/enter' },
+        { label: 'Inspiration', slug: '/enter' },
+        { label: 'Past Winners', slug: '/enter' },
     ]
 </script>
 
