@@ -20,7 +20,7 @@
     <h2>Our sponsors</h2>
     <div bind:this={sponsorsContainer}>
         {#each sponsors ?? [] as sponsor}
-            <a href={sponsor.href}> <img src={sponsor.src} alt={sponsor.alt} /> </a>
+            <a href="#"> <img src={sponsor.src} alt={sponsor.alt} /> </a>
         {/each}
     </div>
     <button on:click={scrollSponsors}>
@@ -39,12 +39,12 @@
     </nav>
     <div>
         {#each socialMediaIcons ?? [] as socialMediaIcon}
-            <a href={socialMediaIcon.href}> <img src={socialMediaIcon.src} alt={socialMediaIcon.alt} /> </a>
+            <a href="#"> <img src={socialMediaIcon.src} alt={socialMediaIcon.alt} /> </a>
         {/each}
     </div>
     <div>
         {#each partners ?? [] as partner}
-            <a href={partner.href}> <img src={partner.src} alt={partner.alt} /> </a>
+            <a href="#"> <img src={partner.src} alt={partner.alt} /> </a>
         {/each}
     </div>
     <p>
