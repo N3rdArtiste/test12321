@@ -1,8 +1,10 @@
 <script context="module" type="ts">
     import { operationStore, query } from '@urql/svelte'
-    import { client } from '../_config/graphql-client'
-    import { HeaderAndFooterDocument } from '_config/graphql-tags/graphql-tags-generated'
+
     import { get } from 'svelte/store'
+
+    import { HeaderAndFooterDocument } from '_config/graphql-tags/graphql-tags-generated'
+    import { client } from '_config/graphql-client'
 
     export const load: Load = async () => {
         const _client = client
@@ -22,19 +24,27 @@
 </script>
 
 <script type="ts">
-    import '../global.scss'
+    export let _client: Client
+    export let headerAndFooterContent: HeaderAndFooterQueryStore
+
+    import 'styles/global.scss'
+
     import { setClient } from '@urql/svelte'
     import type { DocumentNode } from 'graphql'
-    import { getDirectusAssetLink } from 'helpers/directus.helpers'
-    import Header from 'components/header/header.svelte'
-    import Footer from 'components/footer/footer.svelte'
 
-    export let _client: Client
+    import { paths } from '_config/constants/paths'
+    import { getDirectusAssetLink } from 'helpers/string'
+
+    import Header from 'components/page/header.svelte'
+    import Footer from 'components/page/footer.svelte'
+
     setClient(_client)
-    export let headerAndFooterContent: HeaderAndFooterQueryStore
     query(headerAndFooterContent)
 
-    let partners: Array<{ src: string; alt: string; href: string }> | undefined
+    let partners: StandardData
+    let sponsors: StandardData
+    let socialMediaIcons: StandardData
+
     $: partners = $headerAndFooterContent.data?.partners?.map(partner => {
         return {
             href: partner?.link ?? '',
@@ -43,7 +53,6 @@
         }
     })
 
-    let sponsors: Array<{ src: string; alt: string; href: string }> | undefined
     $: sponsors = $headerAndFooterContent.data?.our_sponsors?.map(sponsor => {
         return {
             href: sponsor?.link ?? '',
@@ -52,7 +61,6 @@
         }
     })
 
-    let socialMediaIcons: Array<{ src: string; alt: string; href: string }> | undefined
     $: socialMediaIcons = $headerAndFooterContent.data?.social_media_links?.map(socialMediaIcon => {
         return {
             href: socialMediaIcon?.link ?? '',
@@ -60,12 +68,6 @@
             src: getDirectusAssetLink(socialMediaIcon?.image?.filename_disk) ?? '',
         }
     })
-    let navItems = [
-        { label: 'Enter', slug: 'enter' },
-        { label: 'About', slug: '/' },
-        { label: 'Inspiration', slug: '/' },
-        { label: 'Past Winners', slug: '/' },
-    ]
 </script>
 
 <div class="wrapper">
@@ -73,11 +75,13 @@
         <Header
             topMenuItems={[{ label: 'Account' }, { label: 'Log out' }]}
             logo={{ src: getDirectusAssetLink($headerAndFooterContent.data.header?.logo?.filename_disk), alt: $headerAndFooterContent.data.header?.logo?.description ?? '' }}
-            {navItems}
+            navItems={paths}
         />
+
         <div>
             <slot />
         </div>
+
         <Footer
             logo={{
                 src: getDirectusAssetLink($headerAndFooterContent.data.footer?.footer_logo?.filename_disk),
@@ -86,7 +90,7 @@
             {partners}
             {sponsors}
             {socialMediaIcons}
-            {navItems}
+            navItems={paths}
             copyrightText={$headerAndFooterContent.data.footer?.copyright_text ?? ''}
             shortAboutUsText={$headerAndFooterContent.data.footer?.text ?? ''}
         />

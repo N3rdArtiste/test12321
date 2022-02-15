@@ -1,4 +1,4 @@
-export const getInlineSvg = (svgLink: string) => {
+export const getInlineSvg = (svgLink: string): Promise<string> => {
     return fetch(svgLink)
         .then(res => {
             return res.text()

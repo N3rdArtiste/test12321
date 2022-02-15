@@ -1,43 +1,5 @@
-@font-face {
-    font-family: 'Munken Sans Web';
-    font-weight: 500;
-    src: url(/fonts/MunkenSansWeb-Regular.woff) format('woff');
-}
-
-@font-face {
-    font-family: 'Munken Sans Web';
-    font-weight: 700;
-    src: url(/fonts/MunkenSansWeb-Medium.woff) format('woff');
-}
-@font-face {
-    font-family: 'Munken Sans Web';
-    font-weight: 900;
-    src: url(/fonts/MunkenSansWeb-Bold.woff) format('woff');
-}
-
-:root {
-    font-size: 62.25%;
-
-    --color-white: white;
-    --color-black: black;
-    --color-brand: #fcda09;
-    --color-dark-grey: #bfbcb1;
-    --color-grey: #e5e4e0;
-    --color-light-grey: #f2f2f0;
-
-    font-family: 'Munken Sans Web';
-    color: var(--color-black);
-
-    --header-height: 9.7rem;
-    --grid-template-columns: repeat(6, 1fr);
-    --column-gap: 1rem;
-
-    @media only screen and (min-width: 48.1rem) {
-        --header-height: 15.5rem;
-        --grid-template-columns: repeat(12, minmax(auto, 12.2rem));
-        --column-gap: 1.6rem;
-    }
-}
+@import 'styles/_fonts.scss';
+@import 'styles/_variables.scss';
 
 *,
 *::after,
@@ -62,6 +24,18 @@ body {
     scrollbar-width: none; /* Firefox */
     scrollbar-color: transparent transparent;
     scroll-behavior: smooth;
+}
+
+#svelte {
+    clip-path: none;
+}
+
+i {
+    font-style: normal;
+}
+b {
+    font-weight: normal;
+    display: block;
 }
 
 a,

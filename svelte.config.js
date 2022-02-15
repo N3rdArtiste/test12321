@@ -27,10 +27,13 @@ const config = {
 
             resolve: {
                 alias: {
+                    api: path.resolve('./api'),
+                    _auth: path.resolve('./src/_auth'),
                     _config: path.resolve('./src/_config'),
                     constants: path.resolve('./src/_config/constants'),
                     enums: path.resolve('./src/_config/enumerations'),
                     types: path.resolve('./src/_config/typeDefs'),
+                    assets: path.resolve('./src/assets'),
                     components: path.resolve('./src/components'),
                     helpers: path.resolve('./src/helpers'),
                     generated: path.resolve('./src/generated'),
@@ -38,6 +41,7 @@ const config = {
                     resolvers: path.resolve('./src/resolvers'),
                     schemas: path.resolve('./src/schemas'),
                     services: path.resolve('./src/services'),
+                    styles: path.resolve('./src/styles'),
                     stores: path.resolve('./src/stores'),
                     utilities: path.resolve('./src/utilities'),
                 },

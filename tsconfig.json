@@ -24,16 +24,21 @@
         "allowJs": true,
         "checkJs": true,
         "paths": {
+            "api/*": ["api/*"],
+            "_auth/*": ["src/_auth/*"],
             "_config/*": ["src/_config/*"],
             "constants/*": ["src/_config/constants/*"],
             "enums/*": ["src/_config/enumerations/*"],
             "types/*": ["src/_config/typeDefs/*"],
+            "assets/*": ["src/assets/*"],
             "components/*": ["src/components/*"],
             "helpers/*": ["src/helpers/*"],
             "generated/*": ["src/generated/*"],
             "modules/*": ["src/modules/*"],
+            "resolvers/*": ["src/resolvers/*"],
             "schemas/*": ["src/schemas/*"],
             "services/*": ["src/services/*"],
+            "styles/*": ["src/styles/*"],
             "stores/*": ["src/stores/*"],
             "utilities/*": ["src/utilities/*"]
         }

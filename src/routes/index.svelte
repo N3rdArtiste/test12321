@@ -13,16 +13,28 @@
 </script>
 
 <script type="ts">
-    import { query } from '@urql/svelte'
-    import Homepage from 'modules/homepage/homepage.svelte'
-
     export let homepage: HomepageQueryStore
+
+    import { query } from '@urql/svelte'
+
+    import Divider from 'components/divider.svelte'
+    import CompetitionIntro from 'modules/competition/intro.svelte'
+    import InnovatorsIntro from 'modules/innovators/intro.svelte'
+
     query(homepage)
-    $: console.log($homepage)
+
+    $: console.log('--homepage data--', $homepage)
 </script>
+
+<svelte:head>
+    <title>YiA Welcome</title>
+</svelte:head>
 
 <section>
     {#if $homepage.data}
-        <Homepage data={$homepage.data.home_page} />
+        <CompetitionIntro data={$homepage.data.home_page} />
+        <Divider heightDesktop={4.2} heightMobile={100} />
+        <InnovatorsIntro data={$homepage.data.home_page} />
+        <Divider heightDesktop={6.3} heightMobile={100} rule={true} />
     {/if}
 </section>
