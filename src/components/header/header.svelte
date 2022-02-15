@@ -1,4 +1,7 @@
 <script type="ts">
+    import { getDirectusAssetLink } from 'helpers/directus.helpers'
+    import { getInlineSvg } from 'helpers/get-inline-svg'
+
     export let logo: { src: string; alt: string }
     export let navItems: Array<{ label: string; slug: string }>
     export let topMenuItems: Array<{ label: string }>
@@ -13,7 +16,11 @@
 </script>
 
 <header class:isOpened>
-    <img src={logo.src} alt={logo.alt} />
+    <div>
+        {#await getInlineSvg(logo.src) then svgCode}
+            {@html svgCode}
+        {/await}
+    </div>
     <!-- svelte-ignore a11y-missing-attribute -->
     <button on:click={handleMenuOpenClose}>
         <img {...menuOpenCloseIcon[isOpened ? 0 : 1]} />

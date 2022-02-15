@@ -54,9 +54,10 @@ footer {
             text-align: end;
         }
     }
-    & > img:nth-of-type(1) {
+    & > div:nth-of-type(2) {
         grid-column: 1/7;
         grid-row: 5/6;
+        width: 100%;
         @media only screen and (min-width: 48.1rem) {
             grid-row: 5/6;
             grid-column: 1/2;
@@ -90,7 +91,7 @@ footer {
         }
     }
 
-    & > div:nth-of-type(2) {
+    & > div:nth-of-type(3) {
         grid-row: 9/10;
         grid-column: 5/7;
 
@@ -107,7 +108,7 @@ footer {
             grid-column: 4/5;
         }
     }
-    & > div:nth-of-type(3) {
+    & > div:nth-of-type(4) {
         display: grid;
         grid-template-columns: minmax(9.4rem, 18.4rem) minmax(9.4rem, 18.4rem);
         grid-auto-rows: 6.7rem;

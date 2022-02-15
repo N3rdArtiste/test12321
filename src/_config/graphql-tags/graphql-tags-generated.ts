@@ -64,6 +64,7 @@ export const HomepageDocument = gql`
   home_page {
     id
     enter_now_section_heading
+    enter_now_section_sub_heading
     enter_now_section_body
     enter_now_section_CTA_label
     hero_section_right_side_svg {

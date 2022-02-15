@@ -1,4 +1,6 @@
 <script type="ts">
+    import { getInlineSvg } from 'helpers/get-inline-svg'
+
     export let logo: { src: string; alt: string }
     export let navItems: Array<{ label: string; slug: string }>
     export let copyrightText: string
@@ -26,7 +28,11 @@
     <button on:click={scrollSponsors}>
         <img src="/images/right_arrow.svg" alt="right arrow icon" />
     </button>
-    <img alt={logo.alt} src={logo.src} />
+    <div>
+        {#await getInlineSvg(logo.src) then svgCode}
+            {@html svgCode}
+        {/await}
+    </div>
     <p>
         {shortAboutUsText}
     </p>

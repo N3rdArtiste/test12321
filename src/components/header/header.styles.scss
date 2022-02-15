@@ -16,11 +16,15 @@ header {
     @media only screen and (min-width: 48.1rem) {
         background-color: var(--color-light-grey);
     }
-    & > img {
+    & > div {
         grid-column: 1/6;
         grid-row: 1/2;
 
         width: 10rem;
+
+        &:hover {
+            fill: var(--color-brand);
+        }
         @media only screen and (min-width: 48.1rem) {
             grid-column: 1/2;
             grid-row: 2/3;
