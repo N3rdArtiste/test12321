@@ -30,13 +30,7 @@
     </Tabs>
 </section>
 
-<input type="number" bind:value={$tab} />
-
 <style lang="scss">
-    input {
-        position: fixed;
-        bottom: 1rem;
-    }
     section {
         display: grid;
         grid-template-rows: 5rem 1fr;

@@ -25,9 +25,9 @@
     section {
         display: grid;
         grid-template-columns: var(--grid-template-columns);
-        grid-template-rows: auto 4.2rem auto;
+        grid-template-rows: auto 4.2rem auto 6.8rem auto;
         column-gap: var(--column-gap);
-        @media only screen and (min-width: 48.1rem) {
+        @media only screen and (min-width: 769px) {
             grid-template-rows: auto 2rem auto;
             justify-content: center;
             padding: 0 2rem;
@@ -44,7 +44,7 @@
             &:hover {
                 color: var(--color-brand);
             }
-            @media only screen and (min-width: 48.1rem) {
+            @media only screen and (min-width: 769px) {
                 grid-column: 1/6;
                 grid-row: 1/4;
 
@@ -59,12 +59,12 @@
             font-size: 2rem;
             line-height: 2.8rem;
             padding: 0 2rem;
-            & :global(strong),
-            :global(p) {
+
+            & :global(p:nth-of-type(1)) {
                 display: inline;
             }
 
-            @media only screen and (min-width: 48.1rem) {
+            @media only screen and (min-width: 769px) {
                 grid-column: 7/13;
                 grid-row: 1/2;
 
@@ -85,12 +85,12 @@
             width: 100%;
             padding: 0 2rem;
 
-            @media only screen and (min-width: 48.1rem) {
+            @media only screen and (min-width: 769px) {
                 grid-column: 7/13;
                 grid-row: 3/4;
             }
         }
-        @media only screen and (min-width: 48.1rem) {
+        @media only screen and (min-width: 769px) {
             & > * {
                 padding: 0 !important;
             }

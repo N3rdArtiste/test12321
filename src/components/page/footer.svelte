@@ -70,7 +70,7 @@
         grid-template-columns: var(--grid-template-columns);
         grid-template-rows: auto 3.1rem auto 6.1rem auto 3rem auto 3.3rem auto 3rem auto 5rem auto;
         column-gap: var(--column-gap);
-        @media only screen and (min-width: 48.1rem) {
+        @media only screen and (min-width: 769px) {
             padding: 9rem 2rem 9rem 2rem;
 
             grid-template-rows: auto 3.9rem auto 13.1rem auto 4.63rem auto 2.4rem;
@@ -83,7 +83,7 @@
             font-size: 3rem;
             grid-row: 1/2;
             grid-column: 1/7;
-            @media only screen and (min-width: 48.1rem) {
+            @media only screen and (min-width: 769px) {
                 font-size: 4rem;
                 grid-column: 1/5;
                 grid-row: 1/2;
@@ -97,7 +97,7 @@
             grid-auto-flow: column;
             gap: 1.6rem;
             overflow-x: scroll;
-            @media only screen and (min-width: 48.1rem) {
+            @media only screen and (min-width: 769px) {
                 grid-column: 5/13;
                 grid-row: 1/2;
             }
@@ -110,7 +110,7 @@
         }
         & > button {
             display: none;
-            @media only screen and (min-width: 48.1rem) {
+            @media only screen and (min-width: 769px) {
                 display: block;
                 grid-row: 3/4;
                 grid-column: 12/13;
@@ -121,7 +121,7 @@
             grid-column: 1/7;
             grid-row: 5/6;
             width: 100%;
-            @media only screen and (min-width: 48.1rem) {
+            @media only screen and (min-width: 769px) {
                 grid-row: 5/6;
                 grid-column: 1/2;
             }
@@ -131,7 +131,7 @@
             font-size: 1.6rem;
             grid-row: 7/8;
             grid-column: 1/7;
-            @media only screen and (min-width: 48.1rem) {
+            @media only screen and (min-width: 769px) {
                 grid-row: 7/8;
                 grid-column: 1/3;
             }
@@ -142,7 +142,7 @@
             display: grid;
             grid-auto-flow: row;
             gap: 1.6rem;
-            @media only screen and (min-width: 48.1rem) {
+            @media only screen and (min-width: 769px) {
                 grid-row: 7/8;
                 grid-column: 4/5;
                 align-content: flex-start;
@@ -164,7 +164,7 @@
             justify-content: end;
             align-items: flex-end;
             grid-auto-columns: 1.6rem;
-            @media only screen and (min-width: 48.1rem) {
+            @media only screen and (min-width: 769px) {
                 justify-content: start;
                 align-content: flex-start;
                 grid-row: 9/10;
@@ -180,7 +180,7 @@
             justify-items: center;
             grid-row: 11/12;
             grid-column: 1/7;
-            @media only screen and (min-width: 48.1rem) {
+            @media only screen and (min-width: 769px) {
                 grid-row: 7/8;
                 grid-column: 10/13;
             }
@@ -195,7 +195,7 @@
             font-size: 1.4rem;
             grid-row: 13/14;
             grid-column: 1/7;
-            @media only screen and (min-width: 48.1rem) {
+            @media only screen and (min-width: 769px) {
                 grid-row: 9/10;
                 grid-column: 1/3;
             }
@@ -203,7 +203,7 @@
         & > * {
             padding-left: 2rem;
             padding-right: 2rem;
-            @media only screen and (min-width: 48.1rem) {
+            @media only screen and (min-width: 769px) {
                 padding-left: 0;
                 padding-right: 0;
             }

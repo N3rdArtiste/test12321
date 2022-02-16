@@ -39,7 +39,7 @@
         grid-template-columns: var(--grid-template-columns);
         grid-template-rows: auto 5rem auto 4.2rem auto 6.8rem auto 5.1rem auto;
         column-gap: var(--column-gap);
-        @media only screen and (min-width: 48.1rem) {
+        @media only screen and (min-width: 769px) {
             grid-template-rows: auto auto 13rem auto 14.2rem auto 7.6rem auto 3rem;
             justify-content: center;
             padding: 0 2rem;
@@ -49,7 +49,7 @@
             grid-row: 1/2;
             width: 100%;
             aspect-ratio: 414/286;
-            @media only screen and (min-width: 48.1rem) {
+            @media only screen and (min-width: 769px) {
                 grid-column: 1/9;
                 grid-row: 1/3;
                 width: 110%;
@@ -60,7 +60,7 @@
         & > div:nth-of-type(1) {
             display: none;
 
-            @media only screen and (min-width: 48.1rem) {
+            @media only screen and (min-width: 769px) {
                 grid-column: 10/13;
                 grid-row: 1/3;
                 display: block;
@@ -79,7 +79,7 @@
             font-weight: 900;
             padding: 0 2rem;
 
-            @media only screen and (min-width: 48.1rem) {
+            @media only screen and (min-width: 769px) {
                 grid-column: 1/6;
                 grid-row: 4/5;
 
@@ -95,7 +95,7 @@
             line-height: 2.8rem;
             padding: 0 2rem;
 
-            @media only screen and (min-width: 48.1rem) {
+            @media only screen and (min-width: 769px) {
                 grid-column: 1/5;
                 grid-row: 6/7;
 
@@ -109,7 +109,7 @@
 
             padding: 0 2rem;
 
-            @media only screen and (min-width: 48.1rem) {
+            @media only screen and (min-width: 769px) {
                 grid-column: 1/6;
                 grid-row: 8/9;
             }
@@ -120,12 +120,12 @@
 
             width: 100%;
 
-            @media only screen and (min-width: 48.1rem) {
+            @media only screen and (min-width: 769px) {
                 grid-column: 6/13;
                 grid-row: 4/10;
             }
         }
-        @media only screen and (min-width: 48.1rem) {
+        @media only screen and (min-width: 769px) {
             & > * {
                 padding: 0 !important;
             }

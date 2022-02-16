@@ -21,6 +21,7 @@
     import CompetitionIntro from 'modules/competition/intro.svelte'
     import InnovatorsIntro from 'modules/innovators/intro.svelte'
     import Winnings from 'modules/questions/winnings.svelte'
+    import HorizontalLine from 'components/horizontal-line.svelte'
 
     query(homepage)
 
@@ -34,9 +35,11 @@
 <section>
     {#if $homepage.data}
         <CompetitionIntro data={$homepage.data.home_page} />
-        <Divider heightDesktop={4.2} heightMobile={100} />
+        <Divider heightDesktop={8.5} heightMobile={5.1} />
         <InnovatorsIntro data={$homepage.data.home_page} />
-        <Divider heightDesktop={6.3} heightMobile={100} rule={true} />
-        <Winnings {data} />
+        <Divider heightDesktop={16.2} heightMobile={5} />
+        <HorizontalLine />
+        <Divider heightDesktop={11.5} heightMobile={5.6} />
+        <!-- <Winnings {data} /> -->
     {/if}
 </section>
