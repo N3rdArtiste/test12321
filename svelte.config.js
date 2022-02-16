@@ -16,6 +16,10 @@ const config = {
                 exclude: ['@urql/svelte'],
             },
 
+            // files: {
+            //     serviceWorker: 'src/service-worker',
+            // },
+
             server: {
                 fs: {
                     allow: [

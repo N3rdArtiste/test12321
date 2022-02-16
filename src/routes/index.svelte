@@ -15,9 +15,12 @@
 
     import { query } from '@urql/svelte'
 
+    import data from 'api/data.json'
+
     import Divider from 'components/divider.svelte'
     import CompetitionIntro from 'modules/competition/intro.svelte'
     import InnovatorsIntro from 'modules/innovators/intro.svelte'
+    import Winnings from 'modules/questions/winnings.svelte'
 
     query(homepage)
 
@@ -34,5 +37,6 @@
         <Divider heightDesktop={4.2} heightMobile={100} />
         <InnovatorsIntro data={$homepage.data.home_page} />
         <Divider heightDesktop={6.3} heightMobile={100} rule={true} />
+        <Winnings {data} />
     {/if}
 </section>
