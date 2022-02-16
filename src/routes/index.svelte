@@ -1,6 +1,4 @@
 <script context="module" type="ts">
-    export const prerender = true
-
     import { HomepageDocument } from '_config/graphql-tags/graphql-tags-generated'
 
     export const load: Load = async ({ stuff }) => {
