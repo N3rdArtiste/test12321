@@ -10,7 +10,7 @@
 </h2>
 
 <style lang="scss">
-    /* @keyframes fadeInOut {
+    @keyframes fadeInOut {
         0% {
             opacity: 1;
         }
@@ -31,27 +31,28 @@
 
         i {
             font-weight: 600;
-            margin: 0 0 0 -0.6rem;
+            font-family: serif;
+            margin: 0 0.05rem 0 -0.4rem;
 
             animation-duration: 1000ms;
             animation-name: fadeInOut;
             animation-iteration-count: infinite;
             animation-direction: alternate;
 
-            i:nth-child(1) {
+            &:nth-child(1) {
                 opacity: 1;
                 animation-delay: 0s;
             }
 
-            i:nth-child(2) {
+            &:nth-child(2) {
                 opacity: 0.5;
                 animation-delay: 500ms;
             }
 
-            i:nth-child(3) {
+            &:nth-child(3) {
                 opacity: 0.3;
                 animation-delay: 1s;
             }
         }
-    } */
+    }
 </style>
