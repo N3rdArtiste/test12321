@@ -4,7 +4,7 @@
     import { getDirectusAssetLink } from 'helpers/string'
     import { getInlineSvg } from 'helpers/markup'
 
-    import ArrowButton from 'components/arrow-button/arrowButton.svelte'
+    import ButtonArrow from 'components/buttons/arrow.svelte'
 </script>
 
 <section>
@@ -24,7 +24,7 @@
     <p>{@html data?.innovator_section_body}</p>
     <img src={getDirectusAssetLink(data?.innovator_section_image?.filename_disk)} alt={data?.innovator_section_image?.description} />
     <div>
-        <ArrowButton
+        <ButtonArrow
             label={data?.innovator_section_CTA_label ?? ''}
             onClick={() => {
                 console.log('clicked')

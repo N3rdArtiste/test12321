@@ -34,10 +34,11 @@
         grid-template-rows: 1rem;
         grid-template-columns: max-content 1fr;
 
+        grid-gap: 3rem;
+        padding: 0 3rem;
+
         div {
             display: grid;
-
-            border: 1px solid blue;
 
             &.tabs {
                 grid-auto-rows: 1fr;
@@ -46,24 +47,63 @@
                 background-color: transparent;
                 /* pointer-events: none; */
 
-                background: #888;
+                background: #fff;
 
                 & > span {
-                    padding: 1rem;
+                    padding: 0.1rem;
+                    font-weight: 400;
 
                     &:hover {
+                        color: #888;
                         cursor: pointer;
-                        background: red;
-                        pointer-events: all;
                     }
-                }
-
-                :global(.content) {
-                    background: red;
+                    &.active {
+                        color: #000;
+                        cursor: default;
+                        font-weight: 600;
+                    }
                 }
 
                 .active {
                     background: #fff;
+                }
+            }
+
+            &.content {
+                display: grid;
+                grid-template-rows: 1fr;
+
+                :global(div) {
+                    z-index: 0;
+                    grid-row: 1;
+                    grid-column: 1;
+                }
+                :global(div.active) {
+                    z-index: 2;
+                    background: var(--color-primary-bg);
+                    min-height: 23rem;
+
+                    grid-template-rows: 2rem 1fr;
+                    grid-template-columns: minmax(10rem, 15rem) 1fr;
+
+                    @media (max-width: 850px) {
+                        grid-template-rows: max-content;
+                        grid-template-columns: 1fr;
+                    }
+                }
+                :global(div.active p) {
+                    text-align: justify;
+                    text-justify: inter-word;
+                }
+                :global(div.active > :nth-child(2)) {
+                    grid-row: 2;
+                }
+                :global(div.active > :nth-child(3)) {
+                    padding-left: 3rem;
+
+                    @media (max-width: 850px) {
+                        padding-left: 0;
+                    }
                 }
             }
         }

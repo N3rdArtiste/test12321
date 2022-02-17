@@ -1,39 +1,40 @@
 <script type="ts">
+    export let data: HeaderAndFooterQuery
+
+    import { navMain, navAuth, menuToggleIcons } from '_config/constants/menus'
     import { getDirectusAssetLink } from 'helpers/string'
     import { getInlineSvg } from 'helpers/markup'
+    import { navDrawerOpen } from 'stores/ui'
 
-    export let logo: { src: string; alt: string }
-    export let navItems: Array<{ label: string; slug: string }>
-    export let topMenuItems: Array<{ label: string }>
-    let isOpened = false
     const handleMenuOpenClose = () => {
-        isOpened = !isOpened
+        $navDrawerOpen = !$navDrawerOpen
     }
-    const menuOpenCloseIcon = [
-        { src: '/images/close.svg', alt: 'close menu' },
-        { src: '/images/hamburger_menu.svg', alt: 'open menu' },
-    ]
+
+    let logo = { src: getDirectusAssetLink(data.header?.logo?.filename_disk), alt: data.header?.logo?.description ?? '' }
 </script>
 
-<header class:isOpened>
+<header class:isOpened={$navDrawerOpen}>
     <div>
         {#await getInlineSvg(logo.src) then svgCode}
             {@html svgCode}
         {/await}
     </div>
+
     <!-- svelte-ignore a11y-missing-attribute -->
     <button on:click={handleMenuOpenClose}>
-        <img {...menuOpenCloseIcon[isOpened ? 0 : 1]} />
+        <img {...menuToggleIcons[+$navDrawerOpen]} />
     </button>
-    <nav class:hide={!isOpened}>
-        {#each navItems as { label, slug }}
+
+    <nav class:hide={!$navDrawerOpen}>
+        {#each navMain as { label, slug }}
             <a href={slug}>{label}</a>
         {/each}
     </nav>
-    <ul class:hide={!isOpened}>
-        {#each topMenuItems as { label }, i}
+
+    <ul class:hide={!$navDrawerOpen}>
+        {#each navAuth as { label }, i}
             <li>{label}</li>
-            {#if i !== topMenuItems.length - 1}
+            {#if i !== navAuth.length - 1}
                 <li class="separator" />
             {/if}
         {/each}
@@ -56,9 +57,11 @@
         background-color: var(--color-white);
         height: var(--header-height);
         align-content: center;
+
         @media only screen and (min-width: 769px) {
             background-color: var(--color-light-grey);
         }
+
         & > div {
             grid-column: 1/6;
             grid-row: 1/2;
@@ -74,6 +77,7 @@
                 width: 12.2rem;
             }
         }
+
         & > button {
             grid-column: 6/7;
             grid-row: 1/2;
@@ -81,10 +85,12 @@
             display: grid;
             justify-content: end;
             align-items: center;
+
             @media only screen and (min-width: 769px) {
                 display: none;
             }
         }
+
         & > nav {
             grid-column: 1/7;
             grid-row: 3/4;
@@ -95,6 +101,7 @@
             font-weight: 900;
             font-size: 3rem;
             line-height: 4rem;
+
             @media only screen and (min-width: 769px) {
                 grid-column: 2/13;
                 grid-row: 2/3;
@@ -115,6 +122,7 @@
                 }
             }
         }
+
         & > ul {
             grid-column: 1/7;
             grid-row: 5/6;
@@ -136,12 +144,15 @@
             }
         }
     }
+
     .hide {
         display: none;
+
         @media only screen and (min-width: 769px) {
             display: grid;
         }
     }
+
     .isOpened {
         height: 100vh;
         background-color: var(--color-brand);
@@ -156,6 +167,7 @@
             grid-template-rows: auto auto;
         }
     }
+
     .separator {
         border-left: 0.15rem var(--color-black) solid;
         height: 1.5rem;

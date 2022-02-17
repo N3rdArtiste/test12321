@@ -1,11 +1,11 @@
-declare interface Page {
+interface Page {
     size: number
     totalElements: number
     totalPages: number
     number: number
 }
 
-declare interface PaginationOptions {
+interface PaginationOptions {
     length: number
     pageSize: number
     currentPage: number
@@ -13,18 +13,18 @@ declare interface PaginationOptions {
     totalRecords: number
 }
 
-declare interface PageParams {
+interface PageParams {
     page: number
     limit: number
     orderBy: QueryOrderBy[]
 }
 
-declare interface PageContent {
+interface PageContent {
     title: string
     body: string
 }
 
-declare type PageToQueryParams = Merge<
+type PageToQueryParams = Merge<
     Omit<PageParams, 'page'>,
     {
         offset: number

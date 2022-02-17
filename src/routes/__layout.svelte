@@ -32,10 +32,8 @@
     import { setClient } from '@urql/svelte'
     import type { DocumentNode } from 'graphql'
 
-    import { paths } from '_config/constants/paths'
     import { navigating } from '$app/stores'
     import { isLoading } from 'stores/ui'
-    import { getDirectusAssetLink } from 'helpers/string'
 
     import Header from 'components/page/header.svelte'
     import Footer from 'components/page/footer.svelte'
@@ -43,69 +41,24 @@
 
     setClient(_client)
     query(headerAndFooterContent)
-
-    let partners: StandardData
-    let sponsors: StandardData
-    let socialMediaIcons: StandardData
-
-    $: partners = $headerAndFooterContent.data?.partners?.map(partner => {
-        return {
-            href: partner?.link ?? '',
-            alt: partner?.partners?.description ?? '',
-            src: getDirectusAssetLink(partner?.partners?.filename_disk) ?? '',
-        }
-    })
-
-    $: sponsors = $headerAndFooterContent.data?.our_sponsors?.map(sponsor => {
-        return {
-            href: sponsor?.link ?? '',
-            alt: sponsor?.image?.description ?? '',
-            src: getDirectusAssetLink(sponsor?.image?.filename_disk) ?? '',
-        }
-    })
-
-    $: socialMediaIcons = $headerAndFooterContent.data?.social_media_links?.map(socialMediaIcon => {
-        return {
-            href: socialMediaIcon?.link ?? '',
-            alt: socialMediaIcon?.image?.description ?? '',
-            src: getDirectusAssetLink(socialMediaIcon?.image?.filename_disk) ?? '',
-        }
-    })
 </script>
 
-<div class="wrapper">
-    {#if $headerAndFooterContent.data}
-        <Header
-            topMenuItems={[{ label: 'Account' }, { label: 'Log out' }]}
-            logo={{ src: getDirectusAssetLink($headerAndFooterContent.data.header?.logo?.filename_disk), alt: $headerAndFooterContent.data.header?.logo?.description ?? '' }}
-            navItems={paths}
-        />
+<section>
+    {#if $headerAndFooterContent.data && !$navigating && !$isLoading}
+        <Header data={$headerAndFooterContent.data} />
 
         <div>
-            {#if !$navigating && !$isLoading}
-                <slot />
-            {:else}
-                <LoadingUiBlocker text="initialising" />
-            {/if}
+            <slot />
         </div>
 
-        <Footer
-            logo={{
-                src: getDirectusAssetLink($headerAndFooterContent.data.footer?.footer_logo?.filename_disk),
-                alt: $headerAndFooterContent.data.footer?.footer_logo?.description ?? '',
-            }}
-            {partners}
-            {sponsors}
-            {socialMediaIcons}
-            navItems={paths}
-            copyrightText={$headerAndFooterContent.data.footer?.copyright_text ?? ''}
-            shortAboutUsText={$headerAndFooterContent.data.footer?.text ?? ''}
-        />
+        <Footer data={$headerAndFooterContent.data} />
+    {:else}
+        <LoadingUiBlocker text="initialising" />
     {/if}
-</div>
+</section>
 
 <style lang="scss">
-    .wrapper {
+    section {
         transition: background-color 0.3s;
         position: relative;
         min-height: 100vh;
@@ -115,9 +68,11 @@
         @media only screen and (min-width: 769px) {
             background-color: var(--color-light-grey);
         }
+
         & > div {
             margin-top: var(--header-height);
             padding-top: 2rem;
+
             @media only screen and (min-width: 769px) {
                 padding-top: 6.2rem;
             }

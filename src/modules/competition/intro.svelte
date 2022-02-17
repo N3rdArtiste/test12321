@@ -1,7 +1,7 @@
 <script lang="ts">
     export let data: HomepageQuery['home_page']
 
-    import ArrowButton from 'components/arrow-button/arrowButton.svelte'
+    import ButtonArrow from 'components/buttons/arrow.svelte'
 </script>
 
 <section>
@@ -12,7 +12,7 @@
         ${data?.enter_now_section_body}`}
     </p>
     <div>
-        <ArrowButton
+        <ButtonArrow
             label={data?.enter_now_section_CTA_label ?? ''}
             onClick={() => {
                 console.log('clicked')

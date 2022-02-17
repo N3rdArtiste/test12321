@@ -2,7 +2,7 @@
 
 // See https://kit.svelte.dev/docs#typescript
 // for information about these interfaces
-declare namespace App {
+namespace App {
     interface Locals {}
 
     interface Platform {}
