@@ -1,0 +1,24 @@
+query InspirationPage($limit: Int, $page: Int) {
+    inspiration_page {
+        id
+        heading
+        description
+        hero_image {
+            id
+            filename_disk
+            description
+        }
+    }
+    inspiration_articles(limit: $limit, page: $page) {
+        id
+        image {
+            id
+            filename_disk
+            description
+        }
+        title
+        body
+        read_more_label
+        read_more_link
+    }
+}

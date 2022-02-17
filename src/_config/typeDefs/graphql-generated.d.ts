@@ -1483,28 +1483,18 @@ type Home_Page = {
   enter_now_section_heading?: Maybe<Scalars['String']>;
   enter_now_section_sub_heading?: Maybe<Scalars['String']>;
   hero_section_right_side_svg?: Maybe<Directus_Files>;
-  hero_section_video?: Maybe<Directus_Files>;
+  hero_section_video?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['ID']>;
   innovator_section_CTA_label?: Maybe<Scalars['String']>;
   innovator_section_body?: Maybe<Scalars['String']>;
   innovator_section_heading?: Maybe<Scalars['String']>;
   innovator_section_image?: Maybe<Directus_Files>;
   innovators_section_heading?: Maybe<Scalars['String']>;
-  inspired_section_articles?: Maybe<Array<Maybe<Home_Page_Inspiration_Articles>>>;
+  inspiration_articles?: Maybe<Array<Maybe<Home_Page_Inspiration_Articles>>>;
 };
 
 
 type Home_PageHero_Section_Right_Side_SvgArgs = {
-  filter?: InputMaybe<Directus_Files_Filter>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  page?: InputMaybe<Scalars['Int']>;
-  search?: InputMaybe<Scalars['String']>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-type Home_PageHero_Section_VideoArgs = {
   filter?: InputMaybe<Directus_Files_Filter>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -1524,7 +1514,7 @@ type Home_PageInnovator_Section_ImageArgs = {
 };
 
 
-type Home_PageInspired_Section_ArticlesArgs = {
+type Home_PageInspiration_ArticlesArgs = {
   filter?: InputMaybe<Home_Page_Inspiration_Articles_Filter>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -1544,25 +1534,25 @@ type Home_Page_Filter = {
   enter_now_section_heading?: InputMaybe<String_Filter_Operators>;
   enter_now_section_sub_heading?: InputMaybe<String_Filter_Operators>;
   hero_section_right_side_svg?: InputMaybe<Directus_Files_Filter>;
-  hero_section_video?: InputMaybe<Directus_Files_Filter>;
+  hero_section_video?: InputMaybe<String_Filter_Operators>;
   id?: InputMaybe<Number_Filter_Operators>;
   innovator_section_CTA_label?: InputMaybe<String_Filter_Operators>;
   innovator_section_body?: InputMaybe<String_Filter_Operators>;
   innovator_section_heading?: InputMaybe<String_Filter_Operators>;
   innovator_section_image?: InputMaybe<Directus_Files_Filter>;
   innovators_section_heading?: InputMaybe<String_Filter_Operators>;
-  inspired_section_articles?: InputMaybe<Home_Page_Inspiration_Articles_Filter>;
+  inspiration_articles?: InputMaybe<Home_Page_Inspiration_Articles_Filter>;
 };
 
 type Home_Page_Inspiration_Articles = {
   __typename?: 'home_page_inspiration_articles';
-  home_page?: Maybe<Home_Page>;
+  home_page_id?: Maybe<Home_Page>;
   id?: Maybe<Scalars['ID']>;
   inspiration_article?: Maybe<Inspiration_Articles>;
 };
 
 
-type Home_Page_Inspiration_ArticlesHome_PageArgs = {
+type Home_Page_Inspiration_ArticlesHome_Page_IdArgs = {
   filter?: InputMaybe<Home_Page_Filter>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -1596,7 +1586,7 @@ type Home_Page_Inspiration_Articles_Aggregated = {
 
 type Home_Page_Inspiration_Articles_Aggregated_Fields = {
   __typename?: 'home_page_inspiration_articles_aggregated_fields';
-  home_page?: Maybe<Scalars['Float']>;
+  home_page_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   inspiration_article?: Maybe<Scalars['Float']>;
 };
@@ -1604,7 +1594,7 @@ type Home_Page_Inspiration_Articles_Aggregated_Fields = {
 type Home_Page_Inspiration_Articles_Filter = {
   _and?: InputMaybe<Array<InputMaybe<Home_Page_Inspiration_Articles_Filter>>>;
   _or?: InputMaybe<Array<InputMaybe<Home_Page_Inspiration_Articles_Filter>>>;
-  home_page?: InputMaybe<Home_Page_Filter>;
+  home_page_id?: InputMaybe<Home_Page_Filter>;
   id?: InputMaybe<Number_Filter_Operators>;
   inspiration_article?: InputMaybe<Inspiration_Articles_Filter>;
 };
@@ -1612,10 +1602,13 @@ type Home_Page_Inspiration_Articles_Filter = {
 type Inspiration_Articles = {
   __typename?: 'inspiration_articles';
   body?: Maybe<Scalars['String']>;
+  date_created?: Maybe<Scalars['Date']>;
+  date_created_func?: Maybe<Datetime_Functions>;
   id?: Maybe<Scalars['ID']>;
   image?: Maybe<Directus_Files>;
   read_more_label?: Maybe<Scalars['String']>;
   read_more_link?: Maybe<Scalars['String']>;
+  sort?: Maybe<Scalars['Int']>;
   title?: Maybe<Scalars['String']>;
 };
 
@@ -1645,16 +1638,20 @@ type Inspiration_Articles_Aggregated = {
 type Inspiration_Articles_Aggregated_Fields = {
   __typename?: 'inspiration_articles_aggregated_fields';
   id?: Maybe<Scalars['Float']>;
+  sort?: Maybe<Scalars['Float']>;
 };
 
 type Inspiration_Articles_Filter = {
   _and?: InputMaybe<Array<InputMaybe<Inspiration_Articles_Filter>>>;
   _or?: InputMaybe<Array<InputMaybe<Inspiration_Articles_Filter>>>;
   body?: InputMaybe<String_Filter_Operators>;
+  date_created?: InputMaybe<Date_Filter_Operators>;
+  date_created_func?: InputMaybe<Datetime_Function_Filter_Operators>;
   id?: InputMaybe<Number_Filter_Operators>;
   image?: InputMaybe<Directus_Files_Filter>;
   read_more_label?: InputMaybe<String_Filter_Operators>;
   read_more_link?: InputMaybe<String_Filter_Operators>;
+  sort?: InputMaybe<Number_Filter_Operators>;
   title?: InputMaybe<String_Filter_Operators>;
 };
 
@@ -2459,6 +2456,7 @@ type Social_Media_Links = {
   id?: Maybe<Scalars['ID']>;
   image?: Maybe<Directus_Files>;
   link?: Maybe<Scalars['String']>;
+  sort?: Maybe<Scalars['Int']>;
 };
 
 
@@ -2487,6 +2485,7 @@ type Social_Media_Links_Aggregated = {
 type Social_Media_Links_Aggregated_Fields = {
   __typename?: 'social_media_links_aggregated_fields';
   id?: Maybe<Scalars['Float']>;
+  sort?: Maybe<Scalars['Float']>;
 };
 
 type Social_Media_Links_Filter = {
@@ -2495,6 +2494,7 @@ type Social_Media_Links_Filter = {
   id?: InputMaybe<Number_Filter_Operators>;
   image?: InputMaybe<Directus_Files_Filter>;
   link?: InputMaybe<String_Filter_Operators>;
+  sort?: InputMaybe<Number_Filter_Operators>;
 };
 
 type String_Filter_Operators = {
@@ -2538,6 +2538,14 @@ type HomepageQueryVariables = Exact<{ [key: string]: never; }>;
 
 type HomepageQuery = { __typename?: 'Query', home_page?: { __typename?: 'home_page', id?: string | null, enter_now_section_heading?: string | null, enter_now_section_sub_heading?: string | null, enter_now_section_body?: string | null, enter_now_section_CTA_label?: string | null, innovator_section_heading?: string | null, innovator_section_body?: string | null, innovator_section_CTA_label?: string | null, brands_section_heading?: string | null, brands_section_description?: string | null, brands_section_CTA_label?: string | null, hero_section_right_side_svg?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null, innovator_section_image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null };
 
+type InspirationPageQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+}>;
+
+
+type InspirationPageQuery = { __typename?: 'Query', inspiration_page?: { __typename?: 'inspiration_page', id?: string | null, heading?: string | null, description?: string | null, hero_image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null, inspiration_articles?: Array<{ __typename?: 'inspiration_articles', id?: string | null, title?: string | null, body?: string | null, read_more_label?: string | null, read_more_link?: string | null, image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null> | null };
+
 type JudgeQueryVariables = Exact<{
   id: Scalars['ID'];
 }>;
@@ -2548,4 +2556,5 @@ type JudgeQuery = { __typename?: 'Query', judges_by_id?: { __typename: 'judges',
 type AllJudgesQueryStore = import("@urql/svelte").OperationStore<AllJudgesQuery, AllJudgesQueryVariables>;
 type HeaderAndFooterQueryStore = import("@urql/svelte").OperationStore<HeaderAndFooterQuery, HeaderAndFooterQueryVariables>;
 type HomepageQueryStore = import("@urql/svelte").OperationStore<HomepageQuery, HomepageQueryVariables>;
+type InspirationPageQueryStore = import("@urql/svelte").OperationStore<InspirationPageQuery, InspirationPageQueryVariables>;
 type JudgeQueryStore = import("@urql/svelte").OperationStore<JudgeQuery, JudgeQueryVariables>;

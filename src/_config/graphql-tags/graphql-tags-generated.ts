@@ -86,6 +86,32 @@ export const HomepageDocument = gql`
   }
 }
     `;
+export const InspirationPageDocument = gql`
+    query InspirationPage($limit: Int, $page: Int) {
+  inspiration_page {
+    id
+    heading
+    description
+    hero_image {
+      id
+      filename_disk
+      description
+    }
+  }
+  inspiration_articles(limit: $limit, page: $page) {
+    id
+    image {
+      id
+      filename_disk
+      description
+    }
+    title
+    body
+    read_more_label
+    read_more_link
+  }
+}
+    `;
 export const JudgeDocument = gql`
     query Judge($id: ID!) {
   judges_by_id(id: $id) {
