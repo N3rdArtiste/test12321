@@ -18,7 +18,6 @@
     import Divider from 'components/divider.svelte'
     import Articles from 'modules/inspiration/articles/articles.svelte'
     import type { InspirationPageQuery, InspirationPageQueryStore } from '_config/typeDefs/graphql-generated'
-    import ArrowButton from 'components/arrow-button/arrowButton.svelte'
 
     export let inspirationPageContent: InspirationPageQueryStore
     let inspirationArticles: InspirationPageQuery['inspiration_articles']
@@ -35,6 +34,6 @@
 {#if $inspirationPageContent.data}
     <InspirationIntro data={$inspirationPageContent.data.inspiration_page} />
     <Divider heightDesktop={15} heightMobile={5} />
-    <Articles data={uniqBy(inspirationArticles, 'id')} />
-    <ArrowButton onClick={loadMoreArticles} label="Load more" />
+    <Articles data={uniqBy(inspirationArticles, 'id')} onLoadMoreClick={loadMoreArticles} />
+    <Divider heightDesktop={18.4} heightMobile={5} />
 {/if}

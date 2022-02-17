@@ -18,6 +18,7 @@
         grid-template-columns: var(--grid-template-columns);
         grid-template-rows: auto 4.2rem auto 5.4rem auto auto;
         column-gap: var(--column-gap);
+        justify-content: center;
 
         @media only screen and (min-width: 769px) {
             grid-template-rows: auto 6.3rem auto;

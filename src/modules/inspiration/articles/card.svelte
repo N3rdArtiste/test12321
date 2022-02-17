@@ -4,10 +4,11 @@
     import type { InspirationPageQuery } from '_config/typeDefs/graphql-generated'
 
     export let article: ArrayElement<InspirationPageQuery['inspiration_articles']>
+    export let longCard: boolean = false
 </script>
 
 <article>
-    <img src={getDirectusAssetLink(article?.image?.filename_disk)} alt={article?.image?.description} />
+    <img class:longCard src={'https://upload.wikimedia.org/wikipedia/commons/9/9e/Autumn_Red_peaches.jpg'} alt={article?.image?.description} />
     <h2>{article?.title}</h2>
     <p>{article?.body}</p>
     <a href={article?.read_more_link}>{article?.read_more_label}</a>
@@ -18,17 +19,29 @@
         display: grid;
         grid-auto-flow: row;
         grid-auto-columns: auto;
-        grid-template-rows: auto 2.5rem auto 2.1rem auto 2.3rem;
+        grid-template-rows: auto 2.5rem auto 2.1rem auto 2.3rem auto 2.5rem;
         background-color: var(--color-white);
+
+        @media only screen and (min-width: 769px) {
+            background-color: inherit;
+        }
 
         & > img {
             grid-row: 1/2;
-
             aspect-ratio: 374/258;
             width: 100%;
-            height: 100%;
+            object-fit: cover;
             background-color: grey;
+            &.longCard {
+                aspect-ratio: 374/346;
+            }
+            @media only screen and (min-width: 769px) {
+                &.longCard {
+                    aspect-ratio: 397/368;
+                }
+            }
         }
+
         & > h2 {
             grid-row: 3/4;
 
@@ -51,6 +64,7 @@
             font-weight: 900;
 
             text-decoration: underline;
+            cursor: pointer;
         }
         & > :not(img) {
             padding: 0 2.4rem;
