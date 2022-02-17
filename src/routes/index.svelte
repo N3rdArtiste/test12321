@@ -24,6 +24,8 @@
     import HorizontalLine from 'components/horizontal-line.svelte'
 
     query(homepage)
+
+    $: console.log('--homepage data--', $homepage)
 </script>
 
 <svelte:head>

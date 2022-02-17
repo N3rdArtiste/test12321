@@ -13,8 +13,6 @@
     let content = questions.map(item => {
         return item.multi_level_question_items
     })
-
-    console.log('--data2--', tabTitles, content)
 </script>
 
 <section>
@@ -23,20 +21,21 @@
     <Tabs {tabTitles} {content} let:retData let:index>
         <div class:active={$tab == index + 1}>
             <h2>{retData.level_2_title}</h2>
-            <p class="subTitle"><strong>{retData.level_2_subtext}</strong></p>
-            <p class="otherP">{retData.level_3_text}</p>
+
+            <b class="subTitle">
+                <strong>{retData.level_2_subtext}</strong>
+            </b>
+
+            <b class="otherP">
+                {@html retData.level_3_text}
+            </b>
+
             <!-- <span>{retData.level_3_links}</span> -->
         </div>
     </Tabs>
 </section>
 
-<input type="number" bind:value={$tab} />
-
 <style lang="scss">
-    input {
-        position: fixed;
-        bottom: 1rem;
-    }
     section {
         display: grid;
         grid-template-rows: 5rem 1fr;

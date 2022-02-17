@@ -5,8 +5,6 @@
     import { tab } from 'stores/app'
 
     function handleOurClick(val: number) {
-        console.log('--val--', val)
-
         $tab = val + 1
     }
 </script>
@@ -31,11 +29,16 @@
     section {
         display: grid;
 
-        grid-template-rows: 1rem;
+        grid-template-rows: max-content;
         grid-template-columns: max-content 1fr;
 
         grid-gap: 3rem;
         padding: 0 3rem;
+
+        @media (max-width: 850px) {
+            grid-gap: 1rem;
+            grid-template-columns: 1fr;
+        }
 
         div {
             display: grid;
@@ -43,9 +46,6 @@
             &.tabs {
                 grid-auto-rows: 1fr;
                 grid-template-columns: max-content;
-
-                background-color: transparent;
-                /* pointer-events: none; */
 
                 background: #fff;
 
@@ -83,20 +83,21 @@
                     background: var(--color-primary-bg);
                     min-height: 23rem;
 
-                    grid-template-rows: 2rem 1fr;
-                    grid-template-columns: minmax(10rem, 15rem) 1fr;
+                    grid-template-rows: 3rem 1fr;
+                    grid-template-columns: minmax(10rem, 15rem) minmax(16rem, 1fr);
 
                     @media (max-width: 850px) {
-                        grid-template-rows: max-content;
+                        grid-template-rows: 3rem min-content 1fr;
                         grid-template-columns: 1fr;
                     }
                 }
-                :global(div.active p) {
+                :global(div.active *) {
                     text-align: justify;
                     text-justify: inter-word;
                 }
                 :global(div.active > :nth-child(2)) {
                     grid-row: 2;
+                    padding-bottom: 1rem;
                 }
                 :global(div.active > :nth-child(3)) {
                     padding-left: 3rem;
