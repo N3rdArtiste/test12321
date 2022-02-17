@@ -23,6 +23,7 @@
     <Tabs {tabTitles} {content} let:retData let:index>
         <div class:active={$tab == index + 1}>
             <h2>{retData.level_2_title}</h2>
+
             <p class="subTitle"><strong>{retData.level_2_subtext}</strong></p>
             <p class="otherP">{retData.level_3_text}</p>
             <!-- <span>{retData.level_3_links}</span> -->
