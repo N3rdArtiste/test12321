@@ -44,7 +44,7 @@
 </script>
 
 <section>
-    {#if $headerAndFooterContent.data && !$navigating && !$isLoading}
+    {#if $headerAndFooterContent.data && !$isLoading}
         <Header data={$headerAndFooterContent.data} />
 
         <div>
@@ -53,7 +53,7 @@
 
         <Footer data={$headerAndFooterContent.data} />
     {:else}
-        <LoadingUiBlocker text="initialising" />
+        <LoadingUiBlocker text="loading" />
     {/if}
 </section>
 
