@@ -35,7 +35,7 @@
     import { navigating } from '$app/stores'
     import { isLoading } from 'stores/ui'
 
-    import Header from 'components/page/header-main.svelte'
+    import Header from 'components/page/header.svelte'
     import Footer from 'components/page/footer.svelte'
     import LoadingUiBlocker from 'components/ui-blocker.svelte'
 
@@ -47,7 +47,9 @@
     {#if $headerAndFooterContent.data && !$navigating && !$isLoading}
         <Header data={$headerAndFooterContent.data} />
 
-        <slot />
+        <div>
+            <slot />
+        </div>
 
         <Footer data={$headerAndFooterContent.data} />
     {:else}
@@ -57,15 +59,21 @@
 
 <style lang="scss">
     section {
+        transition: background-color 0.3s;
         position: relative;
         min-height: 100vh;
         display: grid;
+        background-color: var(--color-white);
+
+        @media only screen and (min-width: 769px) {
+            background-color: var(--color-light-grey);
+        }
 
         & > div {
             margin-top: var(--header-height);
             padding-top: 2rem;
 
-            @media only screen and (min-width: 48.1rem) {
+            @media only screen and (min-width: 769px) {
                 padding-top: 6.2rem;
             }
         }

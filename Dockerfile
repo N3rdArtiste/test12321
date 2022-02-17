@@ -20,4 +20,4 @@ RUN npm run build
 WORKDIR /usr/src/app/build
 
 EXPOSE 3000
-CMD ["npx", "serve"]
+CMD ["node", "index.js"]

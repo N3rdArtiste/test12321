@@ -8,7 +8,13 @@
 </script>
 
 <section>
-    <div>Video goes here</div>
+    <iframe
+        src="https://www.youtube.com/embed/95RJtSJ5AJg?controls=0"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+    />
     <div>
         {#await getInlineSvg(getDirectusAssetLink(data?.hero_section_right_side_svg?.filename_disk)) then svgCode}
             {@html svgCode}
@@ -31,87 +37,32 @@
     section {
         display: grid;
         grid-template-columns: var(--grid-template-columns);
-        grid-template-rows: auto 4.2rem auto 6.8rem auto 5.1rem auto 5rem auto 4.2rem auto 6.8rem auto 5.1rem auto;
+        grid-template-rows: auto 5rem auto 4.2rem auto 6.8rem auto 5.1rem auto;
         column-gap: var(--column-gap);
-        @media only screen and (min-width: 48.1rem) {
-            grid-template-rows: auto 2rem auto 8.5rem auto auto 13rem auto 14.2rem auto 7.6rem auto 3rem;
+        @media only screen and (min-width: 769px) {
+            grid-template-rows: auto auto 13rem auto 14.2rem auto 7.6rem auto 3rem;
             justify-content: center;
             padding: 0 2rem;
         }
-        & > h1:nth-of-type(1) {
-            grid-column: 1/6;
-            grid-row: 1/2;
-
-            font-size: 6rem;
-            line-height: 6rem;
-            font-weight: 900;
-            padding: 0 2rem;
-
-            &:hover {
-                color: var(--color-brand);
-            }
-            @media only screen and (min-width: 48.1rem) {
-                grid-column: 1/6;
-                grid-row: 1/4;
-
-                font-size: 8rem;
-                line-height: 8rem;
-            }
-        }
-        & > p:nth-of-type(1) {
+        & > iframe:nth-of-type(1) {
             grid-column: 1/7;
-            grid-row: 3/4;
-
-            font-size: 2rem;
-            line-height: 2.8rem;
-            padding: 0 2rem;
-            & :global(strong),
-            :global(p) {
-                display: inline;
-            }
-
-            @media only screen and (min-width: 48.1rem) {
-                grid-column: 7/13;
-                grid-row: 1/2;
-
-                font-size: 2.2rem;
-                line-height: 3rem;
-                margin-top: 1.5rem;
-
-                & :global(strong),
-                :global(p) {
-                    display: block;
-                }
+            grid-row: 1/2;
+            width: 100%;
+            aspect-ratio: 414/286;
+            @media only screen and (min-width: 769px) {
+                grid-column: 1/9;
+                grid-row: 1/3;
+                width: 110%;
+                aspect-ratio: 1154/797;
+                height: 93%;
             }
         }
         & > div:nth-of-type(1) {
-            grid-column: 1/7;
-            grid-row: 5/6;
-
-            width: 100%;
-            padding: 0 2rem;
-
-            @media only screen and (min-width: 48.1rem) {
-                grid-column: 7/13;
-                grid-row: 3/4;
-            }
-        }
-        & > div:nth-of-type(2) {
-            grid-column: 1/7;
-            grid-row: 7/8;
-            height: 100%;
-
-            @media only screen and (min-width: 48.1rem) {
-                grid-column: 1/9;
-                grid-row: 5/6;
-            }
-        }
-        & > div:nth-of-type(3) {
             display: none;
 
-            @media only screen and (min-width: 48.1rem) {
+            @media only screen and (min-width: 769px) {
                 grid-column: 10/13;
-                grid-row: 5/7;
+                grid-row: 1/3;
                 display: block;
                 width: 100%;
                 &:hover {
@@ -119,62 +70,62 @@
                 }
             }
         }
-        & > h1:nth-of-type(2) {
+        & > h1:nth-of-type(1) {
             grid-column: 1/7;
-            grid-row: 9/10;
+            grid-row: 3/4;
 
             font-size: 6rem;
             line-height: 6rem;
             font-weight: 900;
             padding: 0 2rem;
 
-            @media only screen and (min-width: 48.1rem) {
+            @media only screen and (min-width: 769px) {
                 grid-column: 1/6;
-                grid-row: 8/9;
+                grid-row: 4/5;
 
                 font-size: 7.5rem;
                 line-height: 7.2rem;
             }
         }
-        & > p:nth-of-type(2) {
+        & > p:nth-of-type(1) {
             grid-column: 1/7;
-            grid-row: 11/12;
+            grid-row: 5/6;
 
             font-size: 2rem;
             line-height: 2.8rem;
             padding: 0 2rem;
 
-            @media only screen and (min-width: 48.1rem) {
+            @media only screen and (min-width: 769px) {
                 grid-column: 1/5;
-                grid-row: 10/11;
+                grid-row: 6/7;
 
                 font-size: 2.2rem;
                 line-height: 3rem;
             }
         }
-        & > div:nth-of-type(4) {
+        & > div:nth-of-type(2) {
             grid-column: 1/7;
-            grid-row: 13/14;
+            grid-row: 7/8;
 
             padding: 0 2rem;
 
-            @media only screen and (min-width: 48.1rem) {
+            @media only screen and (min-width: 769px) {
                 grid-column: 1/6;
-                grid-row: 12/13;
+                grid-row: 8/9;
             }
         }
         & > img:nth-of-type(1) {
             grid-column: 1/7;
-            grid-row: 15/16;
+            grid-row: 9/10;
 
             width: 100%;
 
-            @media only screen and (min-width: 48.1rem) {
+            @media only screen and (min-width: 769px) {
                 grid-column: 6/13;
-                grid-row: 8/15;
+                grid-row: 4/10;
             }
         }
-        @media only screen and (min-width: 48.1rem) {
+        @media only screen and (min-width: 769px) {
             & > * {
                 padding: 0 !important;
             }

@@ -58,7 +58,7 @@
         height: var(--header-height);
         align-content: center;
 
-        @media only screen and (min-width: 48.1rem) {
+        @media only screen and (min-width: 769px) {
             background-color: var(--color-light-grey);
         }
 
@@ -68,14 +68,12 @@
 
             width: 10rem;
 
-            &:hover {
-                fill: var(--color-brand);
-            }
-
-            @media only screen and (min-width: 48.1rem) {
+            @media only screen and (min-width: 769px) {
                 grid-column: 1/2;
                 grid-row: 2/3;
-
+                &:hover {
+                    fill: var(--color-brand);
+                }
                 width: 12.2rem;
             }
         }
@@ -88,7 +86,7 @@
             justify-content: end;
             align-items: center;
 
-            @media only screen and (min-width: 48.1rem) {
+            @media only screen and (min-width: 769px) {
                 display: none;
             }
         }
@@ -104,7 +102,7 @@
             font-size: 3rem;
             line-height: 4rem;
 
-            @media only screen and (min-width: 48.1rem) {
+            @media only screen and (min-width: 769px) {
                 grid-column: 2/13;
                 grid-row: 2/3;
 
@@ -139,7 +137,7 @@
             font-size: 1.4rem;
             font-weight: 700;
 
-            @media only screen and (min-width: 48.1rem) {
+            @media only screen and (min-width: 769px) {
                 grid-column: 1/13;
                 grid-row: 1/2;
                 justify-content: end;
@@ -150,7 +148,7 @@
     .hide {
         display: none;
 
-        @media only screen and (min-width: 48.1rem) {
+        @media only screen and (min-width: 769px) {
             display: grid;
         }
     }
@@ -161,7 +159,7 @@
         grid-template-rows: auto 6rem auto auto 1fr;
         padding: 2rem 2rem 5.1rem 2rem;
 
-        @media only screen and (min-width: 48.1rem) {
+        @media only screen and (min-width: 769px) {
             height: auto;
             background-color: var(--color-light-grey);
             padding: 2rem;

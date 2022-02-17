@@ -1,5 +1,4 @@
 <script context="module" type="ts">
-    export const prerender = true
     import { JudgeDocument } from '_config/graphql-tags/graphql-tags-generated'
 
     export const load: Load = async ({ stuff, url }) => {
