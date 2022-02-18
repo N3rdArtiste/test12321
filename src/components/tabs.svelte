@@ -12,7 +12,7 @@
 <section>
     <div class="tabs">
         {#each tabTitles as item, index}
-            <span class={`index-${index + 1}`} on:click={() => handleOurClick(index)} class:active={$tab == index + 1}>
+            <span on:click={() => handleOurClick(index)} class:active={$tab == index + 1}>
                 {item}
             </span>
         {/each}
@@ -20,7 +20,7 @@
 
     <div class="content">
         {#each content as item, index}
-            <slot retData={item} {index} />
+            <slot returnData={item} {index} />
         {/each}
     </div>
 </section>
@@ -47,25 +47,19 @@
                 grid-auto-rows: 1fr;
                 grid-template-columns: max-content;
 
-                background: #fff;
-
                 & > span {
                     padding: 0.1rem;
                     font-weight: 400;
 
                     &:hover {
-                        color: #888;
+                        color: var(--color-text-secondary);
                         cursor: pointer;
                     }
                     &.active {
-                        color: #000;
+                        color: var(--color-text);
                         cursor: default;
                         font-weight: 600;
                     }
-                }
-
-                .active {
-                    background: #fff;
                 }
             }
 
@@ -74,6 +68,7 @@
                 grid-template-rows: 1fr;
 
                 :global(div) {
+                    display: grid;
                     z-index: 0;
                     grid-row: 1;
                     grid-column: 1;
@@ -86,7 +81,7 @@
                     grid-template-rows: 3rem 1fr;
                     grid-template-columns: minmax(10rem, 15rem) minmax(16rem, 1fr);
 
-                    @media (max-width: 850px) {
+                    @media (max-width: 1100px) {
                         grid-template-rows: 3rem min-content 1fr;
                         grid-template-columns: 1fr;
                     }
@@ -102,7 +97,7 @@
                 :global(div.active > :nth-child(3)) {
                     padding-left: 3rem;
 
-                    @media (max-width: 850px) {
+                    @media (max-width: 1100px) {
                         padding-left: 0;
                     }
                 }
