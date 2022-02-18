@@ -76,7 +76,7 @@
                 :global(div.active) {
                     z-index: 2;
                     background: var(--color-primary-bg);
-                    min-height: 23rem;
+                    height: 100%;
 
                     grid-template-rows: 3rem 1fr;
                     grid-template-columns: minmax(10rem, 15rem) minmax(16rem, 1fr);
