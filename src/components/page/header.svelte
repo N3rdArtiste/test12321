@@ -22,7 +22,7 @@
 
     <!-- svelte-ignore a11y-missing-attribute -->
     <button on:click={handleMenuOpenClose}>
-        <img {...menuToggleIcons[+$navDrawerOpen]} />
+        <img {...menuToggleIcons[+!$navDrawerOpen]} />
     </button>
 
     <nav class:hide={!$navDrawerOpen}>
