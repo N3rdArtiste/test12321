@@ -2,6 +2,7 @@
     export let data: HomepageQuery['home_page']
 
     import ButtonArrow from 'components/buttons/arrow.svelte'
+    import type { HomepageQuery } from '_config/typeDefs/graphql-generated'
 </script>
 
 <section>

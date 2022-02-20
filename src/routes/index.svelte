@@ -22,10 +22,9 @@
     import InnovatorsIntro from 'modules/innovators/intro.svelte'
     import Winnings from 'modules/questions/winnings.svelte'
     import HorizontalLine from 'components/horizontal-line.svelte'
+    import type { HomepageQueryStore } from '_config/typeDefs/graphql-generated'
 
     query(homepage)
-
-    $: console.log('--homepage data--', $homepage)
 </script>
 
 <svelte:head>

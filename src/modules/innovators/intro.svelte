@@ -5,11 +5,12 @@
     import { getInlineSvg } from 'helpers/markup'
 
     import ButtonArrow from 'components/buttons/arrow.svelte'
+    import type { HomepageQuery } from '_config/typeDefs/graphql-generated'
 </script>
 
 <section>
     <iframe
-        src="https://www.youtube.com/embed/95RJtSJ5AJg?controls=0"
+        src={`https://www.youtube.com/embed/${data?.hero_section_youtube_video_id}?controls=0`}
         title="YouTube video player"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

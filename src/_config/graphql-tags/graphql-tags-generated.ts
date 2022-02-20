@@ -33,7 +33,7 @@ export const HeaderAndFooterDocument = gql`
   partners {
     id
     link
-    partners {
+    image {
       id
       filename_disk
       description
@@ -67,6 +67,7 @@ export const HomepageDocument = gql`
     enter_now_section_sub_heading
     enter_now_section_body
     enter_now_section_CTA_label
+    hero_section_youtube_video_id
     hero_section_right_side_svg {
       id
       filename_disk
@@ -118,6 +119,56 @@ export const JudgeDocument = gql`
     __typename
     name
     id
+  }
+}
+    `;
+export const PastWinnersPageDocument = gql`
+    query PastWinnersPage($limit: Int, $page: Int, $filterQuery: past_winners_filter) {
+  past_winners_page {
+    id
+    heading
+  }
+  past_winners_categories {
+    id
+    category
+  }
+  past_winners(limit: $limit, page: $page, filter: $filterQuery) {
+    id
+    name
+    image {
+      id
+      filename_disk
+      description
+    }
+    short_description
+    year {
+      id
+      past_winners_year {
+        id
+        year
+      }
+    }
+    school_name
+    students_name
+    youtube_video_id
+    project_information
+    worksheets {
+      id
+      past_winners_worksheet {
+        worksheet {
+          id
+          title
+          filename_disk
+        }
+      }
+    }
+    categories {
+      id
+      past_winners_category {
+        id
+        category
+      }
+    }
   }
 }
     `;

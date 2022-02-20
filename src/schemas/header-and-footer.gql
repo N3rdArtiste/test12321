@@ -20,7 +20,7 @@ query HeaderAndFooter {
     partners {
         id
         link
-        partners {
+        image {
             id
             filename_disk
             description

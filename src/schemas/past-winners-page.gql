@@ -1,0 +1,48 @@
+query PastWinnersPage($limit: Int, $page: Int, $filterQuery: past_winners_filter) {
+    past_winners_page {
+        id
+        heading
+    }
+    past_winners_categories {
+        id
+        category
+    }
+    past_winners(limit: $limit, page: $page, filter: $filterQuery) {
+        id
+        name
+        image {
+            id
+            filename_disk
+            description
+        }
+        short_description
+        year {
+            id
+            past_winners_year {
+                id
+                year
+            }
+        }
+        school_name
+        students_name
+        youtube_video_id
+        project_information
+        worksheets {
+            id
+            past_winners_worksheet {
+                worksheet {
+                    id
+                    title
+                    filename_disk
+                }
+            }
+        }
+        categories {
+            id
+            past_winners_category {
+                id
+                category
+            }
+        }
+    }
+}

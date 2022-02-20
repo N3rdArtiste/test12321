@@ -23,9 +23,9 @@ type Query = {
   about_page_files?: Maybe<Array<Maybe<About_Page_Files>>>;
   about_page_files_aggregated?: Maybe<Array<Maybe<About_Page_Files_Aggregated>>>;
   about_page_files_by_id?: Maybe<About_Page_Files>;
-  about_page_judges?: Maybe<Array<Maybe<About_Page_Judges>>>;
-  about_page_judges_aggregated?: Maybe<Array<Maybe<About_Page_Judges_Aggregated>>>;
-  about_page_judges_by_id?: Maybe<About_Page_Judges>;
+  about_page_judges_1?: Maybe<Array<Maybe<About_Page_Judges_1>>>;
+  about_page_judges_1_aggregated?: Maybe<Array<Maybe<About_Page_Judges_1_Aggregated>>>;
+  about_page_judges_1_by_id?: Maybe<About_Page_Judges_1>;
   about_page_question_text_area?: Maybe<Array<Maybe<About_Page_Question_Text_Area>>>;
   about_page_question_text_area_aggregated?: Maybe<Array<Maybe<About_Page_Question_Text_Area_Aggregated>>>;
   about_page_question_text_area_by_id?: Maybe<About_Page_Question_Text_Area>;
@@ -58,13 +58,13 @@ type Query = {
   judges?: Maybe<Array<Maybe<Judges>>>;
   judges_aggregated?: Maybe<Array<Maybe<Judges_Aggregated>>>;
   judges_by_id?: Maybe<Judges>;
-  judges_judges_years_filter?: Maybe<Array<Maybe<Judges_Judges_Years_Filter>>>;
-  judges_judges_years_filter_aggregated?: Maybe<Array<Maybe<Judges_Judges_Years_Filter_Aggregated>>>;
-  judges_judges_years_filter_by_id?: Maybe<Judges_Judges_Years_Filter>;
+  judges_judges_years?: Maybe<Array<Maybe<Judges_Judges_Years>>>;
+  judges_judges_years_aggregated?: Maybe<Array<Maybe<Judges_Judges_Years_Aggregated>>>;
+  judges_judges_years_by_id?: Maybe<Judges_Judges_Years>;
   judges_page?: Maybe<Judges_Page>;
-  judges_years_filter?: Maybe<Array<Maybe<Judges_Years_Filter>>>;
-  judges_years_filter_aggregated?: Maybe<Array<Maybe<Judges_Years_Filter_Aggregated>>>;
-  judges_years_filter_by_id?: Maybe<Judges_Years_Filter>;
+  judges_years?: Maybe<Array<Maybe<Judges_Years>>>;
+  judges_years_aggregated?: Maybe<Array<Maybe<Judges_Years_Aggregated>>>;
+  judges_years_by_id?: Maybe<Judges_Years>;
   key_dates?: Maybe<Array<Maybe<Key_Dates>>>;
   key_dates_aggregated?: Maybe<Array<Maybe<Key_Dates_Aggregated>>>;
   key_dates_by_id?: Maybe<Key_Dates>;
@@ -89,13 +89,22 @@ type Query = {
   past_winners_categories?: Maybe<Array<Maybe<Past_Winners_Categories>>>;
   past_winners_categories_aggregated?: Maybe<Array<Maybe<Past_Winners_Categories_Aggregated>>>;
   past_winners_categories_by_id?: Maybe<Past_Winners_Categories>;
-  past_winners_files?: Maybe<Array<Maybe<Past_Winners_Files>>>;
-  past_winners_files_aggregated?: Maybe<Array<Maybe<Past_Winners_Files_Aggregated>>>;
-  past_winners_files_by_id?: Maybe<Past_Winners_Files>;
   past_winners_page?: Maybe<Past_Winners_Page>;
   past_winners_past_winners_categories?: Maybe<Array<Maybe<Past_Winners_Past_Winners_Categories>>>;
   past_winners_past_winners_categories_aggregated?: Maybe<Array<Maybe<Past_Winners_Past_Winners_Categories_Aggregated>>>;
   past_winners_past_winners_categories_by_id?: Maybe<Past_Winners_Past_Winners_Categories>;
+  past_winners_past_winners_worksheets?: Maybe<Array<Maybe<Past_Winners_Past_Winners_Worksheets>>>;
+  past_winners_past_winners_worksheets_aggregated?: Maybe<Array<Maybe<Past_Winners_Past_Winners_Worksheets_Aggregated>>>;
+  past_winners_past_winners_worksheets_by_id?: Maybe<Past_Winners_Past_Winners_Worksheets>;
+  past_winners_past_winners_years?: Maybe<Array<Maybe<Past_Winners_Past_Winners_Years>>>;
+  past_winners_past_winners_years_aggregated?: Maybe<Array<Maybe<Past_Winners_Past_Winners_Years_Aggregated>>>;
+  past_winners_past_winners_years_by_id?: Maybe<Past_Winners_Past_Winners_Years>;
+  past_winners_worksheets?: Maybe<Array<Maybe<Past_Winners_Worksheets>>>;
+  past_winners_worksheets_aggregated?: Maybe<Array<Maybe<Past_Winners_Worksheets_Aggregated>>>;
+  past_winners_worksheets_by_id?: Maybe<Past_Winners_Worksheets>;
+  past_winners_years?: Maybe<Array<Maybe<Past_Winners_Years>>>;
+  past_winners_years_aggregated?: Maybe<Array<Maybe<Past_Winners_Years_Aggregated>>>;
+  past_winners_years_by_id?: Maybe<Past_Winners_Years>;
   question_text_area?: Maybe<Array<Maybe<Question_Text_Area>>>;
   question_text_area_aggregated?: Maybe<Array<Maybe<Question_Text_Area_Aggregated>>>;
   question_text_area_by_id?: Maybe<Question_Text_Area>;
@@ -136,8 +145,8 @@ type QueryAbout_Page_Files_By_IdArgs = {
 };
 
 
-type QueryAbout_Page_JudgesArgs = {
-  filter?: InputMaybe<About_Page_Judges_Filter>;
+type QueryAbout_Page_Judges_1Args = {
+  filter?: InputMaybe<About_Page_Judges_1_Filter>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
   page?: InputMaybe<Scalars['Int']>;
@@ -146,8 +155,8 @@ type QueryAbout_Page_JudgesArgs = {
 };
 
 
-type QueryAbout_Page_Judges_AggregatedArgs = {
-  filter?: InputMaybe<About_Page_Judges_Filter>;
+type QueryAbout_Page_Judges_1_AggregatedArgs = {
+  filter?: InputMaybe<About_Page_Judges_1_Filter>;
   groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   limit?: InputMaybe<Scalars['Int']>;
   search?: InputMaybe<Scalars['String']>;
@@ -155,7 +164,7 @@ type QueryAbout_Page_Judges_AggregatedArgs = {
 };
 
 
-type QueryAbout_Page_Judges_By_IdArgs = {
+type QueryAbout_Page_Judges_1_By_IdArgs = {
   id: Scalars['ID'];
 };
 
@@ -376,8 +385,8 @@ type QueryJudges_By_IdArgs = {
 };
 
 
-type QueryJudges_Judges_Years_FilterArgs = {
-  filter?: InputMaybe<Judges_Judges_Years_Filter_Filter>;
+type QueryJudges_Judges_YearsArgs = {
+  filter?: InputMaybe<Judges_Judges_Years_Filter>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
   page?: InputMaybe<Scalars['Int']>;
@@ -386,8 +395,8 @@ type QueryJudges_Judges_Years_FilterArgs = {
 };
 
 
-type QueryJudges_Judges_Years_Filter_AggregatedArgs = {
-  filter?: InputMaybe<Judges_Judges_Years_Filter_Filter>;
+type QueryJudges_Judges_Years_AggregatedArgs = {
+  filter?: InputMaybe<Judges_Judges_Years_Filter>;
   groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   limit?: InputMaybe<Scalars['Int']>;
   search?: InputMaybe<Scalars['String']>;
@@ -395,13 +404,13 @@ type QueryJudges_Judges_Years_Filter_AggregatedArgs = {
 };
 
 
-type QueryJudges_Judges_Years_Filter_By_IdArgs = {
+type QueryJudges_Judges_Years_By_IdArgs = {
   id: Scalars['ID'];
 };
 
 
-type QueryJudges_Years_FilterArgs = {
-  filter?: InputMaybe<Judges_Years_Filter_Filter>;
+type QueryJudges_YearsArgs = {
+  filter?: InputMaybe<Judges_Years_Filter>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
   page?: InputMaybe<Scalars['Int']>;
@@ -410,8 +419,8 @@ type QueryJudges_Years_FilterArgs = {
 };
 
 
-type QueryJudges_Years_Filter_AggregatedArgs = {
-  filter?: InputMaybe<Judges_Years_Filter_Filter>;
+type QueryJudges_Years_AggregatedArgs = {
+  filter?: InputMaybe<Judges_Years_Filter>;
   groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   limit?: InputMaybe<Scalars['Int']>;
   search?: InputMaybe<Scalars['String']>;
@@ -419,7 +428,7 @@ type QueryJudges_Years_Filter_AggregatedArgs = {
 };
 
 
-type QueryJudges_Years_Filter_By_IdArgs = {
+type QueryJudges_Years_By_IdArgs = {
   id: Scalars['ID'];
 };
 
@@ -616,30 +625,6 @@ type QueryPast_Winners_Categories_By_IdArgs = {
 };
 
 
-type QueryPast_Winners_FilesArgs = {
-  filter?: InputMaybe<Past_Winners_Files_Filter>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  page?: InputMaybe<Scalars['Int']>;
-  search?: InputMaybe<Scalars['String']>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-type QueryPast_Winners_Files_AggregatedArgs = {
-  filter?: InputMaybe<Past_Winners_Files_Filter>;
-  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  search?: InputMaybe<Scalars['String']>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-type QueryPast_Winners_Files_By_IdArgs = {
-  id: Scalars['ID'];
-};
-
-
 type QueryPast_Winners_Past_Winners_CategoriesArgs = {
   filter?: InputMaybe<Past_Winners_Past_Winners_Categories_Filter>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -660,6 +645,102 @@ type QueryPast_Winners_Past_Winners_Categories_AggregatedArgs = {
 
 
 type QueryPast_Winners_Past_Winners_Categories_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+type QueryPast_Winners_Past_Winners_WorksheetsArgs = {
+  filter?: InputMaybe<Past_Winners_Past_Winners_Worksheets_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryPast_Winners_Past_Winners_Worksheets_AggregatedArgs = {
+  filter?: InputMaybe<Past_Winners_Past_Winners_Worksheets_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryPast_Winners_Past_Winners_Worksheets_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+type QueryPast_Winners_Past_Winners_YearsArgs = {
+  filter?: InputMaybe<Past_Winners_Past_Winners_Years_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryPast_Winners_Past_Winners_Years_AggregatedArgs = {
+  filter?: InputMaybe<Past_Winners_Past_Winners_Years_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryPast_Winners_Past_Winners_Years_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+type QueryPast_Winners_WorksheetsArgs = {
+  filter?: InputMaybe<Past_Winners_Worksheets_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryPast_Winners_Worksheets_AggregatedArgs = {
+  filter?: InputMaybe<Past_Winners_Worksheets_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryPast_Winners_Worksheets_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+type QueryPast_Winners_YearsArgs = {
+  filter?: InputMaybe<Past_Winners_Years_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryPast_Winners_Years_AggregatedArgs = {
+  filter?: InputMaybe<Past_Winners_Years_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type QueryPast_Winners_Years_By_IdArgs = {
   id: Scalars['ID'];
 };
 
@@ -772,9 +853,10 @@ type About_Page = {
   judges_section_CTA_label?: Maybe<Scalars['String']>;
   judges_section_body?: Maybe<Scalars['String']>;
   judges_section_heading?: Maybe<Scalars['String']>;
-  judges_section_hero_judge?: Maybe<Array<Maybe<About_Page_Judges>>>;
+  judges_section_judge?: Maybe<Array<Maybe<About_Page_Judges_1>>>;
   multi_level_questions?: Maybe<Array<Maybe<About_Page_Question_Titles>>>;
   textarea_questions?: Maybe<Array<Maybe<About_Page_Question_Text_Area>>>;
+  title_bar_text?: Maybe<Scalars['String']>;
 };
 
 
@@ -798,8 +880,8 @@ type About_PageEnter_Now_Section_ImageArgs = {
 };
 
 
-type About_PageJudges_Section_Hero_JudgeArgs = {
-  filter?: InputMaybe<About_Page_Judges_Filter>;
+type About_PageJudges_Section_JudgeArgs = {
+  filter?: InputMaybe<About_Page_Judges_1_Filter>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
   page?: InputMaybe<Scalars['Int']>;
@@ -895,20 +977,21 @@ type About_Page_Filter = {
   judges_section_CTA_label?: InputMaybe<String_Filter_Operators>;
   judges_section_body?: InputMaybe<String_Filter_Operators>;
   judges_section_heading?: InputMaybe<String_Filter_Operators>;
-  judges_section_hero_judge?: InputMaybe<About_Page_Judges_Filter>;
+  judges_section_judge?: InputMaybe<About_Page_Judges_1_Filter>;
   multi_level_questions?: InputMaybe<About_Page_Question_Titles_Filter>;
   textarea_questions?: InputMaybe<About_Page_Question_Text_Area_Filter>;
+  title_bar_text?: InputMaybe<String_Filter_Operators>;
 };
 
-type About_Page_Judges = {
-  __typename?: 'about_page_judges';
-  about_page?: Maybe<About_Page>;
+type About_Page_Judges_1 = {
+  __typename?: 'about_page_judges_1';
+  about_page_id?: Maybe<About_Page>;
   id?: Maybe<Scalars['ID']>;
   judge?: Maybe<Judges>;
 };
 
 
-type About_Page_JudgesAbout_PageArgs = {
+type About_Page_Judges_1About_Page_IdArgs = {
   filter?: InputMaybe<About_Page_Filter>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -918,7 +1001,7 @@ type About_Page_JudgesAbout_PageArgs = {
 };
 
 
-type About_Page_JudgesJudgeArgs = {
+type About_Page_Judges_1JudgeArgs = {
   filter?: InputMaybe<Judges_Filter>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -927,30 +1010,30 @@ type About_Page_JudgesJudgeArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
-type About_Page_Judges_Aggregated = {
-  __typename?: 'about_page_judges_aggregated';
-  avg?: Maybe<About_Page_Judges_Aggregated_Fields>;
-  avgDistinct?: Maybe<About_Page_Judges_Aggregated_Fields>;
-  count?: Maybe<About_Page_Judges_Aggregated_Fields>;
-  countDistinct?: Maybe<About_Page_Judges_Aggregated_Fields>;
+type About_Page_Judges_1_Aggregated = {
+  __typename?: 'about_page_judges_1_aggregated';
+  avg?: Maybe<About_Page_Judges_1_Aggregated_Fields>;
+  avgDistinct?: Maybe<About_Page_Judges_1_Aggregated_Fields>;
+  count?: Maybe<About_Page_Judges_1_Aggregated_Fields>;
+  countDistinct?: Maybe<About_Page_Judges_1_Aggregated_Fields>;
   group?: Maybe<Scalars['JSON']>;
-  max?: Maybe<About_Page_Judges_Aggregated_Fields>;
-  min?: Maybe<About_Page_Judges_Aggregated_Fields>;
-  sum?: Maybe<About_Page_Judges_Aggregated_Fields>;
-  sumDistinct?: Maybe<About_Page_Judges_Aggregated_Fields>;
+  max?: Maybe<About_Page_Judges_1_Aggregated_Fields>;
+  min?: Maybe<About_Page_Judges_1_Aggregated_Fields>;
+  sum?: Maybe<About_Page_Judges_1_Aggregated_Fields>;
+  sumDistinct?: Maybe<About_Page_Judges_1_Aggregated_Fields>;
 };
 
-type About_Page_Judges_Aggregated_Fields = {
-  __typename?: 'about_page_judges_aggregated_fields';
-  about_page?: Maybe<Scalars['Float']>;
+type About_Page_Judges_1_Aggregated_Fields = {
+  __typename?: 'about_page_judges_1_aggregated_fields';
+  about_page_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   judge?: Maybe<Scalars['Float']>;
 };
 
-type About_Page_Judges_Filter = {
-  _and?: InputMaybe<Array<InputMaybe<About_Page_Judges_Filter>>>;
-  _or?: InputMaybe<Array<InputMaybe<About_Page_Judges_Filter>>>;
-  about_page?: InputMaybe<About_Page_Filter>;
+type About_Page_Judges_1_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<About_Page_Judges_1_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<About_Page_Judges_1_Filter>>>;
+  about_page_id?: InputMaybe<About_Page_Filter>;
   id?: InputMaybe<Number_Filter_Operators>;
   judge?: InputMaybe<Judges_Filter>;
 };
@@ -1067,8 +1150,11 @@ type About_Page_Question_Titles_Filter = {
 
 type Brands = {
   __typename?: 'brands';
+  date_created?: Maybe<Scalars['Date']>;
+  date_created_func?: Maybe<Datetime_Functions>;
   id?: Maybe<Scalars['ID']>;
   image?: Maybe<Directus_Files>;
+  sort?: Maybe<Scalars['Int']>;
 };
 
 
@@ -1097,13 +1183,17 @@ type Brands_Aggregated = {
 type Brands_Aggregated_Fields = {
   __typename?: 'brands_aggregated_fields';
   id?: Maybe<Scalars['Float']>;
+  sort?: Maybe<Scalars['Float']>;
 };
 
 type Brands_Filter = {
   _and?: InputMaybe<Array<InputMaybe<Brands_Filter>>>;
   _or?: InputMaybe<Array<InputMaybe<Brands_Filter>>>;
+  date_created?: InputMaybe<Date_Filter_Operators>;
+  date_created_func?: InputMaybe<Datetime_Function_Filter_Operators>;
   id?: InputMaybe<Number_Filter_Operators>;
   image?: InputMaybe<Directus_Files_Filter>;
+  sort?: InputMaybe<Number_Filter_Operators>;
 };
 
 type Date_Filter_Operators = {
@@ -1207,6 +1297,7 @@ type Enter_Page = {
   text_area_questions?: Maybe<Array<Maybe<Enter_Page_Question_Text_Area>>>;
   timeline_section_heading?: Maybe<Scalars['String']>;
   timeline_section_image?: Maybe<Directus_Files>;
+  title_bar_text?: Maybe<Scalars['String']>;
 };
 
 
@@ -1272,6 +1363,7 @@ type Enter_Page_Filter = {
   text_area_questions?: InputMaybe<Enter_Page_Question_Text_Area_Filter>;
   timeline_section_heading?: InputMaybe<String_Filter_Operators>;
   timeline_section_image?: InputMaybe<Directus_Files_Filter>;
+  title_bar_text?: InputMaybe<String_Filter_Operators>;
 };
 
 type Enter_Page_Key_Dates = {
@@ -1483,7 +1575,7 @@ type Home_Page = {
   enter_now_section_heading?: Maybe<Scalars['String']>;
   enter_now_section_sub_heading?: Maybe<Scalars['String']>;
   hero_section_right_side_svg?: Maybe<Directus_Files>;
-  hero_section_video?: Maybe<Scalars['String']>;
+  hero_section_youtube_video_id?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['ID']>;
   innovator_section_CTA_label?: Maybe<Scalars['String']>;
   innovator_section_body?: Maybe<Scalars['String']>;
@@ -1491,6 +1583,7 @@ type Home_Page = {
   innovator_section_image?: Maybe<Directus_Files>;
   innovators_section_heading?: Maybe<Scalars['String']>;
   inspiration_articles?: Maybe<Array<Maybe<Home_Page_Inspiration_Articles>>>;
+  title_bar_text?: Maybe<Scalars['String']>;
 };
 
 
@@ -1534,7 +1627,7 @@ type Home_Page_Filter = {
   enter_now_section_heading?: InputMaybe<String_Filter_Operators>;
   enter_now_section_sub_heading?: InputMaybe<String_Filter_Operators>;
   hero_section_right_side_svg?: InputMaybe<Directus_Files_Filter>;
-  hero_section_video?: InputMaybe<String_Filter_Operators>;
+  hero_section_youtube_video_id?: InputMaybe<String_Filter_Operators>;
   id?: InputMaybe<Number_Filter_Operators>;
   innovator_section_CTA_label?: InputMaybe<String_Filter_Operators>;
   innovator_section_body?: InputMaybe<String_Filter_Operators>;
@@ -1542,6 +1635,7 @@ type Home_Page_Filter = {
   innovator_section_image?: InputMaybe<Directus_Files_Filter>;
   innovators_section_heading?: InputMaybe<String_Filter_Operators>;
   inspiration_articles?: InputMaybe<Home_Page_Inspiration_Articles_Filter>;
+  title_bar_text?: InputMaybe<String_Filter_Operators>;
 };
 
 type Home_Page_Inspiration_Articles = {
@@ -1661,6 +1755,7 @@ type Inspiration_Page = {
   heading?: Maybe<Scalars['String']>;
   hero_image?: Maybe<Directus_Files>;
   id?: Maybe<Scalars['ID']>;
+  title_bar_text?: Maybe<Scalars['String']>;
 };
 
 
@@ -1677,10 +1772,13 @@ type Judges = {
   __typename?: 'judges';
   about_text?: Maybe<Scalars['String']>;
   company?: Maybe<Scalars['String']>;
+  date_created?: Maybe<Scalars['Date']>;
+  date_created_func?: Maybe<Datetime_Functions>;
   id?: Maybe<Scalars['ID']>;
   image?: Maybe<Directus_Files>;
   name?: Maybe<Scalars['String']>;
-  years?: Maybe<Array<Maybe<Judges_Judges_Years_Filter>>>;
+  sort?: Maybe<Scalars['Int']>;
+  years?: Maybe<Array<Maybe<Judges_Judges_Years>>>;
 };
 
 
@@ -1695,7 +1793,7 @@ type JudgesImageArgs = {
 
 
 type JudgesYearsArgs = {
-  filter?: InputMaybe<Judges_Judges_Years_Filter_Filter>;
+  filter?: InputMaybe<Judges_Judges_Years_Filter>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
   page?: InputMaybe<Scalars['Int']>;
@@ -1719,6 +1817,7 @@ type Judges_Aggregated = {
 type Judges_Aggregated_Fields = {
   __typename?: 'judges_aggregated_fields';
   id?: Maybe<Scalars['Float']>;
+  sort?: Maybe<Scalars['Float']>;
 };
 
 type Judges_Filter = {
@@ -1726,21 +1825,24 @@ type Judges_Filter = {
   _or?: InputMaybe<Array<InputMaybe<Judges_Filter>>>;
   about_text?: InputMaybe<String_Filter_Operators>;
   company?: InputMaybe<String_Filter_Operators>;
+  date_created?: InputMaybe<Date_Filter_Operators>;
+  date_created_func?: InputMaybe<Datetime_Function_Filter_Operators>;
   id?: InputMaybe<Number_Filter_Operators>;
   image?: InputMaybe<Directus_Files_Filter>;
   name?: InputMaybe<String_Filter_Operators>;
-  years?: InputMaybe<Judges_Judges_Years_Filter_Filter>;
+  sort?: InputMaybe<Number_Filter_Operators>;
+  years?: InputMaybe<Judges_Judges_Years_Filter>;
 };
 
-type Judges_Judges_Years_Filter = {
-  __typename?: 'judges_judges_years_filter';
+type Judges_Judges_Years = {
+  __typename?: 'judges_judges_years';
   id?: Maybe<Scalars['ID']>;
   judges_id?: Maybe<Judges>;
-  judges_years_filter_id?: Maybe<Judges_Years_Filter>;
+  judges_year?: Maybe<Judges_Years>;
 };
 
 
-type Judges_Judges_Years_FilterJudges_IdArgs = {
+type Judges_Judges_YearsJudges_IdArgs = {
   filter?: InputMaybe<Judges_Filter>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -1750,8 +1852,8 @@ type Judges_Judges_Years_FilterJudges_IdArgs = {
 };
 
 
-type Judges_Judges_Years_FilterJudges_Years_Filter_IdArgs = {
-  filter?: InputMaybe<Judges_Years_Filter_Filter>;
+type Judges_Judges_YearsJudges_YearArgs = {
+  filter?: InputMaybe<Judges_Years_Filter>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
   page?: InputMaybe<Scalars['Int']>;
@@ -1759,70 +1861,77 @@ type Judges_Judges_Years_FilterJudges_Years_Filter_IdArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
-type Judges_Judges_Years_Filter_Aggregated = {
-  __typename?: 'judges_judges_years_filter_aggregated';
-  avg?: Maybe<Judges_Judges_Years_Filter_Aggregated_Fields>;
-  avgDistinct?: Maybe<Judges_Judges_Years_Filter_Aggregated_Fields>;
-  count?: Maybe<Judges_Judges_Years_Filter_Aggregated_Fields>;
-  countDistinct?: Maybe<Judges_Judges_Years_Filter_Aggregated_Fields>;
+type Judges_Judges_Years_Aggregated = {
+  __typename?: 'judges_judges_years_aggregated';
+  avg?: Maybe<Judges_Judges_Years_Aggregated_Fields>;
+  avgDistinct?: Maybe<Judges_Judges_Years_Aggregated_Fields>;
+  count?: Maybe<Judges_Judges_Years_Aggregated_Fields>;
+  countDistinct?: Maybe<Judges_Judges_Years_Aggregated_Fields>;
   group?: Maybe<Scalars['JSON']>;
-  max?: Maybe<Judges_Judges_Years_Filter_Aggregated_Fields>;
-  min?: Maybe<Judges_Judges_Years_Filter_Aggregated_Fields>;
-  sum?: Maybe<Judges_Judges_Years_Filter_Aggregated_Fields>;
-  sumDistinct?: Maybe<Judges_Judges_Years_Filter_Aggregated_Fields>;
+  max?: Maybe<Judges_Judges_Years_Aggregated_Fields>;
+  min?: Maybe<Judges_Judges_Years_Aggregated_Fields>;
+  sum?: Maybe<Judges_Judges_Years_Aggregated_Fields>;
+  sumDistinct?: Maybe<Judges_Judges_Years_Aggregated_Fields>;
 };
 
-type Judges_Judges_Years_Filter_Aggregated_Fields = {
-  __typename?: 'judges_judges_years_filter_aggregated_fields';
+type Judges_Judges_Years_Aggregated_Fields = {
+  __typename?: 'judges_judges_years_aggregated_fields';
   id?: Maybe<Scalars['Float']>;
   judges_id?: Maybe<Scalars['Float']>;
-  judges_years_filter_id?: Maybe<Scalars['Float']>;
+  judges_year?: Maybe<Scalars['Float']>;
 };
 
-type Judges_Judges_Years_Filter_Filter = {
-  _and?: InputMaybe<Array<InputMaybe<Judges_Judges_Years_Filter_Filter>>>;
-  _or?: InputMaybe<Array<InputMaybe<Judges_Judges_Years_Filter_Filter>>>;
+type Judges_Judges_Years_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Judges_Judges_Years_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Judges_Judges_Years_Filter>>>;
   id?: InputMaybe<Number_Filter_Operators>;
   judges_id?: InputMaybe<Judges_Filter>;
-  judges_years_filter_id?: InputMaybe<Judges_Years_Filter_Filter>;
+  judges_year?: InputMaybe<Judges_Years_Filter>;
 };
 
 type Judges_Page = {
   __typename?: 'judges_page';
   heading?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['ID']>;
+  title_bar_text?: Maybe<Scalars['String']>;
+};
+
+type Judges_Years = {
+  __typename?: 'judges_years';
+  date_created?: Maybe<Scalars['Date']>;
+  date_created_func?: Maybe<Datetime_Functions>;
+  id?: Maybe<Scalars['ID']>;
+  sort?: Maybe<Scalars['Int']>;
+  year?: Maybe<Scalars['String']>;
+};
+
+type Judges_Years_Aggregated = {
+  __typename?: 'judges_years_aggregated';
+  avg?: Maybe<Judges_Years_Aggregated_Fields>;
+  avgDistinct?: Maybe<Judges_Years_Aggregated_Fields>;
+  count?: Maybe<Judges_Years_Aggregated_Fields>;
+  countDistinct?: Maybe<Judges_Years_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<Judges_Years_Aggregated_Fields>;
+  min?: Maybe<Judges_Years_Aggregated_Fields>;
+  sum?: Maybe<Judges_Years_Aggregated_Fields>;
+  sumDistinct?: Maybe<Judges_Years_Aggregated_Fields>;
+};
+
+type Judges_Years_Aggregated_Fields = {
+  __typename?: 'judges_years_aggregated_fields';
+  id?: Maybe<Scalars['Float']>;
+  sort?: Maybe<Scalars['Float']>;
 };
 
 type Judges_Years_Filter = {
-  __typename?: 'judges_years_filter';
-  id?: Maybe<Scalars['ID']>;
-  year?: Maybe<Scalars['Int']>;
-};
-
-type Judges_Years_Filter_Aggregated = {
-  __typename?: 'judges_years_filter_aggregated';
-  avg?: Maybe<Judges_Years_Filter_Aggregated_Fields>;
-  avgDistinct?: Maybe<Judges_Years_Filter_Aggregated_Fields>;
-  count?: Maybe<Judges_Years_Filter_Aggregated_Fields>;
-  countDistinct?: Maybe<Judges_Years_Filter_Aggregated_Fields>;
-  group?: Maybe<Scalars['JSON']>;
-  max?: Maybe<Judges_Years_Filter_Aggregated_Fields>;
-  min?: Maybe<Judges_Years_Filter_Aggregated_Fields>;
-  sum?: Maybe<Judges_Years_Filter_Aggregated_Fields>;
-  sumDistinct?: Maybe<Judges_Years_Filter_Aggregated_Fields>;
-};
-
-type Judges_Years_Filter_Aggregated_Fields = {
-  __typename?: 'judges_years_filter_aggregated_fields';
-  id?: Maybe<Scalars['Float']>;
-  year?: Maybe<Scalars['Float']>;
-};
-
-type Judges_Years_Filter_Filter = {
-  _and?: InputMaybe<Array<InputMaybe<Judges_Years_Filter_Filter>>>;
-  _or?: InputMaybe<Array<InputMaybe<Judges_Years_Filter_Filter>>>;
+  _and?: InputMaybe<Array<InputMaybe<Judges_Years_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Judges_Years_Filter>>>;
+  date_created?: InputMaybe<Date_Filter_Operators>;
+  date_created_func?: InputMaybe<Datetime_Function_Filter_Operators>;
   id?: InputMaybe<Number_Filter_Operators>;
-  year?: InputMaybe<Number_Filter_Operators>;
+  sort?: InputMaybe<Number_Filter_Operators>;
+  year?: InputMaybe<String_Filter_Operators>;
 };
 
 type Key_Dates = {
@@ -2010,9 +2119,12 @@ type Number_Filter_Operators = {
 
 type Our_Sponsors = {
   __typename?: 'our_sponsors';
+  date_created?: Maybe<Scalars['Date']>;
+  date_created_func?: Maybe<Datetime_Functions>;
   id?: Maybe<Scalars['ID']>;
   image?: Maybe<Directus_Files>;
   link?: Maybe<Scalars['String']>;
+  sort?: Maybe<Scalars['Int']>;
 };
 
 
@@ -2041,25 +2153,32 @@ type Our_Sponsors_Aggregated = {
 type Our_Sponsors_Aggregated_Fields = {
   __typename?: 'our_sponsors_aggregated_fields';
   id?: Maybe<Scalars['Float']>;
+  sort?: Maybe<Scalars['Float']>;
 };
 
 type Our_Sponsors_Filter = {
   _and?: InputMaybe<Array<InputMaybe<Our_Sponsors_Filter>>>;
   _or?: InputMaybe<Array<InputMaybe<Our_Sponsors_Filter>>>;
+  date_created?: InputMaybe<Date_Filter_Operators>;
+  date_created_func?: InputMaybe<Datetime_Function_Filter_Operators>;
   id?: InputMaybe<Number_Filter_Operators>;
   image?: InputMaybe<Directus_Files_Filter>;
   link?: InputMaybe<String_Filter_Operators>;
+  sort?: InputMaybe<Number_Filter_Operators>;
 };
 
 type Partners = {
   __typename?: 'partners';
+  date_created?: Maybe<Scalars['Date']>;
+  date_created_func?: Maybe<Datetime_Functions>;
   id?: Maybe<Scalars['ID']>;
+  image?: Maybe<Directus_Files>;
   link?: Maybe<Scalars['String']>;
-  partners?: Maybe<Directus_Files>;
+  sort?: Maybe<Scalars['Int']>;
 };
 
 
-type PartnersPartnersArgs = {
+type PartnersImageArgs = {
   filter?: InputMaybe<Directus_Files_Filter>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -2084,29 +2203,36 @@ type Partners_Aggregated = {
 type Partners_Aggregated_Fields = {
   __typename?: 'partners_aggregated_fields';
   id?: Maybe<Scalars['Float']>;
+  sort?: Maybe<Scalars['Float']>;
 };
 
 type Partners_Filter = {
   _and?: InputMaybe<Array<InputMaybe<Partners_Filter>>>;
   _or?: InputMaybe<Array<InputMaybe<Partners_Filter>>>;
+  date_created?: InputMaybe<Date_Filter_Operators>;
+  date_created_func?: InputMaybe<Datetime_Function_Filter_Operators>;
   id?: InputMaybe<Number_Filter_Operators>;
+  image?: InputMaybe<Directus_Files_Filter>;
   link?: InputMaybe<String_Filter_Operators>;
-  partners?: InputMaybe<Directus_Files_Filter>;
+  sort?: InputMaybe<Number_Filter_Operators>;
 };
 
 type Past_Winners = {
   __typename?: 'past_winners';
   categories?: Maybe<Array<Maybe<Past_Winners_Past_Winners_Categories>>>;
+  date_created?: Maybe<Scalars['Date']>;
+  date_created_func?: Maybe<Datetime_Functions>;
   id?: Maybe<Scalars['ID']>;
   image?: Maybe<Directus_Files>;
   name?: Maybe<Scalars['String']>;
   project_information?: Maybe<Scalars['String']>;
   school_name?: Maybe<Scalars['String']>;
   short_description?: Maybe<Scalars['String']>;
+  sort?: Maybe<Scalars['Int']>;
   students_name?: Maybe<Scalars['String']>;
-  worksheets?: Maybe<Array<Maybe<Past_Winners_Files>>>;
-  year?: Maybe<Scalars['Int']>;
-  youtube_video_link?: Maybe<Scalars['String']>;
+  worksheets?: Maybe<Array<Maybe<Past_Winners_Past_Winners_Worksheets>>>;
+  year?: Maybe<Array<Maybe<Past_Winners_Past_Winners_Years>>>;
+  youtube_video_id?: Maybe<Scalars['String']>;
 };
 
 
@@ -2131,7 +2257,17 @@ type Past_WinnersImageArgs = {
 
 
 type Past_WinnersWorksheetsArgs = {
-  filter?: InputMaybe<Past_Winners_Files_Filter>;
+  filter?: InputMaybe<Past_Winners_Past_Winners_Worksheets_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type Past_WinnersYearArgs = {
+  filter?: InputMaybe<Past_Winners_Past_Winners_Years_Filter>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
   page?: InputMaybe<Scalars['Int']>;
@@ -2155,13 +2291,16 @@ type Past_Winners_Aggregated = {
 type Past_Winners_Aggregated_Fields = {
   __typename?: 'past_winners_aggregated_fields';
   id?: Maybe<Scalars['Float']>;
-  year?: Maybe<Scalars['Float']>;
+  sort?: Maybe<Scalars['Float']>;
 };
 
 type Past_Winners_Categories = {
   __typename?: 'past_winners_categories';
+  category?: Maybe<Scalars['String']>;
+  date_created?: Maybe<Scalars['Date']>;
+  date_created_func?: Maybe<Datetime_Functions>;
   id?: Maybe<Scalars['ID']>;
-  title?: Maybe<Scalars['String']>;
+  sort?: Maybe<Scalars['Int']>;
 };
 
 type Past_Winners_Categories_Aggregated = {
@@ -2180,101 +2319,55 @@ type Past_Winners_Categories_Aggregated = {
 type Past_Winners_Categories_Aggregated_Fields = {
   __typename?: 'past_winners_categories_aggregated_fields';
   id?: Maybe<Scalars['Float']>;
+  sort?: Maybe<Scalars['Float']>;
 };
 
 type Past_Winners_Categories_Filter = {
   _and?: InputMaybe<Array<InputMaybe<Past_Winners_Categories_Filter>>>;
   _or?: InputMaybe<Array<InputMaybe<Past_Winners_Categories_Filter>>>;
+  category?: InputMaybe<String_Filter_Operators>;
+  date_created?: InputMaybe<Date_Filter_Operators>;
+  date_created_func?: InputMaybe<Datetime_Function_Filter_Operators>;
   id?: InputMaybe<Number_Filter_Operators>;
-  title?: InputMaybe<String_Filter_Operators>;
-};
-
-type Past_Winners_Files = {
-  __typename?: 'past_winners_files';
-  directus_files_id?: Maybe<Directus_Files>;
-  id?: Maybe<Scalars['ID']>;
-  past_winners_id?: Maybe<Past_Winners>;
-};
-
-
-type Past_Winners_FilesDirectus_Files_IdArgs = {
-  filter?: InputMaybe<Directus_Files_Filter>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  page?: InputMaybe<Scalars['Int']>;
-  search?: InputMaybe<Scalars['String']>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-type Past_Winners_FilesPast_Winners_IdArgs = {
-  filter?: InputMaybe<Past_Winners_Filter>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  page?: InputMaybe<Scalars['Int']>;
-  search?: InputMaybe<Scalars['String']>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-type Past_Winners_Files_Aggregated = {
-  __typename?: 'past_winners_files_aggregated';
-  avg?: Maybe<Past_Winners_Files_Aggregated_Fields>;
-  avgDistinct?: Maybe<Past_Winners_Files_Aggregated_Fields>;
-  count?: Maybe<Past_Winners_Files_Aggregated_Fields>;
-  countDistinct?: Maybe<Past_Winners_Files_Aggregated_Fields>;
-  group?: Maybe<Scalars['JSON']>;
-  max?: Maybe<Past_Winners_Files_Aggregated_Fields>;
-  min?: Maybe<Past_Winners_Files_Aggregated_Fields>;
-  sum?: Maybe<Past_Winners_Files_Aggregated_Fields>;
-  sumDistinct?: Maybe<Past_Winners_Files_Aggregated_Fields>;
-};
-
-type Past_Winners_Files_Aggregated_Fields = {
-  __typename?: 'past_winners_files_aggregated_fields';
-  id?: Maybe<Scalars['Float']>;
-  past_winners_id?: Maybe<Scalars['Float']>;
-};
-
-type Past_Winners_Files_Filter = {
-  _and?: InputMaybe<Array<InputMaybe<Past_Winners_Files_Filter>>>;
-  _or?: InputMaybe<Array<InputMaybe<Past_Winners_Files_Filter>>>;
-  directus_files_id?: InputMaybe<Directus_Files_Filter>;
-  id?: InputMaybe<Number_Filter_Operators>;
-  past_winners_id?: InputMaybe<Past_Winners_Filter>;
+  sort?: InputMaybe<Number_Filter_Operators>;
 };
 
 type Past_Winners_Filter = {
   _and?: InputMaybe<Array<InputMaybe<Past_Winners_Filter>>>;
   _or?: InputMaybe<Array<InputMaybe<Past_Winners_Filter>>>;
   categories?: InputMaybe<Past_Winners_Past_Winners_Categories_Filter>;
+  date_created?: InputMaybe<Date_Filter_Operators>;
+  date_created_func?: InputMaybe<Datetime_Function_Filter_Operators>;
   id?: InputMaybe<Number_Filter_Operators>;
   image?: InputMaybe<Directus_Files_Filter>;
   name?: InputMaybe<String_Filter_Operators>;
   project_information?: InputMaybe<String_Filter_Operators>;
   school_name?: InputMaybe<String_Filter_Operators>;
   short_description?: InputMaybe<String_Filter_Operators>;
+  sort?: InputMaybe<Number_Filter_Operators>;
   students_name?: InputMaybe<String_Filter_Operators>;
-  worksheets?: InputMaybe<Past_Winners_Files_Filter>;
-  year?: InputMaybe<Number_Filter_Operators>;
-  youtube_video_link?: InputMaybe<String_Filter_Operators>;
+  worksheets?: InputMaybe<Past_Winners_Past_Winners_Worksheets_Filter>;
+  year?: InputMaybe<Past_Winners_Past_Winners_Years_Filter>;
+  youtube_video_id?: InputMaybe<String_Filter_Operators>;
 };
 
 type Past_Winners_Page = {
   __typename?: 'past_winners_page';
   heading?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['ID']>;
+  title_bar_text?: Maybe<Scalars['String']>;
 };
 
 type Past_Winners_Past_Winners_Categories = {
   __typename?: 'past_winners_past_winners_categories';
   id?: Maybe<Scalars['ID']>;
-  past_winners?: Maybe<Past_Winners>;
   past_winners_category?: Maybe<Past_Winners_Categories>;
+  past_winners_id?: Maybe<Past_Winners>;
 };
 
 
-type Past_Winners_Past_Winners_CategoriesPast_WinnersArgs = {
-  filter?: InputMaybe<Past_Winners_Filter>;
+type Past_Winners_Past_Winners_CategoriesPast_Winners_CategoryArgs = {
+  filter?: InputMaybe<Past_Winners_Categories_Filter>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
   page?: InputMaybe<Scalars['Int']>;
@@ -2283,8 +2376,8 @@ type Past_Winners_Past_Winners_CategoriesPast_WinnersArgs = {
 };
 
 
-type Past_Winners_Past_Winners_CategoriesPast_Winners_CategoryArgs = {
-  filter?: InputMaybe<Past_Winners_Categories_Filter>;
+type Past_Winners_Past_Winners_CategoriesPast_Winners_IdArgs = {
+  filter?: InputMaybe<Past_Winners_Filter>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
   page?: InputMaybe<Scalars['Int']>;
@@ -2308,16 +2401,213 @@ type Past_Winners_Past_Winners_Categories_Aggregated = {
 type Past_Winners_Past_Winners_Categories_Aggregated_Fields = {
   __typename?: 'past_winners_past_winners_categories_aggregated_fields';
   id?: Maybe<Scalars['Float']>;
-  past_winners?: Maybe<Scalars['Float']>;
   past_winners_category?: Maybe<Scalars['Float']>;
+  past_winners_id?: Maybe<Scalars['Float']>;
 };
 
 type Past_Winners_Past_Winners_Categories_Filter = {
   _and?: InputMaybe<Array<InputMaybe<Past_Winners_Past_Winners_Categories_Filter>>>;
   _or?: InputMaybe<Array<InputMaybe<Past_Winners_Past_Winners_Categories_Filter>>>;
   id?: InputMaybe<Number_Filter_Operators>;
-  past_winners?: InputMaybe<Past_Winners_Filter>;
   past_winners_category?: InputMaybe<Past_Winners_Categories_Filter>;
+  past_winners_id?: InputMaybe<Past_Winners_Filter>;
+};
+
+type Past_Winners_Past_Winners_Worksheets = {
+  __typename?: 'past_winners_past_winners_worksheets';
+  id?: Maybe<Scalars['ID']>;
+  past_winners_id?: Maybe<Past_Winners>;
+  past_winners_worksheet?: Maybe<Past_Winners_Worksheets>;
+};
+
+
+type Past_Winners_Past_Winners_WorksheetsPast_Winners_IdArgs = {
+  filter?: InputMaybe<Past_Winners_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type Past_Winners_Past_Winners_WorksheetsPast_Winners_WorksheetArgs = {
+  filter?: InputMaybe<Past_Winners_Worksheets_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+type Past_Winners_Past_Winners_Worksheets_Aggregated = {
+  __typename?: 'past_winners_past_winners_worksheets_aggregated';
+  avg?: Maybe<Past_Winners_Past_Winners_Worksheets_Aggregated_Fields>;
+  avgDistinct?: Maybe<Past_Winners_Past_Winners_Worksheets_Aggregated_Fields>;
+  count?: Maybe<Past_Winners_Past_Winners_Worksheets_Aggregated_Fields>;
+  countDistinct?: Maybe<Past_Winners_Past_Winners_Worksheets_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<Past_Winners_Past_Winners_Worksheets_Aggregated_Fields>;
+  min?: Maybe<Past_Winners_Past_Winners_Worksheets_Aggregated_Fields>;
+  sum?: Maybe<Past_Winners_Past_Winners_Worksheets_Aggregated_Fields>;
+  sumDistinct?: Maybe<Past_Winners_Past_Winners_Worksheets_Aggregated_Fields>;
+};
+
+type Past_Winners_Past_Winners_Worksheets_Aggregated_Fields = {
+  __typename?: 'past_winners_past_winners_worksheets_aggregated_fields';
+  id?: Maybe<Scalars['Float']>;
+  past_winners_id?: Maybe<Scalars['Float']>;
+  past_winners_worksheet?: Maybe<Scalars['Float']>;
+};
+
+type Past_Winners_Past_Winners_Worksheets_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Past_Winners_Past_Winners_Worksheets_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Past_Winners_Past_Winners_Worksheets_Filter>>>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  past_winners_id?: InputMaybe<Past_Winners_Filter>;
+  past_winners_worksheet?: InputMaybe<Past_Winners_Worksheets_Filter>;
+};
+
+type Past_Winners_Past_Winners_Years = {
+  __typename?: 'past_winners_past_winners_years';
+  id?: Maybe<Scalars['ID']>;
+  past_winners_id?: Maybe<Past_Winners>;
+  past_winners_year?: Maybe<Past_Winners_Years>;
+};
+
+
+type Past_Winners_Past_Winners_YearsPast_Winners_IdArgs = {
+  filter?: InputMaybe<Past_Winners_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+type Past_Winners_Past_Winners_YearsPast_Winners_YearArgs = {
+  filter?: InputMaybe<Past_Winners_Years_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+type Past_Winners_Past_Winners_Years_Aggregated = {
+  __typename?: 'past_winners_past_winners_years_aggregated';
+  avg?: Maybe<Past_Winners_Past_Winners_Years_Aggregated_Fields>;
+  avgDistinct?: Maybe<Past_Winners_Past_Winners_Years_Aggregated_Fields>;
+  count?: Maybe<Past_Winners_Past_Winners_Years_Aggregated_Fields>;
+  countDistinct?: Maybe<Past_Winners_Past_Winners_Years_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<Past_Winners_Past_Winners_Years_Aggregated_Fields>;
+  min?: Maybe<Past_Winners_Past_Winners_Years_Aggregated_Fields>;
+  sum?: Maybe<Past_Winners_Past_Winners_Years_Aggregated_Fields>;
+  sumDistinct?: Maybe<Past_Winners_Past_Winners_Years_Aggregated_Fields>;
+};
+
+type Past_Winners_Past_Winners_Years_Aggregated_Fields = {
+  __typename?: 'past_winners_past_winners_years_aggregated_fields';
+  id?: Maybe<Scalars['Float']>;
+  past_winners_id?: Maybe<Scalars['Float']>;
+  past_winners_year?: Maybe<Scalars['Float']>;
+};
+
+type Past_Winners_Past_Winners_Years_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Past_Winners_Past_Winners_Years_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Past_Winners_Past_Winners_Years_Filter>>>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  past_winners_id?: InputMaybe<Past_Winners_Filter>;
+  past_winners_year?: InputMaybe<Past_Winners_Years_Filter>;
+};
+
+type Past_Winners_Worksheets = {
+  __typename?: 'past_winners_worksheets';
+  date_created?: Maybe<Scalars['Date']>;
+  date_created_func?: Maybe<Datetime_Functions>;
+  id?: Maybe<Scalars['ID']>;
+  sort?: Maybe<Scalars['Int']>;
+  worksheet?: Maybe<Directus_Files>;
+};
+
+
+type Past_Winners_WorksheetsWorksheetArgs = {
+  filter?: InputMaybe<Directus_Files_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+type Past_Winners_Worksheets_Aggregated = {
+  __typename?: 'past_winners_worksheets_aggregated';
+  avg?: Maybe<Past_Winners_Worksheets_Aggregated_Fields>;
+  avgDistinct?: Maybe<Past_Winners_Worksheets_Aggregated_Fields>;
+  count?: Maybe<Past_Winners_Worksheets_Aggregated_Fields>;
+  countDistinct?: Maybe<Past_Winners_Worksheets_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<Past_Winners_Worksheets_Aggregated_Fields>;
+  min?: Maybe<Past_Winners_Worksheets_Aggregated_Fields>;
+  sum?: Maybe<Past_Winners_Worksheets_Aggregated_Fields>;
+  sumDistinct?: Maybe<Past_Winners_Worksheets_Aggregated_Fields>;
+};
+
+type Past_Winners_Worksheets_Aggregated_Fields = {
+  __typename?: 'past_winners_worksheets_aggregated_fields';
+  id?: Maybe<Scalars['Float']>;
+  sort?: Maybe<Scalars['Float']>;
+};
+
+type Past_Winners_Worksheets_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Past_Winners_Worksheets_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Past_Winners_Worksheets_Filter>>>;
+  date_created?: InputMaybe<Date_Filter_Operators>;
+  date_created_func?: InputMaybe<Datetime_Function_Filter_Operators>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  sort?: InputMaybe<Number_Filter_Operators>;
+  worksheet?: InputMaybe<Directus_Files_Filter>;
+};
+
+type Past_Winners_Years = {
+  __typename?: 'past_winners_years';
+  date_created?: Maybe<Scalars['Date']>;
+  date_created_func?: Maybe<Datetime_Functions>;
+  id?: Maybe<Scalars['ID']>;
+  sort?: Maybe<Scalars['Int']>;
+  year?: Maybe<Scalars['Int']>;
+};
+
+type Past_Winners_Years_Aggregated = {
+  __typename?: 'past_winners_years_aggregated';
+  avg?: Maybe<Past_Winners_Years_Aggregated_Fields>;
+  avgDistinct?: Maybe<Past_Winners_Years_Aggregated_Fields>;
+  count?: Maybe<Past_Winners_Years_Aggregated_Fields>;
+  countDistinct?: Maybe<Past_Winners_Years_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<Past_Winners_Years_Aggregated_Fields>;
+  min?: Maybe<Past_Winners_Years_Aggregated_Fields>;
+  sum?: Maybe<Past_Winners_Years_Aggregated_Fields>;
+  sumDistinct?: Maybe<Past_Winners_Years_Aggregated_Fields>;
+};
+
+type Past_Winners_Years_Aggregated_Fields = {
+  __typename?: 'past_winners_years_aggregated_fields';
+  id?: Maybe<Scalars['Float']>;
+  sort?: Maybe<Scalars['Float']>;
+  year?: Maybe<Scalars['Float']>;
+};
+
+type Past_Winners_Years_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Past_Winners_Years_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Past_Winners_Years_Filter>>>;
+  date_created?: InputMaybe<Date_Filter_Operators>;
+  date_created_func?: InputMaybe<Datetime_Function_Filter_Operators>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  sort?: InputMaybe<Number_Filter_Operators>;
+  year?: InputMaybe<Number_Filter_Operators>;
 };
 
 type Question_Text_Area = {
@@ -2531,12 +2821,12 @@ type AllJudgesQuery = { __typename?: 'Query', judges?: Array<{ __typename: 'judg
 type HeaderAndFooterQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type HeaderAndFooterQuery = { __typename?: 'Query', header?: { __typename?: 'header', id?: string | null, logo?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null, footer?: { __typename?: 'footer', id?: string | null, text?: string | null, copyright_text?: string | null, footer_logo?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null, partners?: Array<{ __typename?: 'partners', id?: string | null, link?: string | null, partners?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null> | null, our_sponsors?: Array<{ __typename?: 'our_sponsors', id?: string | null, link?: string | null, image?: { __typename?: 'directus_files', filename_disk?: string | null, id?: string | null, description?: string | null } | null } | null> | null, social_media_links?: Array<{ __typename?: 'social_media_links', id?: string | null, link?: string | null, image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null> | null };
+type HeaderAndFooterQuery = { __typename?: 'Query', header?: { __typename?: 'header', id?: string | null, logo?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null, footer?: { __typename?: 'footer', id?: string | null, text?: string | null, copyright_text?: string | null, footer_logo?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null, partners?: Array<{ __typename?: 'partners', id?: string | null, link?: string | null, image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null> | null, our_sponsors?: Array<{ __typename?: 'our_sponsors', id?: string | null, link?: string | null, image?: { __typename?: 'directus_files', filename_disk?: string | null, id?: string | null, description?: string | null } | null } | null> | null, social_media_links?: Array<{ __typename?: 'social_media_links', id?: string | null, link?: string | null, image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null> | null };
 
 type HomepageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type HomepageQuery = { __typename?: 'Query', home_page?: { __typename?: 'home_page', id?: string | null, enter_now_section_heading?: string | null, enter_now_section_sub_heading?: string | null, enter_now_section_body?: string | null, enter_now_section_CTA_label?: string | null, innovator_section_heading?: string | null, innovator_section_body?: string | null, innovator_section_CTA_label?: string | null, brands_section_heading?: string | null, brands_section_description?: string | null, brands_section_CTA_label?: string | null, hero_section_right_side_svg?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null, innovator_section_image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null };
+type HomepageQuery = { __typename?: 'Query', home_page?: { __typename?: 'home_page', id?: string | null, enter_now_section_heading?: string | null, enter_now_section_sub_heading?: string | null, enter_now_section_body?: string | null, enter_now_section_CTA_label?: string | null, hero_section_youtube_video_id?: string | null, innovator_section_heading?: string | null, innovator_section_body?: string | null, innovator_section_CTA_label?: string | null, brands_section_heading?: string | null, brands_section_description?: string | null, brands_section_CTA_label?: string | null, hero_section_right_side_svg?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null, innovator_section_image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null };
 
 type InspirationPageQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>;
@@ -2553,8 +2843,18 @@ type JudgeQueryVariables = Exact<{
 
 type JudgeQuery = { __typename?: 'Query', judges_by_id?: { __typename: 'judges', name?: string | null, id?: string | null } | null };
 
+type PastWinnersPageQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  filterQuery?: InputMaybe<Past_Winners_Filter>;
+}>;
+
+
+type PastWinnersPageQuery = { __typename?: 'Query', past_winners_page?: { __typename?: 'past_winners_page', id?: string | null, heading?: string | null } | null, past_winners_categories?: Array<{ __typename?: 'past_winners_categories', id?: string | null, category?: string | null } | null> | null, past_winners?: Array<{ __typename?: 'past_winners', id?: string | null, name?: string | null, short_description?: string | null, school_name?: string | null, students_name?: string | null, youtube_video_id?: string | null, project_information?: string | null, image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null, year?: Array<{ __typename?: 'past_winners_past_winners_years', id?: string | null, past_winners_year?: { __typename?: 'past_winners_years', id?: string | null, year?: number | null } | null } | null> | null, worksheets?: Array<{ __typename?: 'past_winners_past_winners_worksheets', id?: string | null, past_winners_worksheet?: { __typename?: 'past_winners_worksheets', worksheet?: { __typename?: 'directus_files', id?: string | null, title?: string | null, filename_disk?: string | null } | null } | null } | null> | null, categories?: Array<{ __typename?: 'past_winners_past_winners_categories', id?: string | null, past_winners_category?: { __typename?: 'past_winners_categories', id?: string | null, category?: string | null } | null } | null> | null } | null> | null };
+
 type AllJudgesQueryStore = import("@urql/svelte").OperationStore<AllJudgesQuery, AllJudgesQueryVariables>;
 type HeaderAndFooterQueryStore = import("@urql/svelte").OperationStore<HeaderAndFooterQuery, HeaderAndFooterQueryVariables>;
 type HomepageQueryStore = import("@urql/svelte").OperationStore<HomepageQuery, HomepageQueryVariables>;
 type InspirationPageQueryStore = import("@urql/svelte").OperationStore<InspirationPageQuery, InspirationPageQueryVariables>;
 type JudgeQueryStore = import("@urql/svelte").OperationStore<JudgeQuery, JudgeQueryVariables>;
+type PastWinnersPageQueryStore = import("@urql/svelte").OperationStore<PastWinnersPageQuery, PastWinnersPageQueryVariables>;
