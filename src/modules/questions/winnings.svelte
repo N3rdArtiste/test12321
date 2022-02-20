@@ -18,19 +18,19 @@
 <section>
     <h1>{pageTile}</h1>
 
-    <Tabs {tabTitles} {content} let:retData let:index>
+    <Tabs {tabTitles} {content} let:returnData let:index>
         <div class:active={$tab == index + 1}>
-            <h2>{retData.level_2_title}</h2>
+            <h2>{returnData.level_2_title}</h2>
 
-            <b class="subTitle">
-                <strong>{retData.level_2_subtext}</strong>
+            <b>
+                <strong>{returnData.level_2_subtext}</strong>
             </b>
 
-            <b class="otherP">
-                {@html retData.level_3_text}
+            <b>
+                {@html returnData.level_3_text}
             </b>
 
-            <!-- <span>{retData.level_3_links}</span> -->
+            <!-- <span>{returnData.level_3_links}</span> -->
         </div>
     </Tabs>
 </section>
@@ -41,7 +41,9 @@
         grid-template-rows: 5rem 1fr;
 
         div {
-            display: grid;
+            b strong {
+                line-height: 1.2;
+            }
         }
     }
 </style>
