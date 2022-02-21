@@ -7,13 +7,14 @@
     export let data: PastWinnersPageQuery
     export let pastWinnersList: PastWinnersPageQuery['past_winners']
     export let onLoadMoreClick: () => void
+    export let onCategoryClick: (id: string) => void
 
     let pastWinnerCategories = data.past_winners_categories?.map(category => {
-        return { name: category?.category!, id: category?.id! }
+        return { name: category?.category!, id: `cat-${category?.id!}` }
     })
 
     const pastWinnerYears = data.past_winners_years?.map(year => {
-        return { name: year?.year?.toString()!, id: year?.id! }
+        return { name: year?.year?.toString()!, id: `year-${year?.id!}` }
     })
     const multiLevelList = [
         {
@@ -22,20 +23,15 @@
             multiLevelList: [{ id: 'year', name: 'Year', multiLevelList: pastWinnerYears }, ...(pastWinnerCategories ?? [])],
         },
     ]
-    function handleMessage(event) {
-        console.log(event, 'event')
-        alert(event.detail.text)
-    }
 </script>
 
 <section>
     <aside>
         <Filter
             {multiLevelList}
-            on:catClick={event => {
-                console.log(event, 'id')
+            catClick={id => {
+                console.log(id)
             }}
-            on:message={handleMessage}
         />
     </aside>
     <h1>{data.past_winners_page?.heading}</h1>

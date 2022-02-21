@@ -2,8 +2,27 @@
     import { PastWinnersPageDocument } from '_config/graphql-tags/graphql-tags-generated'
     export const load: Load = async ({ stuff, url }) => {
         const defaultLimit = 1
+        let defaultFilterQuery = null
         let limit = 1
         let page = parseInt(url.searchParams.get('page') ?? '1')
+
+        let category = url.searchParams.get('category')
+
+        // if (category) {
+        //     if (category.includes('cat')) {
+        //     defaultFilterQuery = {
+        //                       categories: {
+        //                           past_winners_category: {
+        //                               id: {
+        //                                   _eq: 5,
+        //                               },
+        //                           },
+        //                       },
+        //                   },
+        //     }else if(category.includes('year')){
+
+        //     }
+        // }
         if (url.searchParams.get('page')) {
             if (page > 1) {
                 limit = page * limit
@@ -70,5 +89,5 @@
 </script>
 
 {#if $pastWinnersContent.data}
-    <PastWinners data={$pastWinnersContent.data} {pastWinnersList} onLoadMoreClick={loadMorePastWinners} />
+    <PastWinners data={$pastWinnersContent.data} {pastWinnersList} onLoadMoreClick={loadMorePastWinners} onCategoryClick={() => {}} />
 {/if}

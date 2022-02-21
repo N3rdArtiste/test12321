@@ -1,24 +1,27 @@
 <script lang="ts">
-    import { createEventDispatcher } from 'svelte'
-
     export let multiLevelList: MultiLevelList
     export let name: string = ''
-    export let getId: () => void
+    export let id: string = ''
+    export let catClick: (id: string) => void
 </script>
 
 {#if name}
-    <span>{name}</span>
+    <span
+        on:click={() => {
+            catClick(id)
+        }}>{name}</span
+    >
 {/if}
 
 <ul>
     {#each multiLevelList as listItem}
         <li>
             {#if listItem.multiLevelList}
-                <svelte:self {...listItem} on:message={handleMessage} />
+                <svelte:self {...listItem} {catClick} />
             {:else}
                 <button
                     on:click={() => {
-                        getId(listItem.id)
+                        catClick(listItem.id)
                     }}>{listItem.name}</button
                 >
             {/if}
