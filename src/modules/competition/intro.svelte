@@ -11,14 +11,13 @@
         <strong>${data?.enter_now_section_sub_heading}</strong>
         ${data?.enter_now_section_body}`}
     </p>
-    <div>
-        <ButtonArrow
-            label={data?.enter_now_section_CTA_label ?? ''}
-            onClick={() => {
-                console.log('clicked')
-            }}
-        />
-    </div>
+
+    <ButtonArrow
+        label={data?.enter_now_section_CTA_label ?? ''}
+        onClick={() => {
+            console.log('clicked')
+        }}
+    />
 </section>
 
 <style lang="scss">
@@ -79,7 +78,14 @@
                 }
             }
         }
-        & > div:nth-of-type(1) {
+
+        @media only screen and (min-width: 769px) {
+            & > * {
+                padding: 0 !important;
+            }
+        }
+
+        :global(button.buttonArrow) {
             grid-column: 1/7;
             grid-row: 5/6;
 
@@ -89,10 +95,7 @@
             @media only screen and (min-width: 769px) {
                 grid-column: 7/13;
                 grid-row: 3/4;
-            }
-        }
-        @media only screen and (min-width: 769px) {
-            & > * {
+
                 padding: 0 !important;
             }
         }

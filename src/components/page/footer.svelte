@@ -3,6 +3,8 @@
 
     import { getDirectusAssetLink } from 'helpers/string'
 
+    import ButtonArrow from 'components/buttons/arrow.svelte'
+
     let partners: StandardData
     let sponsors: StandardData
     let socialMediaIcons: StandardData
@@ -62,9 +64,12 @@
         {/each}
     </div>
 
-    <button on:click={scrollSponsors}>
-        <img src="/images/right_arrow.svg" alt="right arrow icon" />
-    </button>
+    <ButtonArrow
+        onClick={() => {
+            console.log('clicked')
+        }}
+        darkBackground={false}
+    />
 
     <div>
         {#await getInlineSvg(logo.src) then svgCode}

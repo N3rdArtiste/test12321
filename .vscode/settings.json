@@ -57,5 +57,5 @@
         ".svelte-kit": true,
         "src/data": true
     },
-    "cSpell.words": ["codegen", "dedup", "graphcache", "Munken", "prerender", "urql", "userid"]
+    "cSpell.words": ["codegen", "dedup", "graphcache", "Munken", "prerender", "sveltekit", "urql", "userid"]
 }

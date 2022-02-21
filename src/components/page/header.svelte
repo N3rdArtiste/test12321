@@ -27,7 +27,7 @@
 
     <nav class:hide={!$navDrawerOpen}>
         {#each navMain as { label, slug }}
-            <a sveltekit:prefetch href={slug}>{label}</a>
+            <a sveltekit:prefetch href={slug} on:click={() => ($navDrawerOpen = false)}>{label}</a>
         {/each}
     </nav>
 
@@ -57,6 +57,7 @@
         background-color: var(--color-white);
         height: var(--header-height);
         align-content: center;
+        z-index: 99;
 
         @media only screen and (min-width: 769px) {
             background-color: var(--color-light-grey);

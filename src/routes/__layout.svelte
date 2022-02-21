@@ -38,9 +38,14 @@
     import Header from 'components/page/header.svelte'
     import Footer from 'components/page/footer.svelte'
     import LoadingUiBlocker from 'components/ui-blocker.svelte'
+    import { onMount } from 'svelte'
 
     setClient(_client)
     query(headerAndFooterContent)
+
+    onMount(() => {
+        ;(document.querySelector('#svelte')! as HTMLElement).style.clipPath = 'none'
+    })
 </script>
 
 <section>
