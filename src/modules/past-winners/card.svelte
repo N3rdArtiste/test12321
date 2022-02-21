@@ -1,8 +1,6 @@
 <script type="ts">
     import { getDirectusAssetLink } from 'helpers/string'
 
-    import type { PastWinnersPageQuery } from '_config/typeDefs/graphql-generated'
-
     export let data: ArrayElement<PastWinnersPageQuery['past_winners']>
 </script>
 
