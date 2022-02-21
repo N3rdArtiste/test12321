@@ -14,21 +14,15 @@
     export let homepage: HomepageQueryStore
 
     import { query } from '@urql/svelte'
-
-    import data from 'api/data.json'
-
     import Divider from 'components/divider.svelte'
     import CompetitionIntro from 'modules/competition/intro.svelte'
     import InnovatorsIntro from 'modules/innovators/intro.svelte'
-    import Winnings from 'modules/questions/winnings.svelte'
     import HorizontalLine from 'components/horizontal-line.svelte'
-    import type { HomepageQueryStore } from '_config/typeDefs/graphql-generated'
-
     query(homepage)
 </script>
 
 <svelte:head>
-    <title>YiA Welcome</title>
+    <title>{$homepage.data?.home_page?.title_bar_text ?? 'YiA'}</title>
 </svelte:head>
 
 <section>

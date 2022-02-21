@@ -4,29 +4,38 @@
 
     import Card from 'modules/past-winners/card.svelte'
 
-    import type { PastWinnersPageQuery } from '_config/typeDefs/graphql-generated'
-
     export let data: PastWinnersPageQuery
     export let pastWinnersList: PastWinnersPageQuery['past_winners']
     export let onLoadMoreClick: () => void
-    const pastWinnerfilters = data.past_winners_categories?.map(category => {
-        return category?.category
+
+    let pastWinnerCategories = data.past_winners_categories?.map(category => {
+        return { name: category?.category!, id: category?.id! }
     })
+
+    const pastWinnerYears = data.past_winners_years?.map(year => {
+        return { name: year?.year?.toString()!, id: year?.id! }
+    })
+    const multiLevelList = [
+        {
+            id: 'all',
+            name: 'All',
+            multiLevelList: [{ id: 'year', name: 'Year', multiLevelList: pastWinnerYears }, ...(pastWinnerCategories ?? [])],
+        },
+    ]
+    function handleMessage(event) {
+        console.log(event, 'event')
+        alert(event.detail.text)
+    }
 </script>
 
 <section>
     <aside>
         <Filter
-            multiLevelList={[
-                {
-                    name: 'All',
-                    multiLevelList: [
-                        { name: 'Year', multiLevelList: [] },
-                        { name: 'child2' },
-                        { name: 'child3', multiLevelList: [{ name: 'child3.1' }, { name: 'child3.2' }, { name: 'child3.3' }] },
-                    ],
-                },
-            ]}
+            {multiLevelList}
+            on:catClick={event => {
+                console.log(event, 'id')
+            }}
+            on:message={handleMessage}
         />
     </aside>
     <h1>{data.past_winners_page?.heading}</h1>

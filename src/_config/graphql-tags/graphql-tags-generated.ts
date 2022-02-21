@@ -63,6 +63,7 @@ export const HomepageDocument = gql`
     query Homepage {
   home_page {
     id
+    title_bar_text
     enter_now_section_heading
     enter_now_section_sub_heading
     enter_now_section_body
@@ -131,6 +132,10 @@ export const PastWinnersPageDocument = gql`
   past_winners_categories {
     id
     category
+  }
+  past_winners_years {
+    id
+    year
   }
   past_winners(limit: $limit, page: $page, filter: $filterQuery) {
     id

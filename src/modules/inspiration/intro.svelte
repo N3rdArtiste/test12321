@@ -1,8 +1,5 @@
 <script type="ts">
     import { getDirectusAssetLink } from 'helpers/string'
-
-    import type { InspirationPageQuery } from '_config/typeDefs/graphql-generated'
-
     export let data: InspirationPageQuery['inspiration_page']
 </script>
 
@@ -69,7 +66,6 @@
             background-color: grey;
 
             width: 100%;
-            height: 200px;
 
             @media only screen and (min-width: 769px) {
                 grid-column: 6/13;

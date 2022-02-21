@@ -14,11 +14,11 @@
 </script>
 
 <header class:isOpened={$navDrawerOpen}>
-    <div>
+    <a sveltekit:prefetch href="/">
         {#await getInlineSvg(logo.src) then svgCode}
             {@html svgCode}
         {/await}
-    </div>
+    </a>
 
     <!-- svelte-ignore a11y-missing-attribute -->
     <button on:click={handleMenuOpenClose}>
@@ -27,7 +27,7 @@
 
     <nav class:hide={!$navDrawerOpen}>
         {#each navMain as { label, slug }}
-            <a href={slug}>{label}</a>
+            <a sveltekit:prefetch href={slug}>{label}</a>
         {/each}
     </nav>
 
@@ -62,7 +62,7 @@
             background-color: var(--color-light-grey);
         }
 
-        & > div {
+        & > a {
             grid-column: 1/6;
             grid-row: 1/2;
 

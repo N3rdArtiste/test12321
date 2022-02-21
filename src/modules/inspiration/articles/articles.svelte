@@ -1,8 +1,6 @@
 <script type="ts">
     import ArrowButton from 'components/buttons/arrow.svelte'
-
     import Card from 'modules/inspiration/articles/card.svelte'
-    import type { InspirationPageQuery } from '_config/typeDefs/graphql-generated'
 
     export let data: InspirationPageQuery['inspiration_articles']
     export let onLoadMoreClick: () => void

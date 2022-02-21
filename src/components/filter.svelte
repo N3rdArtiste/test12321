@@ -1,6 +1,9 @@
 <script lang="ts">
+    import { createEventDispatcher } from 'svelte'
+
     export let multiLevelList: MultiLevelList
     export let name: string = ''
+    export let getId: () => void
 </script>
 
 {#if name}
@@ -11,23 +14,30 @@
     {#each multiLevelList as listItem}
         <li>
             {#if listItem.multiLevelList}
-                <svelte:self {...listItem} />
+                <svelte:self {...listItem} on:message={handleMessage} />
             {:else}
-                <p>{listItem.name}</p>
+                <button
+                    on:click={() => {
+                        getId(listItem.id)
+                    }}>{listItem.name}</button
+                >
             {/if}
         </li>
     {/each}
 </ul>
 
 <style lang="scss">
-    span {
-        font-weight: 900;
+    span,
+    button {
+        font-weight: 700;
+        font-size: 2.2rem;
+        line-height: 3rem;
+    }
+    button {
+        font-weight: 400;
     }
     li {
-        padding-left: 10px;
+        padding-left: 1.5rem;
         list-style: none;
-        & > p {
-            color: red;
-        }
     }
 </style>

@@ -1,8 +1,8 @@
 export const navMain = [
     { label: 'Enter', slug: '/enter' },
     { label: 'About', slug: '/about' },
-    { label: 'Inspiration', slug: '/inspiration' },
-    { label: 'Past Winners', slug: '/past-winners' },
+    { label: 'Inspiration', slug: '/inspiration?page=1' },
+    { label: 'Past Winners', slug: '/past-winners?page=1' },
 ]
 
 export const navAuth = [{ label: 'Account' }, { label: 'Log out' }]

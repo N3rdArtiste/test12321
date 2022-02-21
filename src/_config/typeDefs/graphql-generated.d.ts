@@ -1902,7 +1902,7 @@ type Judges_Years = {
   date_created_func?: Maybe<Datetime_Functions>;
   id?: Maybe<Scalars['ID']>;
   sort?: Maybe<Scalars['Int']>;
-  year?: Maybe<Scalars['String']>;
+  year: Scalars['String'];
 };
 
 type Judges_Years_Aggregated = {
@@ -2296,7 +2296,7 @@ type Past_Winners_Aggregated_Fields = {
 
 type Past_Winners_Categories = {
   __typename?: 'past_winners_categories';
-  category?: Maybe<Scalars['String']>;
+  category: Scalars['String'];
   date_created?: Maybe<Scalars['Date']>;
   date_created_func?: Maybe<Datetime_Functions>;
   id?: Maybe<Scalars['ID']>;
@@ -2577,7 +2577,7 @@ type Past_Winners_Years = {
   date_created_func?: Maybe<Datetime_Functions>;
   id?: Maybe<Scalars['ID']>;
   sort?: Maybe<Scalars['Int']>;
-  year?: Maybe<Scalars['Int']>;
+  year: Scalars['Int'];
 };
 
 type Past_Winners_Years_Aggregated = {
@@ -2826,7 +2826,7 @@ type HeaderAndFooterQuery = { __typename?: 'Query', header?: { __typename?: 'hea
 type HomepageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type HomepageQuery = { __typename?: 'Query', home_page?: { __typename?: 'home_page', id?: string | null, enter_now_section_heading?: string | null, enter_now_section_sub_heading?: string | null, enter_now_section_body?: string | null, enter_now_section_CTA_label?: string | null, hero_section_youtube_video_id?: string | null, innovator_section_heading?: string | null, innovator_section_body?: string | null, innovator_section_CTA_label?: string | null, brands_section_heading?: string | null, brands_section_description?: string | null, brands_section_CTA_label?: string | null, hero_section_right_side_svg?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null, innovator_section_image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null };
+type HomepageQuery = { __typename?: 'Query', home_page?: { __typename?: 'home_page', id?: string | null, title_bar_text?: string | null, enter_now_section_heading?: string | null, enter_now_section_sub_heading?: string | null, enter_now_section_body?: string | null, enter_now_section_CTA_label?: string | null, hero_section_youtube_video_id?: string | null, innovator_section_heading?: string | null, innovator_section_body?: string | null, innovator_section_CTA_label?: string | null, brands_section_heading?: string | null, brands_section_description?: string | null, brands_section_CTA_label?: string | null, hero_section_right_side_svg?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null, innovator_section_image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null };
 
 type InspirationPageQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>;
@@ -2850,7 +2850,7 @@ type PastWinnersPageQueryVariables = Exact<{
 }>;
 
 
-type PastWinnersPageQuery = { __typename?: 'Query', past_winners_page?: { __typename?: 'past_winners_page', id?: string | null, heading?: string | null } | null, past_winners_categories?: Array<{ __typename?: 'past_winners_categories', id?: string | null, category?: string | null } | null> | null, past_winners?: Array<{ __typename?: 'past_winners', id?: string | null, name?: string | null, short_description?: string | null, school_name?: string | null, students_name?: string | null, youtube_video_id?: string | null, project_information?: string | null, image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null, year?: Array<{ __typename?: 'past_winners_past_winners_years', id?: string | null, past_winners_year?: { __typename?: 'past_winners_years', id?: string | null, year?: number | null } | null } | null> | null, worksheets?: Array<{ __typename?: 'past_winners_past_winners_worksheets', id?: string | null, past_winners_worksheet?: { __typename?: 'past_winners_worksheets', worksheet?: { __typename?: 'directus_files', id?: string | null, title?: string | null, filename_disk?: string | null } | null } | null } | null> | null, categories?: Array<{ __typename?: 'past_winners_past_winners_categories', id?: string | null, past_winners_category?: { __typename?: 'past_winners_categories', id?: string | null, category?: string | null } | null } | null> | null } | null> | null };
+type PastWinnersPageQuery = { __typename?: 'Query', past_winners_page?: { __typename?: 'past_winners_page', id?: string | null, heading?: string | null } | null, past_winners_categories?: Array<{ __typename?: 'past_winners_categories', id?: string | null, category: string } | null> | null, past_winners_years?: Array<{ __typename?: 'past_winners_years', id?: string | null, year: number } | null> | null, past_winners?: Array<{ __typename?: 'past_winners', id?: string | null, name?: string | null, short_description?: string | null, school_name?: string | null, students_name?: string | null, youtube_video_id?: string | null, project_information?: string | null, image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null, year?: Array<{ __typename?: 'past_winners_past_winners_years', id?: string | null, past_winners_year?: { __typename?: 'past_winners_years', id?: string | null, year: number } | null } | null> | null, worksheets?: Array<{ __typename?: 'past_winners_past_winners_worksheets', id?: string | null, past_winners_worksheet?: { __typename?: 'past_winners_worksheets', worksheet?: { __typename?: 'directus_files', id?: string | null, title?: string | null, filename_disk?: string | null } | null } | null } | null> | null, categories?: Array<{ __typename?: 'past_winners_past_winners_categories', id?: string | null, past_winners_category?: { __typename?: 'past_winners_categories', id?: string | null, category: string } | null } | null> | null } | null> | null };
 
 type AllJudgesQueryStore = import("@urql/svelte").OperationStore<AllJudgesQuery, AllJudgesQueryVariables>;
 type HeaderAndFooterQueryStore = import("@urql/svelte").OperationStore<HeaderAndFooterQuery, HeaderAndFooterQueryVariables>;

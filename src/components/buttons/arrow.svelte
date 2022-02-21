@@ -11,7 +11,9 @@
     button {
         display: grid;
         grid-auto-flow: column;
-
+        &:hover {
+            color: var(--color-brand);
+        }
         & > span {
             font-size: 3rem;
             line-height: 4rem;

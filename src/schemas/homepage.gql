@@ -1,6 +1,7 @@
 query Homepage {
     home_page {
         id
+        title_bar_text
         enter_now_section_heading
         enter_now_section_sub_heading
         enter_now_section_body

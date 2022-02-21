@@ -37,7 +37,6 @@
     import { query } from '@urql/svelte'
 
     import PastWinners from 'modules/past-winners/index.svelte'
-    import type { PastWinnersPageQuery, PastWinnersPageQueryStore } from '_config/typeDefs/graphql-generated'
     import { replaceQueryParams } from 'helpers/url'
     import { onMount } from 'svelte'
 

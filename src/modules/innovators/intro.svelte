@@ -5,7 +5,6 @@
     import { getInlineSvg } from 'helpers/markup'
 
     import ButtonArrow from 'components/buttons/arrow.svelte'
-    import type { HomepageQuery } from '_config/typeDefs/graphql-generated'
 </script>
 
 <section>

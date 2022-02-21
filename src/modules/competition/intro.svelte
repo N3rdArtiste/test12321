@@ -2,7 +2,6 @@
     export let data: HomepageQuery['home_page']
 
     import ButtonArrow from 'components/buttons/arrow.svelte'
-    import type { HomepageQuery } from '_config/typeDefs/graphql-generated'
 </script>
 
 <section>
@@ -41,6 +40,7 @@
             line-height: 6rem;
             font-weight: 900;
             padding: 0 2rem;
+            cursor: default;
 
             &:hover {
                 color: var(--color-brand);

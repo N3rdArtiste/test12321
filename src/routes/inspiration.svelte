@@ -26,7 +26,6 @@
     import InspirationIntro from 'modules/inspiration/intro.svelte'
     import Divider from 'components/divider.svelte'
     import Articles from 'modules/inspiration/articles/articles.svelte'
-    import type { InspirationPageQuery, InspirationPageQueryStore } from '_config/typeDefs/graphql-generated'
     import { replaceQueryParams } from 'helpers/url'
     import { onMount } from 'svelte'
 

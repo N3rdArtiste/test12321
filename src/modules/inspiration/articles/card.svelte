@@ -1,17 +1,14 @@
 <script type="ts">
     import { getDirectusAssetLink } from 'helpers/string'
-
-    import type { InspirationPageQuery } from '_config/typeDefs/graphql-generated'
-
     export let article: ArrayElement<InspirationPageQuery['inspiration_articles']>
     export let longCard: boolean = false
 </script>
 
 <article>
-    <img class:longCard src={'https://upload.wikimedia.org/wikipedia/commons/9/9e/Autumn_Red_peaches.jpg'} alt={article?.image?.description} />
+    <img class:longCard src={getDirectusAssetLink(article?.image?.filename_disk)} alt={article?.image?.description} />
     <h2>{article?.title}</h2>
     <p>{article?.body}</p>
-    <a href={article?.read_more_link}>{article?.read_more_label}</a>
+    <a sveltekit:prefetch href={article?.read_more_link}>{article?.read_more_label}</a>
 </article>
 
 <style lang="scss">
@@ -24,6 +21,9 @@
 
         @media only screen and (min-width: 769px) {
             background-color: inherit;
+            &:hover {
+                background-color: var(--color-white);
+            }
         }
 
         & > img {

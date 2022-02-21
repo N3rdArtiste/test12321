@@ -18,8 +18,8 @@
     $: partners = data?.partners?.map(partner => {
         return {
             href: partner?.link ?? '',
-            alt: partner?.partners?.description ?? '',
-            src: getDirectusAssetLink(partner?.partners?.filename_disk) ?? '',
+            alt: partner?.image?.description ?? '',
+            src: getDirectusAssetLink(partner?.image?.filename_disk) ?? '',
         }
     })
 
@@ -58,7 +58,7 @@
 
     <div bind:this={sponsorsContainer}>
         {#each sponsors ?? [] as sponsor}
-            <a href="#"> <img src={sponsor.src} alt={sponsor.alt} /> </a>
+            <a sveltekit:prefetch href="#"> <img src={sponsor.src} alt={sponsor.alt} /> </a>
         {/each}
     </div>
 
@@ -78,7 +78,7 @@
 
     <nav>
         {#each navMain as navItem}
-            <a href={navItem.slug}>
+            <a sveltekit:prefetch href={navItem.slug}>
                 {navItem.label}
             </a>
         {/each}
@@ -86,13 +86,13 @@
 
     <div>
         {#each socialMediaIcons ?? [] as socialMediaIcon}
-            <a href="#"> <img src={socialMediaIcon.src} alt={socialMediaIcon.alt} /> </a>
+            <a sveltekit:prefetch href="#"> <img src={socialMediaIcon.src} alt={socialMediaIcon.alt} /> </a>
         {/each}
     </div>
 
     <div>
         {#each partners ?? [] as partner}
-            <a href="#"> <img src={partner.src} alt={partner.alt} /> </a>
+            <a sveltekit:prefetch href="#"> <img src={partner.src} alt={partner.alt} /> </a>
         {/each}
     </div>
 
@@ -170,7 +170,7 @@
             grid-column: 1/7;
             grid-row: 5/6;
             width: 100%;
-
+            max-width: 12.2rem;
             @media only screen and (min-width: 769px) {
                 grid-row: 5/6;
                 grid-column: 1/2;
