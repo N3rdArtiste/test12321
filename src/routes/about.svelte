@@ -1,17 +1,17 @@
 <script context="module" type="ts">
-    import { HomepageDocument } from '_config/graphql-tags/graphql-tags-generated'
+    import { AboutPageDocument } from '_config/graphql-tags/graphql-tags-generated'
 
     export const load: Load = async ({ stuff }) => {
         return {
             props: {
-                homepage: stuff.getOperationStore ? await stuff.getOperationStore(HomepageDocument) : null,
+                aboutPage: stuff.getOperationStore ? await stuff.getOperationStore(AboutPageDocument) : null,
             },
         }
     }
 </script>
 
 <script type="ts">
-    export let homepage: HomepageQueryStore
+    export let aboutPage: AboutPageQueryStore
 
     import { query } from '@urql/svelte'
     import Divider from 'components/divider.svelte'
@@ -22,21 +22,21 @@
 
     import data from 'api/data.json'
 
-    query(homepage)
+    query(aboutPage)
 </script>
 
 <svelte:head>
-    <title>{$homepage.data?.home_page?.title_bar_text ?? 'YiA'}</title>
+    <title>{$aboutPage.data?.about_page?.heading ?? 'YiA'}</title>
 </svelte:head>
 
 <section>
-    {#if $homepage.data}
-        <CompetitionIntro data={$homepage.data.home_page} />
-        <Divider heightDesktop={8.5} heightMobile={5.1} />
-        <InnovatorsIntro data={$homepage.data.home_page} />
-        <Divider heightDesktop={16.2} heightMobile={5} />
+    {#if $aboutPage.data}
+        <Winnings {data} />
+
         <HorizontalLine />
+
         <Divider heightDesktop={11.5} heightMobile={5.6} />
+
         <Winnings {data} />
     {/if}
 </section>

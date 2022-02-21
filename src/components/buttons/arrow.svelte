@@ -38,7 +38,7 @@
             div {
                 transition: width 300ms ease-out;
 
-                background: var(--color-black);
+                background: var(--color-secondary);
                 top: 2.1rem;
                 left: 2rem;
                 height: 0.2rem;
@@ -49,7 +49,7 @@
                 &:before,
                 &:after {
                     content: '';
-                    background: var(--color-black);
+                    background: var(--color-secondary);
                     position: absolute;
                     height: 0.2rem;
                     width: 1.5rem;
@@ -70,15 +70,15 @@
         }
 
         &:hover {
-            color: var(--color-brand);
+            color: var(--color-accent);
 
             .arrowContainer div {
                 width: 6rem;
-                background: var(--color-brand);
+                background: var(--color-accent);
 
                 &:before,
                 &:after {
-                    background: var(--color-brand);
+                    background: var(--color-accent);
                 }
 
                 &:hover {
@@ -87,14 +87,14 @@
             }
 
             &:not(.darkBackground) {
-                color: var(--color-black);
+                color: var(--color-secondary);
 
                 .arrowContainer div {
-                    background: var(--color-black);
+                    background: var(--color-secondary);
 
                     &:before,
                     &:after {
-                        background: var(--color-black);
+                        background: var(--color-secondary);
                     }
                 }
             }

@@ -4,7 +4,7 @@ import { browser } from '$app/env'
 // let nzDate = ( new Date().getUTCHours() + 12 ) % 24
 // let nightTime = nzDate > 19 || nzDate < 7
 
-export const isLoading = writable<boolean>(false)
+export const isLoading = writable<boolean>(true)
 
 export const darkTheme = writable<boolean>((browser && localStorage.getItem('darkTheme') == 'true') || false)
 export const displayHelp = writable<boolean>((browser && localStorage.getItem('displayHelp') == 'true') || true)

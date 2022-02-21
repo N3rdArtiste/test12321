@@ -10,7 +10,7 @@
     }
     hr {
         grid-column: 1/13;
-        background: var(--color-black);
+        background: var(--color-secondary);
         height: 0.2rem;
         border: none;
     }

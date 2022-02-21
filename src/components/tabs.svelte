@@ -1,6 +1,6 @@
 <script lang="ts">
     export let tabTitles: string[]
-    export let content: Content[]
+    export let content: Multi_Level_Question_Items[]
 
     import { tab } from 'stores/app'
 
@@ -42,9 +42,10 @@
 
         div {
             display: grid;
+            background: var(--color-primary);
 
             &.tabs {
-                grid-auto-rows: 1fr;
+                grid-auto-rows: 1.3rem;
                 grid-template-columns: max-content;
 
                 & > span {
@@ -75,7 +76,7 @@
                 }
                 :global(div.active) {
                     z-index: 2;
-                    background: var(--color-primary-bg);
+                    background: var(--color-primary);
                     height: 100%;
 
                     grid-template-rows: 3rem 1fr;

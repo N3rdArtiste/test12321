@@ -32,55 +32,44 @@
     import { setClient } from '@urql/svelte'
     import type { DocumentNode } from 'graphql'
 
-    import { navigating } from '$app/stores'
+    import { onMount } from 'svelte'
     import { isLoading } from 'stores/ui'
 
     import Header from 'components/page/header.svelte'
     import Footer from 'components/page/footer.svelte'
     import LoadingUiBlocker from 'components/ui-blocker.svelte'
-    import { onMount } from 'svelte'
 
     setClient(_client)
     query(headerAndFooterContent)
 
     onMount(() => {
-        ;(document.querySelector('#svelte')! as HTMLElement).style.clipPath = 'none'
+        $isLoading = false
     })
 </script>
 
-<section>
-    {#if $headerAndFooterContent.data && !$isLoading}
-        <Header data={$headerAndFooterContent.data} />
+{#if $headerAndFooterContent.data && !$isLoading}
+    <Header data={$headerAndFooterContent.data} />
 
-        <div>
-            <slot />
-        </div>
+    <main id="content">
+        <slot />
+    </main>
 
-        <Footer data={$headerAndFooterContent.data} />
-    {:else}
-        <LoadingUiBlocker text="loading" />
-    {/if}
-</section>
+    <Footer data={$headerAndFooterContent.data} />
+{:else}
+    <LoadingUiBlocker text="loading" />
+{/if}
 
 <style lang="scss">
-    section {
-        transition: background-color 0.3s;
-        position: relative;
-        min-height: 100vh;
+    main {
         display: grid;
-        background-color: var(--color-white);
+        transition: background-color 0.3s;
+        background-color: var(--color-primary);
+
+        min-height: calc(100vh - var(--header-height));
+        padding-top: calc(2rem + var(--header-height));
 
         @media only screen and (min-width: 769px) {
-            background-color: var(--color-light-grey);
-        }
-
-        & > div {
-            margin-top: var(--header-height);
-            padding-top: 2rem;
-
-            @media only screen and (min-width: 769px) {
-                padding-top: 6.2rem;
-            }
+            padding-top: calc(6.2rem + var(--header-height));
         }
     }
 </style>

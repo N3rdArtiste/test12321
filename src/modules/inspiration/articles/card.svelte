@@ -17,12 +17,12 @@
         grid-auto-flow: row;
         grid-auto-columns: auto;
         grid-template-rows: auto 2.5rem auto 2.1rem auto 2.3rem auto 2.5rem;
-        background-color: var(--color-white);
+        background-color: var(--color-primary);
 
         @media only screen and (min-width: 769px) {
             background-color: inherit;
             &:hover {
-                background-color: var(--color-white);
+                background-color: var(--color-primary);
             }
         }
 

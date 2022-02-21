@@ -1,5 +1,5 @@
 <script lang="ts">
-    export let data: HomepageQuery['home_page']
+    export let data: HomePageQuery['home_page']
 
     import { getDirectusAssetLink } from 'helpers/string'
     import { getInlineSvg } from 'helpers/markup'
@@ -21,7 +21,7 @@
         {/await}
     </div>
     <h1>{data?.innovator_section_heading}</h1>
-    <p>{@html data?.innovator_section_body}</p>
+    <b>{@html data?.innovator_section_body}</b>
     <img src={getDirectusAssetLink(data?.innovator_section_image?.filename_disk)} alt={data?.innovator_section_image?.description} />
     <div>
         <ButtonArrow
@@ -66,7 +66,7 @@
                 display: block;
                 width: 100%;
                 &:hover {
-                    fill: var(--color-brand);
+                    fill: var(--color-accent);
                 }
             }
         }
@@ -87,7 +87,7 @@
                 line-height: 7.2rem;
             }
         }
-        & > p:nth-of-type(1) {
+        & > b:nth-of-type(1) {
             grid-column: 1/7;
             grid-row: 5/6;
 

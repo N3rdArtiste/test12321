@@ -1,7 +1,0 @@
-query Judge($id: ID!) {
-    judges_by_id(id: $id) {
-        __typename
-        name
-        id
-    }
-}

@@ -33,7 +33,7 @@
     .card {
         height: 100px;
         width: 100px;
-        background-color: var(--color-brand);
+        background-color: var(--color-accent);
     }
     section {
         margin-bottom: 10px;

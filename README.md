@@ -15,6 +15,16 @@ npm run dev
 npm run dev -- --open
 ```
 
+## Generating
+
+create schema file in `./src/schemas/foo.gql`
+
+run:
+
+```sh
+npm run generate
+```
+
 ## Building
 
 Before creating a production version of your app, install an [adapter](https://kit.svelte.dev/docs#adapters) for your target environment. Then:

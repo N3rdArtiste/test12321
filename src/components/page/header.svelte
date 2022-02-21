@@ -54,14 +54,11 @@
         justify-content: center;
         align-content: flex-start;
         width: 100%;
-        background-color: var(--color-white);
         height: var(--header-height);
         align-content: center;
         z-index: 99;
 
-        @media only screen and (min-width: 769px) {
-            background-color: var(--color-light-grey);
-        }
+        background-color: var(--color-primary);
 
         & > a {
             grid-column: 1/6;
@@ -73,7 +70,7 @@
                 grid-column: 1/2;
                 grid-row: 2/3;
                 &:hover {
-                    fill: var(--color-brand);
+                    fill: var(--color-accent);
                 }
                 width: 12.2rem;
             }
@@ -118,7 +115,7 @@
                     transition: all 0.3s ease-in-out;
                     &:hover {
                         top: -0.2rem;
-                        color: var(--color-dark-grey);
+                        color: var(--color-tertiary);
                     }
                 }
             }
@@ -156,13 +153,13 @@
 
     .isOpened {
         height: 100vh;
-        background-color: var(--color-brand);
+        background-color: var(--color-accent);
         grid-template-rows: auto 6rem auto auto 1fr;
         padding: 2rem 2rem 5.1rem 2rem;
 
         @media only screen and (min-width: 769px) {
             height: auto;
-            background-color: var(--color-light-grey);
+            background-color: var(--color-primary);
             padding: 2rem;
 
             grid-template-rows: auto auto;
@@ -170,7 +167,7 @@
     }
 
     .separator {
-        border-left: 0.15rem var(--color-black) solid;
+        border-left: 0.15rem var(--color-secondary) solid;
         height: 1.5rem;
     }
 </style>

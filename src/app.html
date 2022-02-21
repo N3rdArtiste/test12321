@@ -15,6 +15,11 @@
             #svelte {
                 clip-path: circle(0);
             }
+            html::-webkit-scrollbar,
+            body::-webkit-scrollbar,
+            div::-webkit-scrollbar {
+                display: none;
+            }
         </style>
 
         %svelte.head%

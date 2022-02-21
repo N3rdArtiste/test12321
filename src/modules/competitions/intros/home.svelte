@@ -1,16 +1,16 @@
 <script lang="ts">
-    export let data: HomepageQuery['home_page']
+    export let data: HomePageQuery['home_page']
 
     import ButtonArrow from 'components/buttons/arrow.svelte'
 </script>
 
 <section>
-    <h1>{@html data?.enter_now_section_heading}</h1>
-    <p>
+    {@html data?.enter_now_section_heading}
+    <b>
         {@html `
         <strong>${data?.enter_now_section_sub_heading}</strong>
         ${data?.enter_now_section_body}`}
-    </p>
+    </b>
 
     <ButtonArrow
         label={data?.enter_now_section_CTA_label ?? ''}
@@ -42,7 +42,7 @@
             cursor: default;
 
             &:hover {
-                color: var(--color-brand);
+                color: var(--color-accent);
             }
             @media only screen and (min-width: 769px) {
                 grid-column: 1/6;
@@ -52,7 +52,7 @@
                 line-height: 8rem;
             }
         }
-        & > p:nth-of-type(1) {
+        & > b:nth-of-type(1) {
             grid-column: 1/7;
             grid-row: 3/4;
 

@@ -1,4 +1,4 @@
-query Homepage {
+query HomePage {
     home_page {
         id
         title_bar_text

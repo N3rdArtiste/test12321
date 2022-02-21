@@ -109,7 +109,7 @@
 <style lang="scss">
     footer {
         display: grid;
-        background-color: var(--color-brand);
+        background-color: var(--color-accent);
         transition: all 0.3s;
         justify-content: center;
         padding: 5.1rem 0 4.1rem 0;
@@ -157,7 +157,7 @@
                 display: grid;
                 justify-content: center;
                 align-items: center;
-                background-color: var(--color-black);
+                background-color: var(--color-secondary);
             }
         }
 

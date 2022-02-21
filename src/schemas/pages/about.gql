@@ -1,0 +1,43 @@
+query AboutPage {
+    about_page {
+        heading
+
+        enter_now_section_CTA_label
+
+        enter_now_section_image {
+            storage
+            title
+            embed
+            filename_disk
+            filename_download
+            type
+            folder
+            location
+            metadata
+        }
+        challenge_section_video {
+            storage
+            embed
+        }
+
+        multi_level_questions {
+            question {
+                title
+                body {
+                    multi_level_question_items {
+                        level_1_title
+                        level_2_title
+                        level_2_subtext
+                        level_3_text
+                        level_3_links {
+                            multi_level_question_item_links {
+                                label
+                                slug
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

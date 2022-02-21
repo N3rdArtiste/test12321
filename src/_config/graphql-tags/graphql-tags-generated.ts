@@ -1,15 +1,6 @@
 import gql from 'graphql-tag';
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
-export const AllJudgesDocument = gql`
-    query AllJudges($limit: Int, $page: Int) {
-  judges(limit: $limit, page: $page) {
-    __typename
-    id
-    name
-  }
-}
-    `;
 export const HeaderAndFooterDocument = gql`
     query HeaderAndFooter {
   header {
@@ -59,8 +50,68 @@ export const HeaderAndFooterDocument = gql`
   }
 }
     `;
-export const HomepageDocument = gql`
-    query Homepage {
+export const AllJudgesDocument = gql`
+    query AllJudges($limit: Int, $page: Int) {
+  judges(limit: $limit, page: $page) {
+    __typename
+    id
+    name
+  }
+}
+    `;
+export const JudgeDocument = gql`
+    query Judge($id: ID!) {
+  judges_by_id(id: $id) {
+    __typename
+    name
+    id
+  }
+}
+    `;
+export const AboutPageDocument = gql`
+    query AboutPage {
+  about_page {
+    heading
+    enter_now_section_CTA_label
+    enter_now_section_image {
+      storage
+      title
+      embed
+      filename_disk
+      filename_download
+      type
+      folder
+      location
+      metadata
+    }
+    challenge_section_video {
+      storage
+      embed
+    }
+    multi_level_questions {
+      question {
+        title
+        body {
+          multi_level_question_items {
+            level_1_title
+            level_2_title
+            level_2_subtext
+            level_3_text
+            level_3_links {
+              multi_level_question_item_links {
+                label
+                slug
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+export const HomePageDocument = gql`
+    query HomePage {
   home_page {
     id
     title_bar_text
@@ -111,15 +162,6 @@ export const InspirationPageDocument = gql`
     body
     read_more_label
     read_more_link
-  }
-}
-    `;
-export const JudgeDocument = gql`
-    query Judge($id: ID!) {
-  judges_by_id(id: $id) {
-    __typename
-    name
-    id
   }
 }
     `;

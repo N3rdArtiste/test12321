@@ -1,6 +1,6 @@
 overwrite: true
 schema: 'https://yia-cms-qa.dev.eks.cucumbersoftware.com/graphql'
-documents: 'src/schemas/*.gql'
+documents: 'src/schemas/**/*.gql'
 config:
     withHooks: false
     useTypeImports: true

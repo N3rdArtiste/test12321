@@ -2810,6 +2810,11 @@ type Test = {
   mark?: Maybe<Scalars['String']>;
 };
 
+type HeaderAndFooterQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type HeaderAndFooterQuery = { __typename?: 'Query', header?: { __typename?: 'header', id?: string | null, logo?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null, footer?: { __typename?: 'footer', id?: string | null, text?: string | null, copyright_text?: string | null, footer_logo?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null, partners?: Array<{ __typename?: 'partners', id?: string | null, link?: string | null, image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null> | null, our_sponsors?: Array<{ __typename?: 'our_sponsors', id?: string | null, link?: string | null, image?: { __typename?: 'directus_files', filename_disk?: string | null, id?: string | null, description?: string | null } | null } | null> | null, social_media_links?: Array<{ __typename?: 'social_media_links', id?: string | null, link?: string | null, image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null> | null };
+
 type AllJudgesQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>;
   page?: InputMaybe<Scalars['Int']>;
@@ -2818,15 +2823,22 @@ type AllJudgesQueryVariables = Exact<{
 
 type AllJudgesQuery = { __typename?: 'Query', judges?: Array<{ __typename: 'judges', id?: string | null, name?: string | null } | null> | null };
 
-type HeaderAndFooterQueryVariables = Exact<{ [key: string]: never; }>;
+type JudgeQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
 
 
-type HeaderAndFooterQuery = { __typename?: 'Query', header?: { __typename?: 'header', id?: string | null, logo?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null, footer?: { __typename?: 'footer', id?: string | null, text?: string | null, copyright_text?: string | null, footer_logo?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null, partners?: Array<{ __typename?: 'partners', id?: string | null, link?: string | null, image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null> | null, our_sponsors?: Array<{ __typename?: 'our_sponsors', id?: string | null, link?: string | null, image?: { __typename?: 'directus_files', filename_disk?: string | null, id?: string | null, description?: string | null } | null } | null> | null, social_media_links?: Array<{ __typename?: 'social_media_links', id?: string | null, link?: string | null, image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null> | null };
+type JudgeQuery = { __typename?: 'Query', judges_by_id?: { __typename: 'judges', name?: string | null, id?: string | null } | null };
 
-type HomepageQueryVariables = Exact<{ [key: string]: never; }>;
+type AboutPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type HomepageQuery = { __typename?: 'Query', home_page?: { __typename?: 'home_page', id?: string | null, title_bar_text?: string | null, enter_now_section_heading?: string | null, enter_now_section_sub_heading?: string | null, enter_now_section_body?: string | null, enter_now_section_CTA_label?: string | null, hero_section_youtube_video_id?: string | null, innovator_section_heading?: string | null, innovator_section_body?: string | null, innovator_section_CTA_label?: string | null, brands_section_heading?: string | null, brands_section_description?: string | null, brands_section_CTA_label?: string | null, hero_section_right_side_svg?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null, innovator_section_image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null };
+type AboutPageQuery = { __typename?: 'Query', about_page?: { __typename?: 'about_page', heading?: string | null, enter_now_section_CTA_label?: string | null, enter_now_section_image?: { __typename?: 'directus_files', storage: string, title?: string | null, embed?: string | null, filename_disk?: string | null, filename_download: string, type?: string | null, folder?: string | null, location?: string | null, metadata?: any | null } | null, challenge_section_video?: { __typename?: 'directus_files', storage: string, embed?: string | null } | null, multi_level_questions?: Array<{ __typename?: 'about_page_question_titles', question?: { __typename?: 'question_titles', title?: string | null, body?: Array<{ __typename?: 'question_titles_multi_level_question_items', multi_level_question_items?: { __typename?: 'multi_level_question_items', level_1_title?: string | null, level_2_title?: string | null, level_2_subtext?: string | null, level_3_text?: string | null, level_3_links?: Array<{ __typename?: 'multi_level_question_items_multi_level_question_item_links', multi_level_question_item_links?: { __typename?: 'multi_level_question_item_links', label?: string | null, slug?: string | null } | null } | null> | null } | null } | null> | null } | null } | null> | null } | null };
+
+type HomePageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type HomePageQuery = { __typename?: 'Query', home_page?: { __typename?: 'home_page', id?: string | null, title_bar_text?: string | null, enter_now_section_heading?: string | null, enter_now_section_sub_heading?: string | null, enter_now_section_body?: string | null, enter_now_section_CTA_label?: string | null, hero_section_youtube_video_id?: string | null, innovator_section_heading?: string | null, innovator_section_body?: string | null, innovator_section_CTA_label?: string | null, brands_section_heading?: string | null, brands_section_description?: string | null, brands_section_CTA_label?: string | null, hero_section_right_side_svg?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null, innovator_section_image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null };
 
 type InspirationPageQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>;
@@ -2835,13 +2847,6 @@ type InspirationPageQueryVariables = Exact<{
 
 
 type InspirationPageQuery = { __typename?: 'Query', inspiration_page?: { __typename?: 'inspiration_page', id?: string | null, heading?: string | null, description?: string | null, hero_image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null, inspiration_articles?: Array<{ __typename?: 'inspiration_articles', id?: string | null, title?: string | null, body?: string | null, read_more_label?: string | null, read_more_link?: string | null, image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null> | null };
-
-type JudgeQueryVariables = Exact<{
-  id: Scalars['ID'];
-}>;
-
-
-type JudgeQuery = { __typename?: 'Query', judges_by_id?: { __typename: 'judges', name?: string | null, id?: string | null } | null };
 
 type PastWinnersPageQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>;
@@ -2852,9 +2857,10 @@ type PastWinnersPageQueryVariables = Exact<{
 
 type PastWinnersPageQuery = { __typename?: 'Query', past_winners_page?: { __typename?: 'past_winners_page', id?: string | null, heading?: string | null } | null, past_winners_categories?: Array<{ __typename?: 'past_winners_categories', id?: string | null, category: string } | null> | null, past_winners_years?: Array<{ __typename?: 'past_winners_years', id?: string | null, year: number } | null> | null, past_winners?: Array<{ __typename?: 'past_winners', id?: string | null, name?: string | null, short_description?: string | null, school_name?: string | null, students_name?: string | null, youtube_video_id?: string | null, project_information?: string | null, image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null, year?: Array<{ __typename?: 'past_winners_past_winners_years', id?: string | null, past_winners_year?: { __typename?: 'past_winners_years', id?: string | null, year: number } | null } | null> | null, worksheets?: Array<{ __typename?: 'past_winners_past_winners_worksheets', id?: string | null, past_winners_worksheet?: { __typename?: 'past_winners_worksheets', worksheet?: { __typename?: 'directus_files', id?: string | null, title?: string | null, filename_disk?: string | null } | null } | null } | null> | null, categories?: Array<{ __typename?: 'past_winners_past_winners_categories', id?: string | null, past_winners_category?: { __typename?: 'past_winners_categories', id?: string | null, category: string } | null } | null> | null } | null> | null };
 
-type AllJudgesQueryStore = import("@urql/svelte").OperationStore<AllJudgesQuery, AllJudgesQueryVariables>;
 type HeaderAndFooterQueryStore = import("@urql/svelte").OperationStore<HeaderAndFooterQuery, HeaderAndFooterQueryVariables>;
-type HomepageQueryStore = import("@urql/svelte").OperationStore<HomepageQuery, HomepageQueryVariables>;
-type InspirationPageQueryStore = import("@urql/svelte").OperationStore<InspirationPageQuery, InspirationPageQueryVariables>;
+type AllJudgesQueryStore = import("@urql/svelte").OperationStore<AllJudgesQuery, AllJudgesQueryVariables>;
 type JudgeQueryStore = import("@urql/svelte").OperationStore<JudgeQuery, JudgeQueryVariables>;
+type AboutPageQueryStore = import("@urql/svelte").OperationStore<AboutPageQuery, AboutPageQueryVariables>;
+type HomePageQueryStore = import("@urql/svelte").OperationStore<HomePageQuery, HomePageQueryVariables>;
+type InspirationPageQueryStore = import("@urql/svelte").OperationStore<InspirationPageQuery, InspirationPageQueryVariables>;
 type PastWinnersPageQueryStore = import("@urql/svelte").OperationStore<PastWinnersPageQuery, PastWinnersPageQueryVariables>;
