@@ -15,28 +15,34 @@
 
     import { query } from '@urql/svelte'
     import Divider from 'components/divider.svelte'
-    import CompetitionIntro from 'modules/competition/intro.svelte'
-    import InnovatorsIntro from 'modules/innovators/intro.svelte'
-    import HorizontalLine from 'components/horizontal-line.svelte'
-    import Winnings from 'modules/questions/winnings.svelte'
+    import CompetitionIntro from 'modules/competitions/intros/about.svelte'
+    import CompetitionChallenge from 'modules/competitions/challenge.svelte'
 
-    import data from 'api/data.json'
+    // import Winnings from 'modules/questions/winnings.svelte'
 
     query(aboutPage)
+
+    $: console.log('--$aboutPage.data--', $aboutPage.data)
+
+    let { question } = $aboutPage.data?.about_page?.multi_level_questions![0]!
 </script>
 
 <svelte:head>
     <title>{$aboutPage.data?.about_page?.heading ?? 'YiA'}</title>
 </svelte:head>
 
-<section>
-    {#if $aboutPage.data}
-        <Winnings {data} />
+{#if $aboutPage.data}
+    <CompetitionIntro data={$aboutPage.data.about_page} />
+    <Divider heightDesktop={11.5} heightMobile={5.6} />
 
-        <HorizontalLine />
+    <CompetitionChallenge data={$aboutPage.data.about_page} />
+    <Divider heightDesktop={11.5} heightMobile={5.6} />
+{/if}
 
-        <Divider heightDesktop={11.5} heightMobile={5.6} />
+{#if question}
+    <Divider heightDesktop={11.5} heightMobile={5.6} />
 
-        <Winnings {data} />
-    {/if}
-</section>
+    <!-- <Winnings {question} /> -->
+
+    <Divider heightDesktop={11.5} heightMobile={5.6} />
+{/if}
