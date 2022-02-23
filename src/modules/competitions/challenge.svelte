@@ -1,11 +1,5 @@
 <script lang="ts">
     export let data: AboutPageQuery['about_page']
-
-    import { goto } from '$app/navigation'
-
-    import ButtonArrow from 'components/buttons/arrow.svelte'
-
-    console.log('--data-88-', data)
 </script>
 
 <section>
@@ -25,32 +19,28 @@
 <style lang="scss">
     section {
         display: grid;
-        grid-gap: var(--column-gap);
 
         grid-template-rows: min-content 1fr;
-        grid-template-columns: minmax(10rem, 2fr) 1fr;
+        grid-template-columns: 1fr;
 
         align-items: start;
         align-content: start;
 
-        @media (max-width: 860px) {
-            grid-template-columns: 1fr;
+        @media (min-width: 860px) {
+            grid-template-columns: minmax(10rem, 2fr) 1fr;
         }
 
         h2 {
-            margin-bottom: var(--column-gap);
+            margin-bottom: var(--grid-gap);
         }
 
         iframe {
-            grid-row: 1 / 3;
-            grid-column: 1;
-
             width: 100%;
             aspect-ratio: 100 / 56.25;
 
-            @media (max-width: 860px) {
-                grid-row: initial;
-                grid-column: initial;
+            @media (min-width: 860px) {
+                grid-row: 1 / 3;
+                grid-column: 1;
             }
         }
     }

@@ -4,7 +4,7 @@
     import { getDirectusAssetLink } from 'helpers/string'
     import { getInlineSvg } from 'helpers/markup'
 
-    import ButtonArrow from 'components/buttons/arrow.svelte'
+    import ArrowButton from 'components/buttons/arrow.svelte'
 </script>
 
 <section>
@@ -24,7 +24,7 @@
     <b>{@html data?.innovator_section_body}</b>
     <img src={getDirectusAssetLink(data?.innovator_section_image?.filename_disk)} alt={data?.innovator_section_image?.description} />
     <div>
-        <ButtonArrow
+        <ArrowButton
             label={data?.innovator_section_CTA_label ?? ''}
             onClick={() => {
                 console.log('clicked')
@@ -36,19 +36,19 @@
 <style lang="scss">
     section {
         display: grid;
-        grid-template-columns: var(--grid-template-columns);
         grid-template-rows: auto 5rem auto 4.2rem auto 6.8rem auto 5.1rem auto;
-        column-gap: var(--column-gap);
+
         @media (min-width: 769px) {
             grid-template-rows: auto auto 13rem auto 14.2rem auto 7.6rem auto 3rem;
             justify-content: center;
             padding: 0 2rem;
         }
-        & > iframe:nth-of-type(1) {
+        iframe:nth-of-type(1) {
             grid-column: 1/7;
             grid-row: 1/2;
             width: 100%;
             aspect-ratio: 414/286;
+
             @media (min-width: 769px) {
                 grid-column: 1/9;
                 grid-row: 1/3;
@@ -57,7 +57,7 @@
                 height: 93%;
             }
         }
-        & > div:nth-of-type(1) {
+        div:nth-of-type(1) {
             display: none;
 
             @media (min-width: 769px) {
@@ -70,7 +70,7 @@
                 }
             }
         }
-        & > h1:nth-of-type(1) {
+        h1:nth-of-type(1) {
             grid-column: 1/7;
             grid-row: 3/4;
 
@@ -87,7 +87,7 @@
                 line-height: 7.2rem;
             }
         }
-        & > b:nth-of-type(1) {
+        b:nth-of-type(1) {
             grid-column: 1/7;
             grid-row: 5/6;
 
@@ -103,7 +103,7 @@
                 line-height: 3rem;
             }
         }
-        & > div:nth-of-type(2) {
+        div:nth-of-type(2) {
             grid-column: 1/7;
             grid-row: 7/8;
 
@@ -114,7 +114,7 @@
                 grid-row: 8/9;
             }
         }
-        & > img:nth-of-type(1) {
+        img:nth-of-type(1) {
             grid-column: 1/7;
             grid-row: 9/10;
 

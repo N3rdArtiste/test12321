@@ -4,15 +4,25 @@
 *,
 *::after,
 *::before {
+    line-height: 1;
+
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+div::-webkit-scrollbar {
+    display: none;
 }
 
 html,
 body {
     font-family: var(--font-family);
     color: var(--color-secondary);
+    transition: background-color 0.3s;
+    background-color: var(--color-primary);
 
     overscroll-behavior: none;
     -ms-scroll-chaining: chained;
@@ -25,6 +35,9 @@ body {
 
 #svelte {
     clip-path: none;
+
+    padding: 3rem 3rem 0;
+    margin: 0 auto;
 }
 
 i {
@@ -34,6 +47,45 @@ b {
     font-weight: normal;
     display: block;
 }
+
+hr {
+    height: 0.2rem;
+    background: var(--color-secondary);
+    border: none;
+    margin: 1rem 0;
+}
+
+#svelte {
+    max-width: var(--max-width-max);
+}
+
+main {
+    display: grid;
+    grid-template-columns: var(--grid-template-columns);
+    max-width: var(--max-width-max);
+}
+
+main > section,
+main > div,
+main > i,
+main > b,
+main > table,
+main > hr,
+main > footer {
+    grid-column: var(--grid-span-full);
+    column-gap: var(--grid-gap);
+    row-gap: var(--grid-gap);
+    max-width: var(--max-width-max);
+}
+
+/* prettier-ignore */
+section,table,hr,footer {
+    display: grid;
+    grid-template-columns: var(--grid-template-columns);
+    max-width: var(--max-width-max);
+}
+
+// standard bits
 
 a,
 a:hover,
@@ -55,11 +107,16 @@ input[type='reset'] {
     outline: inherit;
 }
 
+/* prettier-ignore */
+h1,h2,h3,h4,h5,h6 {
+    margin-bottom: 1rem;
+}
+
 h1 {
     font-size: 6rem;
 
     @media (min-width: 769px) {
-        font-size: 8rem;
+        font-size: 7rem;
     }
 }
 h2 {

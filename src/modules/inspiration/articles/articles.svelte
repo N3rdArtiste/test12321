@@ -22,21 +22,22 @@
 <style lang="scss">
     section {
         display: grid;
-        grid-template-columns: var(--grid-template-columns);
-        column-gap: var(--column-gap);
+        row-gap: 2rem;
+
         padding: 0 2rem;
         justify-content: center;
-        row-gap: 2rem;
-        & > div {
+
+        div {
             grid-column: span 6;
         }
+
         @media (min-width: 769px) {
             row-gap: 7.5rem;
-            & > div {
+            div {
                 grid-column: span 3;
             }
         }
-        & > i {
+        i {
             grid-column: span 6;
             @media (min-width: 769px) {
                 grid-column: span 12;

@@ -88,6 +88,11 @@ export const AboutPageDocument = gql`
         id
         name
         company
+        image {
+          id
+          filename_disk
+          description
+        }
       }
     }
     judges_section_body
@@ -116,6 +121,14 @@ export const AboutPageDocument = gql`
             }
           }
         }
+      }
+    }
+    textarea_questions {
+      id
+      question {
+        id
+        title
+        body
       }
     }
   }

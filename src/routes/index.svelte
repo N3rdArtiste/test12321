@@ -17,7 +17,7 @@
     import Divider from 'components/divider.svelte'
     import CompetitionIntro from 'modules/competitions/intros/home.svelte'
     import InnovatorsIntro from 'modules/innovators/intro.svelte'
-    import HorizontalLine from 'components/horizontal-line.svelte'
+
     query(homePage)
 </script>
 
@@ -28,9 +28,12 @@
 {#if $homePage.data}
     <CompetitionIntro data={$homePage.data.home_page} />
     <Divider heightDesktop={8.5} heightMobile={5.1} />
+
     <InnovatorsIntro data={$homePage.data.home_page} />
+
     <Divider heightDesktop={16.2} heightMobile={5} />
-    <HorizontalLine />
+    <hr />
     <Divider heightDesktop={11.5} heightMobile={5.6} />
+
     <!-- <Winnings {data} /> -->
 {/if}

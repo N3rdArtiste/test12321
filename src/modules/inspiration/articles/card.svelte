@@ -26,7 +26,7 @@
             }
         }
 
-        & > img {
+        img {
             grid-row: 1/2;
             aspect-ratio: 374/258;
             width: 100%;
@@ -42,21 +42,21 @@
             }
         }
 
-        & > h2 {
+        h2 {
             grid-row: 3/4;
 
             font-size: 1.6rem;
             line-height: 2.4rem;
             font-weight: 900;
         }
-        & > p {
+        p {
             grid-row: 5/6;
 
             font-size: 1.4rem;
             line-height: 2.2rem;
             font-weight: 400;
         }
-        & > a {
+        a {
             grid-row: 7/8;
 
             font-size: 1.4rem;

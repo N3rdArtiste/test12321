@@ -3,7 +3,7 @@
 
     import { getDirectusAssetLink } from 'helpers/string'
 
-    import ButtonArrow from 'components/buttons/arrow.svelte'
+    import ArrowButton from 'components/buttons/arrow.svelte'
 
     let partners: StandardData
     let sponsors: StandardData
@@ -64,11 +64,11 @@
         {/each}
     </div>
 
-    <ButtonArrow
+    <ArrowButton
         onClick={() => {
             console.log('clicked')
         }}
-        darkBackground={false}
+        accentHover={false}
     />
 
     <div>
@@ -108,16 +108,18 @@
 
 <style lang="scss">
     footer {
+        :global(.arrowButton) {
+            justify-self: end;
+        }
+
         display: grid;
+        grid-template-rows: auto 3.1rem auto 6.1rem auto 3rem auto 3.3rem auto 3rem auto 5rem auto;
+        justify-content: center;
         width: 100vw;
         transform: translateX(-3rem);
         background-color: var(--color-accent);
         transition: all 0.3s;
-        justify-content: center;
         padding: 5.1rem 0 4.1rem 0;
-        grid-template-columns: var(--grid-template-columns);
-        grid-template-rows: auto 3.1rem auto 6.1rem auto 3rem auto 3.3rem auto 3rem auto 5rem auto;
-        column-gap: var(--column-gap);
 
         @media (min-width: 769px) {
             padding: 9rem 2rem 9rem 2rem;
@@ -129,7 +131,7 @@
             padding: 17.9rem 2rem 18.6rem 2rem;
         }
 
-        & > h2 {
+        h2 {
             font-weight: 900;
             font-size: 3rem;
             grid-row: 1/2;
@@ -141,7 +143,7 @@
                 grid-row: 1/2;
             }
         }
-        & > div:nth-of-type(1) {
+        div:nth-of-type(1) {
             grid-column: 1/7;
             display: grid;
             grid-row: 3/4;
@@ -155,7 +157,7 @@
                 grid-row: 1/2;
             }
 
-            & > a {
+            a {
                 display: grid;
                 justify-content: center;
                 align-items: center;
@@ -163,7 +165,7 @@
             }
         }
 
-        & > button {
+        button {
             display: none;
 
             @media (min-width: 769px) {
@@ -173,7 +175,7 @@
                 text-align: end;
             }
         }
-        & > div:nth-of-type(2) {
+        div:nth-of-type(2) {
             grid-column: 1/7;
             grid-row: 5/6;
             width: 100%;
@@ -183,7 +185,7 @@
                 grid-column: 1/2;
             }
         }
-        & > p:nth-of-type(1) {
+        p:nth-of-type(1) {
             font-weight: 500;
             font-size: 1.6rem;
             grid-row: 7/8;
@@ -194,7 +196,7 @@
                 grid-column: 1/3;
             }
         }
-        & > nav {
+        nav {
             grid-row: 9/10;
             grid-column: 1/5;
             display: grid;
@@ -207,14 +209,14 @@
                 align-content: flex-start;
             }
 
-            & > a {
+            a {
                 font-size: 1.6rem;
                 line-height: 1.6rem;
                 font-weight: 900;
             }
         }
 
-        & > div:nth-of-type(3) {
+        div:nth-of-type(3) {
             grid-row: 9/10;
             grid-column: 5/7;
 
@@ -232,7 +234,7 @@
                 grid-column: 4/5;
             }
         }
-        & > div:nth-of-type(4) {
+        div:nth-of-type(4) {
             display: grid;
             grid-template-columns: minmax(9.4rem, 18.4rem) minmax(9.4rem, 18.4rem);
             grid-auto-rows: 6.7rem;
@@ -247,13 +249,13 @@
                 grid-column: 10/13;
             }
 
-            & > a {
-                & > img {
+            a {
+                img {
                     max-width: 100%;
                 }
             }
         }
-        & > p:nth-of-type(2) {
+        p:nth-of-type(2) {
             font-weight: 500;
             font-size: 1.4rem;
             grid-row: 13/14;

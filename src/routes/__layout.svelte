@@ -67,6 +67,15 @@
         padding-top: calc(2rem + var(--header-height));
         padding-bottom: 8rem;
 
+        &::before {
+            content: '';
+            box-shadow: 0px -28px 16px 23px #000000;
+            position: fixed;
+            top: 10rem;
+            left: 0;
+            width: 100vw;
+        }
+
         @media (min-width: 769px) {
             padding-top: calc(6.2rem + var(--header-height));
         }

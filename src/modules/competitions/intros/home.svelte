@@ -1,7 +1,7 @@
 <script lang="ts">
     export let data: HomePageQuery['home_page']
 
-    import ButtonArrow from 'components/buttons/arrow.svelte'
+    import ArrowButton from 'components/buttons/arrow.svelte'
 </script>
 
 <section>
@@ -12,7 +12,7 @@
         ${data?.enter_now_section_body}`}
     </b>
 
-    <ButtonArrow
+    <ArrowButton
         label={data?.enter_now_section_CTA_label ?? ''}
         onClick={() => {
             console.log('clicked')
@@ -23,16 +23,16 @@
 <style lang="scss">
     section {
         display: grid;
-        grid-template-columns: var(--grid-template-columns);
         grid-template-rows: auto 4.2rem auto 6.8rem auto;
-        column-gap: var(--column-gap);
+
         @media (min-width: 769px) {
             grid-template-rows: auto 2rem auto;
             justify-content: center;
             padding: 0 2rem;
         }
-        & > h1:nth-of-type(1) {
-            grid-column: 1/6;
+
+        h1:nth-of-type(1) {
+            grid-column: var(--grid-span-full);
             grid-row: 1/2;
 
             font-size: 6rem;
@@ -45,14 +45,14 @@
                 color: var(--color-accent);
             }
             @media (min-width: 769px) {
-                grid-column: 1/6;
+                grid-column: var(--grid-span-half);
                 grid-row: 1/4;
 
                 font-size: 8rem;
                 line-height: 8rem;
             }
         }
-        & > b:nth-of-type(1) {
+        b:nth-of-type(1) {
             grid-column: 1/7;
             grid-row: 3/4;
 
@@ -85,7 +85,7 @@
             }
         }
 
-        :global(button.buttonArrow) {
+        :global(button.arrowButton) {
             grid-column: 1/7;
             grid-row: 5/6;
 

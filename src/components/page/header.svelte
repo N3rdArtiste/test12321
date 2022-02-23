@@ -3,8 +3,9 @@
 
     import { navMain, navAuth, menuToggleIcons } from '_config/constants/menus'
     import { getDirectusAssetLink } from 'helpers/string'
-    import { getInlineSvg } from 'helpers/markup'
     import { navDrawerOpen } from 'stores/ui'
+
+    import SvgFile from 'components/svg-file.svelte'
 
     const handleMenuOpenClose = () => {
         $navDrawerOpen = !$navDrawerOpen
@@ -14,14 +15,12 @@
 </script>
 
 <header class:isOpened={$navDrawerOpen}>
-    <a sveltekit:prefetch href="/">
-        {#await getInlineSvg(logo.src) then svgCode}
-            {@html svgCode}
-        {/await}
+    <a sveltekit:prefetch href="/" class="logo">
+        <SvgFile src={logo.src} />
     </a>
 
     <!-- svelte-ignore a11y-missing-attribute -->
-    <button on:click={handleMenuOpenClose}>
+    <button on:click={handleMenuOpenClose} class="burgerMenu">
         <img {...menuToggleIcons[+!$navDrawerOpen]} />
     </button>
 
@@ -31,143 +30,150 @@
         {/each}
     </nav>
 
-    <ul class:hide={!$navDrawerOpen}>
-        {#each navAuth as { label }, i}
+    <ul class:hide={!$navDrawerOpen} class="authMenu">
+        {#each navAuth as { label }}
             <li>{label}</li>
-            {#if i !== navAuth.length - 1}
-                <li class="separator" />
-            {/if}
         {/each}
     </ul>
 </header>
 
 <style lang="scss">
     header {
-        transition: all 0.3s, height 0s, padding 0s;
+        transition: all 0.3s, background 0s, height 0s, padding 0s;
 
-        display: grid;
-        position: fixed;
-        padding: 0 2rem;
-        grid-template-columns: var(--grid-template-columns);
-        column-gap: var(--column-gap);
-        grid-template-rows: auto;
-        justify-content: center;
-        align-content: flex-start;
-        width: 100%;
-        height: var(--header-height);
-        align-content: center;
+        position: sticky;
+        top: 0;
+        left: 0;
+
+        width: calc(100% + 6rem);
+        height: calc(var(--header-height) - 5rem);
+        transform: translateX(-3rem);
+        padding: 0 5rem;
         z-index: 99;
 
         background-color: var(--color-primary);
 
-        & > a {
-            grid-column: 1/6;
-            grid-row: 1/2;
+        .logo {
+            display: block;
+            width: fit-content;
+            height: 6rem;
+            transform: translateY(2rem);
 
-            width: 10rem;
-
-            @media only screen and (min-width: 769px) {
-                grid-column: 1/2;
-                grid-row: 2/3;
-                &:hover {
-                    fill: var(--color-accent);
-                }
+            :global(svg) {
                 width: 12.2rem;
+
+                @media (min-width: 769px) {
+                    width: 10rem;
+                }
             }
         }
 
-        & > button {
-            grid-column: 6/7;
-            grid-row: 1/2;
+        nav {
+            width: fit-content;
+            z-index: 1;
 
-            display: grid;
-            justify-content: end;
-            align-items: center;
+            a {
+                display: inline-block;
+                font-weight: 700;
+                font-size: 1.4rem;
 
-            @media only screen and (min-width: 769px) {
+                padding: 1.5rem 2rem;
+
+                transition: all 0.3s ease-in-out;
+            }
+        }
+
+        .burgerMenu {
+            display: initial;
+            position: absolute;
+            top: 4rem;
+            right: 2rem;
+
+            @media (min-width: 769px) {
                 display: none;
             }
         }
 
-        & > nav {
-            grid-column: 1/7;
-            grid-row: 3/4;
+        .authMenu {
+            position: absolute;
+            top: -0.8rem;
+            right: 2rem;
+            left: initial;
+            bottom: initial;
+            list-style: none;
 
-            display: grid;
-            grid-auto-flow: row;
-            gap: 5.7rem;
-            font-weight: 900;
-            font-size: 3rem;
-            line-height: 4rem;
+            li {
+                cursor: not-allowed;
+                float: left;
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+                font-weight: 200;
 
-            @media only screen and (min-width: 769px) {
-                grid-column: 2/13;
-                grid-row: 2/3;
-
-                grid-auto-flow: column;
-                justify-content: end;
-                font-size: 1.8rem;
-                line-height: 2rem;
-                padding-top: 1.2rem;
-                & > a {
-                    position: relative;
-                    top: 0;
-                    transition: all 0.3s ease-in-out;
-                    &:hover {
-                        top: -0.2rem;
-                        color: var(--color-tertiary);
-                    }
+                &:not(:first-child)::before {
+                    content: '';
+                    border-left: 0.15rem var(--color-secondary) solid;
+                    height: 1.5rem;
+                    position: absolute;
+                    transform: translate(-2rem, -0.2rem);
                 }
             }
         }
 
-        & > ul {
-            grid-column: 1/7;
-            grid-row: 5/6;
+        &:not(.isOpened) {
+            nav {
+                position: absolute;
+                right: 2rem;
+                top: 3.5rem;
+                display: none;
 
-            display: grid;
-            justify-content: start;
-            list-style-type: none;
-            grid-auto-flow: column;
-            column-gap: 1rem;
-            align-content: end;
-            align-items: center;
-            font-size: 1.4rem;
-            font-weight: 700;
+                a:hover {
+                    transform: translateY(-0.2rem);
+                    color: var(--color-tertiary);
+                }
 
-            @media only screen and (min-width: 769px) {
-                grid-column: 1/13;
-                grid-row: 1/2;
-                justify-content: end;
+                @media (min-width: 769px) {
+                    display: block;
+                }
+            }
+
+            .logo {
+                &:hover {
+                    fill: var(--color-accent);
+                }
             }
         }
-    }
 
-    .hide {
-        display: none;
-
-        @media only screen and (min-width: 769px) {
+        &.isOpened {
             display: grid;
+            position: fixed;
+            transform: translateX(-3rem);
+            height: 100vh;
+            background-color: var(--color-accent);
+
+            .logo {
+                transform: translate(3rem, 2rem);
+            }
+
+            nav {
+                a {
+                    display: block;
+                    font-weight: 900;
+                    font-size: 3rem;
+                    line-height: 4rem;
+                    padding: 2rem;
+                }
+            }
+
+            .burgerMenu {
+                right: 5.5rem;
+            }
+
+            .authMenu {
+                top: initial;
+                right: initial;
+                left: 4rem;
+                bottom: 1.8rem;
+            }
         }
-    }
-
-    .isOpened {
-        height: 100vh;
-        background-color: var(--color-accent);
-        grid-template-rows: auto 6rem auto auto 1fr;
-        padding: 2rem 2rem 5.1rem 2rem;
-
-        @media only screen and (min-width: 769px) {
-            height: auto;
-            background-color: var(--color-primary);
-            padding: 2rem;
-
-            grid-template-rows: auto auto;
-        }
-    }
-
-    .separator {
-        border-left: 0.15rem var(--color-secondary) solid;
-        height: 1.5rem;
     }
 </style>
