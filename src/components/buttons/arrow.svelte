@@ -1,11 +1,14 @@
 <script lang="ts">
     export let label: string = ''
-    export let darkBackground = true
+    export let accentHover = true
+    export let arrowRight = false
     export let onClick: () => void
 </script>
 
-<button class="buttonArrow" on:click={onClick} class:darkBackground>
-    <span>{label}</span>
+<button class="arrowButton" on:click={onClick} class:accentHover class:arrowRight>
+    {#if label.length}
+        <span>{label}</span>
+    {/if}
 
     <b class="arrowContainer">
         <div />
@@ -15,13 +18,12 @@
 <style lang="scss">
     button {
         display: grid;
+        grid-gap: 2rem;
         grid-template-columns: max-content 1fr;
-
-        width: 100%;
         padding-right: 0.2rem;
         cursor: pointer;
 
-        & > span {
+        span {
             font-size: 3rem;
             line-height: 4rem;
             font-weight: 900;
@@ -32,15 +34,23 @@
             }
         }
 
+        &.arrowRight {
+            width: 100%;
+            b {
+                justify-self: end;
+            }
+        }
+
         .arrowContainer {
-            width: 10rem;
+            display: grid;
+            height: 3.2rem;
+            width: 6.3rem;
+            align-self: center;
+            align-content: center;
 
             div {
                 transition: width 300ms ease-out;
-
                 background: var(--color-secondary);
-                top: 2.1rem;
-                left: 2rem;
                 height: 0.2rem;
                 width: 2.8rem;
                 position: relative;
@@ -86,7 +96,7 @@
                 }
             }
 
-            &:not(.darkBackground) {
+            &:not(.accentHover) {
                 color: var(--color-secondary);
 
                 .arrowContainer div {

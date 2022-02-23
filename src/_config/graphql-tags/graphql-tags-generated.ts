@@ -71,34 +71,52 @@ export const JudgeDocument = gql`
 export const AboutPageDocument = gql`
     query AboutPage {
   about_page {
+    id
+    title_bar_text
     heading
     enter_now_section_CTA_label
     enter_now_section_image {
-      storage
-      title
-      embed
+      id
       filename_disk
-      filename_download
-      type
-      folder
-      location
-      metadata
+      description
     }
-    challenge_section_video {
-      storage
-      embed
+    challenge_section_youtube_video_id
+    challenge_section_heading
+    challenge_section_body
+    judges_section_heading
+    judges_section_judge {
+      id
+      judge {
+        id
+        name
+        company
+        image {
+          id
+          filename_disk
+          description
+        }
+      }
     }
+    judges_section_body
+    judges_section_CTA_label
+    brands_section_text
     multi_level_questions {
+      id
       question {
+        id
         title
         body {
+          id
           multi_level_question_items {
+            id
             level_1_title
             level_2_title
             level_2_subtext
             level_3_text
             level_3_links {
+              id
               multi_level_question_item_links {
+                id
                 label
                 slug
               }
@@ -107,11 +125,52 @@ export const AboutPageDocument = gql`
         }
       }
     }
+    textarea_questions {
+      id
+      question {
+        id
+        title
+        body
+      }
+    }
+  }
+  brands {
+    id
+    image {
+      id
+      description
+      filename_disk
+    }
+  }
+}
+    `;
+export const EnterPageDocument = gql`
+    query EnterPage {
+  enter_page {
+    id
+    key_dates_title
+    key_dates_youtube_video_id
+    timeline_section_heading
+    timeline_section_image {
+      id
+      filename_disk
+      description
+    }
+    heading
+    title_bar_text
+    key_dates {
+      id
+      dates {
+        id
+        date
+        subtext
+      }
+    }
   }
 }
     `;
 export const HomePageDocument = gql`
-    query HomePage {
+    query HomePage($limit: Int, $page: Int, $filterQuery: past_winners_filter) {
   home_page {
     id
     title_bar_text
@@ -136,6 +195,71 @@ export const HomePageDocument = gql`
     brands_section_heading
     brands_section_description
     brands_section_CTA_label
+    inspiration_articles {
+      id
+      inspiration_article {
+        id
+        title
+        body
+        read_more_label
+        read_more_link
+        image {
+          id
+          filename_disk
+          description
+        }
+      }
+    }
+  }
+  past_winners_page {
+    id
+    heading
+  }
+  past_winners_categories {
+    id
+    category
+  }
+  past_winners_years {
+    id
+    year
+  }
+  past_winners(limit: $limit, page: $page, filter: $filterQuery) {
+    id
+    name
+    image {
+      id
+      filename_disk
+      description
+    }
+    short_description
+    year {
+      id
+      past_winners_year {
+        id
+        year
+      }
+    }
+    school_name
+    students_name
+    youtube_video_id
+    project_information
+    worksheets {
+      id
+      past_winners_worksheet {
+        worksheet {
+          id
+          title
+          filename_disk
+        }
+      }
+    }
+    categories {
+      id
+      past_winners_category {
+        id
+        category
+      }
+    }
   }
 }
     `;

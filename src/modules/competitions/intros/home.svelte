@@ -13,20 +13,14 @@
         <strong>${data?.enter_now_section_sub_heading}</strong>
         ${data?.enter_now_section_body}`}
     </p>
-
-    <ButtonArrow
-        label={data?.enter_now_section_CTA_label ?? ''}
-        onClick={() => {
-            console.log('clicked')
-        }}
-    />
-
-    <ButtonArrow
-        label={data?.enter_now_section_CTA_label ?? ''}
-        onClick={() => {
-            console.log('clicked')
-        }}
-    />
+    <div>
+        <ButtonArrow
+            label={data?.enter_now_section_CTA_label ?? ''}
+            onClick={() => {
+                console.log('clicked')
+            }}
+        />
+    </div>
 </section>
 
 <style lang="scss">
@@ -41,10 +35,9 @@
             padding: 0 2rem;
         }
         & > i {
-            grid-column: 1/6;
+            grid-column: 2/7;
             grid-row: 1/2;
 
-            padding: 0 2rem;
             cursor: default;
 
             &:hover {
@@ -56,10 +49,8 @@
             }
         }
         & > p:nth-of-type(1) {
-            grid-column: 1/7;
+            grid-column: 2/8;
             grid-row: 3/4;
-
-            padding: 0 2rem;
 
             & :global(p:nth-of-type(1)) {
                 display: inline;
@@ -78,19 +69,11 @@
             }
         }
 
-        @media (min-width: 769px) {
-            & > * {
-                padding: 0 !important;
-            }
-        }
-
-        :global(button.buttonArrow) {
-            grid-column: 1/7;
+        & > div {
+            grid-column: 2/8;
             grid-row: 5/6;
 
             width: 100%;
-            padding: 0 2rem;
-
             @media (min-width: 769px) {
                 grid-column: 7/13;
                 grid-row: 3/4;

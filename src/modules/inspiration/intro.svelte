@@ -22,10 +22,8 @@
             padding: 0 2rem;
         }
         & > i {
-            grid-column: 1/7;
+            grid-column: 2/8;
             grid-row: 1/2;
-
-            padding: 0 2rem;
 
             @media (min-width: 769px) {
                 grid-column: 1/6;
@@ -36,10 +34,8 @@
         }
 
         & > p {
-            grid-column: 1/7;
+            grid-column: 2/8;
             grid-row: 3/4;
-            padding: 0 2rem;
-
             @media (min-width: 769px) {
                 grid-column: 1/4;
                 grid-row: 3/4;
@@ -49,10 +45,8 @@
         }
 
         & > img {
-            grid-column: 1/7;
+            grid-column: 2/8;
             grid-row: 5/6;
-            background-color: grey;
-
             width: 100%;
 
             @media (min-width: 769px) {

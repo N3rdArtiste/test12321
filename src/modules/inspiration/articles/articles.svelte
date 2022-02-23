@@ -24,20 +24,20 @@
         display: grid;
         grid-template-columns: var(--grid-template-columns);
         column-gap: var(--column-gap);
-        padding: 0 2rem;
         justify-content: center;
         row-gap: 2rem;
         & > div {
-            grid-column: span 6;
+            grid-column: 2/8;
         }
         @media (min-width: 769px) {
             row-gap: 7.5rem;
+            padding: 0 2rem;
             & > div {
                 grid-column: span 3;
             }
         }
         & > i {
-            grid-column: span 6;
+            grid-column: 2/8;
             @media (min-width: 769px) {
                 grid-column: span 12;
             }

@@ -64,14 +64,14 @@
         align-self: flex-start;
         grid-auto-flow: row;
         column-gap: var(--column-gap);
-        padding: 0 2rem;
         justify-content: center;
         @media (min-width: 769px) {
             grid-template-rows: auto 11.2rem auto 11rem auto;
+            padding: 0 2rem;
         }
 
         & > h1 {
-            grid-column: span 6;
+            grid-column: 2/8;
             grid-row: 1/2;
 
             @media (min-width: 769px) {
@@ -80,8 +80,7 @@
         }
 
         & > i {
-            grid-column: span 6;
-
+            grid-column: 2/8;
             grid-row: 3/4;
 
             display: grid;
@@ -100,8 +99,7 @@
                 border-right: 0.15rem solid var(--color-secondary);
                 grid-auto-rows: 1fr;
                 grid-template-columns: 1fr 1fr 1fr;
-                grid-template-rows: auto 4.5em auto;
-                gap: 0px 0px;
+                grid-template-rows: auto 4.5rem auto;
                 grid-area: 1 / 1 / 5 / 3;
                 align-content: flex-start;
 
@@ -115,7 +113,7 @@
         }
 
         & > b {
-            grid-column: span 6;
+            grid-column: 2/8;
             grid-row: 5/6;
             display: grid;
             row-gap: 6.2rem;
@@ -128,7 +126,7 @@
         }
 
         & > div {
-            grid-column: span 6;
+            grid-column: 2/8;
             grid-row: 7/8;
             @media (min-width: 769px) {
                 grid-area: 5 / 4 / 6 / 13;

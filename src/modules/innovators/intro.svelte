@@ -2,9 +2,9 @@
     export let data: HomePageQuery['home_page']
 
     import { getDirectusAssetLink } from 'helpers/string'
-    import { getInlineSvg } from 'helpers/markup'
 
     import ButtonArrow from 'components/buttons/arrow.svelte'
+    import SvgFile from 'components/svg-file.svelte'
 </script>
 
 <section>
@@ -16,9 +16,7 @@
         allowfullscreen
     />
     <div>
-        {#await getInlineSvg(getDirectusAssetLink(data?.hero_section_right_side_svg?.filename_disk)) then svgCode}
-            {@html svgCode}
-        {/await}
+        <SvgFile src={getDirectusAssetLink(data?.hero_section_right_side_svg?.filename_disk)} />
     </div>
     <h1>{data?.innovator_section_heading}</h1>
     <b>{@html data?.innovator_section_body}</b>
@@ -45,7 +43,7 @@
             padding: 0 2rem;
         }
         & > iframe:nth-of-type(1) {
-            grid-column: 1/7;
+            grid-column: 1/9;
             grid-row: 1/2;
             width: 100%;
             aspect-ratio: 414/286;
@@ -71,10 +69,8 @@
             }
         }
         & > h1:nth-of-type(1) {
-            grid-column: 1/7;
+            grid-column: 2/8;
             grid-row: 3/4;
-
-            padding: 0 2rem;
 
             @media (min-width: 769px) {
                 grid-column: 1/6;
@@ -82,29 +78,23 @@
             }
         }
         & > b:nth-of-type(1) {
-            grid-column: 1/7;
+            grid-column: 2/8;
             grid-row: 5/6;
-
-            padding: 0 2rem;
-
             @media (min-width: 769px) {
                 grid-column: 1/5;
                 grid-row: 6/7;
             }
         }
         & > div:nth-of-type(2) {
-            grid-column: 1/7;
+            grid-column: 2/8;
             grid-row: 7/8;
-
-            padding: 0 2rem;
-
             @media (min-width: 769px) {
                 grid-column: 1/6;
                 grid-row: 8/9;
             }
         }
         & > img:nth-of-type(1) {
-            grid-column: 1/7;
+            grid-column: 1/9;
             grid-row: 9/10;
 
             width: 100%;
@@ -112,11 +102,6 @@
             @media (min-width: 769px) {
                 grid-column: 6/13;
                 grid-row: 4/10;
-            }
-        }
-        @media (min-width: 769px) {
-            & > * {
-                padding: 0 !important;
             }
         }
     }

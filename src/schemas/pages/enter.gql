@@ -1,0 +1,23 @@
+query EnterPage {
+    enter_page {
+        id
+        key_dates_title
+        key_dates_youtube_video_id
+        timeline_section_heading
+        timeline_section_image {
+            id
+            filename_disk
+            description
+        }
+        heading
+        title_bar_text
+        key_dates {
+            id
+            dates {
+                id
+                date
+                subtext
+            }
+        }
+    }
+}

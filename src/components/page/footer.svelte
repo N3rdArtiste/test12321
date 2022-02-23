@@ -42,7 +42,7 @@
     })
 
     import { navMain } from '_config/constants/menus'
-    import { getInlineSvg } from 'helpers/markup'
+    import SvgFile from 'components/svg-file.svelte'
 
     let sponsorsContainer: HTMLDivElement
 
@@ -63,12 +63,10 @@
         {/each}
     </div>
     <i>
-        <ButtonArrow onClick={scrollSponsors} darkBackground={false} />
+        <ButtonArrow onClick={scrollSponsors} accentHover={false} />
     </i>
     <div>
-        {#await getInlineSvg(logo.src) then svgCode}
-            {@html svgCode}
-        {/await}
+        <SvgFile src={logo.src} />
     </div>
 
     <p class="small">
@@ -117,13 +115,13 @@
             grid-template-rows: auto 3.9rem auto 13.1rem auto 4.63rem auto 2.4rem;
         }
 
-        @media (min-width: 102.5rem) {
+        @media (min-width: 1200px) {
             padding: 17.9rem 2rem 18.6rem 2rem;
         }
 
         & > h2 {
             grid-row: 1/2;
-            grid-column: 1/7;
+            grid-column: 2/8;
 
             @media (min-width: 769px) {
                 font-size: 4rem;
@@ -132,7 +130,7 @@
             }
         }
         & > div:nth-of-type(1) {
-            grid-column: 1/7;
+            grid-column: 2/8;
             display: grid;
             grid-row: 3/4;
             grid-auto-columns: 26rem;
@@ -164,7 +162,7 @@
             }
         }
         & > div:nth-of-type(2) {
-            grid-column: 1/7;
+            grid-column: 2/8;
             grid-row: 5/6;
             width: 100%;
             max-width: 12.2rem;
@@ -175,7 +173,7 @@
         }
         & > p:nth-of-type(1) {
             grid-row: 7/8;
-            grid-column: 1/7;
+            grid-column: 2/8;
 
             @media (min-width: 769px) {
                 grid-row: 7/8;
@@ -184,7 +182,7 @@
         }
         & > nav {
             grid-row: 9/10;
-            grid-column: 1/5;
+            grid-column: 2/6;
             display: grid;
             grid-auto-flow: row;
             gap: 1rem;
@@ -198,7 +196,7 @@
 
         & > div:nth-of-type(3) {
             grid-row: 9/10;
-            grid-column: 5/7;
+            grid-column: 2/8;
 
             display: grid;
             grid-auto-flow: column;
@@ -222,7 +220,7 @@
             justify-content: center;
             justify-items: center;
             grid-row: 11/12;
-            grid-column: 1/7;
+            grid-column: 2/8;
 
             @media (min-width: 769px) {
                 grid-row: 7/8;
@@ -237,20 +235,11 @@
         }
         & > p:nth-of-type(2) {
             grid-row: 13/14;
-            grid-column: 1/7;
+            grid-column: 2/8;
 
             @media (min-width: 769px) {
                 grid-row: 9/10;
                 grid-column: 1/3;
-            }
-        }
-        & > * {
-            padding-left: 2rem;
-            padding-right: 2rem;
-
-            @media (min-width: 769px) {
-                padding-left: 0;
-                padding-right: 0;
             }
         }
     }

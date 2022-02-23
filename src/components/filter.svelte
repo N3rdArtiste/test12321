@@ -35,6 +35,7 @@
 <style lang="scss">
     span,
     button {
+        cursor: pointer;
         font-weight: 700;
         font-size: 2.2rem;
         line-height: 3rem;

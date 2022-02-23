@@ -1,0 +1,49 @@
+<script lang="ts">
+    import { getDirectusAssetLink } from 'helpers/string'
+
+    export let data: EnterPageQuery['enter_page']
+
+    console.log(data)
+</script>
+
+<section>
+    <h1 class="heading">{data?.timeline_section_heading}</h1>
+    <img class="image" src={getDirectusAssetLink(data?.timeline_section_image?.filename_disk)} alt={data?.timeline_section_image?.description} />
+</section>
+
+<style lang="scss">
+    section {
+        display: grid;
+        grid-template-columns: var(--grid-template-columns);
+        column-gap: var(--column-gap);
+        align-content: flex-start;
+        justify-content: center;
+        grid-auto-flow: row;
+        grid-template-rows: auto 4.97em auto;
+    }
+
+    .heading {
+        grid-area: 1 / 2 / 2 / 8;
+    }
+
+    .image {
+        width: 100%;
+        grid-area: 3 / 1 / 4 / 9;
+    }
+
+    @media (min-width: 769px) {
+        section {
+            grid-template-rows: auto 1fr;
+            grid-auto-flow: row;
+            padding: 0 2rem;
+        }
+
+        .heading {
+            grid-area: 1 / 1 / 2 / 4;
+        }
+
+        .image {
+            grid-area: 1 / 4 / 3 / 13;
+        }
+    }
+</style>

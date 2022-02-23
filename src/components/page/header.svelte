@@ -3,8 +3,8 @@
 
     import { navMain, navAuth, menuToggleIcons } from '_config/constants/menus'
     import { getDirectusAssetLink } from 'helpers/string'
-    import { getInlineSvg } from 'helpers/markup'
     import { navDrawerOpen } from 'stores/ui'
+    import SvgFile from 'components/svg-file.svelte'
 
     const handleMenuOpenClose = () => {
         $navDrawerOpen = !$navDrawerOpen
@@ -15,9 +15,7 @@
 
 <header class:isOpened={$navDrawerOpen}>
     <a sveltekit:prefetch href="/">
-        {#await getInlineSvg(logo.src) then svgCode}
-            {@html svgCode}
-        {/await}
+        <SvgFile src={logo.src} />
     </a>
 
     <!-- svelte-ignore a11y-missing-attribute -->
@@ -44,10 +42,8 @@
 <style lang="scss">
     header {
         transition: all 0.3s, height 0s, padding 0s;
-
         display: grid;
         position: fixed;
-        padding: 0 2rem;
         grid-template-columns: var(--grid-template-columns);
         column-gap: var(--column-gap);
         grid-template-rows: auto;
@@ -60,8 +56,11 @@
 
         background-color: var(--color-primary);
 
+        @media (min-width: 769px) {
+            padding: 0 2rem;
+        }
         & > a {
-            grid-column: 1/6;
+            grid-column: 2/7;
             grid-row: 1/2;
 
             width: 10rem;
@@ -77,7 +76,7 @@
         }
 
         & > button {
-            grid-column: 6/7;
+            grid-column: 7/8;
             grid-row: 1/2;
 
             display: grid;
@@ -90,7 +89,7 @@
         }
 
         & > nav {
-            grid-column: 1/7;
+            grid-column: 2/8;
             grid-row: 3/4;
 
             display: grid;
@@ -117,7 +116,7 @@
         }
 
         & > ul {
-            grid-column: 1/7;
+            grid-column: 2/8;
             grid-row: 5/6;
 
             display: grid;
@@ -148,7 +147,7 @@
         height: 100vh;
         background-color: var(--color-accent);
         grid-template-rows: auto 6rem auto auto 1fr;
-        padding: 2rem 2rem 5.1rem 2rem;
+        padding: 2rem 0rem 5.1rem 0rem;
 
         @media (min-width: 769px) {
             height: auto;
