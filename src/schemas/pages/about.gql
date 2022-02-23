@@ -14,6 +14,8 @@ query AboutPage {
         }
 
         challenge_section_youtube_video_id
+        challenge_section_heading
+        challenge_section_body
 
         judges_section_heading
         judges_section_judge {
@@ -22,6 +24,11 @@ query AboutPage {
                 id
                 name
                 company
+                image {
+                    id
+                    filename_disk
+                    description
+                }
             }
         }
         judges_section_body
@@ -52,6 +59,15 @@ query AboutPage {
                         }
                     }
                 }
+            }
+        }
+
+        textarea_questions {
+            id
+            question {
+                id
+                title
+                body
             }
         }
     }
