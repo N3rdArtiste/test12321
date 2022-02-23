@@ -1,18 +1,21 @@
 <script lang="ts">
     export let multiLevelList: MultiLevelList
-    export let name: string = ''
-    export let id: string = ''
+    export let name: string | undefined
+    export let id: string | undefined
     export let catClick: (id: string) => void
 </script>
 
 {#if name}
-    <span
-        on:click={() => {
-            catClick(id)
-        }}>{name}</span
-    >
+    {#if id}
+        <span
+            on:click={() => {
+                id ? catClick(id) : null
+            }}>{name}</span
+        >
+    {:else}
+        <span>{name}</span>
+    {/if}
 {/if}
-
 <ul>
     {#each multiLevelList as listItem}
         <li>
@@ -21,7 +24,7 @@
             {:else}
                 <button
                     on:click={() => {
-                        catClick(listItem.id)
+                        listItem.id && catClick(listItem.id)
                     }}>{listItem.name}</button
                 >
             {/if}

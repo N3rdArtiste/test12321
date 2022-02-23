@@ -1,28 +1,14 @@
 <script context="module" type="ts">
     import { PastWinnersPageDocument } from '_config/graphql-tags/graphql-tags-generated'
+    import { getPastWinnersFilterQuery } from 'helpers/graphql-query'
+
     export const load: Load = async ({ stuff, url }) => {
         const defaultLimit = 1
-        let defaultFilterQuery = null
         let limit = 1
         let page = parseInt(url.searchParams.get('page') ?? '1')
-
         let category = url.searchParams.get('category')
+        let filterQuery = getPastWinnersFilterQuery(category)
 
-        // if (category) {
-        //     if (category.includes('cat')) {
-        //     defaultFilterQuery = {
-        //                       categories: {
-        //                           past_winners_category: {
-        //                               id: {
-        //                                   _eq: 5,
-        //                               },
-        //                           },
-        //                       },
-        //                   },
-        //     }else if(category.includes('year')){
-
-        //     }
-        // }
         if (url.searchParams.get('page')) {
             if (page > 1) {
                 limit = page * limit
@@ -36,15 +22,7 @@
                     ? await stuff.getOperationStore(PastWinnersPageDocument, {
                           limit,
                           page: 1,
-                          //   filterQuery: {
-                          //       categories: {
-                          //           past_winners_category: {
-                          //               id: {
-                          //                   _eq: 5,
-                          //               },
-                          //           },
-                          //       },
-                          //   },
+                          filterQuery,
                       })
                     : null,
             },
@@ -86,8 +64,19 @@
 
         $pastWinnersContent.variables = { ...$pastWinnersContent.variables, page, limit }
     }
+
+    const onCategoryClick = (id: string) => {
+        pastWinnersList = []
+        page = 1
+        replaceQueryParams({
+            category: id,
+            page: page.toString(),
+        })
+
+        $pastWinnersContent.variables = { ...$pastWinnersContent.variables, page, limit, filterQuery: getPastWinnersFilterQuery(id) }
+    }
 </script>
 
 {#if $pastWinnersContent.data}
-    <PastWinners data={$pastWinnersContent.data} {pastWinnersList} onLoadMoreClick={loadMorePastWinners} onCategoryClick={() => {}} />
+    <PastWinners data={$pastWinnersContent.data} {pastWinnersList} onLoadMoreClick={loadMorePastWinners} {onCategoryClick} />
 {/if}

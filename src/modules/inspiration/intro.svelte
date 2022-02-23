@@ -4,7 +4,7 @@
 </script>
 
 <section>
-    <h1>{@html data?.heading}</h1>
+    <i>{@html data?.heading}</i>
     <p>{data?.description}</p>
     <img src={getDirectusAssetLink(data?.hero_image?.filename_disk)} alt={data?.hero_image?.description} />
 </section>
@@ -17,26 +17,20 @@
         column-gap: var(--column-gap);
         justify-content: center;
 
-        @media only screen and (min-width: 769px) {
+        @media (min-width: 769px) {
             grid-template-rows: auto 6.3rem auto;
             padding: 0 2rem;
         }
-        & > h1 {
+        & > i {
             grid-column: 1/7;
             grid-row: 1/2;
 
-            font-size: 6rem;
-            font-weight: 900;
-            line-height: 6rem;
             padding: 0 2rem;
 
-            @media only screen and (min-width: 769px) {
+            @media (min-width: 769px) {
                 grid-column: 1/6;
                 grid-row: 1/2;
 
-                font-size: 8rem;
-                font-weight: 900;
-                line-height: 8rem;
                 padding: 0;
             }
         }
@@ -44,18 +38,12 @@
         & > p {
             grid-column: 1/7;
             grid-row: 3/4;
-
-            font-size: 2rem;
-            line-height: 2.8rem;
-            font-weight: 400;
             padding: 0 2rem;
 
-            @media only screen and (min-width: 769px) {
+            @media (min-width: 769px) {
                 grid-column: 1/4;
                 grid-row: 3/4;
 
-                font-size: 2.2rem;
-                line-height: 3rem;
                 padding: 0;
             }
         }
@@ -67,7 +55,7 @@
 
             width: 100%;
 
-            @media only screen and (min-width: 769px) {
+            @media (min-width: 769px) {
                 grid-column: 6/13;
                 grid-row: 1/5;
             }

@@ -27,13 +27,13 @@
 
     <nav class:hide={!$navDrawerOpen}>
         {#each navMain as { label, slug }}
-            <a sveltekit:prefetch href={slug} on:click={() => ($navDrawerOpen = false)}>{label}</a>
+            <a class="bigger" sveltekit:prefetch href={slug} on:click={() => ($navDrawerOpen = false)}>{label}</a>
         {/each}
     </nav>
 
     <ul class:hide={!$navDrawerOpen}>
         {#each navAuth as { label }, i}
-            <li>{label}</li>
+            <li class="small">{label}</li>
             {#if i !== navAuth.length - 1}
                 <li class="separator" />
             {/if}
@@ -66,7 +66,7 @@
 
             width: 10rem;
 
-            @media only screen and (min-width: 769px) {
+            @media (min-width: 769px) {
                 grid-column: 1/2;
                 grid-row: 2/3;
                 &:hover {
@@ -84,7 +84,7 @@
             justify-content: end;
             align-items: center;
 
-            @media only screen and (min-width: 769px) {
+            @media (min-width: 769px) {
                 display: none;
             }
         }
@@ -96,18 +96,13 @@
             display: grid;
             grid-auto-flow: row;
             gap: 5.7rem;
-            font-weight: 900;
-            font-size: 3rem;
-            line-height: 4rem;
 
-            @media only screen and (min-width: 769px) {
+            @media (min-width: 769px) {
                 grid-column: 2/13;
                 grid-row: 2/3;
 
                 grid-auto-flow: column;
                 justify-content: end;
-                font-size: 1.8rem;
-                line-height: 2rem;
                 padding-top: 1.2rem;
                 & > a {
                     position: relative;
@@ -132,10 +127,8 @@
             column-gap: 1rem;
             align-content: end;
             align-items: center;
-            font-size: 1.4rem;
-            font-weight: 700;
 
-            @media only screen and (min-width: 769px) {
+            @media (min-width: 769px) {
                 grid-column: 1/13;
                 grid-row: 1/2;
                 justify-content: end;
@@ -146,7 +139,7 @@
     .hide {
         display: none;
 
-        @media only screen and (min-width: 769px) {
+        @media (min-width: 769px) {
             display: grid;
         }
     }
@@ -157,7 +150,7 @@
         grid-template-rows: auto 6rem auto auto 1fr;
         padding: 2rem 2rem 5.1rem 2rem;
 
-        @media only screen and (min-width: 769px) {
+        @media (min-width: 769px) {
             height: auto;
             background-color: var(--color-primary);
             padding: 2rem;

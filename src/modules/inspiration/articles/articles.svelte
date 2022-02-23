@@ -30,7 +30,7 @@
         & > div {
             grid-column: span 6;
         }
-        @media only screen and (min-width: 769px) {
+        @media (min-width: 769px) {
             row-gap: 7.5rem;
             & > div {
                 grid-column: span 3;
@@ -38,7 +38,7 @@
         }
         & > i {
             grid-column: span 6;
-            @media only screen and (min-width: 769px) {
+            @media (min-width: 769px) {
                 grid-column: span 12;
             }
         }

@@ -26,7 +26,7 @@
             line-height: 4rem;
             font-weight: 900;
 
-            @media only screen and (min-width: 48.1rem) {
+            @media (min-width: 48.1rem) {
                 font-size: 4rem;
                 line-height: 5rem;
             }

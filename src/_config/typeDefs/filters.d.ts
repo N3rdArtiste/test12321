@@ -1,5 +1,5 @@
 type MultiLevelList = Array<{
-    id: string
+    id?: string
     name: string
     multiLevelList?: MultiLevelList
 }>

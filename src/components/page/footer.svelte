@@ -51,7 +51,6 @@
             left: sponsorsContainer.scrollWidth,
             behavior: 'smooth',
         })
-        console.log(sponsorsContainer, 'sponsorsContainer')
     }
 </script>
 
@@ -63,27 +62,22 @@
             <a sveltekit:prefetch href="#"> <img src={sponsor.src} alt={sponsor.alt} /> </a>
         {/each}
     </div>
-
-    <ButtonArrow
-        onClick={() => {
-            console.log('clicked')
-        }}
-        darkBackground={false}
-    />
-
+    <i>
+        <ButtonArrow onClick={scrollSponsors} darkBackground={false} />
+    </i>
     <div>
         {#await getInlineSvg(logo.src) then svgCode}
             {@html svgCode}
         {/await}
     </div>
 
-    <p>
+    <p class="small">
         {shortAboutUsText}
     </p>
 
     <nav>
         {#each navMain as navItem}
-            <a sveltekit:prefetch href={navItem.slug}>
+            <a class="big" sveltekit:prefetch href={navItem.slug}>
                 {navItem.label}
             </a>
         {/each}
@@ -101,7 +95,7 @@
         {/each}
     </div>
 
-    <p>
+    <p class="smaller">
         {copyrightText}
     </p>
 </footer>
@@ -117,23 +111,21 @@
         grid-template-rows: auto 3.1rem auto 6.1rem auto 3rem auto 3.3rem auto 3rem auto 5rem auto;
         column-gap: var(--column-gap);
 
-        @media only screen and (min-width: 769px) {
+        @media (min-width: 769px) {
             padding: 9rem 2rem 9rem 2rem;
 
             grid-template-rows: auto 3.9rem auto 13.1rem auto 4.63rem auto 2.4rem;
         }
 
-        @media only screen and (min-width: 102.5rem) {
+        @media (min-width: 102.5rem) {
             padding: 17.9rem 2rem 18.6rem 2rem;
         }
 
         & > h2 {
-            font-weight: 900;
-            font-size: 3rem;
             grid-row: 1/2;
             grid-column: 1/7;
 
-            @media only screen and (min-width: 769px) {
+            @media (min-width: 769px) {
                 font-size: 4rem;
                 grid-column: 1/5;
                 grid-row: 1/2;
@@ -148,7 +140,7 @@
             gap: 1.6rem;
             overflow-x: scroll;
 
-            @media only screen and (min-width: 769px) {
+            @media (min-width: 769px) {
                 grid-column: 5/13;
                 grid-row: 1/2;
             }
@@ -161,10 +153,10 @@
             }
         }
 
-        & > button {
+        & > i {
             display: none;
 
-            @media only screen and (min-width: 769px) {
+            @media (min-width: 769px) {
                 display: block;
                 grid-row: 3/4;
                 grid-column: 12/13;
@@ -176,18 +168,16 @@
             grid-row: 5/6;
             width: 100%;
             max-width: 12.2rem;
-            @media only screen and (min-width: 769px) {
+            @media (min-width: 769px) {
                 grid-row: 5/6;
                 grid-column: 1/2;
             }
         }
         & > p:nth-of-type(1) {
-            font-weight: 500;
-            font-size: 1.6rem;
             grid-row: 7/8;
             grid-column: 1/7;
 
-            @media only screen and (min-width: 769px) {
+            @media (min-width: 769px) {
                 grid-row: 7/8;
                 grid-column: 1/3;
             }
@@ -197,18 +187,12 @@
             grid-column: 1/5;
             display: grid;
             grid-auto-flow: row;
-            gap: 1.6rem;
+            gap: 1rem;
 
-            @media only screen and (min-width: 769px) {
+            @media (min-width: 769px) {
                 grid-row: 7/8;
                 grid-column: 4/5;
                 align-content: flex-start;
-            }
-
-            & > a {
-                font-size: 1.6rem;
-                line-height: 1.6rem;
-                font-weight: 900;
             }
         }
 
@@ -223,7 +207,7 @@
             align-items: flex-end;
             grid-auto-columns: 1.6rem;
 
-            @media only screen and (min-width: 769px) {
+            @media (min-width: 769px) {
                 justify-content: start;
                 align-content: flex-start;
                 grid-row: 9/10;
@@ -240,7 +224,7 @@
             grid-row: 11/12;
             grid-column: 1/7;
 
-            @media only screen and (min-width: 769px) {
+            @media (min-width: 769px) {
                 grid-row: 7/8;
                 grid-column: 10/13;
             }
@@ -252,12 +236,10 @@
             }
         }
         & > p:nth-of-type(2) {
-            font-weight: 500;
-            font-size: 1.4rem;
             grid-row: 13/14;
             grid-column: 1/7;
 
-            @media only screen and (min-width: 769px) {
+            @media (min-width: 769px) {
                 grid-row: 9/10;
                 grid-column: 1/3;
             }
@@ -266,7 +248,7 @@
             padding-left: 2rem;
             padding-right: 2rem;
 
-            @media only screen and (min-width: 769px) {
+            @media (min-width: 769px) {
                 padding-left: 0;
                 padding-right: 0;
             }
