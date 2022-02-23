@@ -100,8 +100,7 @@
                 border-right: 0.15rem solid var(--color-secondary);
                 grid-auto-rows: 1fr;
                 grid-template-columns: 1fr 1fr 1fr;
-                grid-template-rows: auto 4.5em auto;
-                gap: 0px 0px;
+                grid-template-rows: auto 4.5rem auto;
                 grid-area: 1 / 1 / 5 / 3;
                 align-content: flex-start;
                 min-width: 10rem;
