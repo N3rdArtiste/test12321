@@ -33,6 +33,7 @@
     import type { DocumentNode } from 'graphql'
 
     import { onMount } from 'svelte'
+    import { page } from '$app/stores'
     import { isLoading } from 'stores/ui'
 
     import Header from 'components/page/header.svelte'
@@ -47,16 +48,18 @@
     })
 </script>
 
-{#if $headerAndFooterContent.data && !$isLoading}
+{#if $headerAndFooterContent.data}
     <Header data={$headerAndFooterContent.data} />
 
-    <main id="content">
+    <main id="content" class:loginPage={$page.url.pathname == '/login'}>
         <slot />
     </main>
 
     <Footer data={$headerAndFooterContent.data} />
-{:else}
-    <LoadingUiBlocker text="loading" />
+
+    {#if $isLoading}
+        <LoadingUiBlocker text="loading" />
+    {/if}
 {/if}
 
 <style lang="scss">

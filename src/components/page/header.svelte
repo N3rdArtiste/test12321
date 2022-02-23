@@ -1,11 +1,12 @@
 <script type="ts">
     export let data: HeaderAndFooterQuery
 
-    import { navMain, navAuth, menuToggleIcons } from '_config/constants/menus'
+    import { navMain, menuToggleIcons } from '_config/constants/menus'
     import { getDirectusAssetLink } from 'helpers/string'
     import { navDrawerOpen } from 'stores/ui'
 
     import SvgFile from 'components/svg-file.svelte'
+    import AuthNav from 'components/page/nav-auth.svelte'
 
     const handleMenuOpenClose = () => {
         $navDrawerOpen = !$navDrawerOpen
@@ -30,11 +31,7 @@
         {/each}
     </nav>
 
-    <ul class:hide={!$navDrawerOpen} class="authMenu">
-        {#each navAuth as { label }}
-            <li>{label}</li>
-        {/each}
-    </ul>
+    <AuthNav />
 </header>
 
 <style lang="scss">
@@ -94,31 +91,6 @@
             }
         }
 
-        .authMenu {
-            position: absolute;
-            top: -0.8rem;
-            right: 2rem;
-            left: initial;
-            bottom: initial;
-            list-style: none;
-
-            li {
-                cursor: not-allowed;
-                float: left;
-                padding: 1rem 2rem;
-                font-size: 1.1rem;
-                font-weight: 200;
-
-                &:not(:first-child)::before {
-                    content: '';
-                    border-left: 0.15rem var(--color-secondary) solid;
-                    height: 1.5rem;
-                    position: absolute;
-                    transform: translate(-2rem, -0.2rem);
-                }
-            }
-        }
-
         &:not(.isOpened) {
             nav {
                 position: absolute;
@@ -168,7 +140,7 @@
                 right: 5.5rem;
             }
 
-            .authMenu {
+            :global(.authNav) {
                 top: initial;
                 right: initial;
                 left: 4rem;
