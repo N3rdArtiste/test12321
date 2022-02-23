@@ -1,7 +1,7 @@
 <script lang="ts">
     export let multiLevelList: MultiLevelList
-    export let name: string | undefined
-    export let id: string | undefined
+    export let name: string | undefined = undefined
+    export let id: string | undefined = undefined
     export let catClick: (id: string) => void
 </script>
 
@@ -43,7 +43,7 @@
         font-weight: 400;
     }
     li {
-        padding-left: 1.5rem;
+        padding-left: 0.75rem;
         list-style: none;
     }
 </style>

@@ -3,8 +3,8 @@
     import { getPastWinnersFilterQuery } from 'helpers/graphql-query'
 
     export const load: Load = async ({ stuff, url }) => {
-        const defaultLimit = 1
-        let limit = 1
+        const defaultLimit = 6
+        let limit = defaultLimit
         let page = parseInt(url.searchParams.get('page') ?? '1')
         let category = url.searchParams.get('category')
         let filterQuery = getPastWinnersFilterQuery(category)
@@ -36,6 +36,7 @@
     import PastWinners from 'modules/past-winners/index.svelte'
     import { replaceQueryParams } from 'helpers/url'
     import { onMount } from 'svelte'
+    import Divider from 'components/divider.svelte'
 
     export let pastWinnersContent: PastWinnersPageQueryStore
     export let currentPage: number
@@ -80,3 +81,4 @@
 {#if $pastWinnersContent.data}
     <PastWinners data={$pastWinnersContent.data} {pastWinnersList} onLoadMoreClick={loadMorePastWinners} {onCategoryClick} />
 {/if}
+<Divider heightDesktop={12.8} heightMobile={5} />
