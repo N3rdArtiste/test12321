@@ -53,7 +53,6 @@ export const HeaderAndFooterDocument = gql`
 export const AllJudgesDocument = gql`
     query AllJudges($limit: Int, $page: Int) {
   judges(limit: $limit, page: $page) {
-    __typename
     id
     name
   }
@@ -62,7 +61,6 @@ export const AllJudgesDocument = gql`
 export const JudgeDocument = gql`
     query Judge($id: ID!) {
   judges_by_id(id: $id) {
-    __typename
     name
     id
   }
@@ -71,34 +69,47 @@ export const JudgeDocument = gql`
 export const AboutPageDocument = gql`
     query AboutPage {
   about_page {
+    id
+    title_bar_text
     heading
     enter_now_section_CTA_label
     enter_now_section_image {
-      storage
-      title
-      embed
+      id
       filename_disk
-      filename_download
-      type
-      folder
-      location
-      metadata
+      description
     }
-    challenge_section_video {
-      storage
-      embed
+    challenge_section_youtube_video_id
+    challenge_section_heading
+    challenge_section_body
+    judges_section_heading
+    judges_section_judge {
+      id
+      judge {
+        id
+        name
+        company
+      }
     }
+    judges_section_body
+    judges_section_CTA_label
+    brands_section_text
     multi_level_questions {
+      id
       question {
+        id
         title
         body {
+          id
           multi_level_question_items {
+            id
             level_1_title
             level_2_title
             level_2_subtext
             level_3_text
             level_3_links {
+              id
               multi_level_question_item_links {
+                id
                 label
                 slug
               }
@@ -106,6 +117,14 @@ export const AboutPageDocument = gql`
           }
         }
       }
+    }
+  }
+  brands {
+    id
+    image {
+      id
+      description
+      filename_disk
     }
   }
 }

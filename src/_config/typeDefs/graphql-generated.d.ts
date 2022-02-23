@@ -20,9 +20,6 @@ type Scalars = {
 type Query = {
   __typename?: 'Query';
   about_page?: Maybe<About_Page>;
-  about_page_files?: Maybe<Array<Maybe<About_Page_Files>>>;
-  about_page_files_aggregated?: Maybe<Array<Maybe<About_Page_Files_Aggregated>>>;
-  about_page_files_by_id?: Maybe<About_Page_Files>;
   about_page_judges_1?: Maybe<Array<Maybe<About_Page_Judges_1>>>;
   about_page_judges_1_aggregated?: Maybe<Array<Maybe<About_Page_Judges_1_Aggregated>>>;
   about_page_judges_1_by_id?: Maybe<About_Page_Judges_1>;
@@ -117,31 +114,6 @@ type Query = {
   social_media_links?: Maybe<Array<Maybe<Social_Media_Links>>>;
   social_media_links_aggregated?: Maybe<Array<Maybe<Social_Media_Links_Aggregated>>>;
   social_media_links_by_id?: Maybe<Social_Media_Links>;
-  test?: Maybe<Test>;
-};
-
-
-type QueryAbout_Page_FilesArgs = {
-  filter?: InputMaybe<About_Page_Files_Filter>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  page?: InputMaybe<Scalars['Int']>;
-  search?: InputMaybe<Scalars['String']>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-type QueryAbout_Page_Files_AggregatedArgs = {
-  filter?: InputMaybe<About_Page_Files_Filter>;
-  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  search?: InputMaybe<Scalars['String']>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-type QueryAbout_Page_Files_By_IdArgs = {
-  id: Scalars['ID'];
 };
 
 
@@ -846,6 +818,7 @@ type About_Page = {
   challenge_section_body?: Maybe<Scalars['String']>;
   challenge_section_heading?: Maybe<Scalars['String']>;
   challenge_section_video?: Maybe<Directus_Files>;
+  challenge_section_youtube_video_id?: Maybe<Scalars['String']>;
   enter_now_section_CTA_label?: Maybe<Scalars['String']>;
   enter_now_section_image?: Maybe<Directus_Files>;
   heading?: Maybe<Scalars['String']>;
@@ -909,60 +882,6 @@ type About_PageTextarea_QuestionsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
-type About_Page_Files = {
-  __typename?: 'about_page_files';
-  about_page_id?: Maybe<About_Page>;
-  directus_files_id?: Maybe<Directus_Files>;
-  id?: Maybe<Scalars['ID']>;
-};
-
-
-type About_Page_FilesAbout_Page_IdArgs = {
-  filter?: InputMaybe<About_Page_Filter>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  page?: InputMaybe<Scalars['Int']>;
-  search?: InputMaybe<Scalars['String']>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-type About_Page_FilesDirectus_Files_IdArgs = {
-  filter?: InputMaybe<Directus_Files_Filter>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  page?: InputMaybe<Scalars['Int']>;
-  search?: InputMaybe<Scalars['String']>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-type About_Page_Files_Aggregated = {
-  __typename?: 'about_page_files_aggregated';
-  avg?: Maybe<About_Page_Files_Aggregated_Fields>;
-  avgDistinct?: Maybe<About_Page_Files_Aggregated_Fields>;
-  count?: Maybe<About_Page_Files_Aggregated_Fields>;
-  countDistinct?: Maybe<About_Page_Files_Aggregated_Fields>;
-  group?: Maybe<Scalars['JSON']>;
-  max?: Maybe<About_Page_Files_Aggregated_Fields>;
-  min?: Maybe<About_Page_Files_Aggregated_Fields>;
-  sum?: Maybe<About_Page_Files_Aggregated_Fields>;
-  sumDistinct?: Maybe<About_Page_Files_Aggregated_Fields>;
-};
-
-type About_Page_Files_Aggregated_Fields = {
-  __typename?: 'about_page_files_aggregated_fields';
-  about_page_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
-};
-
-type About_Page_Files_Filter = {
-  _and?: InputMaybe<Array<InputMaybe<About_Page_Files_Filter>>>;
-  _or?: InputMaybe<Array<InputMaybe<About_Page_Files_Filter>>>;
-  about_page_id?: InputMaybe<About_Page_Filter>;
-  directus_files_id?: InputMaybe<Directus_Files_Filter>;
-  id?: InputMaybe<Number_Filter_Operators>;
-};
-
 type About_Page_Filter = {
   _and?: InputMaybe<Array<InputMaybe<About_Page_Filter>>>;
   _or?: InputMaybe<Array<InputMaybe<About_Page_Filter>>>;
@@ -970,6 +889,7 @@ type About_Page_Filter = {
   challenge_section_body?: InputMaybe<String_Filter_Operators>;
   challenge_section_heading?: InputMaybe<String_Filter_Operators>;
   challenge_section_video?: InputMaybe<Directus_Files_Filter>;
+  challenge_section_youtube_video_id?: InputMaybe<String_Filter_Operators>;
   enter_now_section_CTA_label?: InputMaybe<String_Filter_Operators>;
   enter_now_section_image?: InputMaybe<Directus_Files_Filter>;
   heading?: InputMaybe<String_Filter_Operators>;
@@ -2804,12 +2724,6 @@ type String_Filter_Operators = {
   _starts_with?: InputMaybe<Scalars['String']>;
 };
 
-type Test = {
-  __typename?: 'test';
-  id?: Maybe<Scalars['ID']>;
-  mark?: Maybe<Scalars['String']>;
-};
-
 type HeaderAndFooterQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -2821,19 +2735,19 @@ type AllJudgesQueryVariables = Exact<{
 }>;
 
 
-type AllJudgesQuery = { __typename?: 'Query', judges?: Array<{ __typename: 'judges', id?: string | null, name?: string | null } | null> | null };
+type AllJudgesQuery = { __typename?: 'Query', judges?: Array<{ __typename?: 'judges', id?: string | null, name?: string | null } | null> | null };
 
 type JudgeQueryVariables = Exact<{
   id: Scalars['ID'];
 }>;
 
 
-type JudgeQuery = { __typename?: 'Query', judges_by_id?: { __typename: 'judges', name?: string | null, id?: string | null } | null };
+type JudgeQuery = { __typename?: 'Query', judges_by_id?: { __typename?: 'judges', name?: string | null, id?: string | null } | null };
 
 type AboutPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type AboutPageQuery = { __typename?: 'Query', about_page?: { __typename?: 'about_page', heading?: string | null, enter_now_section_CTA_label?: string | null, enter_now_section_image?: { __typename?: 'directus_files', storage: string, title?: string | null, embed?: string | null, filename_disk?: string | null, filename_download: string, type?: string | null, folder?: string | null, location?: string | null, metadata?: any | null } | null, challenge_section_video?: { __typename?: 'directus_files', storage: string, embed?: string | null } | null, multi_level_questions?: Array<{ __typename?: 'about_page_question_titles', question?: { __typename?: 'question_titles', title?: string | null, body?: Array<{ __typename?: 'question_titles_multi_level_question_items', multi_level_question_items?: { __typename?: 'multi_level_question_items', level_1_title?: string | null, level_2_title?: string | null, level_2_subtext?: string | null, level_3_text?: string | null, level_3_links?: Array<{ __typename?: 'multi_level_question_items_multi_level_question_item_links', multi_level_question_item_links?: { __typename?: 'multi_level_question_item_links', label?: string | null, slug?: string | null } | null } | null> | null } | null } | null> | null } | null } | null> | null } | null };
+type AboutPageQuery = { __typename?: 'Query', about_page?: { __typename?: 'about_page', id?: string | null, title_bar_text?: string | null, heading?: string | null, enter_now_section_CTA_label?: string | null, challenge_section_youtube_video_id?: string | null, challenge_section_heading?: string | null, challenge_section_body?: string | null, judges_section_heading?: string | null, judges_section_body?: string | null, judges_section_CTA_label?: string | null, brands_section_text?: string | null, enter_now_section_image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null, judges_section_judge?: Array<{ __typename?: 'about_page_judges_1', id?: string | null, judge?: { __typename?: 'judges', id?: string | null, name?: string | null, company?: string | null } | null } | null> | null, multi_level_questions?: Array<{ __typename?: 'about_page_question_titles', id?: string | null, question?: { __typename?: 'question_titles', id?: string | null, title?: string | null, body?: Array<{ __typename?: 'question_titles_multi_level_question_items', id?: string | null, multi_level_question_items?: { __typename?: 'multi_level_question_items', id?: string | null, level_1_title?: string | null, level_2_title?: string | null, level_2_subtext?: string | null, level_3_text?: string | null, level_3_links?: Array<{ __typename?: 'multi_level_question_items_multi_level_question_item_links', id?: string | null, multi_level_question_item_links?: { __typename?: 'multi_level_question_item_links', id?: string | null, label?: string | null, slug?: string | null } | null } | null> | null } | null } | null> | null } | null } | null> | null } | null, brands?: Array<{ __typename?: 'brands', id?: string | null, image?: { __typename?: 'directus_files', id?: string | null, description?: string | null, filename_disk?: string | null } | null } | null> | null };
 
 type HomePageQueryVariables = Exact<{ [key: string]: never; }>;
 

@@ -62,13 +62,12 @@
 <style lang="scss">
     main {
         display: grid;
-        transition: background-color 0.3s;
-        background-color: var(--color-primary);
 
         min-height: calc(100vh - var(--header-height));
         padding-top: calc(2rem + var(--header-height));
+        padding-bottom: 8rem;
 
-        @media only screen and (min-width: 769px) {
+        @media (min-width: 769px) {
             padding-top: calc(6.2rem + var(--header-height));
         }
     }

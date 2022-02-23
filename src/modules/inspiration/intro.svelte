@@ -17,7 +17,7 @@
         column-gap: var(--column-gap);
         justify-content: center;
 
-        @media only screen and (min-width: 769px) {
+        @media (min-width: 769px) {
             grid-template-rows: auto 6.3rem auto;
             padding: 0 2rem;
         }
@@ -30,7 +30,7 @@
             line-height: 6rem;
             padding: 0 2rem;
 
-            @media only screen and (min-width: 769px) {
+            @media (min-width: 769px) {
                 grid-column: 1/6;
                 grid-row: 1/2;
 
@@ -50,7 +50,7 @@
             font-weight: 400;
             padding: 0 2rem;
 
-            @media only screen and (min-width: 769px) {
+            @media (min-width: 769px) {
                 grid-column: 1/4;
                 grid-row: 3/4;
 
@@ -67,7 +67,7 @@
 
             width: 100%;
 
-            @media only screen and (min-width: 769px) {
+            @media (min-width: 769px) {
                 grid-column: 6/13;
                 grid-row: 1/5;
             }

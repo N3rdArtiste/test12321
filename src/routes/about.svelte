@@ -15,8 +15,8 @@
 
     import { query } from '@urql/svelte'
     import Divider from 'components/divider.svelte'
-    // import CompetitionIntro from 'modules/competitions/intros/about.svelte'
-    // import CompetitionChallenge from 'modules/competitions/challenge.svelte'
+    import CompetitionIntro from 'modules/competitions/intros/about.svelte'
+    import CompetitionChallenge from 'modules/competitions/challenge.svelte'
 
     import Winnings from 'modules/questions/winnings.svelte'
 
@@ -32,10 +32,10 @@
 </svelte:head>
 
 {#if $aboutPage.data}
-    <!-- <CompetitionIntro data={$aboutPage.data.about_page} /> -->
+    <CompetitionIntro data={$aboutPage.data.about_page} />
     <Divider heightDesktop={11.5} heightMobile={5.6} />
 
-    <!-- <CompetitionChallenge data={$aboutPage.data.about_page} /> -->
+    <CompetitionChallenge data={$aboutPage.data.about_page} />
     <Divider heightDesktop={11.5} heightMobile={5.6} />
 {/if}
 

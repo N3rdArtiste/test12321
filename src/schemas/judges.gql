@@ -1,6 +1,5 @@
 query AllJudges($limit: Int, $page: Int) {
     judges(limit: $limit, page: $page) {
-        __typename
         id
         name
     }
@@ -8,7 +7,6 @@ query AllJudges($limit: Int, $page: Int) {
 
 query Judge($id: ID!) {
     judges_by_id(id: $id) {
-        __typename
         name
         id
     }

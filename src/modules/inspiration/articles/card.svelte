@@ -19,7 +19,7 @@
         grid-template-rows: auto 2.5rem auto 2.1rem auto 2.3rem auto 2.5rem;
         background-color: var(--color-primary);
 
-        @media only screen and (min-width: 769px) {
+        @media (min-width: 769px) {
             background-color: inherit;
             &:hover {
                 background-color: var(--color-primary);
@@ -35,7 +35,7 @@
             &.longCard {
                 aspect-ratio: 374/346;
             }
-            @media only screen and (min-width: 769px) {
+            @media (min-width: 769px) {
                 &.longCard {
                     aspect-ratio: 397/368;
                 }

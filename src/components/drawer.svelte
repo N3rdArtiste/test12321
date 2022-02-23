@@ -1,29 +1,23 @@
 <script lang="ts">
-    export let tabTitles: string[]
-    export let content: Multi_Level_Question_Items[]
+    export let title: string
+    export let content: any
 
     import { tab } from 'stores/app'
+
+    import HorizontalLine from 'components/horizontal-line.svelte'
 
     function handleOurClick(val: number) {
         $tab = val + 1
     }
 </script>
 
-<section>
-    <div class="tabs">
-        {#each tabTitles as item, index}
-            <span on:click={() => handleOurClick(index)} class:active={$tab == index + 1}>
-                {item}
-            </span>
-        {/each}
-    </div>
+<HorizontalLine />
+<h2>{title}</h2>
 
-    <div class="content">
-        {#each content as item, index}
-            <slot returnData={item} {index} />
-        {/each}
-    </div>
+<section>
+    <slot />
 </section>
+<HorizontalLine />
 
 <style lang="scss">
     section {

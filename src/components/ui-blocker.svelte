@@ -22,9 +22,6 @@
         align-items: center;
         justify-items: center;
 
-        grid-template-rows: 1fr 3fr 2fr;
-        padding-top: 5.3rem;
-
         background: var(--theme-primary);
 
         z-index: 9999998;

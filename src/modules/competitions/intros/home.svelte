@@ -26,7 +26,7 @@
         grid-template-columns: var(--grid-template-columns);
         grid-template-rows: auto 4.2rem auto 6.8rem auto;
         column-gap: var(--column-gap);
-        @media only screen and (min-width: 769px) {
+        @media (min-width: 769px) {
             grid-template-rows: auto 2rem auto;
             justify-content: center;
             padding: 0 2rem;
@@ -44,7 +44,7 @@
             &:hover {
                 color: var(--color-accent);
             }
-            @media only screen and (min-width: 769px) {
+            @media (min-width: 769px) {
                 grid-column: 1/6;
                 grid-row: 1/4;
 
@@ -64,7 +64,7 @@
                 display: inline;
             }
 
-            @media only screen and (min-width: 769px) {
+            @media (min-width: 769px) {
                 grid-column: 7/13;
                 grid-row: 1/2;
 
@@ -79,7 +79,7 @@
             }
         }
 
-        @media only screen and (min-width: 769px) {
+        @media (min-width: 769px) {
             & > * {
                 padding: 0 !important;
             }
@@ -92,7 +92,7 @@
             width: 100%;
             padding: 0 2rem;
 
-            @media only screen and (min-width: 769px) {
+            @media (min-width: 769px) {
                 grid-column: 7/13;
                 grid-row: 3/4;
 
