@@ -114,46 +114,88 @@ h1,h2,h3,h4,h5,h6 {
 
 h1 {
     font-size: 6rem;
+    line-height: 6rem;
+    font-weight: 900;
 
     @media (min-width: 769px) {
-        font-size: 7rem;
+        font-size: 8rem;
+        line-height: 8rem;
     }
 }
 h2 {
     font-size: 3rem;
+    line-height: 4rem;
+    font-weight: 900;
 
     @media (min-width: 769px) {
         font-size: 4rem;
+        line-height: 5rem;
+    }
+
+    &.small {
+        font-size: 1.6rem;
+        line-height: 2.4rem;
     }
 }
 h3 {
     font-size: 1.6rem;
+    line-height: 2.4rem;
+    font-weight: 900;
 
     @media (min-width: 769px) {
         font-size: 1.6rem;
     }
 }
 
-p {
-    font-size: 2.2rem;
+a {
+    font-size: 1.4rem;
+    line-height: 1.7rem;
+    font-weight: 900;
 
-    .small {
+    &.big {
         font-size: 1.6rem;
+        line-height: 3rem;
     }
+
+    &.bigger {
+        font-size: 3rem;
+        line-height: 4rem;
+        @media (min-width: 769px) {
+            font-size: 1.8rem;
+            line-height: 2.4rem;
+        }
+    }
+}
+
+p {
+    font-size: 2rem;
+    line-height: 2.8rem;
+    font-weight: 500;
 
     @media (min-width: 769px) {
-        font-size: 2rem;
+        font-size: 2.2rem;
+        line-height: 3rem;
     }
+    &.smaller {
+        font-size: 1.4rem;
+        line-height: 2.2rem;
+    }
+
+    &.small {
+        font-size: 1.6rem;
+        line-height: 2.4rem;
+    }
+}
+
+strong {
+    font-weight: 900;
 }
 
 li {
     font-size: 1.8rem;
 
-    .small {
-        font-size: 1.6rem;
+    &.small {
+        font-size: 1.4rem;
+        line-height: 2.4rem;
     }
-}
-
-footer span {
-    font-size: 1.6rem;
 }

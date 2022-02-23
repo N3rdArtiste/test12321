@@ -43,6 +43,7 @@
             justify-content: center;
             padding: 0 2rem;
         }
+
         iframe:nth-of-type(1) {
             grid-column: 1/7;
             grid-row: 1/2;
@@ -74,33 +75,22 @@
             grid-column: 1/7;
             grid-row: 3/4;
 
-            font-size: 6rem;
-            line-height: 6rem;
-            font-weight: 900;
             padding: 0 2rem;
 
             @media (min-width: 769px) {
                 grid-column: 1/6;
                 grid-row: 4/5;
-
-                font-size: 7.5rem;
-                line-height: 7.2rem;
             }
         }
         b:nth-of-type(1) {
             grid-column: 1/7;
             grid-row: 5/6;
 
-            font-size: 2rem;
-            line-height: 2.8rem;
             padding: 0 2rem;
 
             @media (min-width: 769px) {
                 grid-column: 1/5;
                 grid-row: 6/7;
-
-                font-size: 2.2rem;
-                line-height: 3rem;
             }
         }
         div:nth-of-type(2) {

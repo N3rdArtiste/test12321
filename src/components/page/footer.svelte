@@ -51,7 +51,6 @@
             left: sponsorsContainer.scrollWidth,
             behavior: 'smooth',
         })
-        console.log(sponsorsContainer, 'sponsorsContainer')
     }
 </script>
 
@@ -63,27 +62,22 @@
             <a sveltekit:prefetch href="#"> <img src={sponsor.src} alt={sponsor.alt} /> </a>
         {/each}
     </div>
-
-    <ArrowButton
-        onClick={() => {
-            console.log('clicked')
-        }}
-        accentHover={false}
-    />
-
+    <i>
+        <ArrowButton onClick={scrollSponsors} accentHover={false} />
+    </i>
     <div>
         {#await getInlineSvg(logo.src) then svgCode}
             {@html svgCode}
         {/await}
     </div>
 
-    <p>
+    <p class="small">
         {shortAboutUsText}
     </p>
 
     <nav>
         {#each navMain as navItem}
-            <a sveltekit:prefetch href={navItem.slug}>
+            <a class="big" sveltekit:prefetch href={navItem.slug}>
                 {navItem.label}
             </a>
         {/each}
@@ -101,7 +95,7 @@
         {/each}
     </div>
 
-    <p>
+    <p class="smaller">
         {copyrightText}
     </p>
 </footer>
@@ -165,7 +159,7 @@
             }
         }
 
-        button {
+        i {
             display: none;
 
             @media (min-width: 769px) {
@@ -201,7 +195,7 @@
             grid-column: 1/5;
             display: grid;
             grid-auto-flow: row;
-            gap: 1.6rem;
+            gap: 1rem;
 
             @media (min-width: 769px) {
                 grid-row: 7/8;

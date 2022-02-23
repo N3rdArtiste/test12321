@@ -6,8 +6,8 @@
 
 <article>
     <img class:longCard src={getDirectusAssetLink(article?.image?.filename_disk)} alt={article?.image?.description} />
-    <h2>{article?.title}</h2>
-    <p>{article?.body}</p>
+    <h2 class="small">{article?.title}</h2>
+    <p class="smaller">{article?.body}</p>
     <a sveltekit:prefetch href={article?.read_more_link}>{article?.read_more_label}</a>
 </article>
 
@@ -44,24 +44,12 @@
 
         h2 {
             grid-row: 3/4;
-
-            font-size: 1.6rem;
-            line-height: 2.4rem;
-            font-weight: 900;
         }
         p {
             grid-row: 5/6;
-
-            font-size: 1.4rem;
-            line-height: 2.2rem;
-            font-weight: 400;
         }
         a {
             grid-row: 7/8;
-
-            font-size: 1.4rem;
-            line-height: 1.7rem;
-            font-weight: 900;
 
             text-decoration: underline;
             cursor: pointer;

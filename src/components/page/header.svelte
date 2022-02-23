@@ -26,7 +26,7 @@
 
     <nav class:hide={!$navDrawerOpen}>
         {#each navMain as { label, slug }}
-            <a sveltekit:prefetch href={slug} on:click={() => ($navDrawerOpen = false)}>{label}</a>
+            <a class="bigger" sveltekit:prefetch href={slug} on:click={() => ($navDrawerOpen = false)}>{label}</a>
         {/each}
     </nav>
 
