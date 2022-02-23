@@ -20,13 +20,6 @@
             console.log('clicked')
         }}
     />
-
-    <ArrowButton
-        label={data?.enter_now_section_CTA_label ?? ''}
-        onClick={() => {
-            console.log('clicked')
-        }}
-    />
 </section>
 
 <style lang="scss">
