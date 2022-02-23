@@ -44,7 +44,9 @@
     query(headerAndFooterContent)
 
     onMount(() => {
-        $isLoading = false
+        setTimeout(() => {
+            $isLoading = false
+        })
     })
 </script>
 

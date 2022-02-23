@@ -22,7 +22,7 @@
         align-items: center;
         justify-items: center;
 
-        background: var(--theme-primary);
+        background: var(--color-primary);
 
         z-index: 9999998;
     }
