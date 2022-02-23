@@ -104,6 +104,7 @@
                 gap: 0px 0px;
                 grid-area: 1 / 1 / 5 / 3;
                 align-content: flex-start;
+                min-width: 10rem;
 
                 & > p {
                     grid-area: 1 / 1 / 2 / 4;
