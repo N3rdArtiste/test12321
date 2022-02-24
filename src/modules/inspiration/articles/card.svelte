@@ -22,7 +22,7 @@
         @media (min-width: 769px) {
             background-color: inherit;
             &:hover {
-                background-color: var(--color-primary);
+                background-color: white;
             }
         }
 
