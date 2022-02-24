@@ -1,8 +1,5 @@
 FROM node:16-alpine
 
-ENV VITE_DIRECTUS_URL=https://yia-cms-qa.dev.eks.cucumbersoftware.com
-ENV VITE_GRAPHQL_URL=https://yia-cms-qa.dev.eks.cucumbersoftware.com/graphql
-
 # install dependencies
 WORKDIR /usr/src/app
 COPY package.json package-lock.json ./
