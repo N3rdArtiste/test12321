@@ -30,7 +30,6 @@
 </svelte:head>
 
 <Intro data={$entryPage.data?.enter_page} />
-<Divider heightMobile={10} heightDesktop={10} />
 <Divider heightMobile={5} heightDesktop={9.7} />
 {#if whatQuestions && howQuestions}
     <WinningsWhat question={whatQuestions} />
