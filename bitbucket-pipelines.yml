@@ -37,6 +37,8 @@ pipelines:
             - export TAGGED_IMAGE_NAME=$FULL_IMAGE_NAME:$VERSION_TAG
 
             - echo $TAGGED_IMAGE_NAME
+            - echo $VITE_DIRECTUS_URL
+            - echo $VITE_GRAPHQL_URL
 
             # Create .npmrc with cucumber npm token
             - echo "@cucumber:registry=https://www.myget.org/F/cucumber/npm/" >> .npmrc
