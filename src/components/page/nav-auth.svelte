@@ -1,21 +1,21 @@
 <script type="ts">
     import { goto } from '$app/navigation'
+    import { isAuthenticated } from '_auth/store'
     import { isLoading } from 'stores/ui'
 
     import { navAuth } from '_config/constants/menus'
     // import { navDrawerOpen } from 'stores/ui'
 
-    function handleClick(label: string) {
-        $isLoading = true
-
-        goto(`/${label.toLowerCase()}`)
+    function handleClick(path: string) {
+        // goto(path)
+        location.href = `${location.origin}${path}`
     }
 </script>
 
 <!-- <ul class:hide={!$navDrawerOpen} class="authNav"> -->
 <ul class="authNav">
-    {#each navAuth.unauthenticated as { label }}
-        <li on:click={() => handleClick(label)}>{label}</li>
+    {#each $isAuthenticated ? navAuth.authenticated : navAuth.unauthenticated as { label, path }}
+        <li on:click={() => handleClick(path)}>{label}</li>
     {/each}
 </ul>
 
@@ -23,10 +23,14 @@
     .authNav {
         position: absolute;
         top: -0.8rem;
-        right: 2rem;
+        right: 10rem;
         left: initial;
         bottom: initial;
         list-style: none;
+
+        /* @media (min-width: 768px) {
+            right: 12rem;
+        } */
 
         li {
             cursor: pointer;

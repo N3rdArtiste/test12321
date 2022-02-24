@@ -42,9 +42,9 @@
         top: 0;
         left: 0;
 
-        width: calc(100% + 6rem);
+        width: calc(100% + 15rem);
         height: calc(var(--header-height) - 5rem);
-        transform: translateX(-3rem);
+        transform: translateX(-4rem);
         padding: 0 5rem;
         z-index: 99;
 
@@ -84,7 +84,7 @@
             display: initial;
             position: absolute;
             top: 4rem;
-            right: 2rem;
+            right: 12rem;
 
             @media (min-width: 769px) {
                 display: none;
@@ -94,8 +94,8 @@
         &:not(.isOpened) {
             nav {
                 position: absolute;
-                right: 2rem;
                 top: 3.5rem;
+                right: 12rem;
                 display: none;
 
                 a:hover {
@@ -118,7 +118,7 @@
         &.isOpened {
             display: grid;
             position: fixed;
-            transform: translateX(-3rem);
+            transform: translateX(-4rem);
             height: 100vh;
             background-color: var(--color-accent);
 
@@ -137,7 +137,7 @@
             }
 
             .burgerMenu {
-                right: 5.5rem;
+                right: 15.5rem;
             }
 
             :global(.authNav) {

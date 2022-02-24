@@ -6,8 +6,11 @@ export const navMain = [
 ]
 
 export const navAuth = {
-    unauthenticated: [{ label: 'Login' }],
-    authenticated: [{ label: 'Account' }, { label: 'Log out' }],
+    unauthenticated: [{ label: 'Login', path: '/knack.html' }],
+    authenticated: [
+        { label: 'Account', path: '/knack.html' },
+        { label: 'Log out', path: '/knack.html' },
+    ],
 }
 
 export const menuToggleIcons = [
