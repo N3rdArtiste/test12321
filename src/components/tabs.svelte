@@ -4,52 +4,53 @@
 
     import { tab } from 'stores/app'
 
-    function handleOurClick(val: number) {
+    function handleClick(val: number) {
         $tab = val + 1
     }
 </script>
 
-<section>
-    <div class="tabs">
+<div>
+    <i class="tabs">
         {#each tabTitles as item, index}
-            <span on:click={() => handleOurClick(index)} class:active={$tab == index + 1}>
+            <span on:click={() => handleClick(index)} class:active={$tab == index + 1}>
                 {item}
             </span>
         {/each}
-    </div>
+    </i>
 
-    <div class="content">
+    <i class="content">
         {#each content as item, index}
             <slot returnData={item} {index} />
         {/each}
-    </div>
-</section>
+    </i>
+</div>
 
 <style lang="scss">
-    section {
+    div {
         display: grid;
 
         grid-template-rows: max-content;
-        grid-template-columns: max-content 1fr;
+        grid-template-columns: 1fr;
 
-        grid-gap: 3rem;
+        grid-gap: 1rem;
         padding: 0 3rem;
 
-        @media (max-width: 850px) {
-            grid-gap: 1rem;
-            grid-template-columns: 1fr;
+        @media (min-width: 850px) {
+            grid-template-columns: max-content 1fr;
+            grid-gap: 3rem;
         }
 
-        div {
+        i {
             display: grid;
             background: var(--color-primary);
 
             &.tabs {
-                grid-auto-rows: 1.3rem;
+                grid-auto-rows: 2.3rem;
                 grid-template-columns: max-content;
 
-                & > span {
+                span {
                     padding: 0.1rem;
+                    font-size: 1.7rem;
                     font-weight: 400;
 
                     &:hover {
@@ -65,41 +66,40 @@
             }
 
             &.content {
-                display: grid;
                 grid-template-rows: 1fr;
 
-                :global(div) {
-                    display: grid;
+                :global(div.tabContent) {
                     z-index: 0;
                     grid-row: 1;
                     grid-column: 1;
                 }
-                :global(div.active) {
+                :global(div.tabContent.active) {
+                    display: grid;
                     z-index: 2;
                     background: var(--color-primary);
-                    height: 100%;
+                    height: 101%;
+                    padding-bottom: 2rem;
 
-                    grid-template-rows: 3rem 1fr;
-                    grid-template-columns: minmax(10rem, 15rem) minmax(16rem, 1fr);
+                    grid-template-rows: 5rem min-content 1fr;
+                    grid-template-columns: 1fr;
 
-                    @media (max-width: 1100px) {
-                        grid-template-rows: 3rem min-content 1fr;
-                        grid-template-columns: 1fr;
+                    @media (min-width: 1100px) {
+                        grid-template-rows: 6rem 1fr;
+                        grid-template-columns: minmax(20rem, 1fr) minmax(16rem, 2fr);
                     }
                 }
-                :global(div.active *) {
-                    text-align: justify;
-                    text-justify: inter-word;
-                }
-                :global(div.active > :nth-child(2)) {
+
+                :global(div.tabContent.active > :nth-child(2)) {
                     grid-row: 2;
                     padding-bottom: 1rem;
                 }
-                :global(div.active > :nth-child(3)) {
-                    padding-left: 3rem;
+                :global(div.tabContent.active > :nth-child(3)) {
+                    text-align: justify;
+                    text-justify: inter-word;
+                    padding-left: 0;
 
-                    @media (max-width: 1100px) {
-                        padding-left: 0;
+                    @media (min-width: 1100px) {
+                        padding-left: 3rem;
                     }
                 }
             }

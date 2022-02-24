@@ -5,6 +5,7 @@
 
     import ButtonArrow from 'components/buttons/arrow.svelte'
     import SvgFile from 'components/svg-file.svelte'
+    import { goto } from '$app/navigation'
 </script>
 
 <section>
@@ -25,7 +26,7 @@
         <ButtonArrow
             label={data?.innovator_section_CTA_label ?? ''}
             onClick={() => {
-                console.log('clicked')
+                goto('/about')
             }}
         />
     </div>

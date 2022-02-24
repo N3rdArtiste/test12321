@@ -1,4 +1,6 @@
 <script type="ts">
+    import { goto } from '$app/navigation'
+
     import Arrow from 'components/buttons/arrow.svelte'
     import Card from 'modules/inspiration/articles/card.svelte'
 
@@ -6,7 +8,6 @@
     const articles = data?.inspiration_articles?.map(article => {
         return article?.inspiration_article as ArrayElement<InspirationPageQuery['inspiration_articles']>
     })
-    console.log(articles, 'articles')
 </script>
 
 <section>
@@ -14,7 +15,7 @@
         <Arrow
             label={'i am inspired'}
             onClick={() => {
-                console.log('clicked')
+                goto('/inspiration')
             }}
         />
     </div>

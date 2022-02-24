@@ -22,6 +22,8 @@
 
             width: 100%;
             aspect-ratio: 374/268;
+            object-fit: cover;
+            object-position: top;
         }
 
         & > h2 {

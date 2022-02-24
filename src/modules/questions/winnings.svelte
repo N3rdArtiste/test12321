@@ -1,10 +1,10 @@
 <script lang="ts">
-    export let data: DataPayload
+    export let data: any
 
     import Tabs from 'components/tabs.svelte'
     import { tab } from 'stores/app'
 
-    let questions: DataBody[] = data.about_page.multi_level_questions[0].question.body
+    let questions: any[] = data.about_page.multi_level_questions[0].question.body
     let pageTile: string = data.about_page.multi_level_questions[0].question.title
 
     let tabTitles = questions.map(item => {

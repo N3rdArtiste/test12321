@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { goto } from '$app/navigation'
+
     export let data: HomePageQuery['home_page']
 
     import ButtonArrow from 'components/buttons/arrow.svelte'
@@ -17,7 +19,7 @@
         <ButtonArrow
             label={data?.enter_now_section_CTA_label ?? ''}
             onClick={() => {
-                console.log('clicked')
+                goto('/enter')
             }}
         />
     </div>

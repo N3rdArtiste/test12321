@@ -1,5 +1,5 @@
 overwrite: true
-schema: 'https://yia-cms-qa.dev.eks.cucumbersoftware.com/graphql'
+schema: 'https://yia-cms-prod.prod.eks.cucumbersoftware.com/graphql'
 documents: 'src/schemas/**/*.gql'
 config:
     withHooks: false

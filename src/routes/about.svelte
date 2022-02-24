@@ -11,19 +11,20 @@
 </script>
 
 <script type="ts">
-    export let aboutPage: AboutPageQueryStore
-
     import { query } from '@urql/svelte'
     import Divider from 'components/divider.svelte'
-    import Winnings from 'modules/questions/winnings.svelte'
     import CompetitionIntro from 'modules/competitions/intros/about.svelte'
     import Challenge from 'modules/competitions/challenge.svelte'
     import Judges from 'modules/judges/intro.svelte'
     import Brands from 'modules/brands/intro.svelte'
+    import WinningsHow from 'modules/questions/winnings-how.svelte'
+    import WinningsWhat from 'modules/questions/winnings-what.svelte'
 
+    export let aboutPage: AboutPageQueryStore
     query(aboutPage)
 
-    $: console.log('--$aboutPage.data--', $aboutPage.data)
+    let { question: whatQuestions } = $aboutPage.data?.about_page?.multi_level_questions![0]!
+    let { question: howQuestions } = $aboutPage.data?.about_page?.textarea_questions![0]!
 
     let { question } = $aboutPage.data?.about_page?.multi_level_questions![0]!
 </script>
@@ -37,6 +38,11 @@
     <Divider heightMobile={6.8} heightDesktop={16.6} />
     <Challenge data={$aboutPage.data?.about_page} />
     <Divider heightMobile={5} heightDesktop={15.8} />
+    {#if whatQuestions && howQuestions}
+        <WinningsWhat question={whatQuestions} />
+        <WinningsHow question={howQuestions} />
+        <Divider heightDesktop={11.5} heightMobile={5.6} />
+    {/if}
     <Judges data={$aboutPage.data?.about_page} />
     <Divider heightMobile={4.47} heightDesktop={16.1} />
     <Brands brands={$aboutPage.data?.brands} data={$aboutPage.data?.about_page} />

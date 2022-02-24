@@ -1494,6 +1494,7 @@ type Home_Page = {
   enter_now_section_body?: Maybe<Scalars['String']>;
   enter_now_section_heading?: Maybe<Scalars['String']>;
   enter_now_section_sub_heading?: Maybe<Scalars['String']>;
+  hello_test?: Maybe<Scalars['String']>;
   hero_section_right_side_svg?: Maybe<Directus_Files>;
   hero_section_youtube_video_id?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['ID']>;
@@ -1546,6 +1547,7 @@ type Home_Page_Filter = {
   enter_now_section_body?: InputMaybe<String_Filter_Operators>;
   enter_now_section_heading?: InputMaybe<String_Filter_Operators>;
   enter_now_section_sub_heading?: InputMaybe<String_Filter_Operators>;
+  hello_test?: InputMaybe<String_Filter_Operators>;
   hero_section_right_side_svg?: InputMaybe<Directus_Files_Filter>;
   hero_section_youtube_video_id?: InputMaybe<String_Filter_Operators>;
   id?: InputMaybe<Number_Filter_Operators>;
@@ -2752,7 +2754,7 @@ type AboutPageQuery = { __typename?: 'Query', about_page?: { __typename?: 'about
 type EnterPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type EnterPageQuery = { __typename?: 'Query', enter_page?: { __typename?: 'enter_page', id?: string | null, key_dates_title?: string | null, key_dates_youtube_video_id?: string | null, timeline_section_heading?: string | null, heading?: string | null, title_bar_text?: string | null, timeline_section_image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null, key_dates?: Array<{ __typename?: 'enter_page_key_dates', id?: string | null, dates?: { __typename?: 'key_dates', id?: string | null, date?: string | null, subtext?: string | null } | null } | null> | null } | null };
+type EnterPageQuery = { __typename?: 'Query', enter_page?: { __typename?: 'enter_page', id?: string | null, key_dates_title?: string | null, key_dates_youtube_video_id?: string | null, timeline_section_heading?: string | null, heading?: string | null, title_bar_text?: string | null, timeline_section_image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null, key_dates?: Array<{ __typename?: 'enter_page_key_dates', id?: string | null, dates?: { __typename?: 'key_dates', id?: string | null, date?: string | null, subtext?: string | null } | null } | null> | null, text_area_questions?: Array<{ __typename?: 'enter_page_question_text_area', id?: string | null, question?: { __typename?: 'question_text_area', id?: string | null, body?: string | null, title?: string | null } | null } | null> | null, multi_level_questions?: Array<{ __typename?: 'enter_page_question_titles', id?: string | null, question?: { __typename?: 'question_titles', id?: string | null, title?: string | null, body?: Array<{ __typename?: 'question_titles_multi_level_question_items', id?: string | null, multi_level_question_items?: { __typename?: 'multi_level_question_items', id?: string | null, level_1_title?: string | null, level_2_title?: string | null, level_2_subtext?: string | null, level_3_text?: string | null, level_3_links?: Array<{ __typename?: 'multi_level_question_items_multi_level_question_item_links', id?: string | null, multi_level_question_item_links?: { __typename?: 'multi_level_question_item_links', id?: string | null, label?: string | null, slug?: string | null } | null } | null> | null } | null } | null> | null } | null } | null> | null } | null };
 
 type HomePageQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>;

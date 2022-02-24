@@ -166,6 +166,39 @@ export const EnterPageDocument = gql`
         subtext
       }
     }
+    text_area_questions {
+      id
+      question {
+        id
+        body
+        title
+      }
+    }
+    multi_level_questions {
+      id
+      question {
+        id
+        title
+        body {
+          id
+          multi_level_question_items {
+            id
+            level_1_title
+            level_2_title
+            level_2_subtext
+            level_3_text
+            level_3_links {
+              id
+              multi_level_question_item_links {
+                id
+                label
+                slug
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
     `;
