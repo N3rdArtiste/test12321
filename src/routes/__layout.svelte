@@ -1,5 +1,5 @@
 <script context="module" type="ts">
-    import { operationStore, query } from '@urql/svelte'
+    import { Client, operationStore, query } from '@urql/svelte'
 
     import { get } from 'svelte/store'
 
