@@ -27,10 +27,17 @@
         column-gap: var(--column-gap);
 
         @media (min-width: 769px) {
+            grid-template-columns: repeat(6, 1fr) minmax(12.2rem, 1fr) repeat(5, 1fr);
+            max-width: var(--max-width);
+            margin: 0 auto;
             justify-content: center;
-            grid-template-rows: auto 10.7em auto;
+            grid-template-rows: auto 4em auto 4rem auto;
             grid-auto-flow: row;
             padding: 0 2rem;
+        }
+
+        @media (min-width: 830px) {
+            grid-template-rows: auto 10.7em auto;
         }
     }
 
@@ -46,7 +53,10 @@
         grid-area: 3 / 2 / 4 / 8;
 
         @media (min-width: 769px) {
-            grid-area: 3 / 1 / 4 / 5;
+            grid-area: 3 / 1 / 4 / 13;
+        }
+        @media (min-width: 830px) {
+            grid-area: 3 / 1 / 4 / 6;
         }
     }
 
@@ -55,6 +65,9 @@
         width: 100%;
 
         @media (min-width: 769px) {
+            grid-area: 5 / 1 / 6 / 13;
+        }
+        @media (min-width: 830px) {
             grid-area: 3 / 6 / 4 / 13;
         }
     }

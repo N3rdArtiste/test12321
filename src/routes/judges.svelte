@@ -1,13 +1,13 @@
 <script context="module" type="ts">
-    import { PastWinnersPageDocument } from '_config/graphql-tags/graphql-tags-generated'
-    import { getPastWinnersFilterQuery } from 'helpers/graphql-query'
+    import { JudgesPageDocument } from '_config/graphql-tags/graphql-tags-generated'
+    import { getJudgesFilterQuery } from 'helpers/graphql-query'
 
     export const load: Load = async ({ stuff, url }) => {
-        const defaultLimit = 6
+        const defaultLimit = 4
         let limit = defaultLimit
         let page = parseInt(url.searchParams.get('page') ?? '1')
         let category = url.searchParams.get('category')
-        let filterQuery = getPastWinnersFilterQuery(category)
+        let filterQuery = getJudgesFilterQuery(category)
 
         if (url.searchParams.get('page')) {
             if (page > 1) {
@@ -18,8 +18,8 @@
             props: {
                 currentPage: page,
                 limit: defaultLimit,
-                pastWinnersContent: stuff.getOperationStore
-                    ? await stuff.getOperationStore(PastWinnersPageDocument, {
+                judgesContent: stuff.getOperationStore
+                    ? await stuff.getOperationStore(JudgesPageDocument, {
                           limit,
                           page: 1,
                           filterQuery,
@@ -33,18 +33,17 @@
 <script lang="ts">
     import { query } from '@urql/svelte'
 
-    import PastWinners from 'modules/past-winners/index.svelte'
     import { replaceQueryParams } from 'helpers/url'
     import { onMount } from 'svelte'
     import Divider from 'components/divider.svelte'
-    import { goto } from '$app/navigation'
+    import JudgesPage from 'modules/judges/judgesPage.svelte'
     import { uniqBy } from 'lodash'
 
-    export let pastWinnersContent: PastWinnersPageQueryStore
+    export let judgesContent: JudgesPageQueryStore
     export let currentPage: number
     export let limit: number
 
-    let pastWinnersList: PastWinnersPageQuery['past_winners']
+    let judgesList: JudgesPageQuery['judges']
     let page = currentPage
 
     onMount(() => {
@@ -53,34 +52,34 @@
         })
     })
 
-    query(pastWinnersContent)
+    query(judgesContent)
 
-    $: if (!$pastWinnersContent.fetching) {
-        pastWinnersList = uniqBy([...(pastWinnersList ?? []), ...($pastWinnersContent.data?.past_winners ?? [])], 'id')
+    $: if (!$judgesContent.fetching) {
+        judgesList = uniqBy([...(judgesList ?? []), ...($judgesContent.data?.judges ?? [])], 'id')
     }
 
-    const loadMorePastWinners = () => {
+    const loadMoreJudges = () => {
         ++page
         replaceQueryParams({
             page: page.toString(),
         })
 
-        $pastWinnersContent.variables = { ...$pastWinnersContent.variables, page, limit }
+        $judgesContent.variables = { ...$judgesContent.variables, page, limit }
     }
 
     const onCategoryClick = (id: string) => {
-        pastWinnersList = []
+        judgesList = []
         page = 1
         replaceQueryParams({
             category: id,
             page: page.toString(),
         })
 
-        $pastWinnersContent.variables = { ...$pastWinnersContent.variables, page, limit, filterQuery: getPastWinnersFilterQuery(id) }
+        $judgesContent.variables = { ...$judgesContent.variables, page, limit, filterQuery: getJudgesFilterQuery(id) }
     }
 </script>
 
-{#if $pastWinnersContent.data}
-    <PastWinners data={$pastWinnersContent.data} {pastWinnersList} onLoadMoreClick={loadMorePastWinners} {onCategoryClick} />
+{#if $judgesContent.data}
+    <JudgesPage data={$judgesContent.data} {judgesList} onLoadMoreClick={loadMoreJudges} {onCategoryClick} />
 {/if}
 <Divider heightDesktop={12.8} heightMobile={5} />

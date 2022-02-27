@@ -28,6 +28,9 @@
         grid-template-rows: auto 3.7em auto 5.4em auto;
 
         @media (min-width: 769px) {
+            grid-template-columns: repeat(5, 1fr) repeat(2, minmax(12.2rem, 1fr)) 1fr minmax(12.2rem, 1fr) repeat(2, 1fr);
+            max-width: var(--max-width);
+            margin: 0 auto;
             grid-template-rows: auto 4.4em auto 1fr;
             padding: 0 2rem;
         }

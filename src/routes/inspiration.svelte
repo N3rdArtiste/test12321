@@ -28,6 +28,7 @@
     import Articles from 'modules/inspiration/articles/articles.svelte'
     import { replaceQueryParams } from 'helpers/url'
     import { onMount } from 'svelte'
+    import { uniqBy } from 'lodash'
 
     export let inspirationPageContent: InspirationPageQueryStore
     export let currentPage: number
@@ -45,7 +46,7 @@
     query(inspirationPageContent)
 
     $: if (!$inspirationPageContent.fetching) {
-        inspirationArticles = [...(inspirationArticles ?? []), ...($inspirationPageContent.data?.inspiration_articles ?? [])]
+        inspirationArticles = uniqBy([...(inspirationArticles ?? []), ...($inspirationPageContent.data?.inspiration_articles ?? [])], 'id')
     }
 
     const loadMoreArticles = () => {

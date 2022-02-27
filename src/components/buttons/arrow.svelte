@@ -19,9 +19,10 @@
     button {
         display: grid;
         grid-gap: 2rem;
-        grid-template-columns: max-content 1fr;
+        grid-template-columns: 1fr auto;
         padding-right: 0.2rem;
         cursor: pointer;
+        text-align: left;
 
         span {
             font-size: 3rem;

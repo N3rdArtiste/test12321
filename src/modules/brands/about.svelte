@@ -33,6 +33,9 @@
 
     @media (min-width: 769px) {
         section {
+            grid-template-columns: repeat(6, 1fr) minmax(12.2rem, 1fr) repeat(5, 1fr);
+            max-width: var(--max-width);
+            margin: 0 auto;
             padding: 0 2rem;
         }
         .heading {

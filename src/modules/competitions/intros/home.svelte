@@ -31,8 +31,12 @@
         grid-template-columns: var(--grid-template-columns);
         grid-template-rows: auto 4.2rem auto 6.8rem auto;
         column-gap: var(--column-gap);
+        max-width: var(--max-width);
+
         @media (min-width: 769px) {
             grid-template-rows: auto 2rem auto;
+            grid-template-columns: minmax(21rem, 1fr) 1fr 1fr 1fr 1fr 1fr minmax(14rem, 1fr) 1fr 1fr 1fr 1fr 1fr;
+            margin: 0 auto;
             justify-content: center;
             padding: 0 2rem;
         }

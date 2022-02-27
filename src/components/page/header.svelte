@@ -11,39 +11,56 @@
     }
 
     let logo = { src: getDirectusAssetLink(data.header?.logo?.filename_disk), alt: data.header?.logo?.description ?? '' }
+
+    let scrollY2: number = 0
+
+    $: showShadow = scrollY2 > 0
 </script>
 
-<header class:isOpened={$navDrawerOpen}>
-    <a sveltekit:prefetch href="/">
-        <SvgFile src={logo.src} />
-    </a>
+<svelte:window bind:scrollY={scrollY2} />
+<div class="wrapper" class:showShadow>
+    <header class:isOpened={$navDrawerOpen}>
+        <a sveltekit:prefetch href="/" on:click={() => ($navDrawerOpen = false)}>
+            <SvgFile src={logo.src} />
+        </a>
 
-    <!-- svelte-ignore a11y-missing-attribute -->
-    <button on:click={handleMenuOpenClose}>
-        <img {...menuToggleIcons[+!$navDrawerOpen]} />
-    </button>
+        <!-- svelte-ignore a11y-missing-attribute -->
+        <button on:click={handleMenuOpenClose}>
+            <img {...menuToggleIcons[+!$navDrawerOpen]} />
+        </button>
 
-    <nav class:hide={!$navDrawerOpen}>
-        {#each navMain as { label, slug }}
-            <a class="bigger" sveltekit:prefetch href={slug} on:click={() => ($navDrawerOpen = false)}>{label}</a>
-        {/each}
-    </nav>
+        <nav class:hide={!$navDrawerOpen}>
+            {#each navMain as { label, slug }}
+                <a class="bigger" sveltekit:prefetch href={slug} on:click={() => ($navDrawerOpen = false)}>{label}</a>
+            {/each}
+        </nav>
 
-    <ul class:hide={!$navDrawerOpen}>
-        {#each navAuth as { label }, i}
-            <li class="small">{label}</li>
-            {#if i !== navAuth.length - 1}
-                <li class="separator" />
-            {/if}
-        {/each}
-    </ul>
-</header>
+        <ul class:hide={!$navDrawerOpen}>
+            {#each navAuth as { label }, i}
+                <li class="small">{label}</li>
+                {#if i !== navAuth.length - 1}
+                    <li class="separator" />
+                {/if}
+            {/each}
+        </ul>
+    </header>
+</div>
 
 <style lang="scss">
+    .wrapper {
+        transition: all 0.3s;
+        z-index: 99;
+        background-color: var(--color-primary);
+        width: 100%;
+        position: fixed;
+    }
+
+    .showShadow {
+        box-shadow: 0rem -0.7rem 1rem var(--color-secondary);
+    }
     header {
         transition: all 0.3s, height 0s, padding 0s;
         display: grid;
-        position: fixed;
         grid-template-columns: var(--grid-template-columns);
         column-gap: var(--column-gap);
         grid-template-rows: auto;
@@ -52,11 +69,12 @@
         width: 100%;
         height: var(--header-height);
         align-content: center;
-        z-index: 99;
-
-        background-color: var(--color-primary);
 
         @media (min-width: 769px) {
+            grid-template-columns: repeat(12, 1fr);
+            max-width: var(--max-width);
+            margin: 0 auto;
+
             padding: 0 2rem;
         }
         & > a {

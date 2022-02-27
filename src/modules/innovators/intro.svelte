@@ -35,10 +35,14 @@
 <style lang="scss">
     section {
         display: grid;
-        grid-template-columns: var(--grid-template-columns);
+        grid-template-columns: 1rem 1fr 1fr 1fr 1fr 1fr 1fr 1rem;
         grid-template-rows: auto 5rem auto 4.2rem auto 6.8rem auto 5.1rem auto;
         column-gap: var(--column-gap);
-        @media (min-width: 769px) {
+        max-width: var(--max-width);
+
+        @media (min-width: 821px) {
+            grid-template-columns: minmax(21rem, 1fr) 1fr 1fr 1fr 1fr 1fr minmax(7rem, 1fr) 1fr 1fr 1fr 1fr 1fr;
+            margin: 0 auto;
             grid-template-rows: auto auto 13rem auto 14.2rem auto 7.6rem auto 3rem;
             justify-content: center;
             padding: 0 2rem;
@@ -48,7 +52,7 @@
             grid-row: 1/2;
             width: 100%;
             aspect-ratio: 414/286;
-            @media (min-width: 769px) {
+            @media (min-width: 821px) {
                 grid-column: 1/9;
                 grid-row: 1/3;
                 width: 110%;
@@ -59,7 +63,7 @@
         & > div:nth-of-type(1) {
             display: none;
 
-            @media (min-width: 769px) {
+            @media (min-width: 821px) {
                 grid-column: 10/13;
                 grid-row: 1/3;
                 display: block;
@@ -73,7 +77,7 @@
             grid-column: 2/8;
             grid-row: 3/4;
 
-            @media (min-width: 769px) {
+            @media (min-width: 821px) {
                 grid-column: 1/6;
                 grid-row: 4/5;
             }
@@ -81,7 +85,7 @@
         & > b:nth-of-type(1) {
             grid-column: 2/8;
             grid-row: 5/6;
-            @media (min-width: 769px) {
+            @media (min-width: 821px) {
                 grid-column: 1/5;
                 grid-row: 6/7;
             }
@@ -89,7 +93,7 @@
         & > div:nth-of-type(2) {
             grid-column: 2/8;
             grid-row: 7/8;
-            @media (min-width: 769px) {
+            @media (min-width: 821px) {
                 grid-column: 1/6;
                 grid-row: 8/9;
             }
@@ -100,7 +104,7 @@
 
             width: 100%;
 
-            @media (min-width: 769px) {
+            @media (min-width: 821px) {
                 grid-column: 6/13;
                 grid-row: 4/10;
             }

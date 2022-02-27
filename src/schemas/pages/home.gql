@@ -1,5 +1,4 @@
-query HomePage  ($limit: Int, $page: Int, $filterQuery: past_winners_filter)
- {
+query HomePage($limit: Int, $page: Int, $filterQuery: past_winners_filter) {
     home_page {
         id
         title_bar_text
@@ -77,6 +76,7 @@ query HomePage  ($limit: Int, $page: Int, $filterQuery: past_winners_filter)
         worksheets {
             id
             past_winners_worksheet {
+                id
                 worksheet {
                     id
                     title
@@ -92,5 +92,12 @@ query HomePage  ($limit: Int, $page: Int, $filterQuery: past_winners_filter)
             }
         }
     }
+    brands {
+        id
+        image {
+            id
+            description
+            filename_disk
+        }
+    }
 }
-

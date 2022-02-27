@@ -1,7 +1,7 @@
 <script lang="ts">
     import { getDirectusAssetLink } from 'helpers/string'
 
-    export let brands: AboutPageQuery['brands']
+    export let brands: AboutPageQuery['brands'] | HomePageQuery['brands']
 </script>
 
 <div class="container">
@@ -33,7 +33,7 @@
         .container {
             grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
             grid-auto-rows: auto;
-            row-gap: 3.9rem;
+            row-gap: 1.9rem;
             grid-auto-flow: row;
 
             & img {

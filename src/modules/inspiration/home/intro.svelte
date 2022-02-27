@@ -44,13 +44,18 @@
 
     .articles {
         grid-area: 3 / 2 / 4 / 8;
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(36.6rem, 1fr));
     }
 
     @media (min-width: 769px) {
         section {
             grid-template-rows: auto 3.1em auto;
-            grid-auto-flow: row;
             padding: 0 2rem;
+            grid-template-columns: minmax(12.2rem, 1fr) repeat(11, 1fr);
+            max-width: var(--max-width);
+            margin: 0 auto;
         }
 
         .button-container {
@@ -59,14 +64,7 @@
 
         .articles {
             grid-area: 3 / 1 / 4 / 13;
-
-            display: grid;
-            grid-auto-flow: column;
-            grid-auto-columns: 1fr;
-            column-gap: var(--column-gap);
-            & > div {
-                column-span: 3;
-            }
+            gap: 2rem var(--column-gap);
         }
     }
 </style>

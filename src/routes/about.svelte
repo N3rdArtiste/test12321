@@ -16,7 +16,7 @@
     import CompetitionIntro from 'modules/competitions/intros/about.svelte'
     import Challenge from 'modules/competitions/challenge.svelte'
     import Judges from 'modules/judges/intro.svelte'
-    import Brands from 'modules/brands/intro.svelte'
+    import Brands from 'modules/brands/about.svelte'
     import WinningsHow from 'modules/questions/winnings-how.svelte'
     import WinningsWhat from 'modules/questions/winnings-what.svelte'
 
@@ -25,8 +25,6 @@
 
     let { question: whatQuestions } = $aboutPage.data?.about_page?.multi_level_questions![0]!
     let { question: howQuestions } = $aboutPage.data?.about_page?.textarea_questions![0]!
-
-    let { question } = $aboutPage.data?.about_page?.multi_level_questions![0]!
 </script>
 
 <svelte:head>

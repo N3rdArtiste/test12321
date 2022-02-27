@@ -31,8 +31,11 @@
         grid-area: 3 / 1 / 4 / 9;
     }
 
-    @media (min-width: 769px) {
+    @media (min-width: 1366px) {
         section {
+            grid-template-columns: repeat(12, 1fr);
+            margin: 0 auto;
+            max-width: var(--max-width);
             grid-template-rows: auto 1fr;
             grid-auto-flow: row;
             padding: 0 2rem;

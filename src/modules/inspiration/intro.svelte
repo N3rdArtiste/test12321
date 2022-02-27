@@ -12,12 +12,15 @@
 <style lang="scss">
     section {
         display: grid;
-        grid-template-columns: var(--grid-template-columns);
+        grid-template-columns: 1rem repeat(6, 1fr) 1rem;
         grid-template-rows: auto 4.2rem auto 5.4rem auto auto;
         column-gap: var(--column-gap);
         justify-content: center;
 
-        @media (min-width: 769px) {
+        @media (min-width: 843px) {
+            grid-template-columns: minmax(12.2rem, 1fr) repeat(11, 1fr);
+            max-width: var(--max-width);
+            margin: 0 auto;
             grid-template-rows: auto 6.3rem auto;
             padding: 0 2rem;
         }
@@ -25,7 +28,7 @@
             grid-column: 2/8;
             grid-row: 1/2;
 
-            @media (min-width: 769px) {
+            @media (min-width: 843px) {
                 grid-column: 1/6;
                 grid-row: 1/2;
 
@@ -36,7 +39,7 @@
         & > p {
             grid-column: 2/8;
             grid-row: 3/4;
-            @media (min-width: 769px) {
+            @media (min-width: 843px) {
                 grid-column: 1/4;
                 grid-row: 3/4;
 
@@ -49,7 +52,7 @@
             grid-row: 5/6;
             width: 100%;
 
-            @media (min-width: 769px) {
+            @media (min-width: 843px) {
                 grid-column: 6/13;
                 grid-row: 1/5;
             }

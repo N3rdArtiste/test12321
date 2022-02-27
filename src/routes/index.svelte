@@ -40,7 +40,8 @@
     import { onMount } from 'svelte'
     import { getPastWinnersFilterQuery } from 'helpers/graphql-query'
     import PastWinners from 'modules/past-winners/index.svelte'
-
+    import Brands from 'modules/brands/home.svelte'
+    import { uniqBy } from 'lodash'
     export let homePage: HomePageQueryStore
 
     query(homePage)
@@ -58,7 +59,7 @@
     })
 
     $: if (!$homePage.fetching) {
-        pastWinnersList = [...(pastWinnersList ?? []), ...($homePage.data?.past_winners ?? [])]
+        pastWinnersList = uniqBy([...(pastWinnersList ?? []), ...($homePage.data?.past_winners ?? [])], 'id')
     }
 
     const loadMorePastWinners = () => {
@@ -100,5 +101,7 @@
     <PastWinners data={$homePage.data} {pastWinnersList} onLoadMoreClick={loadMorePastWinners} {onCategoryClick} />
     <Divider heightDesktop={14.4} heightMobile={5.6} />
     <HorizontalLine />
-    <Divider heightDesktop={17.9} heightMobile={5.6} />
+    <Divider heightDesktop={18.2} heightMobile={5} />
+    <Brands data={$homePage.data} />
+    <Divider heightDesktop={20.9} heightMobile={5.64} />
 {/if}

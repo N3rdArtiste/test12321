@@ -54,54 +54,59 @@
     }
 </script>
 
-<footer>
-    <h2>Our sponsors</h2>
+<div class="wrapper">
+    <footer>
+        <h2>Our sponsors</h2>
 
-    <div bind:this={sponsorsContainer}>
-        {#each sponsors ?? [] as sponsor}
-            <a sveltekit:prefetch href="#"> <img src={sponsor.src} alt={sponsor.alt} /> </a>
-        {/each}
-    </div>
-    <i>
-        <ButtonArrow onClick={scrollSponsors} accentHover={false} />
-    </i>
-    <div>
-        <SvgFile src={logo.src} />
-    </div>
+        <div bind:this={sponsorsContainer}>
+            {#each sponsors ?? [] as sponsor}
+                <a sveltekit:prefetch href="#"> <img src={sponsor.src} alt={sponsor.alt} /> </a>
+            {/each}
+        </div>
+        <i>
+            <ButtonArrow onClick={scrollSponsors} accentHover={false} />
+        </i>
+        <div>
+            <SvgFile src={logo.src} />
+        </div>
 
-    <p class="small">
-        {shortAboutUsText}
-    </p>
+        <p class="small">
+            {shortAboutUsText}
+        </p>
 
-    <nav>
-        {#each navMain as navItem}
-            <a class="big" sveltekit:prefetch href={navItem.slug}>
-                {navItem.label}
-            </a>
-        {/each}
-    </nav>
+        <nav>
+            {#each navMain as navItem}
+                <a class="big" sveltekit:prefetch href={navItem.slug}>
+                    {navItem.label}
+                </a>
+            {/each}
+        </nav>
 
-    <div>
-        {#each socialMediaIcons ?? [] as socialMediaIcon}
-            <a sveltekit:prefetch href="#"> <img src={socialMediaIcon.src} alt={socialMediaIcon.alt} /> </a>
-        {/each}
-    </div>
+        <div>
+            {#each socialMediaIcons ?? [] as socialMediaIcon}
+                <a sveltekit:prefetch href="#"> <img src={socialMediaIcon.src} alt={socialMediaIcon.alt} /> </a>
+            {/each}
+        </div>
 
-    <div>
-        {#each partners ?? [] as partner}
-            <a sveltekit:prefetch href="#"> <img src={partner.src} alt={partner.alt} /> </a>
-        {/each}
-    </div>
+        <div>
+            {#each partners ?? [] as partner}
+                <a sveltekit:prefetch href="#"> <img src={partner.src} alt={partner.alt} /> </a>
+            {/each}
+        </div>
 
-    <p class="smaller">
-        {copyrightText}
-    </p>
-</footer>
+        <p class="smaller">
+            {copyrightText}
+        </p>
+    </footer>
+</div>
 
 <style lang="scss">
+    .wrapper {
+        width: 100%;
+        background-color: var(--color-accent);
+    }
     footer {
         display: grid;
-        background-color: var(--color-accent);
         transition: all 0.3s;
         justify-content: center;
         padding: 5.1rem 0 4.1rem 0;
@@ -110,6 +115,10 @@
         column-gap: var(--column-gap);
 
         @media (min-width: 769px) {
+            grid-template-columns: repeat(1, minmax(12.2rem, 1fr)) repeat(9, 1fr) repeat(2, minmax(12.2rem, 1fr));
+            max-width: var(--max-width);
+            margin: 0 auto;
+
             padding: 9rem 2rem 9rem 2rem;
 
             grid-template-rows: auto 3.9rem auto 13.1rem auto 4.63rem auto 2.4rem;
@@ -221,6 +230,7 @@
             justify-items: center;
             grid-row: 11/12;
             grid-column: 2/8;
+            gap: 1rem;
 
             @media (min-width: 769px) {
                 grid-row: 7/8;

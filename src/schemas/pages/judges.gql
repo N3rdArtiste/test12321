@@ -1,0 +1,22 @@
+query JudgesPage($limit: Int, $page: Int, $filterQuery: judges_filter) {
+    judges(limit: $limit, page: $page, filter: $filterQuery, sort: ["sort", "date_created"]) {
+        id
+        name
+        about_text
+        company
+        image {
+            id
+            filename_disk
+            description
+        }
+    }
+    judges_years {
+        id
+        year
+    }
+    judges_page {
+        id
+        heading
+        title_bar_text
+    }
+}

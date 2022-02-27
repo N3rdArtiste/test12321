@@ -7,40 +7,47 @@
 </script>
 
 <section>
-    {#if data}
-        {#each data as article, i}
+    <div class="articles">
+        {#each data ?? [] as article, i}
             <div>
                 <Card {article} longCard={Boolean(i % 2)} />
             </div>
         {/each}
-        <i>
-            <ArrowButton onClick={onLoadMoreClick} label="Load more" />
-        </i>
-    {/if}
+    </div>
+
+    <i>
+        <ArrowButton onClick={onLoadMoreClick} label="Load more" />
+    </i>
 </section>
 
 <style lang="scss">
     section {
         display: grid;
-        grid-template-columns: var(--grid-template-columns);
-        column-gap: var(--column-gap);
+        grid-template-columns: 1rem repeat(6, 1fr) 1rem;
+        gap: 2rem var(--column-gap);
         justify-content: center;
-        row-gap: 2rem;
-        & > div {
-            grid-column: 2/8;
-        }
-        @media (min-width: 769px) {
+        @media (min-width: 843px) {
             row-gap: 7.5rem;
             padding: 0 2rem;
-            & > div {
-                grid-column: span 3;
-            }
+            grid-template-columns: minmax(12.2rem, 1fr) repeat(11, 1fr);
+            max-width: var(--max-width);
+            margin: 0 auto;
         }
         & > i {
             grid-column: 2/8;
-            @media (min-width: 769px) {
+            @media (min-width: 843px) {
                 grid-column: span 12;
             }
         }
+    }
+    .articles {
+        grid-column: 2/8;
+        @media (min-width: 843px) {
+            grid-column: 1/13;
+        }
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(36.6rem, 1fr));
+        gap: 2rem var(--column-gap);
     }
 </style>

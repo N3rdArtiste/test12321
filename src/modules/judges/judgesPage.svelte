@@ -1,29 +1,24 @@
 <script type="ts">
-    import { goto } from '$app/navigation'
-
     import ArrowButton from 'components/buttons/arrow.svelte'
     import Filter from 'components/filter.svelte'
     import SelectFilterOption from 'components/selectFilterOption.svelte'
 
-    import Card from 'modules/past-winners/card.svelte'
+    import Card from 'modules/judges/card.svelte'
 
-    export let data: PastWinnersPageQuery
-    export let pastWinnersList: PastWinnersPageQuery['past_winners']
+    export let data: JudgesPageQuery
+    export let judgesList: JudgesPageQuery['judges']
+
     export let onLoadMoreClick: () => void
     export let onCategoryClick: (id: string) => void
 
-    let pastWinnerCategories = data.past_winners_categories?.map(category => {
-        return { name: category?.category!, id: `cat${category?.id!}` }
-    })
-
-    const pastWinnerYears = data.past_winners_years?.map(year => {
+    const judgesYears = data.judges_years?.map(year => {
         return { name: year?.year?.toString()!, id: `year${year?.id!}` }
     })
     const multiLevelList: MultiLevelList = [
         {
             id: 'all',
             name: 'All',
-            multiLevelList: [{ name: 'Year', multiLevelList: pastWinnerYears }, ...(pastWinnerCategories ?? [])],
+            multiLevelList: [{ name: 'Year', multiLevelList: judgesYears }],
         },
     ]
 
@@ -31,7 +26,7 @@
 </script>
 
 <section>
-    <h1>{data.past_winners_page?.heading}</h1>
+    <h1>{data.judges_page?.heading}</h1>
     <!-- Only visible in desktop -->
     <aside>
         <p class="small"><strong>Filter by</strong></p>
@@ -47,10 +42,10 @@
         </select>
     </i>
     <b>
-        {#each pastWinnersList ?? [] as past_winner}
-            <a sveltekit:prefetch href={'/past-winners/' + past_winner?.id}>
-                <Card data={past_winner} />
-            </a>
+        {#each judgesList ?? [] as judge}
+            <div>
+                <Card data={judge} />
+            </div>
         {/each}
     </b>
     <div>
@@ -68,13 +63,12 @@
         column-gap: var(--column-gap);
         justify-content: center;
         @media (min-width: 769px) {
-            grid-template-columns: minmax(9rem, 1fr) minmax(9rem, 1fr) minmax(0, 1fr) minmax(12.2rem, 1fr) 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            grid-template-columns: minmax(12.2rem, 1fr) repeat(2, 1fr) repeat(3, minmax(12.2rem, 1fr)) repeat(6, 1fr);
             max-width: var(--max-width);
             margin: 0 auto;
             grid-template-rows: auto 11.2rem auto 11rem auto;
             padding: 0 2rem;
         }
-
         & > h1 {
             grid-column: 2/8;
             grid-row: 1/2;
@@ -103,16 +97,16 @@
                 display: grid;
                 border-right: 0.2rem solid var(--color-secondary);
                 grid-auto-rows: 1fr;
-                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-columns: auto;
                 grid-template-rows: auto 4.5rem auto;
                 grid-area: 1 / 1 / 5 / 3;
                 align-content: flex-start;
 
                 & > p {
-                    grid-area: 1 / 1 / 2 / 4;
+                    grid-area: 1 / 1 / 2 / 2;
                 }
                 & > div {
-                    grid-area: 3 / 1 / 4 / 4;
+                    grid-area: 3 / 1 / 4 / 2;
                 }
             }
         }
@@ -121,12 +115,10 @@
             grid-column: 2/8;
             grid-row: 5/6;
             display: grid;
-            row-gap: 6.2rem;
+            row-gap: 5.3rem;
             @media (min-width: 769px) {
+                row-gap: 8.3rem;
                 grid-area: 3 / 4 / 4 / 13;
-                grid-auto-flow: row;
-                column-gap: 2.9rem;
-                grid-template-columns: repeat(auto-fit, minmax(40.8rem, 1fr));
             }
         }
 

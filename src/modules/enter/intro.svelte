@@ -59,8 +59,11 @@
         aspect-ratio: 414/286;
     }
 
-    @media (min-width: 769px) {
+    @media (min-width: 630px) {
         section {
+            grid-template-columns: repeat(6, 1fr) minmax(12.2rem, 1fr) repeat(5, 1fr);
+            max-width: var(--max-width);
+            margin: 0 auto;
             grid-template-rows: auto 10.3em auto 5em auto 1fr;
             padding: 0 2rem;
         }
@@ -73,14 +76,28 @@
             grid-auto-flow: row;
             grid-template-columns: repeat(3, 1fr);
             grid-auto-rows: 1fr;
-            gap: 3.5em 1px;
-            grid-area: 5 / 1 / 6 / 7;
+            gap: 3.5em 1rem;
+            grid-area: 5 / 1 / 6 / 13;
         }
 
         .subtitle {
             grid-area: 3 / 1 / 4 / 6;
         }
 
+        .video {
+            aspect-ratio: 755/521;
+            grid-area: 1 / 7 / 4 / 13;
+        }
+    }
+
+    @media (min-width: 930px) {
+        .key-dates-container {
+            grid-auto-flow: row;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 1fr;
+            gap: 3.5em 1rem;
+            grid-area: 5 / 1 / 6 / 7;
+        }
         .video {
             aspect-ratio: 755/521;
             grid-area: 1 / 7 / 7 / 13;

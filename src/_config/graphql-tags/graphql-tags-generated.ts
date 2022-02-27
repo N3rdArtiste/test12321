@@ -50,24 +50,6 @@ export const HeaderAndFooterDocument = gql`
   }
 }
     `;
-export const AllJudgesDocument = gql`
-    query AllJudges($limit: Int, $page: Int) {
-  judges(limit: $limit, page: $page) {
-    __typename
-    id
-    name
-  }
-}
-    `;
-export const JudgeDocument = gql`
-    query Judge($id: ID!) {
-  judges_by_id(id: $id) {
-    __typename
-    name
-    id
-  }
-}
-    `;
 export const AboutPageDocument = gql`
     query AboutPage {
   about_page {
@@ -279,6 +261,7 @@ export const HomePageDocument = gql`
     worksheets {
       id
       past_winners_worksheet {
+        id
         worksheet {
           id
           title
@@ -292,6 +275,14 @@ export const HomePageDocument = gql`
         id
         category
       }
+    }
+  }
+  brands {
+    id
+    image {
+      id
+      description
+      filename_disk
     }
   }
 }
@@ -322,6 +313,73 @@ export const InspirationPageDocument = gql`
   }
 }
     `;
+export const JudgesPageDocument = gql`
+    query JudgesPage($limit: Int, $page: Int, $filterQuery: judges_filter) {
+  judges(
+    limit: $limit
+    page: $page
+    filter: $filterQuery
+    sort: ["sort", "date_created"]
+  ) {
+    id
+    name
+    about_text
+    company
+    image {
+      id
+      filename_disk
+      description
+    }
+  }
+  judges_years {
+    id
+    year
+  }
+  judges_page {
+    id
+    heading
+    title_bar_text
+  }
+}
+    `;
+export const PastWinnerDetailsDocument = gql`
+    query pastWinnerDetails($id: ID!) {
+  past_winners_by_id(id: $id) {
+    id
+    name
+    students_name
+    short_description
+    youtube_video_id
+    categories {
+      id
+      past_winners_category {
+        id
+        category
+      }
+    }
+    school_name
+    year {
+      id
+      past_winners_year {
+        id
+        year
+      }
+    }
+    project_information
+    worksheets {
+      id
+      past_winners_worksheet {
+        id
+        worksheet {
+          id
+          filename_disk
+          description
+        }
+      }
+    }
+  }
+}
+    `;
 export const PastWinnersPageDocument = gql`
     query PastWinnersPage($limit: Int, $page: Int, $filterQuery: past_winners_filter) {
   past_winners_page {
@@ -336,7 +394,12 @@ export const PastWinnersPageDocument = gql`
     id
     year
   }
-  past_winners(limit: $limit, page: $page, filter: $filterQuery) {
+  past_winners(
+    limit: $limit
+    page: $page
+    filter: $filterQuery
+    sort: ["sort", "date_created"]
+  ) {
     id
     name
     image {
