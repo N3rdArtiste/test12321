@@ -41,7 +41,7 @@
     import { getPastWinnersFilterQuery } from 'helpers/graphql-query'
     import PastWinners from 'modules/past-winners/index.svelte'
     import Brands from 'modules/brands/home.svelte'
-    import { uniqBy } from 'lodash'
+    import uniqBy from 'lodash/uniqBy.js'
     export let homePage: HomePageQueryStore
 
     query(homePage)

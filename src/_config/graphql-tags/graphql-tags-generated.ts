@@ -293,6 +293,7 @@ export const InspirationPageDocument = gql`
     id
     heading
     description
+    title_bar_text
     hero_image {
       id
       filename_disk
@@ -385,6 +386,7 @@ export const PastWinnersPageDocument = gql`
   past_winners_page {
     id
     heading
+    title_bar_text
   }
   past_winners_categories {
     id

@@ -60,7 +60,7 @@
 
         <div bind:this={sponsorsContainer}>
             {#each sponsors ?? [] as sponsor}
-                <a sveltekit:prefetch href="#"> <img src={sponsor.src} alt={sponsor.alt} /> </a>
+                <a rel="external" target="_blank" href={sponsor.href}> <img src={sponsor.src} alt={sponsor.alt} /> </a>
             {/each}
         </div>
         <i>
@@ -84,13 +84,13 @@
 
         <div>
             {#each socialMediaIcons ?? [] as socialMediaIcon}
-                <a sveltekit:prefetch href="#"> <img src={socialMediaIcon.src} alt={socialMediaIcon.alt} /> </a>
+                <a rel="external" target="_blank" href={socialMediaIcon.href}> <img src={socialMediaIcon.src} alt={socialMediaIcon.alt} /> </a>
             {/each}
         </div>
 
         <div>
             {#each partners ?? [] as partner}
-                <a sveltekit:prefetch href="#"> <img src={partner.src} alt={partner.alt} /> </a>
+                <a rel="external" target="_blank" href={partner.href}> <img src={partner.src} alt={partner.alt} /> </a>
             {/each}
         </div>
 
@@ -115,7 +115,7 @@
         column-gap: var(--column-gap);
 
         @media (min-width: 769px) {
-            grid-template-columns: repeat(1, minmax(12.2rem, 1fr)) repeat(9, 1fr) repeat(2, minmax(12.2rem, 1fr));
+            grid-template-columns: repeat(1, minmax(12.2rem, 1fr)) repeat(2, 1fr) repeat(1, minmax(12.2rem, 1fr)) repeat(6, 1fr) repeat(2, minmax(12.2rem, 1fr));
             max-width: var(--max-width);
             margin: 0 auto;
 

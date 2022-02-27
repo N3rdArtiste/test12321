@@ -28,7 +28,7 @@
     import Articles from 'modules/inspiration/articles/articles.svelte'
     import { replaceQueryParams } from 'helpers/url'
     import { onMount } from 'svelte'
-    import { uniqBy } from 'lodash'
+    import uniqBy from 'lodash/uniqBy.js'
 
     export let inspirationPageContent: InspirationPageQueryStore
     export let currentPage: number
@@ -57,6 +57,10 @@
         $inspirationPageContent.variables = { ...$inspirationPageContent.variables, page, limit }
     }
 </script>
+
+<svelte:head>
+    <title>{$inspirationPageContent.data?.inspiration_page?.title_bar_text ?? 'YiA'}</title>
+</svelte:head>
 
 {#if $inspirationPageContent.data}
     <InspirationIntro data={$inspirationPageContent.data.inspiration_page} />

@@ -42,12 +42,11 @@
     }
     .articles {
         grid-column: 2/8;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+        gap: 2rem var(--column-gap);
         @media (min-width: 843px) {
             grid-column: 1/13;
         }
-
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(36.6rem, 1fr));
-        gap: 2rem var(--column-gap);
     }
 </style>

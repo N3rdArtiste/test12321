@@ -46,7 +46,8 @@
         grid-area: 3 / 2 / 4 / 8;
 
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(36.6rem, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+        gap: 2rem var(--column-gap);
     }
 
     @media (min-width: 769px) {
@@ -64,7 +65,6 @@
 
         .articles {
             grid-area: 3 / 1 / 4 / 13;
-            gap: 2rem var(--column-gap);
         }
     }
 </style>

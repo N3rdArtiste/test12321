@@ -3,6 +3,7 @@ query InspirationPage($limit: Int, $page: Int) {
         id
         heading
         description
+        title_bar_text
         hero_image {
             id
             filename_disk

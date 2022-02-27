@@ -37,7 +37,7 @@
     import { onMount } from 'svelte'
     import Divider from 'components/divider.svelte'
     import JudgesPage from 'modules/judges/judgesPage.svelte'
-    import { uniqBy } from 'lodash'
+    import uniqBy from 'lodash/uniqBy.js'
 
     export let judgesContent: JudgesPageQueryStore
     export let currentPage: number
@@ -79,6 +79,9 @@
     }
 </script>
 
+<svelte:head>
+    <title>{$judgesContent.data?.judges_page?.title_bar_text ?? 'YiA'}</title>
+</svelte:head>
 {#if $judgesContent.data}
     <JudgesPage data={$judgesContent.data} {judgesList} onLoadMoreClick={loadMoreJudges} {onCategoryClick} />
 {/if}

@@ -37,8 +37,7 @@
     import { replaceQueryParams } from 'helpers/url'
     import { onMount } from 'svelte'
     import Divider from 'components/divider.svelte'
-    import { goto } from '$app/navigation'
-    import { uniqBy } from 'lodash'
+    import uniqBy from 'lodash/uniqBy.js'
 
     export let pastWinnersContent: PastWinnersPageQueryStore
     export let currentPage: number
@@ -79,6 +78,10 @@
         $pastWinnersContent.variables = { ...$pastWinnersContent.variables, page, limit, filterQuery: getPastWinnersFilterQuery(id) }
     }
 </script>
+
+<svelte:head>
+    <title>{$pastWinnersContent.data?.past_winners_page?.title_bar_text ?? 'YiA'}</title>
+</svelte:head>
 
 {#if $pastWinnersContent.data}
     <PastWinners data={$pastWinnersContent.data} {pastWinnersList} onLoadMoreClick={loadMorePastWinners} {onCategoryClick} />

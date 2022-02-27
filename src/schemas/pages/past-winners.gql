@@ -2,6 +2,7 @@ query PastWinnersPage($limit: Int, $page: Int, $filterQuery: past_winners_filter
     past_winners_page {
         id
         heading
+        title_bar_text
     }
     past_winners_categories {
         id

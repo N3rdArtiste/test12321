@@ -8,7 +8,7 @@
     <img class:longCard src={getDirectusAssetLink(article?.image?.filename_disk)} alt={article?.image?.description} />
     <h2 class="small">{article?.title}</h2>
     <p class="smaller">{article?.body}</p>
-    <a sveltekit:prefetch href={article?.read_more_link}>{article?.read_more_label}</a>
+    <a rel="external" target="_blank" href={article?.read_more_link}>{article?.read_more_label}</a>
 </article>
 
 <style lang="scss">
