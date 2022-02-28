@@ -1,10 +1,11 @@
 <script type="ts">
+    import { blur } from 'svelte/transition'
     import { getDirectusAssetLink } from 'helpers/string'
     export let article: ArrayElement<InspirationPageQuery['inspiration_articles']>
     export let longCard: boolean = false
 </script>
 
-<article>
+<article in:blur>
     <img class:longCard src={getDirectusAssetLink(article?.image?.filename_disk)} alt={article?.image?.description} />
     <h2 class="small">{article?.title}</h2>
     <p class="smaller">{article?.body}</p>
@@ -13,6 +14,7 @@
 
 <style lang="scss">
     article {
+        transition: all 0.3s;
         display: grid;
         grid-auto-flow: row;
         grid-auto-columns: auto;
@@ -32,6 +34,7 @@
             width: 100%;
             object-fit: cover;
             background-color: grey;
+            object-position: top;
             &.longCard {
                 aspect-ratio: 374/346;
             }

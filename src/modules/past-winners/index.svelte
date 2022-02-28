@@ -1,11 +1,10 @@
 <script type="ts">
-    import { goto } from '$app/navigation'
-
     import ArrowButton from 'components/buttons/arrow.svelte'
     import Filter from 'components/filter.svelte'
     import SelectFilterOption from 'components/selectFilterOption.svelte'
 
     import Card from 'modules/past-winners/card.svelte'
+    import { selectedPastWinnersCategoryId } from 'stores/past-winners'
 
     export let data: PastWinnersPageQuery
     export let pastWinnersList: PastWinnersPageQuery['past_winners']
@@ -36,7 +35,7 @@
     <aside>
         <p class="small"><strong>Filter by</strong></p>
         <div>
-            <Filter {multiLevelList} catClick={onCategoryClick} />
+            <Filter selectedId={$selectedPastWinnersCategoryId} {multiLevelList} catClick={onCategoryClick} />
         </div>
     </aside>
     <!-- Only visible in mobile -->

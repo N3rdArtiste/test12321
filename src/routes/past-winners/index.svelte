@@ -16,6 +16,7 @@
         }
         return {
             props: {
+                category,
                 currentPage: page,
                 limit: defaultLimit,
                 pastWinnersContent: stuff.getOperationStore
@@ -38,15 +39,18 @@
     import { onMount } from 'svelte'
     import Divider from 'components/divider.svelte'
     import uniqBy from 'lodash/uniqBy.js'
+    import { selectedPastWinnersCategoryId } from 'stores/past-winners'
 
     export let pastWinnersContent: PastWinnersPageQueryStore
     export let currentPage: number
     export let limit: number
+    export let category: string
 
     let pastWinnersList: PastWinnersPageQuery['past_winners']
     let page = currentPage
 
     onMount(() => {
+        $selectedPastWinnersCategoryId = category ?? 'all'
         replaceQueryParams({
             page: currentPage.toString(),
         })
@@ -68,6 +72,7 @@
     }
 
     const onCategoryClick = (id: string) => {
+        selectedPastWinnersCategoryId.set(id)
         pastWinnersList = []
         page = 1
         replaceQueryParams({

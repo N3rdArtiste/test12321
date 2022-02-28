@@ -65,6 +65,7 @@
 
         .articles {
             grid-area: 3 / 1 / 4 / 13;
+            grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
         }
     }
 </style>

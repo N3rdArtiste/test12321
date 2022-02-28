@@ -26,7 +26,6 @@
 <script type="ts">
     export let _client: Client
     export let headerAndFooterContent: HeaderAndFooterQueryStore
-
     import 'styles/global.scss'
 
     import { setClient } from '@urql/svelte'
@@ -43,24 +42,27 @@
     query(headerAndFooterContent)
 
     onMount(() => {
+        if ($isLoading) {
+            const appWrapper = document.getElementById('svelte') as HTMLElement
+            appWrapper.style.filter = 'blur(2rem)'
+            setTimeout(() => {
+                appWrapper.style.filter = 'none'
+            }, 300)
+        }
         $isLoading = false
     })
 </script>
 
-{#if $headerAndFooterContent.data && !$isLoading}
-    <Header data={$headerAndFooterContent.data} />
-
+{#if $headerAndFooterContent.data}
+    <Header data={$headerAndFooterContent?.data} />
     <main id="content">
         <slot />
     </main>
-
-    <Footer data={$headerAndFooterContent.data} />
-{:else}
-    <LoadingUiBlocker text="loading" />
+    <Footer data={$headerAndFooterContent?.data} />
 {/if}
 
 <style lang="scss">
-    main {
+    #content {
         display: grid;
         transition: background-color 0.3s;
         background-color: var(--color-primary);

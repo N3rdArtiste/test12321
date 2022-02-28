@@ -15,8 +15,9 @@
     import { query } from '@urql/svelte'
     import Divider from 'components/divider.svelte'
     import Timeline from 'modules/enter/timeline.svelte'
-    import WinningsWhat from 'modules/questions/winnings-what.svelte'
-    import WinningsHow from 'modules/questions/winnings-how.svelte'
+    import Drawer from 'components/drawer.svelte'
+    import HorizontalLine from 'components/horizontal-line.svelte'
+    import MultiLevelQuestion from 'components/multi-level-question.svelte'
     export let entryPage: EnterPageQueryStore
 
     query(entryPage)
@@ -32,8 +33,16 @@
 <Intro data={$entryPage.data?.enter_page} />
 <Divider heightMobile={5} heightDesktop={9.7} />
 {#if whatQuestions && howQuestions}
-    <WinningsWhat question={whatQuestions} />
-    <WinningsHow question={howQuestions} />
+    <HorizontalLine />
+    <Drawer title={whatQuestions.title ?? ''}>
+        <MultiLevelQuestion question={whatQuestions} />
+    </Drawer>
+    <HorizontalLine />
+    <Drawer title={howQuestions.title ?? ''}>
+        {@html howQuestions.body}
+    </Drawer>
+    <HorizontalLine />
+
     <Divider heightDesktop={11.5} heightMobile={5.6} />
 {/if}
 <Timeline data={$entryPage.data?.enter_page} />

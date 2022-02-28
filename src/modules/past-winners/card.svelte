@@ -1,10 +1,11 @@
 <script type="ts">
     import { getDirectusAssetLink } from 'helpers/string'
+    import { blur } from 'svelte/transition'
 
     export let data: ArrayElement<PastWinnersPageQuery['past_winners']>
 </script>
 
-<article>
+<article in:blur>
     <img src="{getDirectusAssetLink(data?.image?.filename_disk)}/" alt={data?.image?.description} />
     <h2 class="small">{data?.name}</h2>
     <p>{data?.short_description}</p>

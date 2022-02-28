@@ -12,12 +12,12 @@
 
     let logo = { src: getDirectusAssetLink(data.header?.logo?.filename_disk), alt: data.header?.logo?.description ?? '' }
 
-    let scrollY2: number = 0
+    let scrollY: number = 0
 
-    $: showShadow = scrollY2 > 0
+    $: showShadow = scrollY > 0
 </script>
 
-<svelte:window bind:scrollY={scrollY2} />
+<svelte:window bind:scrollY />
 <div class="wrapper" class:showShadow>
     <header class:isOpened={$navDrawerOpen}>
         <a sveltekit:prefetch href="/" on:click={() => ($navDrawerOpen = false)}>

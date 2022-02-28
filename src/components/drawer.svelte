@@ -1,74 +1,45 @@
-<script lang="ts">
-    import ArrowButton from 'components/buttons/arrow.svelte'
-
+<script type="ts">
+    import Arrow from 'components/buttons/arrow.svelte'
+    import { slide } from 'svelte/transition'
     export let title: string
-
-    let drawerOpen = false
-
-    function handleClick() {
-        drawerOpen = !drawerOpen
-    }
+    let toggle = false
 </script>
 
 <section>
-    <div class="container">
-        <hr />
-        <div class="inner" class:open={drawerOpen}>
-            <ArrowButton label={title} onClick={handleClick} />
-
-            <b>
-                <slot />
-            </b>
-        </div>
-        <hr />
+    <div class="button-container">
+        <Arrow
+            label={title}
+            onClick={() => {
+                toggle = !toggle
+            }}
+        />
     </div>
+    {#if !toggle}
+        <div class="bottom-padding" />
+    {/if}
+
+    {#if toggle}
+        <div class="slot-container" transition:slide>
+            <slot />
+        </div>
+    {/if}
 </section>
 
 <style lang="scss">
     section {
-        display: grid;
-        grid-template-columns: var(--grid-template-columns);
-        column-gap: var(--column-gap);
-        @media (min-width: 769px) {
-            padding: 0 2rem;
-            justify-content: center;
-        }
+        max-width: var(--max-width);
+        width: 100%;
+        padding: 2rem 2rem 0rem 2rem;
+        margin: 0 auto;
     }
-    hr {
-        margin: 0 0 -0.2rem;
+    .bottom-padding {
+        height: 2rem;
     }
-    .container {
-        grid-column: 2/8;
-        @media (min-width: 769px) {
-            grid-column: span 12;
-        }
+    .button-container {
+        width: 100%;
     }
-
-    .inner {
-        margin: 1rem 0;
-        :global(button.arrowButton span) {
-            font-size: 3.3rem;
-            line-height: 7rem;
-        }
-
-        b {
-            transition: none;
-
-            position: relative;
-            height: 0;
-            overflow: hidden;
-        }
-
-        &.open {
-            margin-bottom: 7rem;
-
-            b {
-                transition: all 500ms ease-in-out;
-
-                height: 100%;
-                padding: 2rem 0 1rem;
-                margin-bottom: -7rem;
-            }
-        }
+    .slot-container {
+        margin-top: 6rem;
+        margin-bottom: 2rem;
     }
 </style>

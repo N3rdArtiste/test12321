@@ -17,8 +17,9 @@
     import Challenge from 'modules/competitions/challenge.svelte'
     import Judges from 'modules/judges/intro.svelte'
     import Brands from 'modules/brands/about.svelte'
-    import WinningsHow from 'modules/questions/winnings-how.svelte'
-    import WinningsWhat from 'modules/questions/winnings-what.svelte'
+    import MultiLevelQuestion from 'components/multi-level-question.svelte'
+    import Drawer from 'components/drawer.svelte'
+    import HorizontalLine from 'components/horizontal-line.svelte'
 
     export let aboutPage: AboutPageQueryStore
     query(aboutPage)
@@ -37,8 +38,15 @@
     <Challenge data={$aboutPage.data?.about_page} />
     <Divider heightMobile={5} heightDesktop={15.8} />
     {#if whatQuestions && howQuestions}
-        <WinningsWhat question={whatQuestions} />
-        <WinningsHow question={howQuestions} />
+        <HorizontalLine />
+        <Drawer title={whatQuestions.title ?? ''}>
+            <MultiLevelQuestion question={whatQuestions} />
+        </Drawer>
+        <HorizontalLine />
+        <Drawer title={howQuestions.title ?? ''}>
+            {@html howQuestions.body}
+        </Drawer>
+        <HorizontalLine />
         <Divider heightDesktop={11.5} heightMobile={5.6} />
     {/if}
     <Judges data={$aboutPage.data?.about_page} />

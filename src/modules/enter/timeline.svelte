@@ -2,8 +2,6 @@
     import { getDirectusAssetLink } from 'helpers/string'
 
     export let data: EnterPageQuery['enter_page']
-
-    console.log(data)
 </script>
 
 <section>

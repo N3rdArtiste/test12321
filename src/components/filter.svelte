@@ -2,12 +2,14 @@
     export let multiLevelList: MultiLevelList
     export let name: string | undefined = undefined
     export let id: string | undefined = undefined
+    export let selectedId: string
     export let catClick: (id: string) => void
 </script>
 
 {#if name}
     {#if id}
         <span
+            class:selected={id === selectedId}
             on:click={() => {
                 id ? catClick(id) : null
             }}>{name}</span
@@ -20,9 +22,10 @@
     {#each multiLevelList as listItem}
         <li>
             {#if listItem.multiLevelList}
-                <svelte:self {...listItem} {catClick} />
+                <svelte:self {selectedId} {...listItem} {catClick} />
             {:else}
                 <button
+                    class:selected={listItem.id === selectedId}
                     on:click={() => {
                         listItem.id && catClick(listItem.id)
                     }}>{listItem.name}</button
@@ -46,5 +49,10 @@
     li {
         padding-left: 0.75rem;
         list-style: none;
+    }
+
+    .selected {
+        transition: all 0.3s;
+        color: var(--color-tertiary);
     }
 </style>

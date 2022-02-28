@@ -1,0 +1,117 @@
+<script type="ts">
+    import { blur } from 'svelte/transition'
+
+    export let question: Question_Titles
+
+    const levelFirst = question.body?.map(element => {
+        return {
+            id: element?.multi_level_question_items?.id,
+            title: element?.multi_level_question_items?.level_1_title,
+        }
+    })
+    const levelSecond = question.body?.map(element => {
+        return {
+            id: element?.multi_level_question_items?.id,
+            title: element?.multi_level_question_items?.level_2_title,
+            subtext: element?.multi_level_question_items?.level_2_subtext,
+            text: element?.multi_level_question_items?.level_3_text,
+        }
+    })
+
+    let activeId = (question.body ?? [])[0]?.multi_level_question_items?.id
+</script>
+
+<div class="container">
+    <div class="level-1">
+        {#each levelFirst ?? [] as item}
+            <p
+                class:activeLabel={activeId === item.id}
+                on:click={() => {
+                    activeId = item.id
+                }}
+            >
+                {item.title}
+            </p>
+        {/each}
+    </div>
+    {#each levelSecond ?? [] as item}
+        {#if activeId === item.id}
+            <div class="level-2" transition:blur>
+                <div class="level-2-subItem-1">
+                    <h2>{item.title}</h2>
+                    <span>&nbsp;</span>
+                    <span>&nbsp;</span>
+                    <p><strong>{item.subtext}</strong></p>
+                </div>
+                <div class="level-2-subItem-2">
+                    {@html item.text}
+                </div>
+            </div>
+        {/if}
+    {/each}
+</div>
+
+<style lang="scss">
+    .container {
+        display: grid;
+        grid-template-columns: 1rem repeat(6, 1fr) 1rem;
+        gap: 2rem 1rem;
+        grid-auto-flow: row;
+        align-items: flex-start;
+    }
+
+    .level-1 {
+        display: grid;
+        grid-auto-rows: 1fr;
+        grid-auto-flow: row;
+        grid-area: 1 / 2 / 2 / 8;
+        & > p {
+            cursor: pointer;
+        }
+    }
+
+    .level-2 {
+        display: grid;
+        grid-template-columns: repeat(1fr);
+        column-gap: var(--column-gap);
+        row-gap: 2rem;
+        grid-auto-flow: row;
+        grid-area: 2 / 2 / 3 / 8;
+    }
+    .active-level-2 {
+        display: grid;
+    }
+    .activeLabel {
+        font-weight: 900;
+    }
+    span {
+        display: block;
+    }
+    @media (min-width: 1200px) {
+        .container {
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: 1fr;
+            gap: 0 1.6rem;
+        }
+
+        .level-1 {
+            grid-area: 1 / 1 / 2 / 4;
+        }
+
+        .level-2 {
+            display: grid;
+            grid-template-columns: repeat(9, 1fr);
+            grid-template-rows: 1fr;
+            row-gap: 0rem;
+            grid-area: 1 / 4 / 2 / 13;
+        }
+
+        .level-2-subItem-1 {
+            grid-area: 1 / 1 / 2 / 4;
+        }
+
+        .level-2-subItem-2 {
+            grid-area: 1 / 4 / 2 / 10;
+        }
+    }
+</style>

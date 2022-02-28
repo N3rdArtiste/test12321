@@ -18,6 +18,7 @@ html,
 body {
     font-family: var(--font-family);
     color: var(--color-secondary);
+    background-color: var(--color-secondary);
     transition: background-color 0.3s;
 
     overscroll-behavior: none;
@@ -27,10 +28,6 @@ body {
     scrollbar-width: none; /* Firefox */
     scrollbar-color: transparent transparent;
     scroll-behavior: smooth;
-}
-
-#svelte {
-    clip-path: none;
 }
 
 i {

@@ -38,6 +38,7 @@
     import Divider from 'components/divider.svelte'
     import JudgesPage from 'modules/judges/judgesPage.svelte'
     import uniqBy from 'lodash/uniqBy.js'
+    import { selectedJudgesCategoryId } from 'stores/judges'
 
     export let judgesContent: JudgesPageQueryStore
     export let currentPage: number
@@ -68,6 +69,7 @@
     }
 
     const onCategoryClick = (id: string) => {
+        $selectedJudgesCategoryId = id
         judgesList = []
         page = 1
         replaceQueryParams({

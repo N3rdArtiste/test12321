@@ -17,6 +17,7 @@
 
 <style lang="scss">
     button {
+        transition: color 300ms;
         display: grid;
         grid-gap: 2rem;
         grid-template-columns: 1fr auto;

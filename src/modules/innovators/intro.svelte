@@ -57,7 +57,6 @@
                 grid-row: 1/3;
                 width: 110%;
                 aspect-ratio: 1154/797;
-                height: 93%;
             }
         }
         & > div:nth-of-type(1) {
