@@ -1,10 +1,12 @@
 <script type="ts">
     export let data: HeaderAndFooterQuery
 
-    import { navMain, navAuth, menuToggleIcons } from '_config/constants/menus'
+    import { navMain, menuToggleIcons } from '_config/constants/menus'
     import { getDirectusAssetLink } from 'helpers/string'
     import { navDrawerOpen } from 'stores/ui'
+
     import SvgFile from 'components/svg-file.svelte'
+    import AuthNav from 'components/page/nav-auth.svelte'
 
     const handleMenuOpenClose = () => {
         $navDrawerOpen = !$navDrawerOpen
@@ -35,14 +37,7 @@
             {/each}
         </nav>
 
-        <ul class:hide={!$navDrawerOpen}>
-            {#each navAuth as { label }, i}
-                <li class="small">{label}</li>
-                {#if i !== navAuth.length - 1}
-                    <li class="separator" />
-                {/if}
-            {/each}
-        </ul>
+        <AuthNav />
     </header>
 </div>
 
@@ -50,6 +45,7 @@
     .wrapper {
         transition: all 0.3s;
         z-index: 99;
+
         background-color: var(--color-primary);
         width: 100%;
         position: fixed;
@@ -103,52 +99,6 @@
 
             @media (min-width: 769px) {
                 display: none;
-            }
-        }
-
-        & > nav {
-            grid-column: 2/8;
-            grid-row: 3/4;
-
-            display: grid;
-            grid-auto-flow: row;
-            gap: 5.7rem;
-
-            @media (min-width: 769px) {
-                grid-column: 2/13;
-                grid-row: 2/3;
-
-                grid-auto-flow: column;
-                justify-content: end;
-                padding-top: 1.2rem;
-                & > a {
-                    position: relative;
-                    top: 0;
-                    transition: all 0.3s ease-in-out;
-                    &:hover {
-                        top: -0.2rem;
-                        color: var(--color-tertiary);
-                    }
-                }
-            }
-        }
-
-        & > ul {
-            grid-column: 2/8;
-            grid-row: 5/6;
-
-            display: grid;
-            justify-content: start;
-            list-style-type: none;
-            grid-auto-flow: column;
-            column-gap: 1rem;
-            align-content: end;
-            align-items: center;
-
-            @media (min-width: 769px) {
-                grid-column: 1/13;
-                grid-row: 1/2;
-                justify-content: end;
             }
         }
     }
