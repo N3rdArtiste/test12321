@@ -18,6 +18,7 @@ npm run dev -- --open
 ## Generating
 
 create schema file in `./src/schemas/foo.gql`
+each block needs to have an `id` field for caching handling with @urql
 
 run:
 
