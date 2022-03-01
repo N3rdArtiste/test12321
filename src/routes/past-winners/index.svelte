@@ -39,8 +39,6 @@
     import { onMount } from 'svelte'
     import Divider from 'components/divider.svelte'
     import uniqBy from 'lodash/uniqBy.js'
-    import { selectedPastWinnersCategoryId } from 'stores/past-winners'
-
     export let pastWinnersContent: PastWinnersPageQueryStore
     export let currentPage: number
     export let limit: number
@@ -48,9 +46,10 @@
 
     let pastWinnersList: PastWinnersPageQuery['past_winners']
     let page = currentPage
+    let selectedPastWinnersCategoryId: string
 
     onMount(() => {
-        $selectedPastWinnersCategoryId = category ?? 'all'
+        selectedPastWinnersCategoryId = category ?? 'all'
         replaceQueryParams({
             page: currentPage.toString(),
         })
@@ -72,7 +71,7 @@
     }
 
     const onCategoryClick = (id: string) => {
-        selectedPastWinnersCategoryId.set(id)
+        selectedPastWinnersCategoryId = id
         pastWinnersList = []
         page = 1
         replaceQueryParams({
@@ -89,6 +88,6 @@
 </svelte:head>
 
 {#if $pastWinnersContent.data}
-    <PastWinners data={$pastWinnersContent.data} {pastWinnersList} onLoadMoreClick={loadMorePastWinners} {onCategoryClick} />
+    <PastWinners selectedCategoryId={selectedPastWinnersCategoryId} data={$pastWinnersContent.data} {pastWinnersList} onLoadMoreClick={loadMorePastWinners} {onCategoryClick} />
 {/if}
 <Divider heightDesktop={12.8} heightMobile={5} />

@@ -2,7 +2,6 @@
     import ArrowButton from 'components/buttons/arrow.svelte'
     import Filter from 'components/filter.svelte'
     import SelectFilterOption from 'components/selectFilterOption.svelte'
-    import { selectedJudgesCategoryId } from 'stores/judges'
     import Card from 'modules/judges/card.svelte'
 
     export let data: JudgesPageQuery
@@ -10,6 +9,7 @@
 
     export let onLoadMoreClick: () => void
     export let onCategoryClick: (id: string) => void
+    export let selectedCategoryId: string
 
     const judgesYears = data.judges_years?.map(year => {
         return { name: year?.year?.toString()!, id: `year${year?.id!}` }
@@ -31,7 +31,7 @@
     <aside>
         <p class="small"><strong>Filter by</strong></p>
         <div>
-            <Filter selectedId={$selectedJudgesCategoryId} {multiLevelList} catClick={onCategoryClick} />
+            <Filter selectedId={selectedCategoryId} {multiLevelList} catClick={onCategoryClick} />
         </div>
     </aside>
     <!-- Only visible in mobile -->

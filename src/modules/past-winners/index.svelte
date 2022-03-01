@@ -4,12 +4,12 @@
     import SelectFilterOption from 'components/selectFilterOption.svelte'
 
     import Card from 'modules/past-winners/card.svelte'
-    import { selectedPastWinnersCategoryId } from 'stores/past-winners'
 
     export let data: PastWinnersPageQuery
     export let pastWinnersList: PastWinnersPageQuery['past_winners']
     export let onLoadMoreClick: () => void
     export let onCategoryClick: (id: string) => void
+    export let selectedCategoryId: string
 
     let pastWinnerCategories = data.past_winners_categories?.map(category => {
         return { name: category?.category!, id: `cat${category?.id!}` }
@@ -35,7 +35,7 @@
     <aside>
         <p class="small"><strong>Filter by</strong></p>
         <div>
-            <Filter selectedId={$selectedPastWinnersCategoryId} {multiLevelList} catClick={onCategoryClick} />
+            <Filter selectedId={selectedCategoryId} {multiLevelList} catClick={onCategoryClick} />
         </div>
     </aside>
     <!-- Only visible in mobile -->

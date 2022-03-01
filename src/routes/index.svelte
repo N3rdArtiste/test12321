@@ -15,6 +15,7 @@
         }
         return {
             props: {
+                category,
                 currentPage: page,
                 limit: defaultLimit,
                 homePage: stuff.getOperationStore
@@ -48,11 +49,14 @@
 
     export let currentPage: number
     export let limit: number
+    export let category: string = 'all'
+    export let selectedPastWinnersCategoryId: string
 
     let pastWinnersList: HomePageQuery['past_winners']
     let page = currentPage
 
     onMount(() => {
+        selectedPastWinnersCategoryId = category ?? 'all'
         replaceQueryParams({
             page: currentPage.toString(),
         })
@@ -72,6 +76,7 @@
     }
 
     const onCategoryClick = (id: string) => {
+        selectedPastWinnersCategoryId = id
         pastWinnersList = []
         page = 1
         replaceQueryParams({
@@ -98,7 +103,7 @@
     <Divider heightDesktop={7.6} heightMobile={5.6} />
     <HorizontalLine />
     <Divider heightDesktop={14.2} heightMobile={5.6} />
-    <PastWinners data={$homePage.data} {pastWinnersList} onLoadMoreClick={loadMorePastWinners} {onCategoryClick} />
+    <PastWinners selectedCategoryId={selectedPastWinnersCategoryId} data={$homePage.data} {pastWinnersList} onLoadMoreClick={loadMorePastWinners} {onCategoryClick} />
     <Divider heightDesktop={14.4} heightMobile={5.6} />
     <HorizontalLine />
     <Divider heightDesktop={18.2} heightMobile={5} />

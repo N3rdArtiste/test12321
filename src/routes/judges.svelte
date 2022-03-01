@@ -16,6 +16,7 @@
         }
         return {
             props: {
+                category,
                 currentPage: page,
                 limit: defaultLimit,
                 judgesContent: stuff.getOperationStore
@@ -38,16 +39,18 @@
     import Divider from 'components/divider.svelte'
     import JudgesPage from 'modules/judges/judgesPage.svelte'
     import uniqBy from 'lodash/uniqBy.js'
-    import { selectedJudgesCategoryId } from 'stores/judges'
 
     export let judgesContent: JudgesPageQueryStore
     export let currentPage: number
     export let limit: number
+    export let category: string
 
+    let selectedJudgesCategoryId: string
     let judgesList: JudgesPageQuery['judges']
     let page = currentPage
 
     onMount(() => {
+        selectedJudgesCategoryId = category ?? 'all'
         replaceQueryParams({
             page: currentPage.toString(),
         })
@@ -69,7 +72,7 @@
     }
 
     const onCategoryClick = (id: string) => {
-        $selectedJudgesCategoryId = id
+        selectedJudgesCategoryId = id
         judgesList = []
         page = 1
         replaceQueryParams({
@@ -85,6 +88,6 @@
     <title>{$judgesContent.data?.judges_page?.title_bar_text ?? 'YiA'}</title>
 </svelte:head>
 {#if $judgesContent.data}
-    <JudgesPage data={$judgesContent.data} {judgesList} onLoadMoreClick={loadMoreJudges} {onCategoryClick} />
+    <JudgesPage selectedCategoryId={selectedJudgesCategoryId} data={$judgesContent.data} {judgesList} onLoadMoreClick={loadMoreJudges} {onCategoryClick} />
 {/if}
 <Divider heightDesktop={12.8} heightMobile={5} />

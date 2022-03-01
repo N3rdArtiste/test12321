@@ -98,9 +98,6 @@
         grid-auto-flow: row;
         grid-area: 2 / 2 / 3 / 8;
     }
-    .active-level-2 {
-        display: grid;
-    }
     .activeLabel {
         font-weight: 900;
     }

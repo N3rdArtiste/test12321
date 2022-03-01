@@ -41,11 +41,12 @@
         max-width: var(--max-width);
 
         @media (min-width: 821px) {
-            grid-template-columns: minmax(21rem, 1fr) 1fr 1fr 1fr 1fr 1fr minmax(7rem, 1fr) 1fr 1fr 1fr 1fr 1fr;
+            grid-template-columns: repeat(2, minmax(12.2rem, 1fr)) 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr minmax(12.2rem, 1fr);
             margin: 0 auto;
             grid-template-rows: auto auto 13rem auto 14.2rem auto 7.6rem auto 3rem;
             justify-content: center;
             padding: 0 2rem;
+            align-items: flex-start;
         }
         & > iframe:nth-of-type(1) {
             grid-column: 1/9;
@@ -53,9 +54,9 @@
             width: 100%;
             aspect-ratio: 414/286;
             @media (min-width: 821px) {
-                grid-column: 1/9;
+                grid-column: 1/10;
                 grid-row: 1/3;
-                width: 100%;
+                width: 95%;
                 aspect-ratio: 1154/797;
             }
         }
