@@ -84,7 +84,7 @@
         display: grid;
         grid-auto-rows: 1fr;
         grid-auto-flow: row;
-        grid-area: 1 / 2 / 2 / 8;
+        grid-area: 1 / 1 / 2 / 9;
         & > p {
             cursor: pointer;
         }
@@ -96,7 +96,7 @@
         column-gap: var(--column-gap);
         row-gap: 2rem;
         grid-auto-flow: row;
-        grid-area: 2 / 2 / 3 / 8;
+        grid-area: 2 / 1 / 3 / 9;
     }
     .activeLabel {
         font-weight: 900;
