@@ -1,4 +1,6 @@
 <script type="ts">
+    import Arrow from 'components/buttons/arrow.svelte'
+
     import { blur } from 'svelte/transition'
 
     export let question: Question_Titles
@@ -15,6 +17,7 @@
             title: element?.multi_level_question_items?.level_2_title,
             subtext: element?.multi_level_question_items?.level_2_subtext,
             text: element?.multi_level_question_items?.level_3_text,
+            links: element?.multi_level_question_items?.level_3_links,
         }
     })
 
@@ -45,6 +48,21 @@
                 </div>
                 <div class="level-2-subItem-2">
                     {@html item.text}
+                    <span>&nbsp;</span>
+                    <span>&nbsp;</span>
+                    <div>
+                        {#each item.links ?? [] as link}
+                            <div>
+                                <Arrow
+                                    small={true}
+                                    label={link?.multi_level_question_item_links?.label ?? ''}
+                                    onClick={() => {
+                                        location.replace('google.com')
+                                    }}
+                                />
+                            </div>
+                        {/each}
+                    </div>
                 </div>
             </div>
         {/if}

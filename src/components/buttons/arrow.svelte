@@ -2,10 +2,11 @@
     export let label: string = ''
     export let accentHover = true
     export let arrowRight = false
+    export let small: boolean = false
     export let onClick: () => void
 </script>
 
-<button class="arrowButton" on:click={onClick} class:accentHover class:arrowRight>
+<button class="arrowButton" class:small on:click={onClick} class:accentHover class:arrowRight>
     {#if label.length}
         <span>{label}</span>
     {/if}
@@ -16,8 +17,18 @@
 </button>
 
 <style lang="scss">
+    .small {
+        grid-gap: 1.2rem;
+        & > span {
+            font-size: 2.2rem;
+            line-height: 3rem;
+        }
+        & > b {
+            transform: scale(0.9);
+        }
+    }
+
     button {
-        transition: color 300ms;
         display: grid;
         grid-gap: 2rem;
         grid-template-columns: 1fr auto;
@@ -51,7 +62,6 @@
             align-content: center;
 
             div {
-                transition: width 300ms ease-out;
                 background: var(--color-secondary);
                 height: 0.2rem;
                 width: 2.8rem;

@@ -100,7 +100,7 @@ export const AboutPageDocument = gql`
               multi_level_question_item_links {
                 id
                 label
-                slug
+                url
               }
             }
           }
@@ -174,7 +174,7 @@ export const EnterPageDocument = gql`
               multi_level_question_item_links {
                 id
                 label
-                slug
+                url
               }
             }
           }
@@ -424,6 +424,7 @@ export const PastWinnersPageDocument = gql`
     worksheets {
       id
       past_winners_worksheet {
+        id
         worksheet {
           id
           title

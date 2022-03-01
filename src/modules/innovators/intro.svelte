@@ -55,7 +55,7 @@
             @media (min-width: 821px) {
                 grid-column: 1/9;
                 grid-row: 1/3;
-                width: 110%;
+                width: 100%;
                 aspect-ratio: 1154/797;
             }
         }

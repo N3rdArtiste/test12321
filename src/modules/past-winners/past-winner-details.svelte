@@ -1,5 +1,10 @@
 <script type="ts">
+    import { goto } from '$app/navigation'
+
+    import Arrow from 'components/buttons/arrow.svelte'
+
     import Drawer from 'components/drawer.svelte'
+    import { getDirectusAssetLink } from 'helpers/string'
 
     export let data: PastWinnerDetailsQuery['past_winners_by_id']
 
@@ -37,10 +42,24 @@
         allowfullscreen
     />
     <div class="drawers-container">
-        <Drawer title="Project Information">
-            {data?.project_information}
+        <hr />
+        <Drawer title="Project Information" small noHorizontalPadding>
+            {@html data?.project_information}
         </Drawer>
-        <Drawer title="Download Worksheets" />
+        <hr />
+
+        <Drawer title="Download Worksheets" small noHorizontalPadding>
+            {#each data?.worksheets ?? [] as worksheet}
+                <Arrow
+                    small
+                    label={worksheet?.past_winners_worksheet?.worksheet?.description ?? ''}
+                    onClick={() => {
+                        goto(getDirectusAssetLink(worksheet?.past_winners_worksheet?.worksheet?.filename_disk))
+                    }}
+                />
+            {/each}
+        </Drawer>
+        <hr />
     </div>
 </section>
 
@@ -55,6 +74,10 @@
         justify-content: center;
     }
 
+    hr {
+        height: 0.25rem;
+        background: var(--color-secondary);
+    }
     .name {
         grid-area: 1 / 2 / 2 / 8;
     }

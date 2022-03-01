@@ -36,8 +36,9 @@
                 <a class="bigger" sveltekit:prefetch href={slug} on:click={() => ($navDrawerOpen = false)}>{label}</a>
             {/each}
         </nav>
-
-        <AuthNav />
+        <div class="auth-container" class:hide={!$navDrawerOpen}>
+            <AuthNav />
+        </div>
     </header>
 </div>
 
@@ -101,8 +102,42 @@
                 display: none;
             }
         }
-    }
+        & > nav {
+            grid-column: 2/8;
+            grid-row: 3/4;
 
+            display: grid;
+            grid-auto-flow: row;
+            gap: 5.7rem;
+
+            @media (min-width: 769px) {
+                grid-column: 2/13;
+                grid-row: 2/3;
+
+                grid-auto-flow: column;
+                justify-content: end;
+                padding-top: 1.2rem;
+                & > a {
+                    position: relative;
+                    top: 0;
+                    transition: all 0.3s ease-in-out;
+                    &:hover {
+                        top: -0.2rem;
+                        color: var(--color-tertiary);
+                    }
+                }
+            }
+        }
+    }
+    .auth-container {
+        grid-column: 2/8;
+        grid-row: 5/6;
+        @media (min-width: 769px) {
+            grid-column: 1/13;
+            grid-row: 1/2;
+            justify-content: end;
+        }
+    }
     .hide {
         display: none;
 

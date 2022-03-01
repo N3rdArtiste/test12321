@@ -1,6 +1,9 @@
 <script lang="ts">
+    import { goto } from '$app/navigation'
+
     import Arrow from 'components/buttons/arrow.svelte'
     import { getDirectusAssetLink } from 'helpers/string'
+    import { goToStaticPage } from 'helpers/url'
 
     export let data: AboutPageQuery['about_page']
 </script>
@@ -10,7 +13,7 @@
     <div class="ctaButton">
         <Arrow
             onClick={() => {
-                console.log('clicked')
+                goToStaticPage('/knack.html')
             }}
             label={data?.enter_now_section_CTA_label ?? ''}
         />

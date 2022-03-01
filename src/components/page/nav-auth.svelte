@@ -1,50 +1,39 @@
 <script type="ts">
-    import { goto } from '$app/navigation'
     import { isAuthenticated } from '_auth/store'
-    import { isLoading } from 'stores/ui'
 
     import { navAuth } from '_config/constants/menus'
-    // import { navDrawerOpen } from 'stores/ui'
-
-    function handleClick(path: string) {
-        // goto(path)
-        location.href = `${location.origin}${path}`
-    }
+    import { goToStaticPage } from 'helpers/url'
 </script>
 
-<!-- <ul class:hide={!$navDrawerOpen} class="authNav"> -->
 <ul class="authNav">
     {#each $isAuthenticated ? navAuth.authenticated : navAuth.unauthenticated as { label, path }}
-        <li on:click={() => handleClick(path)}>{label}</li>
+        <li on:click={() => goToStaticPage(path)} class="small">{label}</li>
     {/each}
 </ul>
 
 <style lang="scss">
-    .authNav {
-        position: absolute;
-        top: -0.8rem;
-        right: 10rem;
-        left: initial;
-        bottom: initial;
-        list-style: none;
+    ul {
+        display: grid;
+        justify-content: start;
+        list-style-type: none;
+        grid-auto-flow: column;
+        column-gap: 1rem;
+        align-content: end;
+        align-items: center;
+        height: 100%;
 
-        /* @media (min-width: 768px) {
-            right: 12rem;
-        } */
-
-        li {
+        @media (min-width: 769px) {
+            justify-content: end;
+        }
+        & > li {
             cursor: pointer;
             float: left;
-            padding: 1rem 2rem;
-            font-size: 1.1rem;
-            font-weight: 200;
 
             &:not(:first-child)::before {
                 content: '';
                 border-left: 0.15rem var(--color-secondary) solid;
-                height: 1.5rem;
-                position: absolute;
-                transform: translate(-2rem, -0.2rem);
+                padding-right: 1rem;
+                height: 1rem;
             }
         }
     }

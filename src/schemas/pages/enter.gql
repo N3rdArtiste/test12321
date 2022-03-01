@@ -46,7 +46,7 @@ query EnterPage {
                                     multi_level_question_item_links {
                                         id
                                         label
-                                        slug
+                                        url
                                     }
                                 }
                             }

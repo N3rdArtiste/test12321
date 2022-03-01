@@ -2,12 +2,18 @@
     import Arrow from 'components/buttons/arrow.svelte'
     import { slide } from 'svelte/transition'
     export let title: string
+    export let small: boolean = false
+    export let noHorizontalPadding: boolean = false
+
     let toggle = false
+
+    console.log(noHorizontalPadding)
 </script>
 
-<section>
+<section class:noHorizontalPadding>
     <div class="button-container">
         <Arrow
+            {small}
             label={title}
             onClick={() => {
                 toggle = !toggle
@@ -31,6 +37,12 @@
         width: 100%;
         padding: 2rem 2rem 0rem 2rem;
         margin: 0 auto;
+    }
+    .noHorizontalPadding {
+        padding: 1.5rem 0rem 0rem 0rem;
+        & > .bottom-padding {
+            height: 1.5rem;
+        }
     }
     .bottom-padding {
         height: 2rem;

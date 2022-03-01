@@ -35,6 +35,7 @@ query PastWinnersPage($limit: Int, $page: Int, $filterQuery: past_winners_filter
         worksheets {
             id
             past_winners_worksheet {
+                id
                 worksheet {
                     id
                     title
