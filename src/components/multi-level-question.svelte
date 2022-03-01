@@ -1,4 +1,6 @@
 <script type="ts">
+    import { goto } from '$app/navigation'
+
     import Arrow from 'components/buttons/arrow.svelte'
 
     import { blur } from 'svelte/transition'
@@ -57,7 +59,7 @@
                                     small={true}
                                     label={link?.multi_level_question_item_links?.label ?? ''}
                                     onClick={() => {
-                                        location.replace('google.com')
+                                        goto(link?.multi_level_question_item_links?.url ?? '')
                                     }}
                                 />
                             </div>
