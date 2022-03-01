@@ -17,6 +17,8 @@ pipelines:
 
             # Get the build number from BitBucket
             - echo $BITBUCKET_BUILD_NUMBER
+            - if [ $BITBUCKET_BRANCH == 'prod' ]; then export $VITE_DIRECTUS_URL='https://yia-cms-prod.prod.eks.cucumbersoftware.com'; fi
+            - if [ $BITBUCKET_BRANCH == 'prod' ]; then export $VITE_GRAPHQL_URL='https://yia-cms-prod.prod.eks.cucumbersoftware.com/graphql'; fi
 
             - export VERSION_TAG=${BITBUCKET_BUILD_NUMBER:-$BITBUCKET_TAG}
             - if [ $BITBUCKET_BRANCH == 'dev' ]; then export VERSION_TAG='dev'; fi
