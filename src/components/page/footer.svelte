@@ -5,6 +5,11 @@
 
     import ButtonArrow from 'components/buttons/arrow.svelte'
 
+    import { navMain } from '_config/constants/menus'
+    import SvgFile from 'components/svg-file.svelte'
+    import { onDestroy, onMount } from 'svelte'
+    import { fade } from 'svelte/transition'
+
     let partners: StandardData
     let sponsors: StandardData
     let socialMediaIcons: StandardData
@@ -41,17 +46,35 @@
         }
     })
 
-    import { navMain } from '_config/constants/menus'
-    import SvgFile from 'components/svg-file.svelte'
-
     let sponsorsContainer: HTMLDivElement
-
-    const scrollSponsors = () => {
-        sponsorsContainer.scrollTo({
-            left: sponsorsContainer.scrollWidth,
-            behavior: 'smooth',
-        })
+    let showLeftArrow: boolean
+    let showRightArrow: boolean = true
+    const scrollSponsors = (left: boolean = true) => {
+        if (left) {
+            sponsorsContainer.scrollTo({
+                left: sponsorsContainer.scrollWidth,
+                behavior: 'smooth',
+            })
+        } else {
+            sponsorsContainer.scrollTo({
+                left: 0,
+                behavior: 'smooth',
+            })
+        }
     }
+    const eventListenerHandler = (e: Event) => {
+        const element = e.target as HTMLDivElement
+        showLeftArrow = element.scrollLeft !== 0
+        showRightArrow = element.offsetWidth + element.scrollLeft <= element.scrollWidth
+
+        console.log((element.offsetWidth + element.scrollLeft).toFixed(0), element.scrollWidth.toFixed(0))
+    }
+    onMount(() => {
+        sponsorsContainer.addEventListener('scroll', eventListenerHandler)
+    })
+    onDestroy(() => {
+        sponsorsContainer.removeEventListener('scroll', eventListenerHandler)
+    })
 </script>
 
 <div class="wrapper">
@@ -63,9 +86,19 @@
                 <a rel="external" target="_blank" href={sponsor.href}> <img src={sponsor.src} alt={sponsor.alt} /> </a>
             {/each}
         </div>
-        <i>
-            <ButtonArrow onClick={scrollSponsors} accentHover={false} />
-        </i>
+
+        {#if showLeftArrow}
+            <i class="leftArrowButton" transition:fade>
+                <ButtonArrow onClick={() => scrollSponsors(false)} accentHover={false} />
+            </i>
+        {/if}
+
+        {#if showRightArrow}
+            <i class="rightArrowButton" transition:fade>
+                <ButtonArrow onClick={scrollSponsors} accentHover={false} />
+            </i>
+        {/if}
+
         <div>
             <SvgFile src={logo.src} />
         </div>
@@ -115,7 +148,7 @@
         column-gap: var(--column-gap);
 
         @media (min-width: 769px) {
-            grid-template-columns: repeat(1, minmax(12.2rem, 1fr)) repeat(2, 1fr) repeat(1, minmax(12.2rem, 1fr)) repeat(6, 1fr) repeat(2, minmax(12.2rem, 1fr));
+            grid-template-columns: repeat(1, minmax(12.2rem, 1fr)) repeat(2, 1fr) repeat(2, minmax(9.2rem, 1fr)) repeat(5, 1fr) repeat(2, minmax(10.2rem, 1fr));
             max-width: var(--max-width);
             margin: 0 auto;
 
@@ -160,14 +193,25 @@
             }
         }
 
-        & > i {
+        & .leftArrowButton {
+            display: none;
+
+            @media (min-width: 769px) {
+                display: block;
+                grid-row: 3/4;
+                grid-column: 5/6;
+                text-align: -webkit-right;
+                transform: rotate(-180deg);
+            }
+        }
+        & .rightArrowButton {
             display: none;
 
             @media (min-width: 769px) {
                 display: block;
                 grid-row: 3/4;
                 grid-column: 12/13;
-                text-align: end;
+                text-align: -webkit-right;
             }
         }
         & > div:nth-of-type(2) {
