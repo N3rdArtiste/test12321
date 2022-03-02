@@ -1,11 +1,19 @@
 <script type="ts">
     import Arrow from 'components/buttons/arrow.svelte'
     import { slide } from 'svelte/transition'
+    import { drawerOpenedTitle } from 'stores/ui'
+    import { onMount } from 'svelte'
     export let title: string
     export let small: boolean = false
     export let noHorizontalPadding: boolean = false
 
     let toggle = false
+
+    onMount(() => {
+        $drawerOpenedTitle = ''
+    })
+
+    $: toggle = $drawerOpenedTitle == title
 </script>
 
 <section class:noHorizontalPadding>
@@ -15,6 +23,7 @@
             label={title}
             onClick={() => {
                 toggle = !toggle
+                $drawerOpenedTitle = toggle ? title ?? '' : ''
             }}
         />
     </div>
