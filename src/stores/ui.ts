@@ -20,6 +20,5 @@ export const isIE = writable<boolean>(browser && navigator.vendor.substring(0, 9
 
 export const burgerOpen = writable<boolean>(false)
 export const navDrawerOpen = writable<boolean>(false)
-export const drawerOpenedTitle = writable('')
 
 export const deferredPrompt = writable<Event | null>(null) // for user to download app

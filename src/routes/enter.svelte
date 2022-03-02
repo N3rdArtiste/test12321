@@ -24,6 +24,8 @@
 
     let { question: whatQuestions } = $entryPage.data?.enter_page?.multi_level_questions![0]!
     let { question: howQuestions } = $entryPage.data?.enter_page?.text_area_questions![0]!
+
+    let drawerOpenedTitle: string = ''
 </script>
 
 <svelte:head>
@@ -34,11 +36,11 @@
 <Divider heightMobile={5} heightDesktop={9.7} />
 {#if whatQuestions && howQuestions}
     <HorizontalLine />
-    <Drawer title={whatQuestions.title ?? ''}>
+    <Drawer title={whatQuestions.title ?? ''} bind:drawerOpenedTitle>
         <MultiLevelQuestion question={whatQuestions} />
     </Drawer>
     <HorizontalLine />
-    <Drawer title={howQuestions.title ?? ''}>
+    <Drawer title={howQuestions.title ?? ''} bind:drawerOpenedTitle>
         {@html howQuestions.body}
     </Drawer>
     <HorizontalLine />

@@ -27,6 +27,8 @@
 
     let { question: whatQuestions } = $aboutPage.data?.about_page?.multi_level_questions![0]!
     let { question: howQuestions } = $aboutPage.data?.about_page?.textarea_questions![0]!
+
+    let drawerOpenedTitle: string = ''
 </script>
 
 <svelte:head>
@@ -40,11 +42,11 @@
     <Divider heightMobile={5} heightDesktop={15.8} />
     {#if whatQuestions && howQuestions}
         <HorizontalLine />
-        <Drawer title={whatQuestions.title ?? ''}>
+        <Drawer title={whatQuestions.title ?? ''} bind:drawerOpenedTitle>
             <MultiLevelQuestion question={whatQuestions} />
         </Drawer>
         <HorizontalLine />
-        <Drawer title={howQuestions.title ?? ''}>
+        <Drawer title={howQuestions.title ?? ''} bind:drawerOpenedTitle>
             <TextAreaQuestion text={howQuestions.body ?? ''} />
         </Drawer>
         <HorizontalLine />
