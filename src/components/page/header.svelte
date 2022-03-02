@@ -33,7 +33,15 @@
 
         <nav class:hide={!$navDrawerOpen}>
             {#each navMain as { label, slug }}
-                <a class="bigger" sveltekit:prefetch href={slug} on:click={() => ($navDrawerOpen = false)}>{label}</a>
+                <a
+                    class="bigger"
+                    sveltekit:prefetch
+                    href={slug}
+                    on:click={() => {
+                        $navDrawerOpen = false
+                        window.scrollTo({ top: 0 })
+                    }}>{label}</a
+                >
             {/each}
         </nav>
         <div class="auth-container" class:hide={!$navDrawerOpen}>

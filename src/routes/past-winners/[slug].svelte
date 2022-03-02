@@ -21,7 +21,7 @@
 </script>
 
 <svelte:head>
-    <title>{$pastWinnerDetailsContent.data?.past_winners_by_id?.name ?? 'YiA'}</title>
+    <title>{'yia! | ' + $pastWinnerDetailsContent.data?.past_winners_by_id?.name ?? 'YiA'}</title>
 </svelte:head>
 
 {#if $pastWinnerDetailsContent.data?.past_winners_by_id}
