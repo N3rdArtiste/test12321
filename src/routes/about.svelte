@@ -20,6 +20,7 @@
     import MultiLevelQuestion from 'components/multi-level-question.svelte'
     import Drawer from 'components/drawer.svelte'
     import HorizontalLine from 'components/horizontal-line.svelte'
+    import TextAreaQuestion from 'components/text-area-question.svelte'
 
     export let aboutPage: AboutPageQueryStore
     query(aboutPage)
@@ -44,7 +45,7 @@
         </Drawer>
         <HorizontalLine />
         <Drawer title={howQuestions.title ?? ''}>
-            {@html howQuestions.body}
+            <TextAreaQuestion text={howQuestions.body ?? ''} />
         </Drawer>
         <HorizontalLine />
         <Divider heightDesktop={11.5} heightMobile={5.6} />

@@ -49,6 +49,7 @@
     let sponsorsContainer: HTMLDivElement
     let showLeftArrow: boolean
     let showRightArrow: boolean = true
+
     const scrollSponsors = (left: boolean = true) => {
         if (left) {
             sponsorsContainer.scrollTo({
@@ -66,22 +67,14 @@
         const element = e.target as HTMLDivElement
         showLeftArrow = element.scrollLeft !== 0
         showRightArrow = element.offsetWidth + element.scrollLeft <= element.scrollWidth
-
-        console.log((element.offsetWidth + element.scrollLeft).toFixed(0), element.scrollWidth.toFixed(0))
     }
-    onMount(() => {
-        sponsorsContainer.addEventListener('scroll', eventListenerHandler)
-    })
-    onDestroy(() => {
-        sponsorsContainer.removeEventListener('scroll', eventListenerHandler)
-    })
 </script>
 
 <div class="wrapper">
     <footer>
         <h2>Our sponsors</h2>
 
-        <div bind:this={sponsorsContainer}>
+        <div on:scroll={eventListenerHandler} bind:this={sponsorsContainer}>
             {#each sponsors ?? [] as sponsor}
                 <a rel="external" target="_blank" href={sponsor.href}> <img src={sponsor.src} alt={sponsor.alt} /> </a>
             {/each}
@@ -267,14 +260,14 @@
         }
         & > div:nth-of-type(4) {
             display: grid;
-            grid-template-columns: minmax(9.4rem, 18.4rem) minmax(9.4rem, 18.4rem);
-            grid-auto-rows: 6.7rem;
+            grid-template-columns: repeat(2, minmax(9.4rem, 12.4rem));
+            grid-auto-rows: 4.7rem;
             align-items: center;
             justify-content: center;
             justify-items: center;
             grid-row: 11/12;
             grid-column: 2/8;
-            gap: 1rem;
+            gap: 1.5rem;
 
             @media (min-width: 769px) {
                 grid-row: 7/8;

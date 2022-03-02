@@ -43,7 +43,7 @@
         @media (min-width: 821px) {
             grid-template-columns: repeat(2, minmax(12.2rem, 1fr)) 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr minmax(12.2rem, 1fr);
             margin: 0 auto;
-            grid-template-rows: auto auto 13rem auto 14.2rem auto 7.6rem auto 3rem;
+            grid-template-rows: auto auto 13rem auto 4.6rem auto 7.6rem auto 3rem;
             justify-content: center;
             padding: 0 2rem;
             align-items: flex-start;

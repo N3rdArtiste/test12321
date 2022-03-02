@@ -12,7 +12,7 @@
     export let error: SomeError
 </script>
 
-<h1>{status}</h1>
+<h1>{status} Hello world</h1>
 
 <pre>{error.message}</pre>
 

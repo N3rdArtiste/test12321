@@ -2,7 +2,7 @@
     import { InspirationPageDocument } from '_config/graphql-tags/graphql-tags-generated'
 
     export const load: Load = async ({ stuff, url }) => {
-        const defaultLimit = 4
+        const defaultLimit = 8
         let limit = defaultLimit
         let page = parseInt(url.searchParams.get('page') ?? '1')
         if (url.searchParams.get('page')) {

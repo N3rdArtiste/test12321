@@ -39,9 +39,11 @@
     span,
     button {
         cursor: pointer;
-        font-weight: 700;
         font-size: 2.2rem;
         line-height: 3rem;
+        &:hover {
+            color: var(--color-tertiary);
+        }
     }
     button {
         font-weight: 400;
@@ -53,6 +55,6 @@
 
     .selected {
         transition: all 0.3s;
-        color: var(--color-tertiary);
+        font-weight: 900;
     }
 </style>
