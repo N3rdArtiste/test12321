@@ -11,6 +11,10 @@ export const client = createClient({
         dedupExchange,
         requestPolicyExchange({}),
         cacheExchange({
+            keys: {
+                past_winners_aggregated: () => null,
+                judges_aggregated: () => null,
+            },
             resolvers: {
                 Query: {
                     past_winners_by_id: (parent, args) => ({ __typename: 'past_winners', id: args.id }),

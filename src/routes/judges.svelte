@@ -49,6 +49,8 @@
     let judgesList: JudgesPageQuery['judges']
     let page = currentPage
 
+    $: noMoreJudgesToLoad = judgesList?.length === (judgesContent.data?.judges_aggregated ?? [])[0]?.count?.id
+
     onMount(() => {
         selectedJudgesCategoryId = category ?? 'all'
         replaceQueryParams({
@@ -88,6 +90,12 @@
     <title>{$judgesContent.data?.judges_page?.title_bar_text ?? 'YiA'}</title>
 </svelte:head>
 {#if $judgesContent.data}
-    <JudgesPage selectedCategoryId={selectedJudgesCategoryId} data={$judgesContent.data} {judgesList} onLoadMoreClick={loadMoreJudges} {onCategoryClick} />
+    <JudgesPage
+        selectedCategoryId={selectedJudgesCategoryId}
+        data={$judgesContent.data}
+        {judgesList}
+        onLoadMoreClick={noMoreJudgesToLoad ? undefined : loadMoreJudges}
+        {onCategoryClick}
+    />
 {/if}
 <Divider heightDesktop={12.8} heightMobile={5} />

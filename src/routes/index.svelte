@@ -55,6 +55,8 @@
     let pastWinnersList: HomePageQuery['past_winners']
     let page = currentPage
 
+    $: noMorePastWinnersToLoad = pastWinnersList?.length === (homePage.data?.past_winners_aggregated ?? [])[0]?.count?.id
+
     onMount(() => {
         selectedPastWinnersCategoryId = category ?? 'all'
         replaceQueryParams({
@@ -103,7 +105,13 @@
     <Divider heightDesktop={7.6} heightMobile={5.6} />
     <HorizontalLine />
     <Divider heightDesktop={14.2} heightMobile={5.6} />
-    <PastWinners selectedCategoryId={selectedPastWinnersCategoryId} data={$homePage.data} {pastWinnersList} onLoadMoreClick={loadMorePastWinners} {onCategoryClick} />
+    <PastWinners
+        selectedCategoryId={selectedPastWinnersCategoryId}
+        data={$homePage.data}
+        {pastWinnersList}
+        onLoadMoreClick={noMorePastWinnersToLoad ? undefined : loadMorePastWinners}
+        {onCategoryClick}
+    />
     <Divider heightDesktop={14.4} heightMobile={5.6} />
     <HorizontalLine />
     <Divider heightDesktop={18.2} heightMobile={5} />

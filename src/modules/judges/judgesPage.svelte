@@ -7,7 +7,7 @@
     export let data: JudgesPageQuery
     export let judgesList: JudgesPageQuery['judges']
 
-    export let onLoadMoreClick: () => void
+    export let onLoadMoreClick: (() => void) | undefined
     export let onCategoryClick: (id: string) => void
     export let selectedCategoryId: string
 
@@ -48,9 +48,11 @@
             </div>
         {/each}
     </b>
-    <div>
-        <ArrowButton onClick={onLoadMoreClick} label="Load more" />
-    </div>
+    {#if onLoadMoreClick}
+        <div>
+            <ArrowButton onClick={onLoadMoreClick} label="Load more" />
+        </div>
+    {/if}
 </section>
 
 <style lang="scss">

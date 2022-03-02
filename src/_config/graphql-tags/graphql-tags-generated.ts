@@ -238,6 +238,11 @@ export const HomePageDocument = gql`
     id
     year
   }
+  past_winners_aggregated(filter: $filterQuery, sort: ["sort", "date_created"]) {
+    count {
+      id
+    }
+  }
   past_winners(limit: $limit, page: $page, filter: $filterQuery) {
     id
     name
@@ -341,6 +346,11 @@ export const JudgesPageDocument = gql`
     heading
     title_bar_text
   }
+  judges_aggregated(filter: $filterQuery, sort: ["sort", "date_created"]) {
+    count {
+      id
+    }
+  }
 }
     `;
 export const PastWinnerDetailsDocument = gql`
@@ -395,6 +405,11 @@ export const PastWinnersPageDocument = gql`
   past_winners_years {
     id
     year
+  }
+  past_winners_aggregated(filter: $filterQuery, sort: ["sort", "date_created"]) {
+    count {
+      id
+    }
   }
   past_winners(
     limit: $limit

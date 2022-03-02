@@ -41,25 +41,32 @@
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
     />
-    <div class="drawers-container">
-        <hr />
-        <Drawer title="Project Information" small noHorizontalPadding>
-            {@html data?.project_information}
-        </Drawer>
-        <hr />
 
-        <Drawer title="Download Worksheets" small noHorizontalPadding>
-            {#each data?.worksheets ?? [] as worksheet}
-                <Arrow
-                    small
-                    label={worksheet?.past_winners_worksheet?.worksheet?.description ?? ''}
-                    onClick={() => {
-                        goto(getDirectusAssetLink(worksheet?.past_winners_worksheet?.worksheet?.filename_disk))
-                    }}
-                />
-            {/each}
-        </Drawer>
-        <hr />
+    <div class="drawers-container">
+        {#if data?.project_information}
+            <hr />
+            <Drawer title="Project Information" small noHorizontalPadding>
+                {@html data?.project_information}
+            </Drawer>
+        {/if}
+
+        {#if data?.worksheets?.length}
+            <hr />
+            <Drawer title="Download Worksheets" small noHorizontalPadding>
+                {#each data?.worksheets ?? [] as worksheet}
+                    <Arrow
+                        small
+                        label={worksheet?.past_winners_worksheet?.worksheet?.description ?? ''}
+                        onClick={() => {
+                            goto(getDirectusAssetLink(worksheet?.past_winners_worksheet?.worksheet?.filename_disk))
+                        }}
+                    />
+                {/each}
+            </Drawer>
+        {/if}
+        {#if data?.project_information || data?.worksheets?.length}
+            <hr />
+        {/if}
     </div>
 </section>
 

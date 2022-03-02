@@ -7,7 +7,7 @@
 
     export let data: PastWinnersPageQuery
     export let pastWinnersList: PastWinnersPageQuery['past_winners']
-    export let onLoadMoreClick: () => void
+    export let onLoadMoreClick: (() => void) | undefined
     export let onCategoryClick: (id: string) => void
     export let selectedCategoryId: string
 
@@ -52,9 +52,11 @@
             </a>
         {/each}
     </b>
-    <div>
-        <ArrowButton onClick={onLoadMoreClick} label="Load more" />
-    </div>
+    {#if onLoadMoreClick}
+        <div>
+            <ArrowButton onClick={onLoadMoreClick} label="Load more" />
+        </div>
+    {/if}
 </section>
 
 <style lang="scss">

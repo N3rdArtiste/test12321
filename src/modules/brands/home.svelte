@@ -1,4 +1,6 @@
 <script type="ts">
+    import { goto } from '$app/navigation'
+
     export let data: HomePageQuery
     import BrandsLogoGrid from 'components/brands-logo-grid.svelte'
     import Arrow from 'components/buttons/arrow.svelte'
@@ -11,7 +13,12 @@
         <BrandsLogoGrid brands={data.brands} />
     </div>
     <div class="button-container">
-        <Arrow label={data.home_page?.brands_section_CTA_label ?? ''} onClick={() => {}} />
+        <Arrow
+            label={data.home_page?.brands_section_CTA_label ?? ''}
+            onClick={() => {
+                goto('/judges')
+            }}
+        />
     </div>
 </section>
 

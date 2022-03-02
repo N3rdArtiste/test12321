@@ -48,6 +48,7 @@
     let page = currentPage
     let selectedPastWinnersCategoryId: string
 
+    $: noMorePastWinnersToLoad = pastWinnersList?.length === (pastWinnersContent.data?.past_winners_aggregated ?? [])[0]?.count?.id
     onMount(() => {
         selectedPastWinnersCategoryId = category ?? 'all'
         replaceQueryParams({
@@ -88,6 +89,12 @@
 </svelte:head>
 
 {#if $pastWinnersContent.data}
-    <PastWinners selectedCategoryId={selectedPastWinnersCategoryId} data={$pastWinnersContent.data} {pastWinnersList} onLoadMoreClick={loadMorePastWinners} {onCategoryClick} />
+    <PastWinners
+        selectedCategoryId={selectedPastWinnersCategoryId}
+        data={$pastWinnersContent.data}
+        {pastWinnersList}
+        onLoadMoreClick={noMorePastWinnersToLoad ? undefined : loadMorePastWinners}
+        {onCategoryClick}
+    />
 {/if}
 <Divider heightDesktop={12.8} heightMobile={5} />

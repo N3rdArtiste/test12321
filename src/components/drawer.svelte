@@ -6,8 +6,6 @@
     export let noHorizontalPadding: boolean = false
 
     let toggle = false
-
-    console.log(noHorizontalPadding)
 </script>
 
 <section class:noHorizontalPadding>
