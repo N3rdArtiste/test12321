@@ -14,6 +14,7 @@ export const client = createClient({
             keys: {
                 past_winners_aggregated: () => null,
                 judges_aggregated: () => null,
+                inspiration_articles_aggregated: () => null,
             },
             resolvers: {
                 Query: {

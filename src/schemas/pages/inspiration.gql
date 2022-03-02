@@ -10,6 +10,11 @@ query InspirationPage($limit: Int, $page: Int) {
             description
         }
     }
+    inspiration_articles_aggregated {
+        count {
+            id
+        }
+    }
     inspiration_articles(limit: $limit, page: $page) {
         id
         image {

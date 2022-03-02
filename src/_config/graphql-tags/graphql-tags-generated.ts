@@ -305,6 +305,11 @@ export const InspirationPageDocument = gql`
       description
     }
   }
+  inspiration_articles_aggregated {
+    count {
+      id
+    }
+  }
   inspiration_articles(limit: $limit, page: $page) {
     id
     image {

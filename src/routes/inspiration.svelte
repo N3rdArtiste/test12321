@@ -37,6 +37,8 @@
     let inspirationArticles: InspirationPageQuery['inspiration_articles']
     let page = currentPage
 
+    $: noMorePastWinnersToLoad = inspirationArticles?.length === (inspirationPageContent.data?.inspiration_articles_aggregated ?? [])[0]?.count?.id
+
     onMount(() => {
         replaceQueryParams({
             page: currentPage.toString(),
@@ -65,6 +67,6 @@
 {#if $inspirationPageContent.data}
     <InspirationIntro data={$inspirationPageContent.data.inspiration_page} />
     <Divider heightDesktop={15} heightMobile={5} />
-    <Articles data={inspirationArticles} onLoadMoreClick={loadMoreArticles} />
+    <Articles data={inspirationArticles} onLoadMoreClick={noMorePastWinnersToLoad ? undefined : loadMoreArticles} />
     <Divider heightDesktop={18.4} heightMobile={5} />
 {/if}

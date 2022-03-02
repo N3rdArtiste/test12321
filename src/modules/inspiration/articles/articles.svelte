@@ -3,7 +3,7 @@
     import Card from 'modules/inspiration/articles/card.svelte'
 
     export let data: InspirationPageQuery['inspiration_articles']
-    export let onLoadMoreClick: () => void
+    export let onLoadMoreClick: (() => void) | undefined
 </script>
 
 <section>
@@ -14,10 +14,11 @@
             </div>
         {/each}
     </div>
-
-    <i>
-        <ArrowButton onClick={onLoadMoreClick} label="Load more" />
-    </i>
+    {#if onLoadMoreClick}
+        <i>
+            <ArrowButton onClick={onLoadMoreClick} label="Load more" />
+        </i>
+    {/if}
 </section>
 
 <style lang="scss">
