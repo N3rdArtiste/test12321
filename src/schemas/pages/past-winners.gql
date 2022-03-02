@@ -3,6 +3,8 @@ query PastWinnersPage($limit: Int, $page: Int, $filterQuery: past_winners_filter
         id
         heading
         title_bar_text
+        meta_description
+        meta_keywords
     }
     past_winners_categories {
         id

@@ -2,7 +2,8 @@ query AboutPage {
     about_page {
         id
         title_bar_text
-
+        meta_description
+        meta_keywords
         heading
 
         enter_now_section_CTA_label

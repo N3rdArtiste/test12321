@@ -18,6 +18,8 @@ query JudgesPage($limit: Int, $page: Int, $filterQuery: judges_filter) {
         id
         heading
         title_bar_text
+        meta_description
+        meta_keywords
     }
     judges_aggregated(filter: $filterQuery, sort: ["sort", "date_created"]) {
         count {

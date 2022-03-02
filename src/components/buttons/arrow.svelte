@@ -29,6 +29,7 @@
     }
 
     button {
+        transition: color 0.1s;
         display: grid;
         grid-gap: 2rem;
         grid-template-columns: 1fr auto;

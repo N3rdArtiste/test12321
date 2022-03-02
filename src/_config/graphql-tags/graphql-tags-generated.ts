@@ -55,6 +55,8 @@ export const AboutPageDocument = gql`
   about_page {
     id
     title_bar_text
+    meta_description
+    meta_keywords
     heading
     enter_now_section_CTA_label
     enter_now_section_image {
@@ -130,6 +132,8 @@ export const EnterPageDocument = gql`
     query EnterPage {
   enter_page {
     id
+    meta_description
+    meta_keywords
     key_dates_title
     key_dates_youtube_video_id
     timeline_section_heading
@@ -189,6 +193,8 @@ export const HomePageDocument = gql`
   home_page {
     id
     title_bar_text
+    meta_description
+    meta_keywords
     enter_now_section_heading
     enter_now_section_sub_heading
     enter_now_section_body
@@ -299,6 +305,8 @@ export const InspirationPageDocument = gql`
     heading
     description
     title_bar_text
+    meta_description
+    meta_keywords
     hero_image {
       id
       filename_disk
@@ -350,6 +358,8 @@ export const JudgesPageDocument = gql`
     id
     heading
     title_bar_text
+    meta_description
+    meta_keywords
   }
   judges_aggregated(filter: $filterQuery, sort: ["sort", "date_created"]) {
     count {
@@ -402,6 +412,8 @@ export const PastWinnersPageDocument = gql`
     id
     heading
     title_bar_text
+    meta_description
+    meta_keywords
   }
   past_winners_categories {
     id
