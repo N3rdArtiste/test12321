@@ -47,7 +47,7 @@
     </i>
     <b>
         {#each pastWinnersList ?? [] as past_winner}
-            <a sveltekit:prefetch href={'/past-winners/' + past_winner?.id}>
+            <a sveltekit:prefetch href={'/past-winners/' + past_winner?.id + '?category=' + selectedCategoryId}>
                 <Card data={past_winner} />
             </a>
         {/each}

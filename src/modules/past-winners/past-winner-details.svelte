@@ -7,6 +7,8 @@
     import { getDirectusAssetLink } from 'helpers/string'
 
     export let data: PastWinnerDetailsQuery['past_winners_by_id']
+    export let onNextClick: () => void
+    export let showNextButton: boolean = false
 
     const details = {
         year: (data?.year ?? [])[0]?.past_winners_year?.year,
@@ -41,7 +43,16 @@
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
     />
-
+    <div class="next-button">
+        {#if showNextButton}
+            <Arrow
+                label={'Next'}
+                onClick={() => {
+                    onNextClick()
+                }}
+            />
+        {/if}
+    </div>
     <div class="drawers-container">
         {#if data?.project_information}
             <hr />
@@ -74,7 +85,7 @@
     section {
         display: grid;
         grid-template-columns: var(--grid-template-columns);
-        grid-template-rows: auto 2.8em auto 2.4em auto 2em auto;
+        grid-template-rows: auto 2.8rem auto 2.4rem auto 2rem auto 2rem auto;
         column-gap: var(--column-gap);
         grid-auto-flow: row;
         align-items: flex-start;
@@ -106,12 +117,19 @@
         aspect-ratio: 755/521;
     }
 
+    .next-button {
+        grid-area: 9 / 2 / 10 / 8;
+
+        display: grid;
+        justify-items: end;
+    }
+
     @media (min-width: 769px) {
         section {
             grid-template-columns: repeat(11, 1fr) minmax(12.2rem, 1fr);
             max-width: var(--max-width);
             margin: 0 auto;
-            grid-template-rows: auto 4.8em auto 4.4em auto;
+            grid-template-rows: auto 4.8rem auto 9rem auto auto 4.4rem auto;
             padding: 0 2rem;
         }
 
@@ -120,15 +138,22 @@
         }
 
         .details {
-            grid-area: 3 / 1 / 4 / 7;
+            grid-area: 3 / 1 / 7 / 7;
         }
 
         .drawers-container {
-            grid-area: 5 / 1 / 6 / 13;
+            grid-area: 8 / 1 / 9 / 13;
         }
 
         .video {
-            grid-area: 1 / 8 / 6 / 13;
+            grid-area: 1 / 8 / 4 / 13;
+        }
+
+        .next-button {
+            grid-area: 5 / 8 / 6 / 13;
+
+            display: grid;
+            justify-items: end;
         }
     }
 

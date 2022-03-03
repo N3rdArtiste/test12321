@@ -39,7 +39,6 @@
                     href={slug}
                     on:click={() => {
                         $navDrawerOpen = false
-                        window.scrollTo({ top: 0 })
                     }}>{label}</a
                 >
             {/each}

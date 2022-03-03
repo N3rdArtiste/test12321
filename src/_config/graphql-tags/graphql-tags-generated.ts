@@ -369,7 +369,7 @@ export const JudgesPageDocument = gql`
 }
     `;
 export const PastWinnerDetailsDocument = gql`
-    query pastWinnerDetails($id: ID!) {
+    query pastWinnerDetails($id: ID!, $filterQuery: past_winners_filter) {
   past_winners_by_id(id: $id) {
     id
     name
@@ -403,6 +403,9 @@ export const PastWinnerDetailsDocument = gql`
         }
       }
     }
+  }
+  past_winners(limit: 1, filter: $filterQuery) {
+    id
   }
 }
     `;

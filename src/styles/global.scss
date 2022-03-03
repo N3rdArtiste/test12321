@@ -22,14 +22,13 @@ body {
     font-family: var(--font-family);
     color: var(--color-secondary);
     background-color: var(--color-secondary);
-
     overscroll-behavior: none;
     -ms-scroll-chaining: chained;
     -ms-overflow-style: none;
     -ms-scroll-rails: none;
     scrollbar-width: none; /* Firefox */
     scrollbar-color: transparent transparent;
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
 }
 
 i {

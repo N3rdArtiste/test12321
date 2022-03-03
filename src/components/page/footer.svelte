@@ -172,7 +172,7 @@
             grid-auto-flow: column;
             gap: 1.6rem;
             overflow-x: scroll;
-
+            scroll-behavior: smooth;
             @media (min-width: 769px) {
                 grid-column: 5/13;
                 grid-row: 1/2;
