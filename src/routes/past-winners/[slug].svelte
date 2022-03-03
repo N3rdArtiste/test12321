@@ -7,9 +7,20 @@
         const data = stuff.getOperationStore
             ? await stuff.getOperationStore(PastWinnerDetailsDocument, { id: params.slug, filterQuery: { id: { _gt: parseInt(params.slug) }, ...filterQuery } })
             : null
+        console.log(data, 'data')
+        if (!!data?.error?.graphQLErrors.length) {
+            return {
+                status: 500,
+                error: 'Something went wrong',
+            }
+        }
+        if (!data?.data) {
+            return {
+                status: 404,
+                error: 'Page not found',
+            }
+        }
         return {
-            status: data?.error?.graphQLErrors.length ? 404 : 200,
-            error: 'Page not found',
             props: {
                 category,
                 pastWinnerDetailsContent: data,
