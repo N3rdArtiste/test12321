@@ -50,8 +50,8 @@
     export let currentPage: number
     export let limit: number
     export let category: string = 'all'
-    export let selectedPastWinnersCategoryId: string
 
+    let selectedPastWinnersCategoryId: string
     let pastWinnersList: HomePageQuery['past_winners']
     let page = currentPage
 

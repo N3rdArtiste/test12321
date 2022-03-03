@@ -20,9 +20,9 @@
         />
     </div>
     <div class="articles">
-        {#each articles ?? [] as article, i}
+        {#each articles ?? [] as article}
             <div>
-                <Card {article} longCard={Boolean(i % 2)} />
+                <Card {article} longCard />
             </div>
         {/each}
     </div>

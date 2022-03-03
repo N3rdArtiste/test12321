@@ -8,9 +8,9 @@
 
 <section>
     <div class="articles">
-        {#each data ?? [] as article, i}
+        {#each data ?? [] as article}
             <div>
-                <Card {article} longCard={Boolean(i % 2)} />
+                <Card {article} longCard />
             </div>
         {/each}
     </div>
