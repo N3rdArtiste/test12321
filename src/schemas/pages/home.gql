@@ -3,7 +3,6 @@ query HomePage($limit: Int, $page: Int, $filterQuery: past_winners_filter) {
         id
         title_bar_text
         meta_description
-        meta_keywords
         enter_now_section_heading
         enter_now_section_sub_heading
         enter_now_section_body

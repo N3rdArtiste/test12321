@@ -86,6 +86,7 @@
 
 <svelte:head>
     <title>{$pastWinnersContent.data?.past_winners_page?.title_bar_text ?? 'YiA'}</title>
+    <meta name="description" content={$pastWinnersContent.data?.past_winners_page?.meta_description ?? ''} />
 </svelte:head>
 
 {#if $pastWinnersContent.data}

@@ -30,7 +30,6 @@
 <svelte:head>
     <title>{$enterPage.data?.enter_page?.title_bar_text ?? ''}</title>
     <meta name="description" content={$enterPage.data?.enter_page?.meta_description ?? ''} />
-    <meta name="keywords" content={$enterPage.data?.enter_page?.meta_keywords ?? ''} />
 </svelte:head>
 
 <Intro data={$enterPage.data?.enter_page} />

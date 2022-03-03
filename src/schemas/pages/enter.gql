@@ -2,7 +2,6 @@ query EnterPage {
     enter_page {
         id
         meta_description
-        meta_keywords
         key_dates_title
         key_dates_youtube_video_id
         timeline_section_heading

@@ -93,7 +93,6 @@
 <svelte:head>
     <title>{$homePage.data?.home_page?.title_bar_text ?? 'YiA'}</title>
     <meta name="description" content={$homePage.data?.home_page?.meta_description ?? ''} />
-    <meta name="keywords" content={$homePage.data?.home_page?.meta_keywords ?? ''} />
 </svelte:head>
 
 {#if $homePage.data}

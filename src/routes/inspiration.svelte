@@ -63,7 +63,6 @@
 <svelte:head>
     <title>{$inspirationPageContent.data?.inspiration_page?.title_bar_text ?? 'YiA'}</title>
     <meta name="description" content={$inspirationPageContent.data?.inspiration_page?.meta_description ?? ''} />
-    <meta name="keywords" content={$inspirationPageContent.data?.inspiration_page?.meta_keywords ?? ''} />
 </svelte:head>
 
 {#if $inspirationPageContent.data}

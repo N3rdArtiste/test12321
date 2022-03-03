@@ -89,7 +89,6 @@
 <svelte:head>
     <title>{$judgesContent.data?.judges_page?.title_bar_text ?? 'YiA'}</title>
     <meta name="description" content={$judgesContent.data?.judges_page?.meta_description ?? ''} />
-    <meta name="keywords" content={$judgesContent.data?.judges_page?.meta_keywords ?? ''} />
 </svelte:head>
 {#if $judgesContent.data}
     <JudgesPage
