@@ -32,7 +32,9 @@
 </script>
 
 <svelte:head>
-    <title>{$aboutPage.data?.about_page?.heading ?? 'YiA'}</title>
+    <title>{$aboutPage.data?.about_page?.title_bar_text ?? 'YiA'}</title>
+    <meta name="description" content={$aboutPage.data?.about_page?.meta_description ?? ''} />
+    <meta name="keywords" content={$aboutPage.data?.about_page?.meta_keywords ?? ''} />
 </svelte:head>
 
 {#if aboutPage.data}

@@ -4,7 +4,7 @@
     export const load: Load = async ({ stuff }) => {
         return {
             props: {
-                entryPage: stuff.getOperationStore ? await stuff.getOperationStore(EnterPageDocument) : null,
+                enterPage: stuff.getOperationStore ? await stuff.getOperationStore(EnterPageDocument) : null,
             },
         }
     }
@@ -18,21 +18,22 @@
     import Drawer from 'components/drawer.svelte'
     import HorizontalLine from 'components/horizontal-line.svelte'
     import MultiLevelQuestion from 'components/multi-level-question.svelte'
-    export let entryPage: EnterPageQueryStore
+    export let enterPage: EnterPageQueryStore
 
-    query(entryPage)
-
-    let { question: whatQuestions } = $entryPage.data?.enter_page?.multi_level_questions![0]!
-    let { question: howQuestions } = $entryPage.data?.enter_page?.text_area_questions![0]!
+    query(enterPage)
 
     let drawerOpenedTitle: string = ''
+    let { question: whatQuestions } = $enterPage.data?.enter_page?.multi_level_questions![0]!
+    let { question: howQuestions } = $enterPage.data?.enter_page?.text_area_questions![0]!
 </script>
 
 <svelte:head>
-    <title>{$entryPage.data?.enter_page?.title_bar_text ?? ''}</title>
+    <title>{$enterPage.data?.enter_page?.title_bar_text ?? ''}</title>
+    <meta name="description" content={$enterPage.data?.enter_page?.meta_description ?? ''} />
+    <meta name="keywords" content={$enterPage.data?.enter_page?.meta_keywords ?? ''} />
 </svelte:head>
 
-<Intro data={$entryPage.data?.enter_page} />
+<Intro data={$enterPage.data?.enter_page} />
 <Divider heightMobile={5} heightDesktop={9.7} />
 {#if whatQuestions && howQuestions}
     <HorizontalLine />
@@ -47,5 +48,5 @@
 
     <Divider heightDesktop={11.5} heightMobile={5.6} />
 {/if}
-<Timeline data={$entryPage.data?.enter_page} />
+<Timeline data={$enterPage.data?.enter_page} />
 <Divider heightMobile={4.99} heightDesktop={20.1} />

@@ -7,7 +7,11 @@
 </script>
 
 <section>
-    <i>
+    <i
+        on:click={() => {
+            goto('/enter')
+        }}
+    >
         {@html data?.enter_now_section_heading}
     </i>
     <p>
@@ -44,7 +48,7 @@
             grid-column: 2/7;
             grid-row: 1/2;
 
-            cursor: default;
+            cursor: pointer;
 
             &:hover {
                 color: var(--color-accent);

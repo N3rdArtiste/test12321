@@ -1,6 +1,8 @@
 query EnterPage {
     enter_page {
         id
+        meta_description
+        meta_keywords
         key_dates_title
         key_dates_youtube_video_id
         timeline_section_heading
@@ -19,41 +21,39 @@ query EnterPage {
                 subtext
             }
         }
-                
-                text_area_questions {
+
+        text_area_questions {
+            id
+            question {
+                id
+                body
+                title
+            }
+        }
+        multi_level_questions {
+            id
+            question {
+                id
+                title
+                body {
                     id
-                    question {
+                    multi_level_question_items {
                         id
-                        body
-                        title
-                    }
-                }
-                multi_level_questions {
-                    id
-                    question {
-                        id
-                        title
-                        body {
+                        level_1_title
+                        level_2_title
+                        level_2_subtext
+                        level_3_text
+                        level_3_links {
                             id
-                            multi_level_question_items {
+                            multi_level_question_item_links {
                                 id
-                                level_1_title
-                                level_2_title
-                                level_2_subtext
-                                level_3_text
-                                level_3_links {
-                                    id
-                                    multi_level_question_item_links {
-                                        id
-                                        label
-                                        url
-                                    }
-                                }
+                                label
+                                url
                             }
                         }
                     }
                 }
             }
-        
-    
+        }
+    }
 }

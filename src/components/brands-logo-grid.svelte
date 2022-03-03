@@ -24,8 +24,11 @@
             display: grid;
             align-items: center;
             justify-content: center;
-            background-color: white;
+            background-color: var(--color-grey);
             margin-right: 1rem;
+        }
+        & img {
+            mix-blend-mode: multiply;
         }
     }
 
@@ -36,14 +39,12 @@
             row-gap: 1.9rem;
             grid-auto-flow: row;
 
-            & img {
-                width: 100%;
-            }
-
             & > div {
                 margin: 0;
             }
-
+            & img {
+                width: 100%;
+            }
             & > div:nth-child(5n-4) {
                 grid-area: 1 / 1 / 2 / 4;
             }
