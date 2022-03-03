@@ -4,12 +4,15 @@
     export const load: Load = async ({ stuff, params, url }) => {
         let category = url.searchParams.get('category')
         let filterQuery = getPastWinnersFilterQuery(category)
+        const data = stuff.getOperationStore
+            ? await stuff.getOperationStore(PastWinnerDetailsDocument, { id: params.slug, filterQuery: { id: { _gt: parseInt(params.slug) }, ...filterQuery } })
+            : null
         return {
+            status: data?.error?.graphQLErrors.length ? 404 : 200,
+            error: 'Page not found',
             props: {
                 category,
-                pastWinnerDetailsContent: stuff.getOperationStore
-                    ? await stuff.getOperationStore(PastWinnerDetailsDocument, { id: params.slug, filterQuery: { id: { _gt: parseInt(params.slug) }, ...filterQuery } })
-                    : null,
+                pastWinnerDetailsContent: data,
             },
         }
     }
@@ -24,6 +27,7 @@
 
     export let pastWinnerDetailsContent: PastWinnerDetailsQueryStore
     export let category: string | null
+
     query(pastWinnerDetailsContent)
 </script>
 
