@@ -10,6 +10,8 @@
     export let onNextClick: () => void
     export let showNextButton: boolean = false
 
+    let drawerOpenedTitle: string = ''
+
     const details = {
         year: (data?.year ?? [])[0]?.past_winners_year?.year,
         category: (data?.categories ?? [])[0]?.past_winners_category?.category,
@@ -56,14 +58,14 @@
     <div class="drawers-container">
         {#if data?.project_information}
             <hr />
-            <Drawer title="Project Information" small noHorizontalPadding>
+            <Drawer title="Project Information" bind:drawerOpenedTitle small noHorizontalPadding>
                 {@html data?.project_information}
             </Drawer>
         {/if}
 
         {#if data?.worksheets?.length}
             <hr />
-            <Drawer title="Download Worksheets" small noHorizontalPadding>
+            <Drawer title="Download Worksheets" bind:drawerOpenedTitle small noHorizontalPadding>
                 {#each data?.worksheets ?? [] as worksheet}
                     <Arrow
                         small
