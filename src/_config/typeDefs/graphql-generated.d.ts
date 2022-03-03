@@ -2783,10 +2783,11 @@ type JudgesPageQuery = { __typename?: 'Query', judges?: Array<{ __typename?: 'ju
 
 type PastWinnerDetailsQueryVariables = Exact<{
   id: Scalars['ID'];
+  filterQuery?: InputMaybe<Past_Winners_Filter>;
 }>;
 
 
-type PastWinnerDetailsQuery = { __typename?: 'Query', past_winners_by_id?: { __typename?: 'past_winners', id?: string | null, name?: string | null, students_name?: string | null, short_description?: string | null, youtube_video_id?: string | null, school_name?: string | null, project_information?: string | null, categories?: Array<{ __typename?: 'past_winners_past_winners_categories', id?: string | null, past_winners_category?: { __typename?: 'past_winners_categories', id?: string | null, category: string } | null } | null> | null, year?: Array<{ __typename?: 'past_winners_past_winners_years', id?: string | null, past_winners_year?: { __typename?: 'past_winners_years', id?: string | null, year: number } | null } | null> | null, worksheets?: Array<{ __typename?: 'past_winners_past_winners_worksheets', id?: string | null, past_winners_worksheet?: { __typename?: 'past_winners_worksheets', id?: string | null, worksheet?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null } | null> | null } | null };
+type PastWinnerDetailsQuery = { __typename?: 'Query', past_winners_by_id?: { __typename?: 'past_winners', id?: string | null, name?: string | null, students_name?: string | null, short_description?: string | null, youtube_video_id?: string | null, school_name?: string | null, project_information?: string | null, categories?: Array<{ __typename?: 'past_winners_past_winners_categories', id?: string | null, past_winners_category?: { __typename?: 'past_winners_categories', id?: string | null, category: string } | null } | null> | null, year?: Array<{ __typename?: 'past_winners_past_winners_years', id?: string | null, past_winners_year?: { __typename?: 'past_winners_years', id?: string | null, year: number } | null } | null> | null, worksheets?: Array<{ __typename?: 'past_winners_past_winners_worksheets', id?: string | null, past_winners_worksheet?: { __typename?: 'past_winners_worksheets', id?: string | null, worksheet?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null } | null } | null } | null> | null } | null, past_winners?: Array<{ __typename?: 'past_winners', id?: string | null } | null> | null };
 
 type PastWinnersPageQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>;

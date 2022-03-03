@@ -1,4 +1,4 @@
-query pastWinnerDetails($id: ID!) {
+query pastWinnerDetails($id: ID!, $filterQuery: past_winners_filter) {
     past_winners_by_id(id: $id) {
         id
         name
@@ -32,5 +32,8 @@ query pastWinnerDetails($id: ID!) {
                 }
             }
         }
+    }
+    past_winners(limit: 1, filter: $filterQuery) {
+        id
     }
 }
