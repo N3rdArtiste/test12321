@@ -65,8 +65,8 @@
     }
     const eventListenerHandler = (e: Event) => {
         const element = e.target as HTMLDivElement
-        showLeftArrow = element.scrollLeft !== 0
-        showRightArrow = element.offsetWidth + element.scrollLeft < element.scrollWidth
+        showLeftArrow = element.scrollLeft >= 4
+        showRightArrow = element.offsetWidth + element.scrollLeft < element.scrollWidth - 4
     }
 </script>
 
