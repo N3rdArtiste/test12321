@@ -6,9 +6,7 @@
 </script>
 
 {#if imageSrc}
-    <div class="image-container">
-        <img src={imageSrc} alt={imageAlt} on:click={() => (lightBoxOpen = true)} />
-    </div>
+    <img class="image" src={imageSrc} alt={imageAlt} on:click={() => (lightBoxOpen = true)} />
 
     <div class="lightbox" class:open={lightBoxOpen}>
         <img src={imageSrc} alt={imageAlt} on:click={() => (lightBoxOpen = false)} />
@@ -16,17 +14,14 @@
 {/if}
 
 <style lang="scss">
-    .image-container {
+    .image {
         cursor: pointer;
         width: 100%;
 
-        img {
-            width: 100%;
-            transition: 0.5s all ease-in-out;
+        transition: 0.5s all ease-in-out;
 
-            &:hover {
-                transform: scale(1.02);
-            }
+        &:hover {
+            transform: scale(1.02);
         }
     }
 

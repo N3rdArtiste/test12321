@@ -26,7 +26,7 @@
         grid-area: 1 / 2 / 2 / 8;
     }
 
-    :global(.image-container) {
+    :global(.image) {
         width: 100%;
         grid-area: 3 / 1 / 4 / 9;
     }
@@ -45,7 +45,7 @@
             grid-area: 1 / 1 / 2 / 4;
         }
 
-        .image {
+        :global(.image) {
             grid-area: 1 / 4 / 3 / 13;
         }
     }
