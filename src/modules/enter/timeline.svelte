@@ -1,12 +1,14 @@
 <script lang="ts">
     import { getDirectusAssetLink } from 'helpers/string'
+    import Lightbox from 'components/lightbox.svelte'
 
     export let data: EnterPageQuery['enter_page']
 </script>
 
 <section>
     <h1 class="heading">{data?.timeline_section_heading}</h1>
-    <img class="image" src={getDirectusAssetLink(data?.timeline_section_image?.filename_disk)} alt={data?.timeline_section_image?.description} />
+
+    <Lightbox imageSrc={getDirectusAssetLink(data?.timeline_section_image?.filename_disk ?? '')} imageAlt={data?.timeline_section_image?.description ?? ''} />
 </section>
 
 <style lang="scss">
@@ -24,7 +26,7 @@
         grid-area: 1 / 2 / 2 / 8;
     }
 
-    .image {
+    :global(.image-container) {
         width: 100%;
         grid-area: 3 / 1 / 4 / 9;
     }
