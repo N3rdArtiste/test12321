@@ -1,21 +1,14 @@
 <script lang="ts">
-    import Arrow from 'components/buttons/arrow.svelte'
-    import { getDirectusAssetLink } from 'helpers/string'
-
+    import LiteYTEmbed from 'components/lite-yt-embed.svelte'
     export let data: AboutPageQuery['about_page']
 </script>
 
 <section>
     <h2 class="heading">{data?.challenge_section_heading}</h2>
     <p class="description">{@html data?.challenge_section_body}</p>
-    <iframe
-        class="video"
-        src={`https://www.youtube.com/embed/${data?.challenge_section_youtube_video_id}?controls=0`}
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-    />
+    <div class="video">
+        <LiteYTEmbed youtubeVideoId={data?.challenge_section_youtube_video_id ?? ''} />
+    </div>
 </section>
 
 <style lang="scss">

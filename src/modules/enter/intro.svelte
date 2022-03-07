@@ -1,4 +1,6 @@
 <script lang="ts">
+    import LiteYtEmbed from 'components/lite-yt-embed.svelte'
+
     export let data: EnterPageQuery['enter_page']
 </script>
 
@@ -15,14 +17,9 @@
             </div>
         {/each}
     </div>
-    <iframe
-        class="video"
-        src={`https://www.youtube.com/embed/${data?.key_dates_youtube_video_id}?controls=0`}
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-    />
+    <div class="video">
+        <LiteYtEmbed youtubeVideoId={data?.key_dates_youtube_video_id ?? ''} />
+    </div>
 </section>
 
 <style lang="scss">

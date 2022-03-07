@@ -6,22 +6,19 @@
     import ButtonArrow from 'components/buttons/arrow.svelte'
     import SvgFile from 'components/svg-file.svelte'
     import { goto } from '$app/navigation'
+    import LiteYtEmbed from 'components/lite-yt-embed.svelte'
 </script>
 
 <section>
-    <iframe
-        src={`https://www.youtube.com/embed/${data?.hero_section_youtube_video_id}?controls=0`}
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-    />
+    <div class="video">
+        <LiteYtEmbed youtubeVideoId={data?.hero_section_youtube_video_id ?? ''} />
+    </div>
     <div>
         <SvgFile src={getDirectusAssetLink(data?.hero_section_right_side_svg?.filename_disk)} />
     </div>
     <h1>{data?.innovator_section_heading}</h1>
     <b>{@html data?.innovator_section_body}</b>
-    <img src={getDirectusAssetLink(data?.innovator_section_image?.filename_disk)} alt={data?.innovator_section_image?.description} />
+    <img src={`${getDirectusAssetLink(data?.innovator_section_image?.filename_disk)}?quality=80&format=webp`} alt={data?.innovator_section_image?.description} />
     <div>
         <ButtonArrow
             label={data?.innovator_section_CTA_label ?? ''}
@@ -48,7 +45,7 @@
             padding: 0 2rem;
             align-items: flex-start;
         }
-        & > iframe:nth-of-type(1) {
+        .video {
             grid-column: 1/9;
             grid-row: 1/2;
             width: 100%;
@@ -60,7 +57,7 @@
                 aspect-ratio: 1154/797;
             }
         }
-        & > div:nth-of-type(1) {
+        & > div:nth-of-type(2) {
             display: none;
 
             @media (min-width: 821px) {
@@ -82,6 +79,7 @@
                 grid-row: 4/5;
             }
         }
+
         & > b:nth-of-type(1) {
             grid-column: 2/8;
             grid-row: 5/6;
@@ -90,7 +88,7 @@
                 grid-row: 6/7;
             }
         }
-        & > div:nth-of-type(2) {
+        & > div:nth-of-type(3) {
             grid-column: 2/8;
             grid-row: 7/8;
             @media (min-width: 821px) {

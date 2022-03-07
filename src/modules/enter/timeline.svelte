@@ -1,14 +1,15 @@
 <script lang="ts">
     import { getDirectusAssetLink } from 'helpers/string'
-    import Lightbox from 'components/lightbox.svelte'
+    import PinchToZoomImage from 'components/pinch-to-zoom-image.svelte'
 
     export let data: EnterPageQuery['enter_page']
 </script>
 
 <section>
     <h1 class="heading">{data?.timeline_section_heading}</h1>
-
-    <Lightbox imageSrc={getDirectusAssetLink(data?.timeline_section_image?.filename_disk ?? '')} imageAlt={data?.timeline_section_image?.description ?? ''} />
+    <div class="image-container">
+        <PinchToZoomImage imageSrc={getDirectusAssetLink(data?.timeline_section_image?.filename_disk ?? '')} imageAlt={data?.timeline_section_image?.description ?? ''} />
+    </div>
 </section>
 
 <style lang="scss">
@@ -26,7 +27,7 @@
         grid-area: 1 / 2 / 2 / 8;
     }
 
-    :global(.image) {
+    .image-container {
         width: 100%;
         grid-area: 3 / 1 / 4 / 9;
     }
@@ -45,7 +46,7 @@
             grid-area: 1 / 1 / 2 / 4;
         }
 
-        :global(.image) {
+        .image-container {
             grid-area: 1 / 4 / 3 / 13;
         }
     }

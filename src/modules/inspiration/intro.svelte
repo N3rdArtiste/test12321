@@ -6,7 +6,7 @@
 <section>
     <i>{@html data?.heading}</i>
     <p>{data?.description}</p>
-    <img src={getDirectusAssetLink(data?.hero_image?.filename_disk)} alt={data?.hero_image?.description} />
+    <img src={`${getDirectusAssetLink(data?.hero_image?.filename_disk)}?quality=80&format=webp`} alt={data?.hero_image?.description} />
 </section>
 
 <style lang="scss">

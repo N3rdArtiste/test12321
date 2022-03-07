@@ -4,6 +4,7 @@
     import Arrow from 'components/buttons/arrow.svelte'
 
     import Drawer from 'components/drawer.svelte'
+    import LiteYtEmbed from 'components/lite-yt-embed.svelte'
     import { getDirectusAssetLink } from 'helpers/string'
 
     export let data: PastWinnerDetailsQuery['past_winners_by_id']
@@ -37,14 +38,9 @@
         Student/s<br />
         <strong>{details.students}</strong>
     </p>
-    <iframe
-        class="video"
-        src={`https://www.youtube.com/embed/${data?.youtube_video_id}?controls=0`}
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-    />
+    <div class="video">
+        <LiteYtEmbed youtubeVideoId={data?.youtube_video_id ?? ''} />
+    </div>
     <div class="next-button">
         {#if showNextButton}
             <Arrow
