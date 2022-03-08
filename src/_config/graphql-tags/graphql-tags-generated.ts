@@ -246,7 +246,12 @@ export const HomePageDocument = gql`
       id
     }
   }
-  past_winners(limit: $limit, page: $page, filter: $filterQuery) {
+  past_winners(
+    limit: $limit
+    page: $page
+    filter: $filterQuery
+    sort: ["sort", "date_created"]
+  ) {
     id
     name
     image {
@@ -314,7 +319,7 @@ export const InspirationPageDocument = gql`
       id
     }
   }
-  inspiration_articles(limit: $limit, page: $page) {
+  inspiration_articles(limit: $limit, page: $page, sort: ["sort", "date_created"]) {
     id
     image {
       id

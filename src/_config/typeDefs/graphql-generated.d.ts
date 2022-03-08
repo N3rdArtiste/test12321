@@ -1696,6 +1696,7 @@ type Inspiration_PageHero_ImageArgs = {
 type Judges = {
   __typename?: 'judges';
   about_text?: Maybe<Scalars['String']>;
+  bio?: Maybe<Scalars['String']>;
   company?: Maybe<Scalars['String']>;
   date_created?: Maybe<Scalars['Date']>;
   date_created_func?: Maybe<Datetime_Functions>;
@@ -1749,6 +1750,7 @@ type Judges_Filter = {
   _and?: InputMaybe<Array<InputMaybe<Judges_Filter>>>;
   _or?: InputMaybe<Array<InputMaybe<Judges_Filter>>>;
   about_text?: InputMaybe<String_Filter_Operators>;
+  bio?: InputMaybe<String_Filter_Operators>;
   company?: InputMaybe<String_Filter_Operators>;
   date_created?: InputMaybe<Date_Filter_Operators>;
   date_created_func?: InputMaybe<Datetime_Function_Filter_Operators>;

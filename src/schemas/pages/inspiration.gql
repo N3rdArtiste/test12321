@@ -16,7 +16,7 @@ query InspirationPage($limit: Int, $page: Int) {
             id
         }
     }
-    inspiration_articles(limit: $limit, page: $page) {
+    inspiration_articles(limit: $limit, page: $page, sort: ["sort", "date_created"]) {
         id
         image {
             id

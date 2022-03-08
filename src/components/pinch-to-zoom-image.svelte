@@ -12,7 +12,6 @@
     }
 
     const touchstart = (event: any) => {
-        // console.log('touchstart', event);
         if (event.touches.length === 2) {
             event.preventDefault() // Prevent page scroll
 

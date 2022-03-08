@@ -59,9 +59,6 @@
 
     onMount(() => {
         selectedPastWinnersCategoryId = category ?? 'all'
-        replaceQueryParams({
-            page: currentPage.toString(),
-        })
     })
 
     $: if (!$homePage.fetching) {
@@ -88,8 +85,6 @@
 
         $homePage.variables = { ...$homePage.variables, page, limit, filterQuery: getPastWinnersFilterQuery(id) }
     }
-
-    $: console.log(pastWinnersList, 'pastWinnersList_home')
 </script>
 
 <svelte:head>

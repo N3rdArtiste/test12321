@@ -59,7 +59,7 @@ query HomePage($limit: Int, $page: Int, $filterQuery: past_winners_filter) {
             id
         }
     }
-    past_winners(limit: $limit, page: $page, filter: $filterQuery) {
+    past_winners(limit: $limit, page: $page, filter: $filterQuery, sort: ["sort", "date_created"]) {
         id
         name
         image {

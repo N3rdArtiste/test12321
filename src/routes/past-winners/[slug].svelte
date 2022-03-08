@@ -7,7 +7,7 @@
         const data = stuff.getOperationStore
             ? await stuff.getOperationStore(PastWinnerDetailsDocument, { id: params.slug, filterQuery: { id: { _gt: parseInt(params.slug) }, ...filterQuery } })
             : null
-        console.log(data, 'data')
+
         if (!!data?.error?.graphQLErrors.length) {
             return {
                 status: 500,
