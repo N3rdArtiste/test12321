@@ -15,7 +15,7 @@
     let socialMediaIcons: StandardData
 
     let logo = {
-        src: getDirectusAssetLink(data.footer?.footer_logo?.filename_disk),
+        src: `${getDirectusAssetLink(data.footer?.footer_logo?.filename_disk)}?quality=100&format=webp`,
         alt: data.footer?.footer_logo?.description ?? '',
     }
 
@@ -26,7 +26,7 @@
         return {
             href: partner?.link ?? '',
             alt: partner?.image?.description ?? '',
-            src: getDirectusAssetLink(partner?.image?.filename_disk) ?? '',
+            src: `${getDirectusAssetLink(partner?.image?.filename_disk)}?quality=100&format=webp` ?? '',
         }
     })
 
@@ -34,7 +34,7 @@
         return {
             href: sponsor?.link ?? '',
             alt: sponsor?.image?.description ?? '',
-            src: getDirectusAssetLink(sponsor?.image?.filename_disk) ?? '',
+            src: `${getDirectusAssetLink(sponsor?.image?.filename_disk)}?quality=100&format=webp` ?? '',
         }
     })
 
@@ -42,7 +42,7 @@
         return {
             href: socialMediaIcon?.link ?? '',
             alt: socialMediaIcon?.image?.description ?? '',
-            src: getDirectusAssetLink(socialMediaIcon?.image?.filename_disk) ?? '',
+            src: `${getDirectusAssetLink(socialMediaIcon?.image?.filename_disk)}?quality=100&format=webp` ?? '',
         }
     })
 

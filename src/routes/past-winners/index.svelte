@@ -82,6 +82,8 @@
 
         $pastWinnersContent.variables = { ...$pastWinnersContent.variables, page, limit, filterQuery: getPastWinnersFilterQuery(id) }
     }
+
+    $: console.log(pastWinnersList, 'pastWinnersList_pastwinners')
 </script>
 
 <svelte:head>
