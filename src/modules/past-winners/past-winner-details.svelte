@@ -88,6 +88,7 @@
         grid-auto-flow: row;
         align-items: flex-start;
         justify-content: center;
+        align-content: flex-start;
     }
 
     hr {
