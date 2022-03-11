@@ -36,12 +36,12 @@
 <Divider heightMobile={5} heightDesktop={9.7} />
 {#if whatQuestions && howQuestions}
     <HorizontalLine />
-    <Drawer title={whatQuestions.title ?? ''} bind:drawerOpenedTitle>
-        <MultiLevelQuestion question={whatQuestions} />
-    </Drawer>
-    <HorizontalLine />
     <Drawer title={howQuestions.title ?? ''} bind:drawerOpenedTitle>
         {@html howQuestions.body}
+    </Drawer>
+    <HorizontalLine />
+    <Drawer title={whatQuestions.title ?? ''} bind:drawerOpenedTitle>
+        <MultiLevelQuestion question={whatQuestions} />
     </Drawer>
     <HorizontalLine />
 

@@ -1,14 +1,15 @@
 @import 'styles/_fonts.scss';
 @import 'styles/_variables.scss';
 
-*,
-*::after,
-*::before {
+*:not(ul, ol, li),
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     transition: all 0.3s;
 }
+
 html::-webkit-scrollbar,
 body::-webkit-scrollbar,
 div::-webkit-scrollbar {

@@ -48,6 +48,10 @@
     button {
         font-weight: 400;
     }
+
+    ul {
+        padding-left: 0;
+    }
     li {
         padding-left: 0.75rem;
         list-style: none;

@@ -13,7 +13,7 @@
     <div class="ctaButton">
         <Arrow
             onClick={() => {
-                goToStaticPage('/knack.html')
+                goToStaticPage('/enter')
             }}
             label={data?.enter_now_section_CTA_label ?? ''}
         />

@@ -131,4 +131,14 @@
             grid-area: 1 / 4 / 2 / 10;
         }
     }
+    .level-2-subItem-2 {
+        & :global(a) {
+            font-size: 2rem;
+            line-height: 2.8rem;
+            @media (min-width: 769px) {
+                font-size: 2.2rem;
+                line-height: 3rem;
+            }
+        }
+    }
 </style>
