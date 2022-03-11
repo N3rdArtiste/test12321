@@ -59,7 +59,7 @@
                                     small={true}
                                     label={link?.multi_level_question_item_links?.label ?? ''}
                                     onClick={() => {
-                                        goto(link?.multi_level_question_item_links?.url ?? '')
+                                        location.href = link?.multi_level_question_item_links?.url ?? ''
                                     }}
                                 />
                             </div>

@@ -69,7 +69,7 @@
 
         min-height: calc(100vh - var(--header-height));
         padding-top: calc(2rem + var(--header-height));
-
+        align-content: flex-start;
         @media (min-width: 769px) {
             padding-top: calc(6.2rem + var(--header-height));
         }
