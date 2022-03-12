@@ -7,7 +7,6 @@
 
     import { navMain } from '_config/constants/menus'
     import SvgFile from 'components/svg-file.svelte'
-    import { onDestroy, onMount } from 'svelte'
     import { fade } from 'svelte/transition'
 
     let partners: StandardData
@@ -16,7 +15,7 @@
 
     let logo = {
         src: `${getDirectusAssetLink(data.footer?.footer_logo?.filename_disk)}?quality=100&format=webp`,
-        alt: data.footer?.footer_logo?.description ?? '',
+        alt: data.footer?.footer_logo?.description ?? 'yia logo',
     }
 
     let copyrightText = data.footer?.copyright_text ?? ''
@@ -25,7 +24,7 @@
     $: partners = data?.partners?.map(partner => {
         return {
             href: partner?.link ?? '',
-            alt: partner?.image?.description ?? '',
+            alt: partner?.image?.description ?? 'partners logo',
             src: `${getDirectusAssetLink(partner?.image?.filename_disk)}?quality=100&format=webp` ?? '',
         }
     })
@@ -33,7 +32,7 @@
     $: sponsors = data?.our_sponsors?.map(sponsor => {
         return {
             href: sponsor?.link ?? '',
-            alt: sponsor?.image?.description ?? '',
+            alt: sponsor?.image?.description ?? 'sponsors logo',
             src: `${getDirectusAssetLink(sponsor?.image?.filename_disk)}?quality=100&format=webp` ?? '',
         }
     })
@@ -41,7 +40,7 @@
     $: socialMediaIcons = data?.social_media_links?.map(socialMediaIcon => {
         return {
             href: socialMediaIcon?.link ?? '',
-            alt: socialMediaIcon?.image?.description ?? '',
+            alt: socialMediaIcon?.image?.description ?? 'social media icon',
             src: `${getDirectusAssetLink(socialMediaIcon?.image?.filename_disk)}?quality=100&format=webp` ?? '',
         }
     })

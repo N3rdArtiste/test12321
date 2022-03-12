@@ -7,7 +7,7 @@
 <div class="container">
     {#each brands ?? [] as logo}
         <div>
-            <img src={`${getDirectusAssetLink(logo?.image?.filename_disk)}?quality=100&format=webp`} alt="" />
+            <img src={`${getDirectusAssetLink(logo?.image?.filename_disk)}?quality=100&format=webp`} alt={logo?.image?.description ?? 'brand logo'} />
         </div>
     {/each}
 </div>

@@ -18,7 +18,7 @@
     </div>
     <h1>{data?.innovator_section_heading}</h1>
     <b>{@html data?.innovator_section_body}</b>
-    <img src={`${getDirectusAssetLink(data?.innovator_section_image?.filename_disk)}?quality=80&format=webp`} alt={data?.innovator_section_image?.description} />
+    <img src={`${getDirectusAssetLink(data?.innovator_section_image?.filename_disk)}?quality=80&format=webp`} alt={data?.innovator_section_image?.description ?? 'innovator'} />
     <div>
         <ButtonArrow
             label={data?.innovator_section_CTA_label ?? ''}
@@ -36,6 +36,7 @@
         grid-template-rows: auto 5rem auto 4.2rem auto 6.8rem auto 5.1rem auto;
         column-gap: var(--column-gap);
         max-width: var(--max-width);
+        align-content: flex-start;
 
         @media (min-width: 821px) {
             grid-template-columns: repeat(2, minmax(12.2rem, 1fr)) 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr minmax(12.2rem, 1fr);
@@ -64,6 +65,7 @@
                 grid-column: 10/13;
                 grid-row: 1/3;
                 display: block;
+                aspect-ratio: 373/795;
                 width: 100%;
                 &:hover {
                     fill: var(--color-accent);
@@ -99,6 +101,7 @@
         & > img:nth-of-type(1) {
             grid-column: 1/9;
             grid-row: 9/10;
+            aspect-ratio: 894/542;
 
             width: 100%;
 

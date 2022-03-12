@@ -8,7 +8,7 @@
 <section>
     <h1 class="heading">{data?.timeline_section_heading}</h1>
     <div class="image-container">
-        <PinchToZoomImage imageSrc={getDirectusAssetLink(data?.timeline_section_image?.filename_disk ?? '')} imageAlt={data?.timeline_section_image?.description ?? ''} />
+        <PinchToZoomImage imageSrc={getDirectusAssetLink(data?.timeline_section_image?.filename_disk ?? '')} imageAlt={data?.timeline_section_image?.description ?? undefined} />
     </div>
 </section>
 

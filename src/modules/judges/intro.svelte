@@ -22,7 +22,11 @@
             <ArrowButton label={data.judges_section_CTA_label ?? ''} onClick={() => handleClick()} />
         </div>
         <div class="judge-container">
-            <img src={`${getDirectusAssetLink(judges[0].image?.filename_disk)}?quality=100&format=webp`} alt="" on:click={() => handleClick(judges[0].id)} />
+            <img
+                src={`${getDirectusAssetLink(judges[0].image?.filename_disk)}?quality=100&format=webp`}
+                alt={judges[0].image?.description ?? 'judge'}
+                on:click={() => handleClick(judges[0].id)}
+            />
 
             <div class="judge-name">
                 <p class="small"><strong>{judges[0].name}, {judges[0].company}</strong></p>

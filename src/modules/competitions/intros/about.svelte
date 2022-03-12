@@ -1,6 +1,4 @@
 <script lang="ts">
-    import { goto } from '$app/navigation'
-
     import Arrow from 'components/buttons/arrow.svelte'
     import { getDirectusAssetLink } from 'helpers/string'
     import { goToStaticPage } from 'helpers/url'
@@ -18,7 +16,11 @@
             label={data?.enter_now_section_CTA_label ?? ''}
         />
     </div>
-    <img class="hero-image" src={`${getDirectusAssetLink(data?.enter_now_section_image?.filename_disk)}?quality=80&format=webp`} alt={data?.enter_now_section_image?.description} />
+    <img
+        class="hero-image"
+        src={`${getDirectusAssetLink(data?.enter_now_section_image?.filename_disk)}?quality=80&format=webp`}
+        alt={data?.enter_now_section_image?.description ?? 'hero'}
+    />
 </section>
 
 <style lang="scss">

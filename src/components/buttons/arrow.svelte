@@ -6,7 +6,7 @@
     export let onClick: () => void
 </script>
 
-<button class="arrowButton" class:small on:click={onClick} class:accentHover class:arrowRight>
+<button aria-label={label ?? 'arrow'} class="arrowButton" class:small on:click={onClick} class:accentHover class:arrowRight>
     {#if label.length}
         <span>{label}</span>
     {/if}

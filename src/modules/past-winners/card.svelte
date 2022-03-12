@@ -6,7 +6,7 @@
 </script>
 
 <article in:blur>
-    <img src={`${getDirectusAssetLink(data?.image?.filename_disk)}?quality=50&format=webp`} alt={data?.image?.description} />
+    <img src={`${getDirectusAssetLink(data?.image?.filename_disk)}?quality=50&format=webp`} alt={data?.image?.description ?? 'past winner'} />
     <h2 class="small">{data?.name}</h2>
     <p>{data?.short_description}</p>
 </article>

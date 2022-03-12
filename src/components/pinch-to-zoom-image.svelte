@@ -1,6 +1,6 @@
 <script lang="ts">
     export let imageSrc: string = ''
-    export let imageAlt: string = ''
+    export let imageAlt: string = 'pinch to zoom image'
 
     let imageElementScale = 1
 

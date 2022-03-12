@@ -22,7 +22,7 @@
 <svelte:window bind:scrollY />
 <div class="wrapper" class:showShadow>
     <header class:isOpened={$navDrawerOpen}>
-        <a sveltekit:prefetch href="/" on:click={() => ($navDrawerOpen = false)}>
+        <a aria-label="yia logo" sveltekit:prefetch href="/" on:click={() => ($navDrawerOpen = false)}>
             <SvgFile src={logo.src} />
         </a>
 

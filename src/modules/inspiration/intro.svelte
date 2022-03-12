@@ -6,7 +6,7 @@
 <section>
     <i>{@html data?.heading}</i>
     <p>{data?.description}</p>
-    <img src={`${getDirectusAssetLink(data?.hero_image?.filename_disk)}?quality=80&format=webp`} alt={data?.hero_image?.description} />
+    <img src={`${getDirectusAssetLink(data?.hero_image?.filename_disk)}?quality=80&format=webp`} alt={data?.hero_image?.description ?? 'hero'} />
 </section>
 
 <style lang="scss">
@@ -16,6 +16,7 @@
         grid-template-rows: auto 4.2rem auto 5.4rem auto auto;
         column-gap: var(--column-gap);
         justify-content: center;
+        align-content: flex-start;
 
         @media (min-width: 843px) {
             grid-template-columns: minmax(12.2rem, 1fr) repeat(11, 1fr);
