@@ -44,7 +44,7 @@
     onMount(() => {
         if ($isLoading) {
             const appWrapper = document.getElementById('svelte') as HTMLElement
-            appWrapper.style.filter = 'blur(2rem)'
+            appWrapper.style.display = 'block'
             setTimeout(() => {
                 appWrapper.style.filter = 'none'
             }, 300)
