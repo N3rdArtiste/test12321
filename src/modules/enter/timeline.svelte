@@ -30,6 +30,7 @@
     .image-container {
         width: 100%;
         grid-area: 3 / 1 / 4 / 9;
+        aspect-ratio: 1226/664.33;
     }
 
     @media (min-width: 1366px) {

@@ -21,6 +21,8 @@
         align-content: end;
         align-items: center;
         height: 100%;
+        padding: 0;
+        margin: 0;
 
         @media (min-width: 769px) {
             justify-content: end;

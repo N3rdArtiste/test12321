@@ -1,5 +1,5 @@
 <script lang="ts">
-    export let label: string = ''
+    export let label: string | undefined = undefined
     export let accentHover = true
     export let arrowRight = false
     export let small: boolean = false
@@ -7,7 +7,7 @@
 </script>
 
 <button aria-label={label ?? 'arrow'} class="arrowButton" class:small on:click={onClick} class:accentHover class:arrowRight>
-    {#if label.length}
+    {#if Boolean(label)}
         <span>{label}</span>
     {/if}
 

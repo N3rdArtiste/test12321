@@ -6,7 +6,11 @@
 </script>
 
 <article in:blur>
-    <img src={`${getDirectusAssetLink(data?.image?.filename_disk)}?quality=50&format=webp`} alt={data?.image?.description ?? 'past winner'} />
+    <picture>
+        <source srcset={`${getDirectusAssetLink(data?.image?.filename_disk)}?quality=50&format=webp`} media="(min-width: 769px)" />
+        <img src={`${getDirectusAssetLink(data?.image?.filename_disk)}?quality=30&format=webp`} alt={data?.image?.description ?? 'past winner'} />
+    </picture>
+
     <h2 class="small">{data?.name}</h2>
     <p>{data?.short_description}</p>
 </article>
@@ -18,13 +22,15 @@
         grid-template-columns: auto;
         grid-template-rows: auto 2.8rem auto 1.5rem auto;
 
-        & > img {
+        & > picture {
             grid-row: 1/2;
 
-            width: 100%;
-            aspect-ratio: 374/268;
-            object-fit: cover;
-            object-position: top;
+            & > img {
+                width: 100%;
+                aspect-ratio: 374/268;
+                object-fit: cover;
+                object-position: top;
+            }
         }
 
         & > h2 {

@@ -52,7 +52,7 @@
             grid-column: 2/8;
             grid-row: 5/6;
             width: 100%;
-
+            aspect-ratio: 948/575;
             @media (min-width: 843px) {
                 grid-column: 6/13;
                 grid-row: 1/5;

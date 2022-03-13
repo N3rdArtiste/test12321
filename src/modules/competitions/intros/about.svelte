@@ -68,6 +68,7 @@
     .hero-image {
         grid-area: 5 / 1 / 6 / 9;
         width: 100%;
+        aspect-ratio: 948/575;
 
         @media (min-width: 769px) {
             grid-area: 5 / 1 / 6 / 13;

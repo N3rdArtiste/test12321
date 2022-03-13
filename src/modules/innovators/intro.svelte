@@ -18,7 +18,10 @@
     </div>
     <h1>{data?.innovator_section_heading}</h1>
     <b>{@html data?.innovator_section_body}</b>
-    <img src={`${getDirectusAssetLink(data?.innovator_section_image?.filename_disk)}?quality=80&format=webp`} alt={data?.innovator_section_image?.description ?? 'innovator'} />
+    <picture>
+        <source srcset={`${getDirectusAssetLink(data?.innovator_section_image?.filename_disk)}?quality=80&format=webp`} media="(min-width: 450px)" />
+        <img src={`${getDirectusAssetLink(data?.innovator_section_image?.filename_disk)}?quality=30&format=webp`} alt={data?.innovator_section_image?.description ?? 'innovator'} />
+    </picture>
     <div>
         <ButtonArrow
             label={data?.innovator_section_CTA_label ?? ''}
@@ -98,12 +101,15 @@
                 grid-row: 8/9;
             }
         }
-        & > img:nth-of-type(1) {
+        & > picture {
             grid-column: 1/9;
             grid-row: 9/10;
-            aspect-ratio: 894/542;
 
-            width: 100%;
+            & > img {
+                aspect-ratio: 894/542;
+
+                width: 100%;
+            }
 
             @media (min-width: 821px) {
                 grid-column: 6/13;

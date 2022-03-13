@@ -6,7 +6,10 @@
 </script>
 
 <article in:blur>
-    <img class:longCard src={`${getDirectusAssetLink(article?.image?.filename_disk)}?quality=50&format=webp`} alt={article?.image?.description ?? 'article thumbnail'} />
+    <picture>
+        <source srcset={`${getDirectusAssetLink(article?.image?.filename_disk)}?quality=50&format=webp`} media="(min-width: 769px)" />
+        <img class:longCard src={`${getDirectusAssetLink(article?.image?.filename_disk)}?quality=30&format=webp`} alt={article?.image?.description ?? 'article thumbnail'} />
+    </picture>
     <h2 class="small">{article?.title}</h2>
     <p class="smaller">{article?.body}</p>
     <a rel="external" target="_blank" href={article?.read_more_link}>{article?.read_more_label}</a>
@@ -28,18 +31,22 @@
             }
         }
 
-        & > img {
+        & > picture {
             grid-row: 1/2;
-            aspect-ratio: 374/258;
-            width: 100%;
-            object-fit: cover;
-            object-position: top;
-            &.longCard {
-                aspect-ratio: 374/346;
-            }
-            @media (min-width: 769px) {
+            & > img {
+                width: 100%;
+                object-fit: cover;
+                object-position: top;
+                aspect-ratio: 374/258;
+
                 &.longCard {
-                    aspect-ratio: 397/368;
+                    aspect-ratio: 374/346;
+                }
+
+                @media (min-width: 769px) {
+                    &.longCard {
+                        aspect-ratio: 397/368;
+                    }
                 }
             }
         }
@@ -56,7 +63,7 @@
             text-decoration: underline;
             cursor: pointer;
         }
-        & > :not(img) {
+        & > :not(picture) {
             padding: 0 2.4rem;
         }
     }
