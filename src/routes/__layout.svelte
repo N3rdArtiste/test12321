@@ -36,7 +36,6 @@
 
     import Header from 'components/page/header.svelte'
     import Footer from 'components/page/footer.svelte'
-    import LoadingUiBlocker from 'components/ui-blocker.svelte'
 
     setClient(_client)
     query(headerAndFooterContent)
