@@ -1,6 +1,6 @@
 FROM node:16-alpine
 
-ENV VITE_DIRECTUS_URL=https://yia-cms-prod.prod.eks.cucumbersoftware.com
+ENV DIRECTUSURL="https://yia-cms-prod.prod.eks.cucumbersoftware.com"
 
 # install dependencies
 WORKDIR /usr/src/app
@@ -22,4 +22,5 @@ RUN npm run build
 WORKDIR /usr/src/app/build
 
 EXPOSE 3000
-CMD ["DIRECTUSURL='https://yia-cms-prod.prod.eks.cucumbersoftware.com'","node", "index.js"]
+
+CMD ["node","index.js"]
