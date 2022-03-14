@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { session } from '$app/stores'
+
     export let data: HomePageQuery['home_page']
 
     import { getDirectusAssetLink } from 'helpers/string'
@@ -14,13 +16,16 @@
         <LiteYtEmbed youtubeVideoId={data?.hero_section_youtube_video_id ?? ''} />
     </div>
     <div>
-        <SvgFile src={getDirectusAssetLink(data?.hero_section_right_side_svg?.filename_disk)} />
+        <SvgFile src={getDirectusAssetLink($session.directusURL, data?.hero_section_right_side_svg?.filename_disk)} />
     </div>
     <h1>{data?.innovator_section_heading}</h1>
     <b>{@html data?.innovator_section_body}</b>
     <picture>
-        <source srcset={`${getDirectusAssetLink(data?.innovator_section_image?.filename_disk)}?quality=80&format=webp`} media="(min-width: 450px)" />
-        <img src={`${getDirectusAssetLink(data?.innovator_section_image?.filename_disk)}?quality=30&format=webp`} alt={data?.innovator_section_image?.description ?? 'innovator'} />
+        <source srcset={`${getDirectusAssetLink($session.directusURL, data?.innovator_section_image?.filename_disk)}?quality=80&format=webp`} media="(min-width: 450px)" />
+        <img
+            src={`${getDirectusAssetLink($session.directusURL, data?.innovator_section_image?.filename_disk)}?quality=30&format=webp`}
+            alt={data?.innovator_section_image?.description ?? 'innovator'}
+        />
     </picture>
     <div>
         <ButtonArrow

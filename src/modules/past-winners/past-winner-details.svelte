@@ -1,5 +1,6 @@
 <script type="ts">
     import { goto } from '$app/navigation'
+    import { session } from '$app/stores'
 
     import Arrow from 'components/buttons/arrow.svelte'
 
@@ -67,7 +68,7 @@
                         small
                         label={worksheet?.past_winners_worksheet?.worksheet?.description ?? ''}
                         onClick={() => {
-                            goto(getDirectusAssetLink(worksheet?.past_winners_worksheet?.worksheet?.filename_disk))
+                            goto(getDirectusAssetLink($session.directusURL, worksheet?.past_winners_worksheet?.worksheet?.filename_disk))
                         }}
                     />
                 {/each}

@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { session } from '$app/stores'
+
     import { getDirectusAssetLink } from 'helpers/string'
 
     export let brands: AboutPageQuery['brands'] | HomePageQuery['brands']
@@ -7,7 +9,7 @@
 <div class="container">
     {#each brands ?? [] as logo}
         <div>
-            <img src={`${getDirectusAssetLink(logo?.image?.filename_disk)}?quality=100&format=webp`} alt={logo?.image?.description ?? 'brand logo'} />
+            <img src={`${getDirectusAssetLink($session.directusURL, logo?.image?.filename_disk)}?quality=100&format=webp`} alt={logo?.image?.description ?? 'brand logo'} />
         </div>
     {/each}
 </div>

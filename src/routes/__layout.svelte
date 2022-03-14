@@ -6,11 +6,11 @@
     import { HeaderAndFooterDocument } from '_config/graphql-tags/graphql-tags-generated'
     import { client } from '_config/graphql-client'
 
-    export const load: Load = async () => {
-        const _client = client
+    export const load: Load = async ({ session }) => {
+        const _client = client(session.directusURL)
         const getOperationStore = async (queryDocument: DocumentNode, variables?: Object): Promise<OperationStore> => {
             const store = operationStore(queryDocument, variables)
-            const result = await client.query(queryDocument, variables).toPromise()
+            const result = await _client.query(queryDocument, variables).toPromise()
             Object.assign(get(store), result)
             return store
         }
@@ -29,13 +29,13 @@
     import 'styles/global.scss'
 
     import { setClient } from '@urql/svelte'
-    import type { DocumentNode } from 'graphql'
 
     import { onMount } from 'svelte'
     import { isLoading } from 'stores/ui'
 
     import Header from 'components/page/header.svelte'
     import Footer from 'components/page/footer.svelte'
+    import type { DocumentNode } from 'graphql'
 
     setClient(_client)
     query(headerAndFooterContent)

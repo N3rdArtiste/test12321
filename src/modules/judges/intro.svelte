@@ -2,6 +2,7 @@
     export let data: AboutPageQuery['about_page']
 
     import { goto } from '$app/navigation'
+    import { session } from '$app/stores'
 
     import ArrowButton from 'components/buttons/arrow.svelte'
     import { getDirectusAssetLink } from 'helpers/string'
@@ -23,9 +24,9 @@
         </div>
         <div class="judge-container">
             <picture>
-                <source srcset={`${getDirectusAssetLink(judges[0].image?.filename_disk)}?quality=100&format=webp`} media="(min-width: 769px)" />
+                <source srcset={`${getDirectusAssetLink($session.directusURL, judges[0].image?.filename_disk)}?quality=100&format=webp`} media="(min-width: 769px)" />
                 <img
-                    src={`${getDirectusAssetLink(judges[0].image?.filename_disk)}?quality=50&format=webp`}
+                    src={`${getDirectusAssetLink($session.directusURL, judges[0].image?.filename_disk)}?quality=50&format=webp`}
                     alt={judges[0].image?.description ?? 'judge'}
                     on:click={() => handleClick(judges[0].id)}
                 />

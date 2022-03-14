@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { session } from '$app/stores'
+
     import Arrow from 'components/buttons/arrow.svelte'
     import { getDirectusAssetLink } from 'helpers/string'
     import { goToStaticPage } from 'helpers/url'
@@ -18,7 +20,7 @@
     </div>
     <img
         class="hero-image"
-        src={`${getDirectusAssetLink(data?.enter_now_section_image?.filename_disk)}?quality=80&format=webp`}
+        src={`${getDirectusAssetLink($session.directusURL, data?.enter_now_section_image?.filename_disk)}?quality=80&format=webp`}
         alt={data?.enter_now_section_image?.description ?? 'hero'}
     />
 </section>

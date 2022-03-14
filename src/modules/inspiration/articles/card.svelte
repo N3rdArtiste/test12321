@@ -1,5 +1,7 @@
 <script type="ts">
     import { blur } from 'svelte/transition'
+    import { session } from '$app/stores'
+
     import { getDirectusAssetLink } from 'helpers/string'
     export let article: ArrayElement<InspirationPageQuery['inspiration_articles']>
     export let longCard: boolean = false
@@ -7,8 +9,12 @@
 
 <article in:blur>
     <picture>
-        <source srcset={`${getDirectusAssetLink(article?.image?.filename_disk)}?quality=50&format=webp`} media="(min-width: 769px)" />
-        <img class:longCard src={`${getDirectusAssetLink(article?.image?.filename_disk)}?quality=30&format=webp`} alt={article?.image?.description ?? 'article thumbnail'} />
+        <source srcset={`${getDirectusAssetLink($session.directusURL, article?.image?.filename_disk)}?quality=50&format=webp`} media="(min-width: 769px)" />
+        <img
+            class:longCard
+            src={`${getDirectusAssetLink($session.directusURL, article?.image?.filename_disk)}?quality=30&format=webp`}
+            alt={article?.image?.description ?? 'article thumbnail'}
+        />
     </picture>
     <h2 class="small">{article?.title}</h2>
     <p class="smaller">{article?.body}</p>

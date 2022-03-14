@@ -1,5 +1,6 @@
 <script type="ts">
     export let data: HeaderAndFooterQuery
+    import { session } from '$app/stores'
 
     import { navMain, menuToggleIcons } from '_config/constants/menus'
     import { getDirectusAssetLink } from 'helpers/string'
@@ -12,7 +13,7 @@
         $navDrawerOpen = !$navDrawerOpen
     }
 
-    let logo = { src: getDirectusAssetLink(data.header?.logo?.filename_disk), alt: data.header?.logo?.description ?? '' }
+    let logo = { src: getDirectusAssetLink($session.directusURL, data.header?.logo?.filename_disk), alt: data.header?.logo?.description ?? '' }
 
     let scrollY: number = 0
 

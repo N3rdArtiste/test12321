@@ -1,7 +1,6 @@
 FROM node:16-alpine
 
 ENV VITE_DIRECTUS_URL=https://yia-cms-prod.prod.eks.cucumbersoftware.com
-ENV VITE_GRAPHQL_URL=https://yia-cms-prod.prod.eks.cucumbersoftware.com/graphql
 
 # install dependencies
 WORKDIR /usr/src/app
@@ -23,4 +22,4 @@ RUN npm run build
 WORKDIR /usr/src/app/build
 
 EXPOSE 3000
-CMD ["node", "index.js"]
+CMD ["DIRECTUSURL='https://yia-cms-prod.prod.eks.cucumbersoftware.com'","node", "index.js"]

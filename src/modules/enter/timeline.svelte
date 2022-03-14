@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { session } from '$app/stores'
+
     import { getDirectusAssetLink } from 'helpers/string'
     import PinchToZoomImage from 'components/pinch-to-zoom-image.svelte'
 
@@ -8,7 +10,10 @@
 <section>
     <h1 class="heading">{data?.timeline_section_heading}</h1>
     <div class="image-container">
-        <PinchToZoomImage imageSrc={getDirectusAssetLink(data?.timeline_section_image?.filename_disk ?? '')} imageAlt={data?.timeline_section_image?.description ?? undefined} />
+        <PinchToZoomImage
+            imageSrc={getDirectusAssetLink($session.directusURL, data?.timeline_section_image?.filename_disk ?? '')}
+            imageAlt={data?.timeline_section_image?.description ?? undefined}
+        />
     </div>
 </section>
 

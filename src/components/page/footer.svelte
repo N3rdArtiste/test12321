@@ -1,4 +1,6 @@
 <script type="ts">
+    import { session } from '$app/stores'
+
     export let data: HeaderAndFooterQuery
 
     import { getDirectusAssetLink } from 'helpers/string'
@@ -14,7 +16,7 @@
     let socialMediaIcons: StandardData
 
     let logo = {
-        src: `${getDirectusAssetLink(data.footer?.footer_logo?.filename_disk)}?quality=100&format=webp`,
+        src: `${getDirectusAssetLink($session.directusURL, data.footer?.footer_logo?.filename_disk)}?quality=100&format=webp`,
         alt: data.footer?.footer_logo?.description ?? 'yia logo',
     }
 
@@ -25,7 +27,7 @@
         return {
             href: partner?.link ?? '',
             alt: partner?.image?.description ?? 'partners logo',
-            src: `${getDirectusAssetLink(partner?.image?.filename_disk)}?quality=100&format=webp` ?? '',
+            src: `${getDirectusAssetLink($session.directusURL, partner?.image?.filename_disk)}?quality=100&format=webp` ?? '',
         }
     })
 
@@ -33,7 +35,7 @@
         return {
             href: sponsor?.link ?? '',
             alt: sponsor?.image?.description ?? 'sponsors logo',
-            src: `${getDirectusAssetLink(sponsor?.image?.filename_disk)}?quality=100&format=webp` ?? '',
+            src: `${getDirectusAssetLink($session.directusURL, sponsor?.image?.filename_disk)}?quality=100&format=webp` ?? '',
         }
     })
 
@@ -41,7 +43,7 @@
         return {
             href: socialMediaIcon?.link ?? '',
             alt: socialMediaIcon?.image?.description ?? 'social media icon',
-            src: `${getDirectusAssetLink(socialMediaIcon?.image?.filename_disk)}?quality=100&format=webp` ?? '',
+            src: `${getDirectusAssetLink($session.directusURL, socialMediaIcon?.image?.filename_disk)}?quality=100&format=webp` ?? '',
         }
     })
 

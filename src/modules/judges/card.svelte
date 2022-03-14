@@ -1,12 +1,14 @@
 <script lang="ts">
     import { fly } from 'svelte/transition'
+    import { session } from '$app/stores'
+
     import { getDirectusAssetLink } from 'helpers/string'
 
     export let data: ArrayElement<JudgesPageQuery['judges']>
 </script>
 
 <article in:fly={{ y: -200, duration: 300 }}>
-    <img class="image" src={`${getDirectusAssetLink(data?.image?.filename_disk)}?quality=50&format=webp`} alt={data?.image?.description ?? 'judge'} />
+    <img class="image" src={`${getDirectusAssetLink($session.directusURL, data?.image?.filename_disk)}?quality=50&format=webp`} alt={data?.image?.description ?? 'judge'} />
 
     <p class="small name">{`${data?.name}, ${data?.company}`}</p>
 
