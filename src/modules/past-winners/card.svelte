@@ -10,7 +10,11 @@
 <article in:blur>
     <picture>
         <source srcset={`${getDirectusAssetLink($session.directusURL, data?.image?.filename_disk)}?quality=50&format=webp`} media="(min-width: 769px)" />
-        <img src={`${getDirectusAssetLink($session.directusURL, data?.image?.filename_disk)}?quality=30&format=webp`} alt={data?.image?.description ?? 'past winner'} />
+        <img
+            loading="lazy"
+            src={`${getDirectusAssetLink($session.directusURL, data?.image?.filename_disk)}?quality=30&format=webp`}
+            alt={data?.image?.description ?? 'past winner'}
+        />
     </picture>
 
     <h2 class="small">{data?.name}</h2>

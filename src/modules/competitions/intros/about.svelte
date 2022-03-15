@@ -19,6 +19,7 @@
         />
     </div>
     <img
+        loading="lazy"
         class="hero-image"
         src={`${getDirectusAssetLink($session.directusURL, data?.enter_now_section_image?.filename_disk)}?quality=80&format=webp`}
         alt={data?.enter_now_section_image?.description ?? 'hero'}

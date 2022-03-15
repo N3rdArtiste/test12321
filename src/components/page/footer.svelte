@@ -77,7 +77,7 @@
 
         <div on:scroll={eventListenerHandler} bind:this={sponsorsContainer}>
             {#each sponsors ?? [] as sponsor}
-                <a rel="external" target="_blank" href={sponsor.href}> <img src={sponsor.src} alt={sponsor.alt} /> </a>
+                <a rel="external" target="_blank" href={sponsor.href}> <img loading="lazy" src={sponsor.src} alt={sponsor.alt} /> </a>
             {/each}
         </div>
 
@@ -111,13 +111,13 @@
 
         <div>
             {#each socialMediaIcons ?? [] as socialMediaIcon}
-                <a rel="external" target="_blank" href={socialMediaIcon.href}> <img src={socialMediaIcon.src} alt={socialMediaIcon.alt} /> </a>
+                <a rel="external" target="_blank" href={socialMediaIcon.href}> <img loading="lazy" src={socialMediaIcon.src} alt={socialMediaIcon.alt} /> </a>
             {/each}
         </div>
 
         <div>
             {#each partners ?? [] as partner}
-                <a rel="external" target="_blank" href={partner.href}> <img src={partner.src} alt={partner.alt} /> </a>
+                <a rel="external" target="_blank" href={partner.href}> <img loading="lazy" src={partner.src} alt={partner.alt} /> </a>
             {/each}
         </div>
 

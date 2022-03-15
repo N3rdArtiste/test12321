@@ -26,6 +26,7 @@
             <picture>
                 <source srcset={`${getDirectusAssetLink($session.directusURL, judges[0].image?.filename_disk)}?quality=100&format=webp`} media="(min-width: 769px)" />
                 <img
+                    loading="lazy"
                     src={`${getDirectusAssetLink($session.directusURL, judges[0].image?.filename_disk)}?quality=50&format=webp`}
                     alt={judges[0].image?.description ?? 'judge'}
                     on:click={() => handleClick(judges[0].id)}

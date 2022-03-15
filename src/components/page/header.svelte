@@ -29,7 +29,7 @@
 
         <!-- svelte-ignore a11y-missing-attribute -->
         <button on:click={handleMenuOpenClose}>
-            <img {...menuToggleIcons[+!$navDrawerOpen]} />
+            <img loading="lazy" {...menuToggleIcons[+!$navDrawerOpen]} />
         </button>
 
         <nav class:hide={!$navDrawerOpen}>

@@ -23,6 +23,7 @@
     <picture>
         <source srcset={`${getDirectusAssetLink($session.directusURL, data?.innovator_section_image?.filename_disk)}?quality=80&format=webp`} media="(min-width: 450px)" />
         <img
+            loading="lazy"
             src={`${getDirectusAssetLink($session.directusURL, data?.innovator_section_image?.filename_disk)}?quality=30&format=webp`}
             alt={data?.innovator_section_image?.description ?? 'innovator'}
         />

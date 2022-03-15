@@ -59,7 +59,7 @@
     }
 </script>
 
-<img on:touchstart={touchstart} on:touchmove={touchmove} on:touchend={touchend} src={imageSrc} alt={imageAlt} />
+<img loading="lazy" on:touchstart={touchstart} on:touchmove={touchmove} on:touchend={touchend} src={imageSrc} alt={imageAlt} />
 
 <style lang="scss">
     img {

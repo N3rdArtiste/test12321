@@ -8,7 +8,12 @@
 </script>
 
 <article in:fly={{ y: -200, duration: 300 }}>
-    <img class="image" src={`${getDirectusAssetLink($session.directusURL, data?.image?.filename_disk)}?quality=50&format=webp`} alt={data?.image?.description ?? 'judge'} />
+    <img
+        loading="lazy"
+        class="image"
+        src={`${getDirectusAssetLink($session.directusURL, data?.image?.filename_disk)}?quality=50&format=webp`}
+        alt={data?.image?.description ?? 'judge'}
+    />
 
     <p class="small name">{`${data?.name}, ${data?.company}`}</p>
 

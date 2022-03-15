@@ -8,7 +8,11 @@
 <section>
     <i>{@html data?.heading}</i>
     <p>{data?.description}</p>
-    <img src={`${getDirectusAssetLink($session.directusURL, data?.hero_image?.filename_disk)}?quality=80&format=webp`} alt={data?.hero_image?.description ?? 'hero'} />
+    <img
+        loading="lazy"
+        src={`${getDirectusAssetLink($session.directusURL, data?.hero_image?.filename_disk)}?quality=80&format=webp`}
+        alt={data?.hero_image?.description ?? 'hero'}
+    />
 </section>
 
 <style lang="scss">

@@ -11,6 +11,7 @@
     <picture>
         <source srcset={`${getDirectusAssetLink($session.directusURL, article?.image?.filename_disk)}?quality=50&format=webp`} media="(min-width: 769px)" />
         <img
+            loading="lazy"
             class:longCard
             src={`${getDirectusAssetLink($session.directusURL, article?.image?.filename_disk)}?quality=30&format=webp`}
             alt={article?.image?.description ?? 'article thumbnail'}
