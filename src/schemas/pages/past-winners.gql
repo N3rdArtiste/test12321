@@ -25,6 +25,7 @@ query PastWinnersPage($limit: Int, $page: Int, $filterQuery: past_winners_filter
             id
             filename_disk
             description
+            svg_code
         }
         short_description
         year {

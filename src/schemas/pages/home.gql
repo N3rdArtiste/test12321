@@ -12,6 +12,7 @@ query HomePage($limit: Int, $page: Int, $filterQuery: past_winners_filter) {
             id
             filename_disk
             description
+            svg_code
         }
         innovator_section_heading
         innovator_section_body
@@ -20,6 +21,7 @@ query HomePage($limit: Int, $page: Int, $filterQuery: past_winners_filter) {
             id
             filename_disk
             description
+            svg_code
         }
         brands_section_heading
         brands_section_description
@@ -37,6 +39,7 @@ query HomePage($limit: Int, $page: Int, $filterQuery: past_winners_filter) {
                     id
                     filename_disk
                     description
+                    svg_code
                 }
             }
         }
@@ -66,6 +69,7 @@ query HomePage($limit: Int, $page: Int, $filterQuery: past_winners_filter) {
             id
             filename_disk
             description
+            svg_code
         }
         short_description
         year {
@@ -104,6 +108,7 @@ query HomePage($limit: Int, $page: Int, $filterQuery: past_winners_filter) {
             id
             description
             filename_disk
+            svg_code
         }
     }
 }

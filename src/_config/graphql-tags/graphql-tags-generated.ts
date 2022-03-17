@@ -9,6 +9,7 @@ export const HeaderAndFooterDocument = gql`
       id
       filename_disk
       description
+      svg_code
     }
   }
   footer {
@@ -19,6 +20,7 @@ export const HeaderAndFooterDocument = gql`
       id
       filename_disk
       description
+      svg_code
     }
   }
   partners {
@@ -28,6 +30,7 @@ export const HeaderAndFooterDocument = gql`
       id
       filename_disk
       description
+      svg_code
     }
   }
   our_sponsors {
@@ -36,6 +39,7 @@ export const HeaderAndFooterDocument = gql`
       filename_disk
       id
       description
+      svg_code
     }
     link
   }
@@ -46,6 +50,7 @@ export const HeaderAndFooterDocument = gql`
       id
       filename_disk
       description
+      svg_code
     }
   }
 }
@@ -62,6 +67,7 @@ export const AboutPageDocument = gql`
       id
       filename_disk
       description
+      svg_code
     }
     challenge_section_youtube_video_id
     challenge_section_heading
@@ -77,6 +83,7 @@ export const AboutPageDocument = gql`
           id
           filename_disk
           description
+          svg_code
         }
       }
     }
@@ -123,6 +130,7 @@ export const AboutPageDocument = gql`
       id
       description
       filename_disk
+      svg_code
     }
   }
 }
@@ -139,6 +147,7 @@ export const EnterPageDocument = gql`
       id
       filename_disk
       description
+      svg_code
     }
     heading
     title_bar_text
@@ -201,6 +210,7 @@ export const HomePageDocument = gql`
       id
       filename_disk
       description
+      svg_code
     }
     innovator_section_heading
     innovator_section_body
@@ -209,6 +219,7 @@ export const HomePageDocument = gql`
       id
       filename_disk
       description
+      svg_code
     }
     brands_section_heading
     brands_section_description
@@ -225,6 +236,7 @@ export const HomePageDocument = gql`
           id
           filename_disk
           description
+          svg_code
         }
       }
     }
@@ -258,6 +270,7 @@ export const HomePageDocument = gql`
       id
       filename_disk
       description
+      svg_code
     }
     short_description
     year {
@@ -296,6 +309,7 @@ export const HomePageDocument = gql`
       id
       description
       filename_disk
+      svg_code
     }
   }
 }
@@ -349,6 +363,7 @@ export const JudgesPageDocument = gql`
       id
       filename_disk
       description
+      svg_code
     }
   }
   judges_years {
@@ -442,6 +457,7 @@ export const PastWinnersPageDocument = gql`
       id
       filename_disk
       description
+      svg_code
     }
     short_description
     year {

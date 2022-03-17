@@ -8,42 +8,42 @@
     import ButtonArrow from 'components/buttons/arrow.svelte'
 
     import { navMain } from '_config/constants/menus'
-    import SvgFile from 'components/svg-file.svelte'
     import { fade } from 'svelte/transition'
-
-    let partners: StandardData
-    let sponsors: StandardData
-    let socialMediaIcons: StandardData
+    import Image from 'components/image.svelte'
 
     let logo = {
         src: `${getDirectusAssetLink($session.directusURL, data.footer?.footer_logo?.filename_disk)}?quality=100&format=webp`,
         alt: data.footer?.footer_logo?.description ?? 'yia logo',
+        svgCode: data.footer?.footer_logo?.svg_code,
     }
 
     let copyrightText = data.footer?.copyright_text ?? ''
     let shortAboutUsText = data.footer?.text ?? ''
 
-    $: partners = data?.partners?.map(partner => {
+    const partners = data?.partners?.map(partner => {
         return {
             href: partner?.link ?? '',
             alt: partner?.image?.description ?? 'partners logo',
             src: `${getDirectusAssetLink($session.directusURL, partner?.image?.filename_disk)}?quality=100&format=webp` ?? '',
+            svgCode: partner?.image?.svg_code,
         }
     })
 
-    $: sponsors = data?.our_sponsors?.map(sponsor => {
+    const sponsors = data?.our_sponsors?.map(sponsor => {
         return {
             href: sponsor?.link ?? '',
             alt: sponsor?.image?.description ?? 'sponsors logo',
             src: `${getDirectusAssetLink($session.directusURL, sponsor?.image?.filename_disk)}?quality=100&format=webp` ?? '',
+            svgCode: sponsor?.image?.svg_code,
         }
     })
 
-    $: socialMediaIcons = data?.social_media_links?.map(socialMediaIcon => {
+    const socialMediaIcons = data?.social_media_links?.map(socialMediaIcon => {
         return {
             href: socialMediaIcon?.link ?? '',
             alt: socialMediaIcon?.image?.description ?? 'social media icon',
             src: `${getDirectusAssetLink($session.directusURL, socialMediaIcon?.image?.filename_disk)}?quality=100&format=webp` ?? '',
+            svgCode: socialMediaIcon?.image?.svg_code,
         }
     })
 
@@ -77,7 +77,9 @@
 
         <div on:scroll={eventListenerHandler} bind:this={sponsorsContainer}>
             {#each sponsors ?? [] as sponsor}
-                <a rel="external" target="_blank" href={sponsor.href}> <img loading="lazy" src={sponsor.src} alt={sponsor.alt} /> </a>
+                <a rel="external" target="_blank" href={sponsor.href}>
+                    <Image src={sponsor.src} alt={sponsor.alt} svgCode={sponsor.svgCode} />
+                </a>
             {/each}
         </div>
 
@@ -94,7 +96,7 @@
         {/if}
 
         <div>
-            <SvgFile src={logo.src} />
+            <Image src={logo.src} svgCode={logo.svgCode} />
         </div>
 
         <p class="small">
@@ -111,13 +113,15 @@
 
         <div>
             {#each socialMediaIcons ?? [] as socialMediaIcon}
-                <a rel="external" target="_blank" href={socialMediaIcon.href}> <img loading="lazy" src={socialMediaIcon.src} alt={socialMediaIcon.alt} /> </a>
+                <a rel="external" target="_blank" href={socialMediaIcon.href}>
+                    <Image src={socialMediaIcon.src} alt={socialMediaIcon.alt} svgCode={socialMediaIcon.svgCode} />
+                </a>
             {/each}
         </div>
 
         <div>
             {#each partners ?? [] as partner}
-                <a rel="external" target="_blank" href={partner.href}> <img loading="lazy" src={partner.src} alt={partner.alt} /> </a>
+                <a rel="external" target="_blank" href={partner.href}> <Image src={partner.src} alt={partner.alt} svgCode={partner.svgCode} /> </a>
             {/each}
         </div>
 
@@ -184,6 +188,7 @@
                 justify-content: center;
                 align-items: center;
                 background-color: var(--color-secondary);
+                aspect-ratio: 258/143;
             }
         }
 
@@ -273,12 +278,6 @@
             @media (min-width: 769px) {
                 grid-row: 7/8;
                 grid-column: 10/13;
-            }
-
-            & > a {
-                & > img {
-                    max-width: 100%;
-                }
             }
         }
         & > p:nth-of-type(2) {

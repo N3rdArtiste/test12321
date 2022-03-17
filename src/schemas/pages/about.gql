@@ -11,6 +11,7 @@ query AboutPage {
             id
             filename_disk
             description
+            svg_code
         }
 
         challenge_section_youtube_video_id
@@ -28,6 +29,7 @@ query AboutPage {
                     id
                     filename_disk
                     description
+                    svg_code
                 }
             }
         }
@@ -78,6 +80,7 @@ query AboutPage {
             id
             description
             filename_disk
+            svg_code
         }
     }
 }

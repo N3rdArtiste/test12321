@@ -9,6 +9,7 @@ query InspirationPage($limit: Int, $page: Int) {
             id
             filename_disk
             description
+            svg_code
         }
     }
     inspiration_articles_aggregated {
@@ -22,6 +23,7 @@ query InspirationPage($limit: Int, $page: Int) {
             id
             filename_disk
             description
+            svg_code
         }
         title
         body

@@ -1,5 +1,6 @@
 <script lang="ts">
     import { session } from '$app/stores'
+    import Image from 'components/image.svelte'
 
     import { getDirectusAssetLink } from 'helpers/string'
 
@@ -9,11 +10,9 @@
 <div class="container">
     {#each brands ?? [] as logo}
         <div>
-            <img
-                loading="lazy"
-                src={`${getDirectusAssetLink($session.directusURL, logo?.image?.filename_disk)}?quality=100&format=webp`}
-                alt={logo?.image?.description ?? 'brand logo'}
-            />
+            <div class="image-container">
+                <Image src={`${getDirectusAssetLink($session.directusURL, logo?.image?.filename_disk)}?quality=100&format=webp`} alt={logo?.image?.description ?? 'brand logo'} />
+            </div>
         </div>
     {/each}
 </div>
@@ -30,11 +29,16 @@
             display: grid;
             align-items: center;
             justify-content: center;
-            background-color: var(--color-grey);
             margin-right: 1rem;
+            & .image-container {
+                width: 20rem;
+                background-color: var(--color-grey);
+            }
         }
-        & img {
+
+        & :global(img) {
             mix-blend-mode: multiply;
+            // width: 100%;
         }
     }
 
@@ -47,10 +51,12 @@
 
             & > div {
                 margin: 0;
+                background-color: var(--color-grey);
+                & .image-container {
+                    width: auto;
+                }
             }
-            & img {
-                width: 100%;
-            }
+
             & > div:nth-child(5n-4) {
                 grid-area: 1 / 1 / 2 / 4;
             }

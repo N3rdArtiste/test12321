@@ -9,6 +9,7 @@ query EnterPage {
             id
             filename_disk
             description
+            svg_code
         }
         heading
         title_bar_text

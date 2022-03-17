@@ -6,14 +6,18 @@
     import { getDirectusAssetLink } from 'helpers/string'
     import { navDrawerOpen } from 'stores/ui'
 
-    import SvgFile from 'components/svg-file.svelte'
+    import Image from 'components/image.svelte'
     import AuthNav from 'components/page/nav-auth.svelte'
 
     const handleMenuOpenClose = () => {
         $navDrawerOpen = !$navDrawerOpen
     }
 
-    let logo = { src: getDirectusAssetLink($session.directusURL, data.header?.logo?.filename_disk), alt: data.header?.logo?.description ?? '' }
+    let logo = {
+        src: getDirectusAssetLink($session.directusURL, data.header?.logo?.filename_disk),
+        alt: data.header?.logo?.description ?? '',
+        svgCode: data.header?.logo?.svg_code,
+    }
 
     let scrollY: number = 0
 
@@ -24,12 +28,12 @@
 <div class="wrapper" class:showShadow>
     <header class:isOpened={$navDrawerOpen}>
         <a aria-label="yia logo" sveltekit:prefetch href="/" on:click={() => ($navDrawerOpen = false)}>
-            <SvgFile src={logo.src} />
+            <Image src={logo.src} svgCode={logo.svgCode} />
         </a>
 
         <!-- svelte-ignore a11y-missing-attribute -->
         <button on:click={handleMenuOpenClose}>
-            <img loading="lazy" {...menuToggleIcons[+!$navDrawerOpen]} />
+            <Image {...menuToggleIcons[+!$navDrawerOpen]} />
         </button>
 
         <nav class:hide={!$navDrawerOpen}>

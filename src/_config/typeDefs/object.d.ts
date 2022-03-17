@@ -4,8 +4,6 @@ interface ObjectValue<T = any> {
     [key: string]: T
 }
 
-type StandardData = Array<{ src: string; alt: string; href: string }> | undefined
-
 interface SomeObject {
     [key: string]: any
 }

@@ -6,9 +6,9 @@
     import { getDirectusAssetLink } from 'helpers/string'
 
     import ButtonArrow from 'components/buttons/arrow.svelte'
-    import SvgFile from 'components/svg-file.svelte'
     import { goto } from '$app/navigation'
     import LiteYtEmbed from 'components/lite-yt-embed.svelte'
+    import Image from 'components/image.svelte'
 </script>
 
 <section>
@@ -16,14 +16,13 @@
         <LiteYtEmbed youtubeVideoId={data?.hero_section_youtube_video_id ?? ''} />
     </div>
     <div>
-        <SvgFile src={getDirectusAssetLink($session.directusURL, data?.hero_section_right_side_svg?.filename_disk)} />
+        <Image src={getDirectusAssetLink($session.directusURL, data?.hero_section_right_side_svg?.filename_disk)} svgCode={data?.hero_section_right_side_svg?.svg_code} />
     </div>
     <h1>{data?.innovator_section_heading}</h1>
     <b>{@html data?.innovator_section_body}</b>
     <picture>
         <source srcset={`${getDirectusAssetLink($session.directusURL, data?.innovator_section_image?.filename_disk)}?quality=80&format=webp`} media="(min-width: 450px)" />
-        <img
-            loading="lazy"
+        <Image
             src={`${getDirectusAssetLink($session.directusURL, data?.innovator_section_image?.filename_disk)}?quality=30&format=webp`}
             alt={data?.innovator_section_image?.description ?? 'innovator'}
         />
@@ -111,7 +110,7 @@
             grid-column: 1/9;
             grid-row: 9/10;
 
-            & > img {
+            & > :global(img) {
                 aspect-ratio: 894/542;
 
                 width: 100%;

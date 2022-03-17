@@ -8,6 +8,7 @@ query JudgesPage($limit: Int, $page: Int, $filterQuery: judges_filter) {
             id
             filename_disk
             description
+            svg_code
         }
     }
     judges_years {
