@@ -1,7 +1,5 @@
 FROM node:16-alpine
 
-ENV DIRECTUSURL="https://yia-cms-prod.prod.eks.cucumbersoftware.com"
-
 # install dependencies
 WORKDIR /usr/src/app
 COPY package.json package-lock.json ./
