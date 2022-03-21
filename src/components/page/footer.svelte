@@ -245,10 +245,10 @@
             justify-items: center;
             grid-row: 11/12;
             grid-column: 2/8;
-            gap: 1.5rem;
+            gap: 2.5rem;
 
             @media (min-width: 769px) {
-                grid-row: 7/8;
+                grid-row: 7/10;
                 grid-column: 10/13;
             }
         }
