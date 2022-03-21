@@ -31,7 +31,7 @@
 {/if}
 {#if collapsible}
     {#if isOpen}
-        <ul in:slide>
+        <ul transition:slide>
             {#each multiLevelList as listItem}
                 <li>
                     {#if listItem.multiLevelList}

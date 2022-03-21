@@ -50,7 +50,7 @@
         <h2>Our sponsors</h2>
         <div>
             {#each sponsors ?? [] as sponsor}
-                <a rel="external" target="_blank" href={sponsor.href}>
+                <a rel="external" target="_blank" aria-label={sponsor.alt} href={sponsor.href}>
                     <Image src={sponsor.src} alt={sponsor.alt} svgCode={sponsor.svgCode} />
                 </a>
             {/each}
@@ -74,7 +74,7 @@
 
         <div>
             {#each socialMediaIcons ?? [] as socialMediaIcon}
-                <a rel="external" target="_blank" href={socialMediaIcon.href}>
+                <a rel="external" target="_blank" aria-label={socialMediaIcon.alt} href={socialMediaIcon.href}>
                     <Image src={socialMediaIcon.src} alt={socialMediaIcon.alt} svgCode={socialMediaIcon.svgCode} />
                 </a>
             {/each}
@@ -82,7 +82,7 @@
 
         <div>
             {#each partners ?? [] as partner}
-                <a rel="external" target="_blank" href={partner.href}> <Image src={partner.src} alt={partner.alt} svgCode={partner.svgCode} /> </a>
+                <a rel="external" aria-label={partner.alt} target="_blank" href={partner.href}> <Image src={partner.src} alt={partner.alt} svgCode={partner.svgCode} /> </a>
             {/each}
         </div>
 
