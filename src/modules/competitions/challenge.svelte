@@ -38,7 +38,14 @@
     }
     .description {
         grid-area: 3 / 2 / 4 / 8;
-
+        & :global(a) {
+            font-size: 2rem;
+            line-height: 2.8rem;
+            @media (min-width: 769px) {
+                font-size: 2.2rem;
+                line-height: 3rem;
+            }
+        }
         @media (min-width: 769px) {
             grid-area: 3 / 9 / 4 / 13;
         }

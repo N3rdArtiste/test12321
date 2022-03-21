@@ -54,6 +54,16 @@
             padding: 0 2rem;
             align-items: flex-start;
         }
+        b {
+            & :global(a) {
+                font-size: 2rem;
+                line-height: 2.8rem;
+                @media (min-width: 769px) {
+                    font-size: 2.2rem;
+                    line-height: 3rem;
+                }
+            }
+        }
         .video {
             grid-column: 1/9;
             grid-row: 1/2;
