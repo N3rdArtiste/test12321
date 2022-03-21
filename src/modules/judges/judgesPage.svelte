@@ -18,7 +18,7 @@
         {
             id: 'all',
             name: 'All',
-            multiLevelList: [{ name: 'Year', multiLevelList: judgesYears }],
+            multiLevelList: [{ name: 'Year', multiLevelList: judgesYears, collapsible: true }],
         },
     ]
 

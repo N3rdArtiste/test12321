@@ -5,10 +5,7 @@
 
     import { getDirectusAssetLink } from 'helpers/string'
 
-    import ButtonArrow from 'components/buttons/arrow.svelte'
-
     import { navMain } from '_config/constants/menus'
-    import { fade } from 'svelte/transition'
     import Image from 'components/image.svelte'
 
     let logo = {
@@ -46,54 +43,18 @@
             svgCode: socialMediaIcon?.image?.svg_code,
         }
     })
-
-    let sponsorsContainer: HTMLDivElement
-    let showLeftArrow: boolean
-    let showRightArrow: boolean = true
-
-    const scrollSponsors = (left: boolean = true) => {
-        if (left) {
-            sponsorsContainer.scrollTo({
-                left: sponsorsContainer.scrollWidth,
-                behavior: 'smooth',
-            })
-        } else {
-            sponsorsContainer.scrollTo({
-                left: 0,
-                behavior: 'smooth',
-            })
-        }
-    }
-    const eventListenerHandler = (e: Event) => {
-        const element = e.target as HTMLDivElement
-        showLeftArrow = element.scrollLeft >= 4
-        showRightArrow = element.offsetWidth + element.scrollLeft < element.scrollWidth - 4
-    }
 </script>
 
 <div class="wrapper">
     <footer>
         <h2>Our sponsors</h2>
-
-        <div on:scroll={eventListenerHandler} bind:this={sponsorsContainer}>
+        <div>
             {#each sponsors ?? [] as sponsor}
                 <a rel="external" target="_blank" href={sponsor.href}>
                     <Image src={sponsor.src} alt={sponsor.alt} svgCode={sponsor.svgCode} />
                 </a>
             {/each}
         </div>
-
-        {#if showLeftArrow}
-            <i class="leftArrowButton" transition:fade>
-                <ButtonArrow onClick={() => scrollSponsors(false)} accentHover={false} />
-            </i>
-        {/if}
-
-        {#if showRightArrow}
-            <i class="rightArrowButton" transition:fade>
-                <ButtonArrow onClick={scrollSponsors} accentHover={false} />
-            </i>
-        {/if}
 
         <div>
             <Image src={logo.src} svgCode={logo.svgCode} />
@@ -152,7 +113,7 @@
 
             padding: 9rem 2rem 9rem 2rem;
 
-            grid-template-rows: auto 3.9rem auto 13.1rem auto 4.63rem auto 2.4rem;
+            grid-template-rows: auto 0 auto 13.1rem auto 4.63rem auto 2.4rem;
         }
 
         @media (min-width: 1200px) {
@@ -173,11 +134,8 @@
             grid-column: 2/8;
             display: grid;
             grid-row: 3/4;
-            grid-auto-columns: 26rem;
-            grid-auto-flow: column;
+            grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
             gap: 1.6rem;
-            overflow-x: scroll;
-            scroll-behavior: smooth;
             @media (min-width: 769px) {
                 grid-column: 5/13;
                 grid-row: 1/2;
@@ -239,6 +197,12 @@
             grid-auto-flow: row;
             gap: 1rem;
 
+            & > a {
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
             @media (min-width: 769px) {
                 grid-row: 7/8;
                 grid-column: 4/5;
@@ -249,13 +213,21 @@
         & > div:nth-of-type(3) {
             grid-row: 9/10;
             grid-column: 2/8;
+            justify-items: center;
 
             display: grid;
             grid-auto-flow: column;
             gap: 2.6rem;
             justify-content: end;
             align-items: flex-end;
-            grid-auto-columns: 1.6rem;
+            grid-auto-columns: 2rem;
+
+            & > a {
+                border-bottom: 1px transparent solid;
+                &:hover {
+                    border-bottom: 1px var(--color-secondary) solid;
+                }
+            }
 
             @media (min-width: 769px) {
                 justify-content: start;

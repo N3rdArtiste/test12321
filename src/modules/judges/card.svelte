@@ -15,7 +15,7 @@
         alt={data?.image?.description ?? 'judge'}
     />
 
-    <p class="small name">{`${data?.name}, ${data?.company}`}</p>
+    <p class="small name"><strong>{`${data?.name}, ${data?.company}`}</strong></p>
 
     <p class="about-text">{data?.about_text}</p>
 </article>
@@ -46,7 +46,7 @@
     @media (min-width: 1000px) {
         article {
             grid-template-columns: repeat(7, 1fr) minmax(10rem, 1fr);
-            grid-template-rows: auto 2.8rem auto 1fr 1fr;
+            grid-template-rows: auto 2.8rem auto auto;
         }
 
         .image {

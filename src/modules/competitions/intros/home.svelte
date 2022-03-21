@@ -65,6 +65,14 @@
             & :global(p:nth-of-type(1)) {
                 display: inline;
             }
+            & :global(a) {
+                font-size: 2rem;
+                line-height: 2.8rem;
+                @media (min-width: 769px) {
+                    font-size: 2.2rem;
+                    line-height: 3rem;
+                }
+            }
 
             @media (min-width: 769px) {
                 grid-column: 7/13;

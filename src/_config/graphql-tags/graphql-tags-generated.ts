@@ -326,6 +326,7 @@ export const InspirationPageDocument = gql`
       id
       filename_disk
       description
+      svg_code
     }
   }
   inspiration_articles_aggregated {
@@ -339,6 +340,7 @@ export const InspirationPageDocument = gql`
       id
       filename_disk
       description
+      svg_code
     }
     title
     body
@@ -407,6 +409,7 @@ export const PastWinnerDetailsDocument = gql`
       }
     }
     project_information
+    short_description
     worksheets {
       id
       past_winners_worksheet {

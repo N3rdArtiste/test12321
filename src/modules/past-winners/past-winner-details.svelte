@@ -4,7 +4,6 @@
 
     import Arrow from 'components/buttons/arrow.svelte'
 
-    import Drawer from 'components/drawer.svelte'
     import LiteYtEmbed from 'components/lite-yt-embed.svelte'
     import { getDirectusAssetLink } from 'helpers/string'
 
@@ -12,11 +11,13 @@
     export let onNextClick: () => void
     export let showNextButton: boolean = false
 
-    let drawerOpenedTitle: string = ''
-
     const details = {
         year: (data?.year ?? [])[0]?.past_winners_year?.year,
-        category: (data?.categories ?? [])[0]?.past_winners_category?.category,
+        category: (data?.categories ?? [])
+            .map(category => {
+                return category?.past_winners_category?.category
+            })
+            .join(', '),
         school: data?.school_name,
         students: data?.students_name,
     }
@@ -33,7 +34,7 @@
         <span>&nbsp;</span>
 
         School<br />
-        {details.school}
+        <strong>{details.school}</strong>
         <span>&nbsp;</span>
 
         Student/s<br />
@@ -53,26 +54,27 @@
         {/if}
     </div>
     <div class="drawers-container">
-        {#if data?.project_information}
+        {#if data?.short_description}
             <hr />
-            <Drawer title="Project Information" bind:drawerOpenedTitle small noHorizontalPadding>
-                {@html data?.project_information}
-            </Drawer>
+            <div class="download-button-container">
+                <p class="decription-text">Description</p>
+                <p>{data.short_description}</p>
+            </div>
         {/if}
 
         {#if data?.worksheets?.length}
             <hr />
-            <Drawer title="Download Worksheets" bind:drawerOpenedTitle small noHorizontalPadding>
-                {#each data?.worksheets ?? [] as worksheet}
+            {#each data?.worksheets ?? [] as worksheet}
+                <div class="download-button-container">
                     <Arrow
                         small
-                        label={worksheet?.past_winners_worksheet?.worksheet?.description ?? ''}
+                        label={'Download Worksheets'}
                         onClick={() => {
                             goto(getDirectusAssetLink($session.directusURL, worksheet?.past_winners_worksheet?.worksheet?.filename_disk))
                         }}
                     />
-                {/each}
-            </Drawer>
+                </div>
+            {/each}
         {/if}
         {#if data?.project_information || data?.worksheets?.length}
             <hr />
@@ -106,7 +108,9 @@
             display: block;
         }
     }
-
+    .decription-text {
+        margin-bottom: 2rem;
+    }
     .drawers-container {
         grid-area: 7 / 2 / 8 / 8;
     }
@@ -122,6 +126,10 @@
 
         display: grid;
         justify-items: end;
+    }
+
+    .download-button-container {
+        padding: 2rem 0;
     }
 
     @media (min-width: 769px) {

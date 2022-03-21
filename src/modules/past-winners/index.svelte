@@ -22,7 +22,7 @@
         {
             id: 'all',
             name: 'All',
-            multiLevelList: [{ name: 'Year', multiLevelList: pastWinnerYears }, ...(pastWinnerCategories ?? [])],
+            multiLevelList: [{ name: 'Year', multiLevelList: pastWinnerYears, collapsible: true }, ...(pastWinnerCategories ?? [])],
         },
     ]
 
