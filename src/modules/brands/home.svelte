@@ -16,8 +16,7 @@
         <Arrow
             label={data.home_page?.brands_section_CTA_label ?? ''}
             onClick={() => {
-                let yearFilter = data.home_page?.current_year_filter?.id
-                if (yearFilter) goto('/judges?category=year' + yearFilter)
+                if (data.home_page?.current_year_filter?.id) goto('/judges?page=1&category=year' + data.home_page?.current_year_filter?.id)
                 else goto('/judges')
             }}
         />
