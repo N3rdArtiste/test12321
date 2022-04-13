@@ -2,7 +2,7 @@ query AboutPage {
     about_page {
         id
         title_bar_text
-
+        meta_description
         heading
 
         enter_now_section_CTA_label
@@ -11,6 +11,7 @@ query AboutPage {
             id
             filename_disk
             description
+            svg_code
         }
 
         challenge_section_youtube_video_id
@@ -28,6 +29,7 @@ query AboutPage {
                     id
                     filename_disk
                     description
+                    svg_code
                 }
             }
         }
@@ -54,7 +56,7 @@ query AboutPage {
                             multi_level_question_item_links {
                                 id
                                 label
-                                slug
+                                url
                             }
                         }
                     }
@@ -78,6 +80,7 @@ query AboutPage {
             id
             description
             filename_disk
+            svg_code
         }
     }
 }

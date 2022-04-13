@@ -8,6 +8,4 @@ interface NodeModule {
 let window: Window
 interface Window {
     env: any
-    app_id?: string
-    distribution_key?: string
 }

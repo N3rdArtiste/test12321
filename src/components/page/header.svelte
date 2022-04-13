@@ -1,151 +1,180 @@
 <script type="ts">
     export let data: HeaderAndFooterQuery
+    import { session } from '$app/stores'
 
     import { navMain, menuToggleIcons } from '_config/constants/menus'
     import { getDirectusAssetLink } from 'helpers/string'
     import { navDrawerOpen } from 'stores/ui'
 
-    import SvgFile from 'components/svg-file.svelte'
+    import Image from 'components/image.svelte'
     import AuthNav from 'components/page/nav-auth.svelte'
 
     const handleMenuOpenClose = () => {
         $navDrawerOpen = !$navDrawerOpen
     }
 
-    let logo = { src: getDirectusAssetLink(data.header?.logo?.filename_disk), alt: data.header?.logo?.description ?? '' }
+    let logo = {
+        src: getDirectusAssetLink($session.directusURL, data.header?.logo?.filename_disk),
+        alt: data.header?.logo?.description ?? '',
+        svgCode: data.header?.logo?.svg_code,
+    }
+
+    let scrollY: number = 0
+
+    $: showShadow = scrollY > 0
 </script>
 
-<header class:isOpened={$navDrawerOpen}>
-    <a sveltekit:prefetch href="/" class="logo">
-        <SvgFile src={logo.src} />
-    </a>
+<svelte:window bind:scrollY />
+<div class="wrapper" class:showShadow>
+    <header class:isOpened={$navDrawerOpen}>
+        <a aria-label="yia logo" sveltekit:prefetch href="/" on:click={() => ($navDrawerOpen = false)}>
+            <Image src={logo.src} svgCode={logo.svgCode} />
+        </a>
 
-    <!-- svelte-ignore a11y-missing-attribute -->
-    <button on:click={handleMenuOpenClose} class="burgerMenu">
-        <img {...menuToggleIcons[+!$navDrawerOpen]} />
-    </button>
+        <!-- svelte-ignore a11y-missing-attribute -->
+        <button on:click={handleMenuOpenClose}>
+            <Image {...menuToggleIcons[+!$navDrawerOpen]} />
+        </button>
 
-    <nav class:hide={!$navDrawerOpen}>
-        {#each navMain as { label, slug }}
-            <a class="bigger" sveltekit:prefetch href={slug} on:click={() => ($navDrawerOpen = false)}>{label}</a>
-        {/each}
-    </nav>
-
-    <AuthNav />
-</header>
+        <nav class:hide={!$navDrawerOpen}>
+            {#each navMain as { label, slug }}
+                <a
+                    class="bigger"
+                    sveltekit:prefetch
+                    href={slug}
+                    on:click={() => {
+                        $navDrawerOpen = false
+                    }}>{label}</a
+                >
+            {/each}
+        </nav>
+        <div class="auth-container" class:hide={!$navDrawerOpen}>
+            <AuthNav />
+        </div>
+    </header>
+</div>
 
 <style lang="scss">
-    header {
-        transition: all 0.3s, background 0s, height 0s, padding 0s;
-
-        position: sticky;
-        top: 0;
-        left: 0;
-
-        width: calc(100% + 15rem);
-        height: calc(var(--header-height) - 5rem);
-        transform: translateX(-4rem);
-        padding: 0 5rem;
+    .wrapper {
+        transition: all 0.3s;
         z-index: 99;
 
         background-color: var(--color-primary);
+        width: 100%;
+        position: fixed;
+    }
 
-        .logo {
-            display: block;
-            width: fit-content;
-            height: 6rem;
-            transform: translateY(2rem);
+    .showShadow {
+        box-shadow: 0rem -0.7rem 1rem var(--color-secondary);
+    }
+    header {
+        transition: all 0.3s, height 0s, padding 0s;
+        display: grid;
+        grid-template-columns: var(--grid-template-columns);
+        column-gap: var(--column-gap);
+        grid-template-rows: auto;
+        justify-content: center;
+        align-content: flex-start;
+        width: 100%;
+        height: var(--header-height);
+        align-content: center;
 
-            :global(svg) {
-                width: 12.2rem;
+        @media (min-width: 769px) {
+            grid-template-columns: repeat(12, 1fr);
+            max-width: var(--max-width);
+            margin: 0 auto;
 
-                @media (min-width: 769px) {
-                    width: 10rem;
+            padding: 0 2rem;
+        }
+        & > a {
+            grid-column: 2/7;
+            grid-row: 1/2;
+
+            width: 10rem;
+
+            @media (min-width: 769px) {
+                grid-column: 1/2;
+                grid-row: 2/3;
+                &:hover {
+                    fill: var(--color-accent);
                 }
+                width: 12.2rem;
             }
         }
 
-        nav {
-            width: fit-content;
-            z-index: 1;
+        & > button {
+            grid-column: 7/8;
+            grid-row: 1/2;
 
-            a {
-                display: inline-block;
-                font-weight: 700;
-                font-size: 1.4rem;
-
-                padding: 1.5rem 2rem;
-
-                transition: all 0.3s ease-in-out;
-            }
-        }
-
-        .burgerMenu {
-            display: initial;
-            position: absolute;
-            top: 4rem;
-            right: 12rem;
+            display: grid;
+            justify-content: end;
+            align-items: center;
 
             @media (min-width: 769px) {
                 display: none;
             }
         }
+        & > nav {
+            grid-column: 2/8;
+            grid-row: 3/4;
 
-        &:not(.isOpened) {
-            nav {
-                position: absolute;
-                top: 3.5rem;
-                right: 12rem;
-                display: none;
-
-                a:hover {
-                    transform: translateY(-0.2rem);
-                    color: var(--color-tertiary);
-                }
-
-                @media (min-width: 769px) {
-                    display: block;
-                }
-            }
-
-            .logo {
-                &:hover {
-                    fill: var(--color-accent);
-                }
-            }
-        }
-
-        &.isOpened {
             display: grid;
-            position: fixed;
-            transform: translateX(-4rem);
-            height: 100vh;
-            background-color: var(--color-accent);
+            grid-auto-flow: row;
+            gap: 5.7rem;
 
-            .logo {
-                transform: translate(3rem, 2rem);
-            }
+            @media (min-width: 769px) {
+                grid-column: 2/13;
+                grid-row: 2/3;
 
-            nav {
-                a {
-                    display: block;
-                    font-weight: 900;
-                    font-size: 3rem;
-                    line-height: 4rem;
-                    padding: 2rem;
+                grid-auto-flow: column;
+                justify-content: end;
+                padding-top: 1.2rem;
+                & > a {
+                    position: relative;
+                    top: 0;
+                    transition: all 0.3s ease-in-out;
+                    &:hover {
+                        top: -0.2rem;
+                        color: var(--color-tertiary);
+                    }
                 }
             }
-
-            .burgerMenu {
-                right: 15.5rem;
-            }
-
-            :global(.authNav) {
-                top: initial;
-                right: initial;
-                left: 4rem;
-                bottom: 1.8rem;
-            }
         }
+    }
+    .auth-container {
+        grid-column: 2/8;
+        grid-row: 5/6;
+        @media (min-width: 769px) {
+            grid-column: 1/13;
+            grid-row: 1/2;
+            justify-content: end;
+        }
+    }
+    .hide {
+        display: none;
+
+        @media (min-width: 769px) {
+            display: grid;
+        }
+    }
+
+    .isOpened {
+        height: 100vh;
+        background-color: var(--color-accent);
+        grid-template-rows: auto 6rem auto auto 1fr;
+        padding: 2rem 0rem 5.1rem 0rem;
+
+        @media (min-width: 769px) {
+            height: auto;
+            background-color: var(--color-primary);
+            padding: 2rem;
+
+            grid-template-rows: auto auto;
+        }
+    }
+
+    .separator {
+        border-left: 0.15rem var(--color-secondary) solid;
+        height: 1.5rem;
     }
 </style>

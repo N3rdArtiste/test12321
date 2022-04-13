@@ -1,7 +1,8 @@
-query HomePage {
+query HomePage($limit: Int, $page: Int, $filterQuery: past_winners_filter) {
     home_page {
         id
         title_bar_text
+        meta_description
         enter_now_section_heading
         enter_now_section_sub_heading
         enter_now_section_body
@@ -11,6 +12,7 @@ query HomePage {
             id
             filename_disk
             description
+            svg_code
         }
         innovator_section_heading
         innovator_section_body
@@ -19,9 +21,99 @@ query HomePage {
             id
             filename_disk
             description
+            svg_code
         }
         brands_section_heading
         brands_section_description
         brands_section_CTA_label
+
+        current_year_filter {
+            id
+            year
+        }
+
+        inspiration_articles {
+            id
+            inspiration_article {
+                id
+                title
+                body
+                read_more_label
+                read_more_link
+                image {
+                    id
+                    filename_disk
+                    description
+                    svg_code
+                }
+            }
+        }
+    }
+
+    past_winners_page {
+        id
+        heading
+    }
+    past_winners_categories {
+        id
+        category
+    }
+    past_winners_years {
+        id
+        year
+    }
+    past_winners_aggregated(filter: $filterQuery, sort: ["sort", "date_created"]) {
+        count {
+            id
+        }
+    }
+    past_winners(limit: $limit, page: $page, filter: $filterQuery, sort: ["sort", "date_created"]) {
+        id
+        name
+        image {
+            id
+            filename_disk
+            description
+            svg_code
+        }
+        short_description
+        year {
+            id
+            past_winners_year {
+                id
+                year
+            }
+        }
+        school_name
+        students_name
+        youtube_video_id
+        project_information
+        worksheets {
+            id
+            past_winners_worksheet {
+                id
+                worksheet {
+                    id
+                    title
+                    filename_disk
+                }
+            }
+        }
+        categories {
+            id
+            past_winners_category {
+                id
+                category
+            }
+        }
+    }
+    brands {
+        id
+        image {
+            id
+            description
+            filename_disk
+            svg_code
+        }
     }
 }

@@ -16,6 +16,7 @@
         }
         return {
             props: {
+                category,
                 currentPage: page,
                 limit: defaultLimit,
                 pastWinnersContent: stuff.getOperationStore
@@ -37,15 +38,19 @@
     import { replaceQueryParams } from 'helpers/url'
     import { onMount } from 'svelte'
     import Divider from 'components/divider.svelte'
-
+    import uniqBy from 'lodash/uniqBy.js'
     export let pastWinnersContent: PastWinnersPageQueryStore
     export let currentPage: number
     export let limit: number
+    export let category: string
 
     let pastWinnersList: PastWinnersPageQuery['past_winners']
     let page = currentPage
+    let selectedPastWinnersCategoryId: string
 
+    $: noMorePastWinnersToLoad = pastWinnersList?.length === (pastWinnersContent.data?.past_winners_aggregated ?? [])[0]?.count?.id
     onMount(() => {
+        selectedPastWinnersCategoryId = category ?? 'all'
         replaceQueryParams({
             page: currentPage.toString(),
         })
@@ -54,7 +59,7 @@
     query(pastWinnersContent)
 
     $: if (!$pastWinnersContent.fetching) {
-        pastWinnersList = [...(pastWinnersList ?? []), ...($pastWinnersContent.data?.past_winners ?? [])]
+        pastWinnersList = uniqBy([...(pastWinnersList ?? []), ...($pastWinnersContent.data?.past_winners ?? [])], 'id')
     }
 
     const loadMorePastWinners = () => {
@@ -67,6 +72,7 @@
     }
 
     const onCategoryClick = (id: string) => {
+        selectedPastWinnersCategoryId = id
         pastWinnersList = []
         page = 1
         replaceQueryParams({
@@ -78,7 +84,18 @@
     }
 </script>
 
+<svelte:head>
+    <title>{$pastWinnersContent.data?.past_winners_page?.title_bar_text ?? 'YiA'}</title>
+    <meta name="description" content={$pastWinnersContent.data?.past_winners_page?.meta_description ?? ''} />
+</svelte:head>
+
 {#if $pastWinnersContent.data}
-    <PastWinners data={$pastWinnersContent.data} {pastWinnersList} onLoadMoreClick={loadMorePastWinners} {onCategoryClick} />
+    <PastWinners
+        selectedCategoryId={selectedPastWinnersCategoryId}
+        data={$pastWinnersContent.data}
+        {pastWinnersList}
+        onLoadMoreClick={noMorePastWinnersToLoad ? undefined : loadMorePastWinners}
+        {onCategoryClick}
+    />
 {/if}
 <Divider heightDesktop={12.8} heightMobile={5} />

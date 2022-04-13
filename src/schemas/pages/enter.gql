@@ -1,0 +1,59 @@
+query EnterPage {
+    enter_page {
+        id
+        meta_description
+        key_dates_title
+        key_dates_youtube_video_id
+        timeline_section_heading
+        timeline_section_image {
+            id
+            filename_disk
+            description
+            svg_code
+        }
+        heading
+        title_bar_text
+        key_dates {
+            id
+            dates {
+                id
+                date
+                subtext
+            }
+        }
+
+        text_area_questions {
+            id
+            question {
+                id
+                body
+                title
+            }
+        }
+        multi_level_questions {
+            id
+            question {
+                id
+                title
+                body {
+                    id
+                    multi_level_question_items {
+                        id
+                        level_1_title
+                        level_2_title
+                        level_2_subtext
+                        level_3_text
+                        level_3_links {
+                            id
+                            multi_level_question_item_links {
+                                id
+                                label
+                                url
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

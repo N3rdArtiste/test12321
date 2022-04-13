@@ -3,18 +3,27 @@ query InspirationPage($limit: Int, $page: Int) {
         id
         heading
         description
+        title_bar_text
+        meta_description
         hero_image {
             id
             filename_disk
             description
+            svg_code
         }
     }
-    inspiration_articles(limit: $limit, page: $page) {
+    inspiration_articles_aggregated {
+        count {
+            id
+        }
+    }
+    inspiration_articles(limit: $limit, page: $page, sort: ["sort", "date_created"]) {
         id
         image {
             id
             filename_disk
             description
+            svg_code
         }
         title
         body

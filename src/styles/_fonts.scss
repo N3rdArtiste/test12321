@@ -1,16 +1,19 @@
 @font-face {
     font-family: 'Munken Sans Web';
     font-weight: 500;
-    src: url(/fonts/MunkenSansWeb-Regular.woff) format('woff');
+    src: url(/fonts/MunkenSansWeb-Regular.woff2) format('woff2');
+    font-display: fallback;
 }
 
 @font-face {
     font-family: 'Munken Sans Web';
     font-weight: 700;
-    src: url(/fonts/MunkenSansWeb-Medium.woff) format('woff');
+    src: url(/fonts/MunkenSansWeb-Medium.woff2) format('woff2');
+    font-display: fallback;
 }
 @font-face {
     font-family: 'Munken Sans Web';
     font-weight: 900;
-    src: url(/fonts/MunkenSansWeb-Bold.woff) format('woff');
+    src: url(/fonts/MunkenSansWeb-Bold.woff2) format('woff2');
+    font-display: fallback;
 }

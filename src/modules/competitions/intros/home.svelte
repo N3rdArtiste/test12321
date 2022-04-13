@@ -1,11 +1,17 @@
 <script lang="ts">
+    import { goto } from '$app/navigation'
+
     export let data: HomePageQuery['home_page']
 
-    import ArrowButton from 'components/buttons/arrow.svelte'
+    import ButtonArrow from 'components/buttons/arrow.svelte'
 </script>
 
 <section>
-    <i>
+    <i
+        on:click={() => {
+            goto('/enter')
+        }}
+    >
         {@html data?.enter_now_section_heading}
     </i>
     <p>
@@ -13,52 +19,59 @@
         <strong>${data?.enter_now_section_sub_heading}</strong>
         ${data?.enter_now_section_body}`}
     </p>
-
-    <ArrowButton
-        label={data?.enter_now_section_CTA_label ?? ''}
-        onClick={() => {
-            console.log('clicked')
-        }}
-    />
+    <div>
+        <ButtonArrow
+            label={data?.enter_now_section_CTA_label ?? ''}
+            onClick={() => {
+                goto('/enter')
+            }}
+        />
+    </div>
 </section>
 
 <style lang="scss">
     section {
         display: grid;
+        grid-template-columns: var(--grid-template-columns);
         grid-template-rows: auto 4.2rem auto 6.8rem auto;
+        column-gap: var(--column-gap);
+        max-width: var(--max-width);
+
         @media (min-width: 769px) {
             grid-template-rows: auto 2rem auto;
+            grid-template-columns: minmax(21rem, 1fr) 1fr 1fr 1fr 1fr 1fr minmax(14rem, 1fr) 1fr 1fr 1fr 1fr 1fr;
+            margin: 0 auto;
             justify-content: center;
             padding: 0 2rem;
         }
-
-        h1:nth-of-type(1) {
-            grid-column: var(--grid-span-full);
-        }
-
-        i {
-            grid-column: 1/6;
+        & > i {
+            grid-column: 2/7;
             grid-row: 1/2;
 
-            padding: 0 2rem;
-            cursor: default;
+            cursor: pointer;
 
             &:hover {
                 color: var(--color-accent);
             }
             @media (min-width: 769px) {
-                grid-column: var(--grid-span-half);
+                grid-column: 1/6;
                 grid-row: 1/4;
             }
         }
-        p:nth-of-type(1) {
-            grid-column: 1/7;
+        & > p:nth-of-type(1) {
+            grid-column: 2/8;
             grid-row: 3/4;
-
-            padding: 0 2rem;
 
             & :global(p:nth-of-type(1)) {
                 display: inline;
+            }
+            & :global(a) {
+                font-size: 2rem;
+                line-height: 2.8rem;
+                @media (min-width: 769px) {
+                    font-size: 2.2rem;
+                    line-height: 3rem;
+                }
             }
 
             @media (min-width: 769px) {
@@ -74,19 +87,11 @@
             }
         }
 
-        @media (min-width: 769px) {
-            & > * {
-                padding: 0 !important;
-            }
-        }
-
-        :global(button.arrowButton) {
-            grid-column: 1/7;
+        & > div {
+            grid-column: 2/8;
             grid-row: 5/6;
 
             width: 100%;
-            padding: 0 2rem;
-
             @media (min-width: 769px) {
                 grid-column: 7/13;
                 grid-row: 3/4;

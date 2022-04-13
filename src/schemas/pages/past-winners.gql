@@ -2,6 +2,8 @@ query PastWinnersPage($limit: Int, $page: Int, $filterQuery: past_winners_filter
     past_winners_page {
         id
         heading
+        title_bar_text
+        meta_description
     }
     past_winners_categories {
         id
@@ -11,13 +13,19 @@ query PastWinnersPage($limit: Int, $page: Int, $filterQuery: past_winners_filter
         id
         year
     }
-    past_winners(limit: $limit, page: $page, filter: $filterQuery) {
+    past_winners_aggregated(filter: $filterQuery, sort: ["sort", "date_created"]) {
+        count {
+            id
+        }
+    }
+    past_winners(limit: $limit, page: $page, filter: $filterQuery, sort: ["sort", "date_created"]) {
         id
         name
         image {
             id
             filename_disk
             description
+            svg_code
         }
         short_description
         year {
@@ -34,6 +42,7 @@ query PastWinnersPage($limit: Int, $page: Int, $filterQuery: past_winners_filter
         worksheets {
             id
             past_winners_worksheet {
+                id
                 worksheet {
                     id
                     title

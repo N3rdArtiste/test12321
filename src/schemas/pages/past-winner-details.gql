@@ -1,0 +1,40 @@
+query pastWinnerDetails($id: ID!, $filterQuery: past_winners_filter) {
+    past_winners_by_id(id: $id) {
+        id
+        name
+        students_name
+        short_description
+        youtube_video_id
+        categories {
+            id
+            past_winners_category {
+                id
+                category
+            }
+        }
+        school_name
+        year {
+            id
+            past_winners_year {
+                id
+                year
+            }
+        }
+        project_information
+        short_description
+        worksheets {
+            id
+            past_winners_worksheet {
+                id
+                worksheet {
+                    id
+                    filename_disk
+                    description
+                }
+            }
+        }
+    }
+    past_winners(limit: 1, filter: $filterQuery) {
+        id
+    }
+}

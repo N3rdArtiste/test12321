@@ -10,16 +10,10 @@ const config = {
 
     kit: {
         adapter: adapter(),
-
         vite: {
             optimizeDeps: {
                 exclude: ['@urql/svelte'],
             },
-
-            // files: {
-            //     serviceWorker: 'src/service-worker',
-            // },
-
             server: {
                 fs: {
                     allow: [

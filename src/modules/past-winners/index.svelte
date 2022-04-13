@@ -7,8 +7,9 @@
 
     export let data: PastWinnersPageQuery
     export let pastWinnersList: PastWinnersPageQuery['past_winners']
-    export let onLoadMoreClick: () => void
+    export let onLoadMoreClick: (() => void) | undefined
     export let onCategoryClick: (id: string) => void
+    export let selectedCategoryId: string
 
     let pastWinnerCategories = data.past_winners_categories?.map(category => {
         return { name: category?.category!, id: `cat${category?.id!}` }
@@ -21,7 +22,7 @@
         {
             id: 'all',
             name: 'All',
-            multiLevelList: [{ name: 'Year', multiLevelList: pastWinnerYears }, ...(pastWinnerCategories ?? [])],
+            multiLevelList: [{ name: 'Year', multiLevelList: pastWinnerYears, collapsible: true }, ...(pastWinnerCategories ?? [])],
         },
     ]
 
@@ -34,7 +35,7 @@
     <aside>
         <p class="small"><strong>Filter by</strong></p>
         <div>
-            <Filter {multiLevelList} catClick={onCategoryClick} />
+            <Filter selectedId={selectedCategoryId} {multiLevelList} catClick={onCategoryClick} />
         </div>
     </aside>
     <!-- Only visible in mobile -->
@@ -46,14 +47,16 @@
     </i>
     <b>
         {#each pastWinnersList ?? [] as past_winner}
-            <div>
+            <a sveltekit:prefetch href={'/past-winners/' + past_winner?.id + '?category=' + selectedCategoryId}>
                 <Card data={past_winner} />
-            </div>
+            </a>
         {/each}
     </b>
-    <div>
-        <ArrowButton onClick={onLoadMoreClick} label="Load more" />
-    </div>
+    {#if onLoadMoreClick}
+        <div>
+            <ArrowButton onClick={onLoadMoreClick} label="Load more" />
+        </div>
+    {/if}
 </section>
 
 <style lang="scss">
@@ -64,14 +67,17 @@
         align-self: flex-start;
         grid-auto-flow: row;
         column-gap: var(--column-gap);
-        padding: 0 2rem;
         justify-content: center;
         @media (min-width: 769px) {
+            grid-template-columns: minmax(9rem, 1fr) minmax(9rem, 1fr) minmax(0, 1fr) minmax(12.2rem, 1fr) 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            max-width: var(--max-width);
+            margin: 0 auto;
             grid-template-rows: auto 11.2rem auto 11rem auto;
+            padding: 0 2rem;
         }
 
         & > h1 {
-            grid-column: span 6;
+            grid-column: 2/8;
             grid-row: 1/2;
 
             @media (min-width: 769px) {
@@ -80,8 +86,7 @@
         }
 
         & > i {
-            grid-column: span 6;
-
+            grid-column: 2/8;
             grid-row: 3/4;
 
             display: grid;
@@ -97,13 +102,12 @@
             display: none;
             @media (min-width: 769px) {
                 display: grid;
-                border-right: 0.15rem solid var(--color-secondary);
+                border-right: 0.2rem solid var(--color-secondary);
                 grid-auto-rows: 1fr;
                 grid-template-columns: 1fr 1fr 1fr;
                 grid-template-rows: auto 4.5rem auto;
                 grid-area: 1 / 1 / 5 / 3;
                 align-content: flex-start;
-                min-width: 10rem;
 
                 & > p {
                     grid-area: 1 / 1 / 2 / 4;
@@ -115,7 +119,7 @@
         }
 
         & > b {
-            grid-column: span 6;
+            grid-column: 2/8;
             grid-row: 5/6;
             display: grid;
             row-gap: 6.2rem;
@@ -123,12 +127,12 @@
                 grid-area: 3 / 4 / 4 / 13;
                 grid-auto-flow: row;
                 column-gap: 2.9rem;
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: repeat(auto-fit, minmax(40.8rem, 1fr));
             }
         }
 
         & > div {
-            grid-column: span 6;
+            grid-column: 2/8;
             grid-row: 7/8;
             @media (min-width: 769px) {
                 grid-area: 5 / 4 / 6 / 13;

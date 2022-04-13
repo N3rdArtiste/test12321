@@ -11,49 +11,50 @@
 </script>
 
 <script type="ts">
-    export let aboutPage: AboutPageQueryStore
-
     import { query } from '@urql/svelte'
-
     import Divider from 'components/divider.svelte'
-
     import CompetitionIntro from 'modules/competitions/intros/about.svelte'
-    import CompetitionChallenge from 'modules/competitions/challenge.svelte'
-    import BrandsIntro from 'modules/brands/intro.svelte'
-    import JudgesIntro from 'modules/judges/intro.svelte'
-    import WinningsHow from 'modules/questions/winnings-how.svelte'
-    import WinningsWhat from 'modules/questions/winnings-what.svelte'
+    import Challenge from 'modules/competitions/challenge.svelte'
+    import Judges from 'modules/judges/intro.svelte'
+    import Brands from 'modules/brands/about.svelte'
+    import MultiLevelQuestion from 'components/multi-level-question.svelte'
+    import Drawer from 'components/drawer.svelte'
+    import HorizontalLine from 'components/horizontal-line.svelte'
+    import TextAreaQuestion from 'components/text-area-question.svelte'
 
+    export let aboutPage: AboutPageQueryStore
     query(aboutPage)
-
-    $: console.log('--$aboutPage.data--', $aboutPage.data)
 
     let { question: whatQuestions } = $aboutPage.data?.about_page?.multi_level_questions![0]!
     let { question: howQuestions } = $aboutPage.data?.about_page?.textarea_questions![0]!
+
+    let drawerOpenedTitle: string = ''
 </script>
 
 <svelte:head>
-    <title>{$aboutPage.data?.about_page?.heading ?? 'YiA'}</title>
+    <title>{$aboutPage.data?.about_page?.title_bar_text ?? 'YiA'}</title>
+    <meta name="description" content={$aboutPage.data?.about_page?.meta_description ?? ''} />
 </svelte:head>
 
-{#if $aboutPage.data}
-    <CompetitionIntro data={$aboutPage.data.about_page} />
-    <Divider heightDesktop={11.5} heightMobile={5.6} />
-
-    <CompetitionChallenge data={$aboutPage.data.about_page} />
-    <Divider heightDesktop={11.5} heightMobile={5.6} />
-{/if}
-
-{#if whatQuestions && howQuestions}
-    <WinningsWhat question={whatQuestions} />
-    <WinningsHow question={howQuestions} />
-    <Divider heightDesktop={11.5} heightMobile={5.6} />
-{/if}
-
-{#if $aboutPage.data}
-    <JudgesIntro data={$aboutPage.data.about_page} />
-    <Divider heightDesktop={11.5} heightMobile={5.6} />
-
-    <BrandsIntro data={$aboutPage.data.about_page} brands={$aboutPage.data.brands} />
-    <Divider heightDesktop={11.5} heightMobile={5.6} />
+{#if aboutPage.data}
+    <CompetitionIntro data={$aboutPage.data?.about_page} />
+    <Divider heightMobile={6.8} heightDesktop={16.6} />
+    <Challenge data={$aboutPage.data?.about_page} />
+    <Divider heightMobile={5} heightDesktop={15.8} />
+    {#if whatQuestions && howQuestions}
+        <HorizontalLine />
+        <Drawer title={whatQuestions.title ?? ''} bind:drawerOpenedTitle>
+            <MultiLevelQuestion question={whatQuestions} />
+        </Drawer>
+        <HorizontalLine />
+        <Drawer title={howQuestions.title ?? ''} bind:drawerOpenedTitle>
+            <TextAreaQuestion text={howQuestions.body ?? ''} />
+        </Drawer>
+        <HorizontalLine />
+        <Divider heightDesktop={11.5} heightMobile={5.6} />
+    {/if}
+    <Judges data={$aboutPage.data?.about_page} />
+    <Divider heightMobile={4.47} heightDesktop={16.1} />
+    <Brands brands={$aboutPage.data?.brands} data={$aboutPage.data?.about_page} />
+    <Divider heightMobile={4.7} heightDesktop={18.9} />
 {/if}

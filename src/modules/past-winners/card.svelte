@@ -1,11 +1,22 @@
 <script type="ts">
+    import { session } from '$app/stores'
+
     import { getDirectusAssetLink } from 'helpers/string'
+    import { blur } from 'svelte/transition'
 
     export let data: ArrayElement<PastWinnersPageQuery['past_winners']>
 </script>
 
-<article>
-    <img src="{getDirectusAssetLink(data?.image?.filename_disk)}/" alt={data?.image?.description} />
+<article in:blur>
+    <picture>
+        <source srcset={`${getDirectusAssetLink($session.directusURL, data?.image?.filename_disk)}?quality=50&format=webp`} media="(min-width: 769px)" />
+        <img
+            loading="lazy"
+            src={`${getDirectusAssetLink($session.directusURL, data?.image?.filename_disk)}?quality=30&format=webp`}
+            alt={data?.image?.description ?? 'past winner'}
+        />
+    </picture>
+
     <h2 class="small">{data?.name}</h2>
     <p>{data?.short_description}</p>
 </article>
@@ -17,11 +28,15 @@
         grid-template-columns: auto;
         grid-template-rows: auto 2.8rem auto 1.5rem auto;
 
-        & > img {
+        & > picture {
             grid-row: 1/2;
 
-            width: 100%;
-            aspect-ratio: 374/268;
+            & > img {
+                width: 100%;
+                aspect-ratio: 374/268;
+                object-fit: cover;
+                object-position: top;
+            }
         }
 
         & > h2 {

@@ -1,12 +1,13 @@
 <script lang="ts">
-    export let label: string = ''
+    export let label: string | undefined = undefined
     export let accentHover = true
     export let arrowRight = false
+    export let small: boolean = false
     export let onClick: () => void
 </script>
 
-<button class="arrowButton" on:click={onClick} class:accentHover class:arrowRight>
-    {#if label.length}
+<button aria-label={label ?? 'arrow'} class="arrowButton" class:small on:click={onClick} class:accentHover class:arrowRight>
+    {#if Boolean(label)}
         <span>{label}</span>
     {/if}
 
@@ -16,12 +17,25 @@
 </button>
 
 <style lang="scss">
+    .small {
+        grid-gap: 1.2rem;
+        & > span {
+            font-size: 2.2rem;
+            line-height: 3rem;
+        }
+        & > b {
+            transform: scale(0.9);
+        }
+    }
+
     button {
+        transition: color 0.1s;
         display: grid;
         grid-gap: 2rem;
-        grid-template-columns: max-content 1fr;
+        grid-template-columns: 1fr auto;
         padding-right: 0.2rem;
         cursor: pointer;
+        text-align: left;
 
         span {
             font-size: 3rem;
@@ -49,7 +63,6 @@
             align-content: center;
 
             div {
-                transition: width 300ms ease-out;
                 background: var(--color-secondary);
                 height: 0.2rem;
                 width: 2.8rem;

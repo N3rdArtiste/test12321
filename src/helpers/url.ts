@@ -9,3 +9,7 @@ export const replaceQueryParams = (values: Record<string, string>) => {
     }
     history.replaceState({}, '', url)
 }
+
+export const goToStaticPage = (path: string) => {
+    location.href = `${location.origin}${path}`
+}
