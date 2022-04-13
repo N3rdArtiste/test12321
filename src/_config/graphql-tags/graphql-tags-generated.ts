@@ -224,6 +224,10 @@ export const HomePageDocument = gql`
     brands_section_heading
     brands_section_description
     brands_section_CTA_label
+    current_year_filter {
+      id
+      year
+    }
     inspiration_articles {
       id
       inspiration_article {
