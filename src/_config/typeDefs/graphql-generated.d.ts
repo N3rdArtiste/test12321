@@ -1513,6 +1513,8 @@
   brands_section_CTA_label?: Maybe<Scalars['String']>;
   brands_section_description?: Maybe<Scalars['String']>;
   brands_section_heading?: Maybe<Scalars['String']>;
+  current_year?: Maybe<Judges_Judges_Years>;
+  current_year_filter?: Maybe<Judges_Years>;
   enter_now_section_CTA_label?: Maybe<Scalars['String']>;
   enter_now_section_body?: Maybe<Scalars['String']>;
   enter_now_section_heading?: Maybe<Scalars['String']>;
@@ -1527,6 +1529,26 @@
   inspiration_articles?: Maybe<Array<Maybe<Home_Page_Inspiration_Articles>>>;
   meta_description?: Maybe<Scalars['String']>;
   title_bar_text?: Maybe<Scalars['String']>;
+};
+
+
+ type Home_PageCurrent_YearArgs = {
+  filter?: InputMaybe<Judges_Judges_Years_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+ type Home_PageCurrent_Year_FilterArgs = {
+  filter?: InputMaybe<Judges_Years_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
@@ -1565,6 +1587,8 @@
   brands_section_CTA_label?: InputMaybe<String_Filter_Operators>;
   brands_section_description?: InputMaybe<String_Filter_Operators>;
   brands_section_heading?: InputMaybe<String_Filter_Operators>;
+  current_year?: InputMaybe<Judges_Judges_Years_Filter>;
+  current_year_filter?: InputMaybe<Judges_Years_Filter>;
   enter_now_section_CTA_label?: InputMaybe<String_Filter_Operators>;
   enter_now_section_body?: InputMaybe<String_Filter_Operators>;
   enter_now_section_heading?: InputMaybe<String_Filter_Operators>;
@@ -2778,7 +2802,7 @@
 }>;
 
 
- type HomePageQuery = { __typename?: 'Query', home_page?: { __typename?: 'home_page', id?: string | null, title_bar_text?: string | null, meta_description?: string | null, enter_now_section_heading?: string | null, enter_now_section_sub_heading?: string | null, enter_now_section_body?: string | null, enter_now_section_CTA_label?: string | null, hero_section_youtube_video_id?: string | null, innovator_section_heading?: string | null, innovator_section_body?: string | null, innovator_section_CTA_label?: string | null, brands_section_heading?: string | null, brands_section_description?: string | null, brands_section_CTA_label?: string | null, hero_section_right_side_svg?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null, svg_code?: string | null } | null, innovator_section_image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null, svg_code?: string | null } | null, inspiration_articles?: Array<{ __typename?: 'home_page_inspiration_articles', id?: string | null, inspiration_article?: { __typename?: 'inspiration_articles', id?: string | null, title?: string | null, body?: string | null, read_more_label?: string | null, read_more_link?: string | null, image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null, svg_code?: string | null } | null } | null } | null> | null } | null, past_winners_page?: { __typename?: 'past_winners_page', id?: string | null, heading?: string | null } | null, past_winners_categories?: Array<{ __typename?: 'past_winners_categories', id?: string | null, category: string } | null> | null, past_winners_years?: Array<{ __typename?: 'past_winners_years', id?: string | null, year: number } | null> | null, past_winners_aggregated?: Array<{ __typename?: 'past_winners_aggregated', count?: { __typename?: 'past_winners_aggregated_fields', id?: number | null } | null } | null> | null, past_winners?: Array<{ __typename?: 'past_winners', id?: string | null, name?: string | null, short_description?: string | null, school_name?: string | null, students_name?: string | null, youtube_video_id?: string | null, project_information?: string | null, image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null, svg_code?: string | null } | null, year?: Array<{ __typename?: 'past_winners_past_winners_years', id?: string | null, past_winners_year?: { __typename?: 'past_winners_years', id?: string | null, year: number } | null } | null> | null, worksheets?: Array<{ __typename?: 'past_winners_past_winners_worksheets', id?: string | null, past_winners_worksheet?: { __typename?: 'past_winners_worksheets', id?: string | null, worksheet?: { __typename?: 'directus_files', id?: string | null, title?: string | null, filename_disk?: string | null } | null } | null } | null> | null, categories?: Array<{ __typename?: 'past_winners_past_winners_categories', id?: string | null, past_winners_category?: { __typename?: 'past_winners_categories', id?: string | null, category: string } | null } | null> | null } | null> | null, brands?: Array<{ __typename?: 'brands', id?: string | null, image?: { __typename?: 'directus_files', id?: string | null, description?: string | null, filename_disk?: string | null, svg_code?: string | null } | null } | null> | null };
+ type HomePageQuery = { __typename?: 'Query', home_page?: { __typename?: 'home_page', id?: string | null, title_bar_text?: string | null, meta_description?: string | null, enter_now_section_heading?: string | null, enter_now_section_sub_heading?: string | null, enter_now_section_body?: string | null, enter_now_section_CTA_label?: string | null, hero_section_youtube_video_id?: string | null, innovator_section_heading?: string | null, innovator_section_body?: string | null, innovator_section_CTA_label?: string | null, brands_section_heading?: string | null, brands_section_description?: string | null, brands_section_CTA_label?: string | null, hero_section_right_side_svg?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null, svg_code?: string | null } | null, innovator_section_image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null, svg_code?: string | null } | null, current_year_filter?: { __typename?: 'judges_years', id?: string | null, year: string } | null, inspiration_articles?: Array<{ __typename?: 'home_page_inspiration_articles', id?: string | null, inspiration_article?: { __typename?: 'inspiration_articles', id?: string | null, title?: string | null, body?: string | null, read_more_label?: string | null, read_more_link?: string | null, image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null, svg_code?: string | null } | null } | null } | null> | null } | null, past_winners_page?: { __typename?: 'past_winners_page', id?: string | null, heading?: string | null } | null, past_winners_categories?: Array<{ __typename?: 'past_winners_categories', id?: string | null, category: string } | null> | null, past_winners_years?: Array<{ __typename?: 'past_winners_years', id?: string | null, year: number } | null> | null, past_winners_aggregated?: Array<{ __typename?: 'past_winners_aggregated', count?: { __typename?: 'past_winners_aggregated_fields', id?: number | null } | null } | null> | null, past_winners?: Array<{ __typename?: 'past_winners', id?: string | null, name?: string | null, short_description?: string | null, school_name?: string | null, students_name?: string | null, youtube_video_id?: string | null, project_information?: string | null, image?: { __typename?: 'directus_files', id?: string | null, filename_disk?: string | null, description?: string | null, svg_code?: string | null } | null, year?: Array<{ __typename?: 'past_winners_past_winners_years', id?: string | null, past_winners_year?: { __typename?: 'past_winners_years', id?: string | null, year: number } | null } | null> | null, worksheets?: Array<{ __typename?: 'past_winners_past_winners_worksheets', id?: string | null, past_winners_worksheet?: { __typename?: 'past_winners_worksheets', id?: string | null, worksheet?: { __typename?: 'directus_files', id?: string | null, title?: string | null, filename_disk?: string | null } | null } | null } | null> | null, categories?: Array<{ __typename?: 'past_winners_past_winners_categories', id?: string | null, past_winners_category?: { __typename?: 'past_winners_categories', id?: string | null, category: string } | null } | null> | null } | null> | null, brands?: Array<{ __typename?: 'brands', id?: string | null, image?: { __typename?: 'directus_files', id?: string | null, description?: string | null, filename_disk?: string | null, svg_code?: string | null } | null } | null> | null };
 
  type InspirationPageQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>;
