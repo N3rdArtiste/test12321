@@ -56,6 +56,15 @@
             {/each}
         </div>
 
+        <h2>Our Partners</h2>
+        <div>
+            {#each partners ?? [] as partner}
+                <a rel="external" target="_blank" aria-label={partner.alt} href={partner.href}>
+                    <Image src={partner.src} alt={partner.alt} svgCode={partner.svgCode} />
+                </a>
+            {/each}
+        </div>
+
         <div>
             <Image src={logo.src} svgCode={logo.svgCode} />
         </div>
@@ -77,12 +86,6 @@
                 <a rel="external" target="_blank" aria-label={socialMediaIcon.alt} href={socialMediaIcon.href}>
                     <Image src={socialMediaIcon.src} alt={socialMediaIcon.alt} svgCode={socialMediaIcon.svgCode} />
                 </a>
-            {/each}
-        </div>
-
-        <div>
-            {#each partners ?? [] as partner}
-                <a rel="external" aria-label={partner.alt} target="_blank" href={partner.href}> <Image src={partner.src} alt={partner.alt} svgCode={partner.svgCode} /> </a>
             {/each}
         </div>
 
@@ -113,14 +116,14 @@
 
             padding: 9rem 2rem 9rem 2rem;
 
-            grid-template-rows: auto 0 auto 13.1rem auto 4.63rem auto 2.4rem;
+            grid-template-rows: auto 0 auto 13.1rem auto 0 auto 13.1rem auto 4.63rem auto 2.4rem;
         }
 
         @media (min-width: 1200px) {
             padding: 17.9rem 2rem 18.6rem 2rem;
         }
 
-        & > h2 {
+        & > h2:nth-of-type(1) {
             grid-row: 1/2;
             grid-column: 2/8;
 
@@ -150,6 +153,37 @@
             }
         }
 
+        & > h2:nth-of-type(2) {
+            grid-row: 1/2;
+            grid-column: 2/8;
+
+            @media (min-width: 769px) {
+                font-size: 4rem;
+                grid-column: 1/5;
+                grid-row: 2/4;
+                margin-top: 8rem;
+            }
+        }
+        & > div:nth-of-type(2) {
+            grid-column: 2/8;
+            display: grid;
+            grid-row: 3/4;
+            grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
+            gap: 1.6rem;
+            @media (min-width: 769px) {
+                grid-column: 5/13;
+                grid-row: 2/4;
+                margin-top: 8rem;
+            }
+
+            & > a {
+                display: grid;
+                justify-content: center;
+                align-items: center;
+                aspect-ratio: 258/143;
+            }
+        }
+
         & .leftArrowButton {
             display: none;
 
@@ -171,13 +205,13 @@
                 text-align: -webkit-right;
             }
         }
-        & > div:nth-of-type(2) {
+        & > div:nth-of-type(3) {
             grid-column: 2/8;
-            grid-row: 5/6;
+            grid-row: 4/5;
             width: 100%;
             max-width: 12.2rem;
             @media (min-width: 769px) {
-                grid-row: 5/6;
+                grid-row: 4/5;
                 grid-column: 1/2;
             }
         }
@@ -210,8 +244,8 @@
             }
         }
 
-        & > div:nth-of-type(3) {
-            grid-row: 9/10;
+        & > div:nth-of-type(4) {
+            grid-row: 8/10;
             grid-column: 2/8;
             justify-items: center;
 
@@ -232,33 +266,20 @@
             @media (min-width: 769px) {
                 justify-content: start;
                 align-content: flex-start;
-                grid-row: 9/10;
+                grid-row: 8/9;
                 grid-column: 4/5;
+                margin-top: 6rem;
             }
         }
-        & > div:nth-of-type(4) {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(9.4rem, 12.4rem));
-            grid-auto-rows: 4.7rem;
-            align-items: center;
-            justify-content: center;
-            justify-items: center;
-            grid-row: 11/12;
-            grid-column: 2/8;
-            gap: 2.5rem;
 
-            @media (min-width: 769px) {
-                grid-row: 7/10;
-                grid-column: 10/13;
-            }
-        }
         & > p:nth-of-type(2) {
             grid-row: 13/14;
             grid-column: 2/8;
 
             @media (min-width: 769px) {
-                grid-row: 9/10;
+                grid-row: 8/9;
                 grid-column: 1/3;
+                margin-top: 6rem;
             }
         }
     }
