@@ -56,6 +56,15 @@
             {/each}
         </div>
 
+        <h2>Our Partners</h2>
+        <div>
+            {#each partners ?? [] as partner}
+                <a rel="external" target="_blank" aria-label={partner.alt} href={partner.href}>
+                    <Image src={partner.src} alt={partner.alt} svgCode={partner.svgCode} />
+                </a>
+            {/each}
+        </div>
+
         <div>
             <Image src={logo.src} svgCode={logo.svgCode} />
         </div>
@@ -80,12 +89,6 @@
             {/each}
         </div>
 
-        <div>
-            {#each partners ?? [] as partner}
-                <a rel="external" aria-label={partner.alt} target="_blank" href={partner.href}> <Image src={partner.src} alt={partner.alt} svgCode={partner.svgCode} /> </a>
-            {/each}
-        </div>
-
         <p class="smaller">
             {copyrightText}
         </p>
@@ -103,7 +106,7 @@
         justify-content: center;
         padding: 5.1rem 0 4.1rem 0;
         grid-template-columns: var(--grid-template-columns);
-        grid-template-rows: auto 3.1rem auto 6.1rem auto 3rem auto 3.3rem auto 3rem auto 5rem auto;
+        grid-template-rows: auto 3.1rem auto 6.1rem auto 6.1rem auto auto 3rem auto 3.3rem auto 3rem auto 5rem auto;
         column-gap: var(--column-gap);
 
         @media (min-width: 769px) {
@@ -113,14 +116,14 @@
 
             padding: 9rem 2rem 9rem 2rem;
 
-            grid-template-rows: auto 0 auto 13.1rem auto 4.63rem auto 2.4rem;
+            grid-template-rows: auto 0 auto 13.1rem auto 0 auto 13.1rem auto 4.63rem;
         }
 
         @media (min-width: 1200px) {
-            padding: 17.9rem 2rem 18.6rem 2rem;
+            padding: 17.9rem 2rem 0rem 2rem;
         }
 
-        & > h2 {
+        & > h2:nth-of-type(1) {
             grid-row: 1/2;
             grid-column: 2/8;
 
@@ -150,6 +153,39 @@
             }
         }
 
+        & > h2:nth-of-type(2) {
+            margin-top: 8rem;
+            grid-row: 4/5;
+            grid-column: 2/8;
+
+            @media (min-width: 769px) {
+                font-size: 4rem;
+                grid-column: 1/5;
+                grid-row: 2/4;
+            }
+        }
+        & > div:nth-of-type(2) {
+            grid-column: 2/8;
+            display: grid;
+            grid-row: 5/6;
+            grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
+
+            margin-top: 8rem;
+            margin-bottom: 10rem;
+            @media (min-width: 769px) {
+                margin-bottom: 0rem;
+                grid-column: 5/13;
+                grid-row: 2/4;
+            }
+
+            & > a {
+                display: grid;
+                justify-content: center;
+                align-items: center;
+                aspect-ratio: 258/143;
+            }
+        }
+
         & .leftArrowButton {
             display: none;
 
@@ -171,27 +207,28 @@
                 text-align: -webkit-right;
             }
         }
-        & > div:nth-of-type(2) {
+        & > div:nth-of-type(3) {
             grid-column: 2/8;
-            grid-row: 5/6;
+            grid-row: 6/7;
             width: 100%;
             max-width: 12.2rem;
             @media (min-width: 769px) {
-                grid-row: 5/6;
+                grid-row: 4/5;
                 grid-column: 1/2;
             }
         }
         & > p:nth-of-type(1) {
-            grid-row: 7/8;
+            grid-row: 8/9;
             grid-column: 2/8;
-
+            padding-top: 10rem;
             @media (min-width: 769px) {
                 grid-row: 7/8;
                 grid-column: 1/3;
+                padding-top: 0rem;
             }
         }
         & > nav {
-            grid-row: 9/10;
+            grid-row: 10/11;
             grid-column: 2/6;
             display: grid;
             grid-auto-flow: row;
@@ -205,13 +242,13 @@
 
             @media (min-width: 769px) {
                 grid-row: 7/8;
-                grid-column: 4/5;
+                grid-column: 6/7;
                 align-content: flex-start;
             }
         }
 
-        & > div:nth-of-type(3) {
-            grid-row: 9/10;
+        & > div:nth-of-type(4) {
+            grid-row: 9/11;
             grid-column: 2/8;
             justify-items: center;
 
@@ -232,33 +269,20 @@
             @media (min-width: 769px) {
                 justify-content: start;
                 align-content: flex-start;
-                grid-row: 9/10;
-                grid-column: 4/5;
+                grid-row: 8/9;
+                grid-column: 6/7;
+                margin-top: 6rem;
             }
         }
-        & > div:nth-of-type(4) {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(9.4rem, 12.4rem));
-            grid-auto-rows: 4.7rem;
-            align-items: center;
-            justify-content: center;
-            justify-items: center;
-            grid-row: 11/12;
-            grid-column: 2/8;
-            gap: 2.5rem;
 
-            @media (min-width: 769px) {
-                grid-row: 7/10;
-                grid-column: 10/13;
-            }
-        }
         & > p:nth-of-type(2) {
             grid-row: 13/14;
             grid-column: 2/8;
 
             @media (min-width: 769px) {
-                grid-row: 9/10;
+                grid-row: 8/9;
                 grid-column: 1/3;
+                margin-top: 6rem;
             }
         }
     }
