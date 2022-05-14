@@ -117,7 +117,7 @@
                     "id": "16",
                     "title": "Hunting for young problem solvers in the WBOP",
                     "body": "Priority One is calling Western Bay of Plenty’s young, bright minds to attend the virtual launch of the 2022 Young Innovator Awards (yia!) next Thursday, March 24. (Photo: Salina Galvan)",
-                    "read_more_label": "READ MORE",
+                    "read_more_label": "VIEW LINK",
                     "read_more_link": "https://sunlive.co.nz/news/289549-hunting-young-problem-solvers-wbop.html",
                     "image": {
                         "id": "fe73de80-04ea-4740-9476-e8a71f836448",
