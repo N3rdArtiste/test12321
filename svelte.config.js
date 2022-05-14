@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-node'
+import adapter from '@sveltejs/adapter-netlify'
 import preprocess from 'svelte-preprocess'
 import path from 'path'
 
@@ -9,7 +9,11 @@ const config = {
     preprocess: preprocess(),
 
     kit: {
-        adapter: adapter(),
+        adapter: adapter({
+            // if true, will create a Netlify Edge Function rather
+            // than using standard Node-based functions
+            edge: true,
+        }),
         vite: {
             optimizeDeps: {
                 exclude: ['@urql/svelte'],

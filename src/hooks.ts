@@ -2,6 +2,6 @@ import { dev } from '$app/env'
 
 export const getSession: GetSession = () => {
     return {
-        directusURL: (dev ? import.meta.env.VITE_DIRECTUS_URL : process.env.DIRECTUSURL) as string,
+        directusURL: 'https://yia-cms-prod.prod.eks.cucumbersoftware.com',
     }
 }

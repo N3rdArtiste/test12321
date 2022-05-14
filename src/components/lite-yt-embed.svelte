@@ -6,6 +6,7 @@
 
 {#if showIframe}
     <iframe
+        loading="lazy"
         src={`https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1`}
         title="YouTube video player"
         frameborder="0"
