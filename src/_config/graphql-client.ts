@@ -7,7 +7,7 @@ import { requestPolicyExchange } from '@urql/exchange-request-policy'
 export const client = (directusURL: string) =>
     createClient({
         url: directusURL + '/graphql',
-        requestPolicy: 'cache-only',
+        requestPolicy: 'network-only',
         exchanges: [
             dedupExchange,
             requestPolicyExchange({}),
