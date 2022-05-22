@@ -22,11 +22,11 @@ export const client = (directusURL: string) =>
                         past_winners_by_id: (parent, args) => ({ __typename: 'past_winners', id: args.id }),
                     },
                 },
-                storage: browser
-                    ? makeDefaultStorage({
-                          idbName: 'yia-v1',
-                      })
-                    : undefined,
+                // storage: browser
+                //     ? makeDefaultStorage({
+                //           idbName: 'yia-v1',
+                //       })
+                //     : undefined,
             }),
             fetchExchange,
         ],
